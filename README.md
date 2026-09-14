@@ -21,6 +21,8 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 
 | Doc | Purpose |
 |-----|---------|
+| [LOOKML_MAPPING_ASSESSMENT.pdf](LOOKML_MAPPING_ASSESSMENT.pdf) | **Phase 2 mapping PDF (review)** — all sections |
+| [LOOKML_MAPPING_ASSESSMENT.md](LOOKML_MAPPING_ASSESSMENT.md) | Phase 2 mapping (full DAX, markdown source) |
 | [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | **Architecture diagram + full explanation (PDF)** |
 | [AGENTIC_ARCHITECTURE.png](AGENTIC_ARCHITECTURE.png) | Same diagram as PNG (shareable) |
 | [AGENTIC_ARCHITECTURE.md](AGENTIC_ARCHITECTURE.md) | Short architecture summary |
