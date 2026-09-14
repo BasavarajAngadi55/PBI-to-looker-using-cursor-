@@ -1,588 +1,709 @@
 {
-  "measure_count": 30,
+  "agent": "3_dax",
+  "source_pbix": "/Users/Basavaraj_Angadi/Downloads/Human Resources Sample PBIX.pbix",
   "measures": [
     {
       "table": "Employee",
-      "name": "EmpCount",
+      "measure_name": "EmpCount",
       "expression": "CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNumber])))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "MODERATE"
     },
     {
       "table": "Employee",
-      "name": "Seps",
+      "measure_name": "Seps",
       "expression": "CALCULATE(COUNT([EmplID]), FILTER(Employee, NOT(ISBLANK(Employee[TermDate]))))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "MODERATE"
     },
     {
       "table": "Employee",
-      "name": "Actives",
+      "measure_name": "Actives",
       "expression": "CALCULATE([EmpCount], FILTER(Employee, ISBLANK(Employee[TermDate])))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "MODERATE"
     },
     {
       "table": "Employee",
-      "name": "New Hires",
+      "measure_name": "New Hires",
       "expression": "SUM([isNewHire])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "AVG Tenure Days",
+      "measure_name": "AVG Tenure Days",
       "expression": "AVERAGE([TenureDays])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "AVG Tenure Months",
+      "measure_name": "AVG Tenure Months",
       "expression": "ROUND([AVG Tenure Days]/30, 1)-1",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "AVG Age",
+      "measure_name": "AVG Age",
       "expression": "ROUND(AVERAGE([Age]), 0)",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Sum of BadHires",
+      "measure_name": "Sum of BadHires",
       "expression": "SUM([BadHires])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "New Hires SPLY",
+      "measure_name": "New Hires SPLY",
       "expression": "CALCULATE([New Hires],SAMEPERIODLASTYEAR('Date'[Date]))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "COMPLEX"
     },
     {
       "table": "Employee",
-      "name": "Actives SPLY",
+      "measure_name": "Actives SPLY",
       "expression": "CALCULATE([Actives],SAMEPERIODLASTYEAR('Date'[Date]))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "COMPLEX"
     },
     {
       "table": "Employee",
-      "name": "Seps SPLY",
+      "measure_name": "Seps SPLY",
       "expression": "CALCULATE([Seps],SAMEPERIODLASTYEAR('Date'[Date]))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "COMPLEX"
     },
     {
       "table": "Employee",
-      "name": "EmpCount SPLY",
+      "measure_name": "EmpCount SPLY",
       "expression": "CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNumber])),SAMEPERIODLASTYEAR('Date'[Date]))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "COMPLEX"
     },
     {
       "table": "Employee",
-      "name": "Seps YoY Var",
+      "measure_name": "Seps YoY Var",
       "expression": "[Seps]-[Seps SPLY]",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Actives YoY Var",
+      "measure_name": "Actives YoY Var",
       "expression": "[Actives]-[Actives SPLY]",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "New Hires YoY Var",
+      "measure_name": "New Hires YoY Var",
       "expression": "[New Hires]-[New Hires SPLY]",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Seps YoY % Change",
+      "measure_name": "Seps YoY % Change",
       "expression": "DIVIDE([Seps YoY Var], [Seps SPLY])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Actives YoY % Change",
+      "measure_name": "Actives YoY % Change",
       "expression": "DIVIDE([Actives YoY Var], [Actives SPLY])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "New Hires YoY % Change",
+      "measure_name": "New Hires YoY % Change",
       "expression": "DIVIDE([New Hires YoY Var], [New Hires SPLY])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Bad Hires SPLY",
+      "measure_name": "Bad Hires SPLY",
       "expression": "CALCULATE([Sum of BadHires],SAMEPERIODLASTYEAR('Date'[Date]))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "COMPLEX"
     },
     {
       "table": "Employee",
-      "name": "Bad Hires YoY Var",
+      "measure_name": "Bad Hires YoY Var",
       "expression": "[Sum of BadHires]-[Bad Hires SPLY]",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Bad Hires YoY % Change",
+      "measure_name": "Bad Hires YoY % Change",
       "expression": "DIVIDE([Bad Hires YoY Var], [Bad Hires SPLY])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "TO %",
+      "measure_name": "TO %",
       "expression": "DIVIDE([Seps], [Actives])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "TO % Norm",
+      "measure_name": "TO % Norm",
       "expression": "CALCULATE([TO %], all(Gender[Gender]), ALL(Ethnicity[Ethnicity]))",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "MODERATE"
     },
     {
       "table": "Employee",
-      "name": "TO % Var",
+      "measure_name": "TO % Var",
       "expression": "[TO %]-[TO % Norm]",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Sep%ofActive",
+      "measure_name": "Sep%ofActive",
       "expression": "DIVIDE([Seps],[Actives])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "Sep%ofSMLYActives",
+      "measure_name": "Sep%ofSMLYActives",
       "expression": "DIVIDE([Seps SPLY],[Actives SPLY])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "BadHire%ofActives",
+      "measure_name": "BadHire%ofActives",
       "expression": "DIVIDE([Sum of BadHires],[Actives])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "name": "BadHire%ofActiveSPLY",
+      "measure_name": "BadHire%ofActiveSPLY",
       "expression": "DIVIDE([Bad Hires SPLY],[Actives SPLY])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_TODO_COMPLEX"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "BU",
-      "name": "Count of BU",
+      "measure_name": "Count of BU",
       "expression": "COUNTA('BU'[BU])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Date",
-      "name": "Count of Date",
+      "measure_name": "Count of Date",
       "expression": "COUNTA('Date'[Date])",
-      "display_folder": NaN,
-      "description": NaN,
-      "suggested_action": "LOOKML_MEASURE"
+      "format_string": null,
+      "description": null,
+      "hidden": null,
+      "display_folder": null,
+      "complexity": "SIMPLE"
     }
   ],
-  "calculated_column_count": 43,
   "calculated_columns": [
     {
       "table": "BU",
-      "column": "Region",
+      "column_name": "Region",
       "expression": "mid([RegionSeq], 3,15)",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Date",
-      "column": "MonthIncrementNumber",
+      "column_name": "MonthIncrementNumber",
       "expression": "([Year]-MIN([Year]))*12 +[MonthNumber]",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "MODERATE"
     },
     {
       "table": "Employee",
-      "column": "isNewHire",
+      "column_name": "isNewHire",
       "expression": "IF(YEAR([date]) = YEAR([HireDate]) && MONTH([date])=MONTH([HireDate]), 1)",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "column": "AgeGroupID",
+      "column_name": "AgeGroupID",
       "expression": "IF([Age]<30, 1, IF([Age]<50, 2, 3))",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "column": "TenureDays",
+      "column_name": "TenureDays",
       "expression": "IF([date]-[HireDate]<0,[HireDate]-[date],[date]-[HireDate])",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 8,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "column": "TenureMonths",
+      "column_name": "TenureMonths",
       "expression": "CEILING([TenureDays]/30, 1) -1",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "Employee",
-      "column": "BadHires",
+      "column_name": "BadHires",
       "expression": "IF(OR((([HireDate]-[TermDate])*-1)>=61,ISBLANK([TermDate])),0,1)",
-      "is_auto_date_table": false,
-      "suggested_action": "DBT_SQL"
+      "data_type": 8,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
-      "column": "Year",
+      "column_name": "Year",
       "expression": "YEAR([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
-      "column": "MonthNo",
+      "column_name": "MonthNo",
       "expression": "MONTH([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
-      "column": "Month",
+      "column_name": "Month",
       "expression": "FORMAT([Date], \"MMMM\")",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
-      "column": "QuarterNo",
+      "column_name": "QuarterNo",
       "expression": "INT(([MonthNo] + 2) / 3)",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
-      "column": "Quarter",
+      "column_name": "Quarter",
       "expression": "\"Qtr \" & [QuarterNo]",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
-      "column": "Day",
+      "column_name": "Day",
       "expression": "DAY([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
-      "column": "Year",
+      "column_name": "Year",
       "expression": "YEAR([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
-      "column": "MonthNo",
+      "column_name": "MonthNo",
       "expression": "MONTH([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
-      "column": "Month",
+      "column_name": "Month",
       "expression": "FORMAT([Date], \"MMMM\")",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
-      "column": "QuarterNo",
+      "column_name": "QuarterNo",
       "expression": "INT(([MonthNo] + 2) / 3)",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
-      "column": "Quarter",
+      "column_name": "Quarter",
       "expression": "\"Qtr \" & [QuarterNo]",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
-      "column": "Day",
+      "column_name": "Day",
       "expression": "DAY([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
-      "column": "Year",
+      "column_name": "Year",
       "expression": "YEAR([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
-      "column": "MonthNo",
+      "column_name": "MonthNo",
       "expression": "MONTH([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
-      "column": "Month",
+      "column_name": "Month",
       "expression": "FORMAT([Date], \"MMMM\")",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
-      "column": "QuarterNo",
+      "column_name": "QuarterNo",
       "expression": "INT(([MonthNo] + 2) / 3)",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
-      "column": "Quarter",
+      "column_name": "Quarter",
       "expression": "\"Qtr \" & [QuarterNo]",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
-      "column": "Day",
+      "column_name": "Day",
       "expression": "DAY([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
-      "column": "Year",
+      "column_name": "Year",
       "expression": "YEAR([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
-      "column": "MonthNo",
+      "column_name": "MonthNo",
       "expression": "MONTH([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
-      "column": "Month",
+      "column_name": "Month",
       "expression": "FORMAT([Date], \"MMMM\")",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
-      "column": "QuarterNo",
+      "column_name": "QuarterNo",
       "expression": "INT(([MonthNo] + 2) / 3)",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
-      "column": "Quarter",
+      "column_name": "Quarter",
       "expression": "\"Qtr \" & [QuarterNo]",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
-      "column": "Day",
+      "column_name": "Day",
       "expression": "DAY([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
-      "column": "Year",
+      "column_name": "Year",
       "expression": "YEAR([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
-      "column": "MonthNo",
+      "column_name": "MonthNo",
       "expression": "MONTH([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
-      "column": "Month",
+      "column_name": "Month",
       "expression": "FORMAT([Date], \"MMMM\")",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
-      "column": "QuarterNo",
+      "column_name": "QuarterNo",
       "expression": "INT(([MonthNo] + 2) / 3)",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
-      "column": "Quarter",
+      "column_name": "Quarter",
       "expression": "\"Qtr \" & [QuarterNo]",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
-      "column": "Day",
+      "column_name": "Day",
       "expression": "DAY([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
-      "column": "Year",
+      "column_name": "Year",
       "expression": "YEAR([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
-      "column": "MonthNo",
+      "column_name": "MonthNo",
       "expression": "MONTH([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
-      "column": "Month",
+      "column_name": "Month",
       "expression": "FORMAT([Date], \"MMMM\")",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
-      "column": "QuarterNo",
+      "column_name": "QuarterNo",
       "expression": "INT(([MonthNo] + 2) / 3)",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
-      "column": "Quarter",
+      "column_name": "Quarter",
       "expression": "\"Qtr \" & [QuarterNo]",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     },
     {
       "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
-      "column": "Day",
+      "column_name": "Day",
       "expression": "DAY([Date])",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "data_type": 1,
+      "format_string": null,
+      "complexity": "SIMPLE"
     }
   ],
-  "calculated_table_count": 6,
   "calculated_tables": [
     {
-      "table": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
+      "table_name": "DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d",
       "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "complexity": "SIMPLE"
     },
     {
-      "table": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
+      "table_name": "LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782",
       "expression": "Calendar(Date(Year(MIN('Date'[Date])), 1, 1), Date(Year(MAX('Date'[Date])), 12, 31))",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "complexity": "MODERATE"
     },
     {
-      "table": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
+      "table_name": "LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6",
       "expression": "Calendar(Date(Year(MIN('Date'[MonthStartDate])), 1, 1), Date(Year(MAX('Date'[MonthStartDate])), 12, 31))",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "complexity": "MODERATE"
     },
     {
-      "table": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
+      "table_name": "LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac",
       "expression": "Calendar(Date(Year(MIN('Date'[MonthEndDate])), 1, 1), Date(Year(MAX('Date'[MonthEndDate])), 12, 31))",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "complexity": "MODERATE"
     },
     {
-      "table": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
+      "table_name": "LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b",
       "expression": "Calendar(Date(Year(MIN('Employee'[TermDate])), 1, 1), Date(Year(MAX('Employee'[TermDate])), 12, 31))",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "complexity": "MODERATE"
     },
     {
-      "table": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
+      "table_name": "LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29",
       "expression": "Calendar(Date(Year(MIN('Employee'[HireDate])), 1, 1), Date(Year(MAX('Employee'[HireDate])), 12, 31))",
-      "is_auto_date_table": true,
-      "suggested_action": "SKIP_PBI_INTERNAL"
+      "complexity": "MODERATE"
     }
-  ]
+  ],
+  "complexity_summary": {
+    "measures": {
+      "MODERATE": 4,
+      "SIMPLE": 21,
+      "COMPLEX": 5
+    },
+    "calculated_columns": {
+      "SIMPLE": 42,
+      "MODERATE": 1
+    },
+    "calculated_tables": {
+      "SIMPLE": 1,
+      "MODERATE": 5
+    }
+  },
+  "validation": {
+    "measure_count": 30,
+    "calculated_column_count": 43,
+    "calculated_table_count": 6,
+    "simple_moderate_complex_measures": {
+      "MODERATE": 4,
+      "SIMPLE": 21,
+      "COMPLEX": 5
+    }
+  }
 }

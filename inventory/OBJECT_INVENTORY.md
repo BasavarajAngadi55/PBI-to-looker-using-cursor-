@@ -1,970 +1,745 @@
-# Power BI Object Inventory
+# OBJECT INVENTORY — Human Resources Sample PBIX
 
 **Source:** `/Users/Basavaraj_Angadi/Downloads/Human Resources Sample PBIX.pbix`
 
-Semantic-model objects only (report visuals out of scope).
+## 1. Summary
 
-## Completeness gate
+| Metric | Count |
+|---|---:|
+| Tables | 15 |
+| Business tables | 9 |
+| Internal tables | 6 |
+| Columns | 87 |
+| Measures | 30 |
+| Calculated columns | 43 |
+| Calculated tables | 6 |
+| Relationships | 8 |
+| Power Query queries | 9 |
+| RLS roles | 0 |
+| Completeness gate | **PASS** |
 
-**PASSED** — all capture gates succeeded.
+## 2. Tables
 
-| Gate | Expected | Actual |
-|---|---|---|
-| Tables | 15 | 15 |
-| Schema columns | (all) | 87 |
-| Measures | 30 | 30 |
-| Calculated columns | (all) | 43 |
-| Calculated tables | 6 | 6 |
-| Relationships | 8 | 8 |
-| Power Query queries | 9 | 9 |
-| `.m` files | 9 | 9 |
-| TM empty categories listed | yes | 29 |
+### `AgeGroup`
 
-## Action summary
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 2 (0 calculated)
+- **Power Query:** `04_m_raw/AgeGroup.m` (embedded_static)
 
-| Action tag | Count |
-|---|---|
-| `DBT_SEED` | 3 |
-| `DBT_SQL` | 20 |
-| `LOOKML_JOIN` | 8 |
-| `LOOKML_MEASURE` | 22 |
-| `LOOKML_TODO_COMPLEX` | 14 |
-| `LOOKML_VIEW_DIM` | 35 |
-| `LOOKML_VIEW_FACT` | 12 |
-| `NONE_IN_SOURCE` | 29 |
-| `SKIP_PBI_INTERNAL` | 94 |
+### `BU`
 
-| Object class | Count |
-|---|---|
-| column | 87 |
-| dax_calculated_column | 43 |
-| dax_calculated_table | 6 |
-| measure | 30 |
-| power_query | 9 |
-| relationship | 8 |
-| table | 15 |
-| tmschema | 39 |
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 4 (1 calculated)
+- **Power Query:** `04_m_raw/BU.m` (sql_database)
 
-## Tables
+### `Date`
 
-### `AgeGroup` → `LOOKML_VIEW_DIM` (2 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 12 (1 calculated)
+- **Power Query:** `04_m_raw/Date.m` (sql_database)
 
-- `AgeGroupID` (Int64)
-- `AgeGroup` (string)
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d`
 
-### `BU` → `LOOKML_VIEW_DIM` (4 columns)
+- **type:** calculated_table
+- **business:** False | **internal:** True
+- **columns:** 7 (6 calculated)
+- **source:** calculated table (DAX)
 
-- `BU` (string)
-- `RegionSeq` (string)
-- `VP` (string)
-- `Region` (string)
+### `Employee`
 
-### `Date` → `LOOKML_VIEW_DIM` (12 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 16 (5 calculated)
+- **Power Query:** `04_m_raw/Employee.m` (sql_database)
 
-- `Date` (datetime64[ns])
-- `Month` (string)
-- `MonthNumber` (Int64)
-- `Period` (string)
-- `PeriodNumber` (Int64)
-- `Qtr` (Int64)
-- `QtrNumber` (string)
-- `Year` (Int64)
-- `Day` (Int64)
-- `MonthStartDate` (datetime64[ns])
-- `MonthEndDate` (datetime64[ns])
-- `MonthIncrementNumber` (Int64)
+### `Ethnicity`
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d` → `SKIP_PBI_INTERNAL` (7 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 2 (0 calculated)
+- **Power Query:** `04_m_raw/Ethnicity.m` (embedded_static)
 
-- `Date` (datetime64[ns])
-- `Year` (Int64)
-- `MonthNo` (Int64)
-- `Month` (string)
-- `QuarterNo` (Int64)
-- `Quarter` (string)
-- `Day` (Int64)
+### `FP`
 
-### `Employee` → `LOOKML_VIEW_FACT` (16 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 2 (0 calculated)
+- **Power Query:** `04_m_raw/FP.m` (sql_database)
 
-- `date` (datetime64[ns])
-- `EmplID` (Int64)
-- `Gender` (string)
-- `Age` (Int64)
-- `EthnicGroup` (string)
-- `FP` (string)
-- `TermDate` (datetime64[ns])
-- `isNewHire` (Int64)
-- `BU` (string)
-- `HireDate` (datetime64[ns])
-- `PayTypeID` (string)
-- `TermReason` (string)
-- `AgeGroupID` (Int64)
-- `TenureDays` (Float64)
-- `TenureMonths` (Int64)
-- `BadHires` (Float64)
+### `Gender`
 
-### `Ethnicity` → `LOOKML_VIEW_DIM` (2 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 3 (0 calculated)
+- **Power Query:** `04_m_raw/Gender.m` (embedded_static)
 
-- `Ethnic Group` (string)
-- `Ethnicity` (string)
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782`
 
-### `FP` → `LOOKML_VIEW_DIM` (2 columns)
+- **type:** calculated_table
+- **business:** False | **internal:** True
+- **columns:** 7 (6 calculated)
+- **source:** calculated table (DAX)
 
-- `FP` (string)
-- `FPDesc` (string)
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29`
 
-### `Gender` → `LOOKML_VIEW_DIM` (3 columns)
+- **type:** calculated_table
+- **business:** False | **internal:** True
+- **columns:** 7 (6 calculated)
+- **source:** calculated table (DAX)
 
-- `ID` (string)
-- `Gender` (string)
-- `Sort` (Int64)
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac`
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782` → `SKIP_PBI_INTERNAL` (7 columns)
+- **type:** calculated_table
+- **business:** False | **internal:** True
+- **columns:** 7 (6 calculated)
+- **source:** calculated table (DAX)
 
-- `Date` (datetime64[ns])
-- `Year` (Int64)
-- `MonthNo` (Int64)
-- `Month` (string)
-- `QuarterNo` (Int64)
-- `Quarter` (string)
-- `Day` (Int64)
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b`
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29` → `SKIP_PBI_INTERNAL` (7 columns)
+- **type:** calculated_table
+- **business:** False | **internal:** True
+- **columns:** 7 (6 calculated)
+- **source:** calculated table (DAX)
 
-- `Date` (datetime64[ns])
-- `Year` (Int64)
-- `MonthNo` (Int64)
-- `Month` (string)
-- `QuarterNo` (Int64)
-- `Quarter` (string)
-- `Day` (Int64)
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6`
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac` → `SKIP_PBI_INTERNAL` (7 columns)
+- **type:** calculated_table
+- **business:** False | **internal:** True
+- **columns:** 7 (6 calculated)
+- **source:** calculated table (DAX)
 
-- `Date` (datetime64[ns])
-- `Year` (Int64)
-- `MonthNo` (Int64)
-- `Month` (string)
-- `QuarterNo` (Int64)
-- `Quarter` (string)
-- `Day` (Int64)
+### `PayType`
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b` → `SKIP_PBI_INTERNAL` (7 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 2 (0 calculated)
+- **Power Query:** `04_m_raw/PayType.m` (sql_database)
 
-- `Date` (datetime64[ns])
-- `Year` (Int64)
-- `MonthNo` (Int64)
-- `Month` (string)
-- `QuarterNo` (Int64)
-- `Quarter` (string)
-- `Day` (Int64)
+### `SeparationReason`
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6` → `SKIP_PBI_INTERNAL` (7 columns)
+- **type:** business
+- **business:** True | **internal:** False
+- **columns:** 2 (0 calculated)
+- **Power Query:** `04_m_raw/SeparationReason.m` (sql_database)
 
-- `Date` (datetime64[ns])
-- `Year` (Int64)
-- `MonthNo` (Int64)
-- `Month` (string)
-- `QuarterNo` (Int64)
-- `Quarter` (string)
-- `Day` (Int64)
+## 3. Measures
 
-### `PayType` → `LOOKML_VIEW_DIM` (2 columns)
-
-- `PayTypeID` (string)
-- `PayType` (string)
-
-### `SeparationReason` → `LOOKML_VIEW_DIM` (2 columns)
-
-- `SeparationTypeID` (string)
-- `SeparationReason` (string)
-
-## Measures (full DAX)
-
-### `Employee[EmpCount]` → `LOOKML_TODO_COMPLEX`
+### `Employee[EmpCount]` — MODERATE
 
 ```dax
 CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNumber])))
 ```
 
-### `Employee[Seps]` → `LOOKML_MEASURE`
+### `Employee[Seps]` — MODERATE
 
 ```dax
 CALCULATE(COUNT([EmplID]), FILTER(Employee, NOT(ISBLANK(Employee[TermDate]))))
 ```
 
-### `Employee[Actives]` → `LOOKML_MEASURE`
+### `Employee[Actives]` — MODERATE
 
 ```dax
 CALCULATE([EmpCount], FILTER(Employee, ISBLANK(Employee[TermDate])))
 ```
 
-### `Employee[New Hires]` → `LOOKML_MEASURE`
+### `Employee[New Hires]` — SIMPLE
 
 ```dax
 SUM([isNewHire])
 ```
 
-### `Employee[AVG Tenure Days]` → `LOOKML_MEASURE`
+### `Employee[AVG Tenure Days]` — SIMPLE
 
 ```dax
 AVERAGE([TenureDays])
 ```
 
-### `Employee[AVG Tenure Months]` → `LOOKML_MEASURE`
+### `Employee[AVG Tenure Months]` — SIMPLE
 
 ```dax
 ROUND([AVG Tenure Days]/30, 1)-1
 ```
 
-### `Employee[AVG Age]` → `LOOKML_MEASURE`
+### `Employee[AVG Age]` — SIMPLE
 
 ```dax
 ROUND(AVERAGE([Age]), 0)
 ```
 
-### `Employee[Sum of BadHires]` → `LOOKML_MEASURE`
+### `Employee[Sum of BadHires]` — SIMPLE
 
 ```dax
 SUM([BadHires])
 ```
 
-### `Employee[New Hires SPLY]` → `LOOKML_TODO_COMPLEX`
+### `Employee[New Hires SPLY]` — COMPLEX
 
 ```dax
 CALCULATE([New Hires],SAMEPERIODLASTYEAR('Date'[Date]))
 ```
 
-### `Employee[Actives SPLY]` → `LOOKML_TODO_COMPLEX`
+### `Employee[Actives SPLY]` — COMPLEX
 
 ```dax
 CALCULATE([Actives],SAMEPERIODLASTYEAR('Date'[Date]))
 ```
 
-### `Employee[Seps SPLY]` → `LOOKML_TODO_COMPLEX`
+### `Employee[Seps SPLY]` — COMPLEX
 
 ```dax
 CALCULATE([Seps],SAMEPERIODLASTYEAR('Date'[Date]))
 ```
 
-### `Employee[EmpCount SPLY]` → `LOOKML_TODO_COMPLEX`
+### `Employee[EmpCount SPLY]` — COMPLEX
 
 ```dax
 CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNumber])),SAMEPERIODLASTYEAR('Date'[Date]))
 ```
 
-### `Employee[Seps YoY Var]` → `LOOKML_MEASURE`
+### `Employee[Seps YoY Var]` — SIMPLE
 
 ```dax
 [Seps]-[Seps SPLY]
 ```
 
-### `Employee[Actives YoY Var]` → `LOOKML_MEASURE`
+### `Employee[Actives YoY Var]` — SIMPLE
 
 ```dax
 [Actives]-[Actives SPLY]
 ```
 
-### `Employee[New Hires YoY Var]` → `LOOKML_MEASURE`
+### `Employee[New Hires YoY Var]` — SIMPLE
 
 ```dax
 [New Hires]-[New Hires SPLY]
 ```
 
-### `Employee[Seps YoY % Change]` → `LOOKML_MEASURE`
+### `Employee[Seps YoY % Change]` — SIMPLE
 
 ```dax
 DIVIDE([Seps YoY Var], [Seps SPLY])
 ```
 
-### `Employee[Actives YoY % Change]` → `LOOKML_MEASURE`
+### `Employee[Actives YoY % Change]` — SIMPLE
 
 ```dax
 DIVIDE([Actives YoY Var], [Actives SPLY])
 ```
 
-### `Employee[New Hires YoY % Change]` → `LOOKML_MEASURE`
+### `Employee[New Hires YoY % Change]` — SIMPLE
 
 ```dax
 DIVIDE([New Hires YoY Var], [New Hires SPLY])
 ```
 
-### `Employee[Bad Hires SPLY]` → `LOOKML_TODO_COMPLEX`
+### `Employee[Bad Hires SPLY]` — COMPLEX
 
 ```dax
 CALCULATE([Sum of BadHires],SAMEPERIODLASTYEAR('Date'[Date]))
 ```
 
-### `Employee[Bad Hires YoY Var]` → `LOOKML_MEASURE`
+### `Employee[Bad Hires YoY Var]` — SIMPLE
 
 ```dax
 [Sum of BadHires]-[Bad Hires SPLY]
 ```
 
-### `Employee[Bad Hires YoY % Change]` → `LOOKML_MEASURE`
+### `Employee[Bad Hires YoY % Change]` — SIMPLE
 
 ```dax
 DIVIDE([Bad Hires YoY Var], [Bad Hires SPLY])
 ```
 
-### `Employee[TO %]` → `LOOKML_MEASURE`
+### `Employee[TO %]` — SIMPLE
 
 ```dax
 DIVIDE([Seps], [Actives])
 ```
 
-### `Employee[TO % Norm]` → `LOOKML_TODO_COMPLEX`
+### `Employee[TO % Norm]` — MODERATE
 
 ```dax
 CALCULATE([TO %], all(Gender[Gender]), ALL(Ethnicity[Ethnicity]))
 ```
 
-### `Employee[TO % Var]` → `LOOKML_MEASURE`
+### `Employee[TO % Var]` — SIMPLE
 
 ```dax
 [TO %]-[TO % Norm]
 ```
 
-### `Employee[Sep%ofActive]` → `LOOKML_MEASURE`
+### `Employee[Sep%ofActive]` — SIMPLE
 
 ```dax
 DIVIDE([Seps],[Actives])
 ```
 
-### `Employee[Sep%ofSMLYActives]` → `LOOKML_MEASURE`
+### `Employee[Sep%ofSMLYActives]` — SIMPLE
 
 ```dax
 DIVIDE([Seps SPLY],[Actives SPLY])
 ```
 
-### `Employee[BadHire%ofActives]` → `LOOKML_MEASURE`
+### `Employee[BadHire%ofActives]` — SIMPLE
 
 ```dax
 DIVIDE([Sum of BadHires],[Actives])
 ```
 
-### `Employee[BadHire%ofActiveSPLY]` → `LOOKML_TODO_COMPLEX`
+### `Employee[BadHire%ofActiveSPLY]` — SIMPLE
 
 ```dax
 DIVIDE([Bad Hires SPLY],[Actives SPLY])
 ```
 
-### `BU[Count of BU]` → `LOOKML_MEASURE`
+### `BU[Count of BU]` — SIMPLE
 
 ```dax
 COUNTA('BU'[BU])
 ```
 
-### `Date[Count of Date]` → `LOOKML_MEASURE`
+### `Date[Count of Date]` — SIMPLE
 
 ```dax
 COUNTA('Date'[Date])
 ```
 
-## Calculated columns (full DAX)
+## 4. Calculated Columns
 
-### `BU[Region]` → `DBT_SQL`
+### `BU[Region]` — SIMPLE
 
 ```dax
 mid([RegionSeq], 3,15)
 ```
 
-### `Date[MonthIncrementNumber]` → `DBT_SQL`
+### `Date[MonthIncrementNumber]` — MODERATE
 
 ```dax
 ([Year]-MIN([Year]))*12 +[MonthNumber]
 ```
 
-### `Employee[isNewHire]` → `DBT_SQL`
+### `Employee[isNewHire]` — SIMPLE
 
 ```dax
 IF(YEAR([date]) = YEAR([HireDate]) && MONTH([date])=MONTH([HireDate]), 1)
 ```
 
-### `Employee[AgeGroupID]` → `DBT_SQL`
+### `Employee[AgeGroupID]` — SIMPLE
 
 ```dax
 IF([Age]<30, 1, IF([Age]<50, 2, 3))
 ```
 
-### `Employee[TenureDays]` → `DBT_SQL`
+### `Employee[TenureDays]` — SIMPLE
 
 ```dax
 IF([date]-[HireDate]<0,[HireDate]-[date],[date]-[HireDate])
 ```
 
-### `Employee[TenureMonths]` → `DBT_SQL`
+### `Employee[TenureMonths]` — SIMPLE
 
 ```dax
 CEILING([TenureDays]/30, 1) -1
 ```
 
-### `Employee[BadHires]` → `DBT_SQL`
+### `Employee[BadHires]` — SIMPLE
 
 ```dax
 IF(OR((([HireDate]-[TermDate])*-1)>=61,ISBLANK([TermDate])),0,1)
 ```
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Year]` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Year]` — SIMPLE
 
 ```dax
 YEAR([Date])
 ```
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[MonthNo]` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[MonthNo]` — SIMPLE
 
 ```dax
 MONTH([Date])
 ```
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Month]` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Month]` — SIMPLE
 
 ```dax
 FORMAT([Date], "MMMM")
 ```
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[QuarterNo]` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[QuarterNo]` — SIMPLE
 
 ```dax
 INT(([MonthNo] + 2) / 3)
 ```
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Quarter]` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Quarter]` — SIMPLE
 
 ```dax
 "Qtr " & [QuarterNo]
 ```
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Day]` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d[Day]` — SIMPLE
 
 ```dax
 DAY([Date])
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Year]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Year]` — SIMPLE
 
 ```dax
 YEAR([Date])
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[MonthNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[MonthNo]` — SIMPLE
 
 ```dax
 MONTH([Date])
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Month]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Month]` — SIMPLE
 
 ```dax
 FORMAT([Date], "MMMM")
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[QuarterNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[QuarterNo]` — SIMPLE
 
 ```dax
 INT(([MonthNo] + 2) / 3)
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Quarter]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Quarter]` — SIMPLE
 
 ```dax
 "Qtr " & [QuarterNo]
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Day]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782[Day]` — SIMPLE
 
 ```dax
 DAY([Date])
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Year]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Year]` — SIMPLE
 
 ```dax
 YEAR([Date])
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[MonthNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[MonthNo]` — SIMPLE
 
 ```dax
 MONTH([Date])
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Month]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Month]` — SIMPLE
 
 ```dax
 FORMAT([Date], "MMMM")
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[QuarterNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[QuarterNo]` — SIMPLE
 
 ```dax
 INT(([MonthNo] + 2) / 3)
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Quarter]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Quarter]` — SIMPLE
 
 ```dax
 "Qtr " & [QuarterNo]
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Day]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6[Day]` — SIMPLE
 
 ```dax
 DAY([Date])
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Year]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Year]` — SIMPLE
 
 ```dax
 YEAR([Date])
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[MonthNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[MonthNo]` — SIMPLE
 
 ```dax
 MONTH([Date])
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Month]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Month]` — SIMPLE
 
 ```dax
 FORMAT([Date], "MMMM")
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[QuarterNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[QuarterNo]` — SIMPLE
 
 ```dax
 INT(([MonthNo] + 2) / 3)
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Quarter]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Quarter]` — SIMPLE
 
 ```dax
 "Qtr " & [QuarterNo]
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Day]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac[Day]` — SIMPLE
 
 ```dax
 DAY([Date])
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Year]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Year]` — SIMPLE
 
 ```dax
 YEAR([Date])
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[MonthNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[MonthNo]` — SIMPLE
 
 ```dax
 MONTH([Date])
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Month]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Month]` — SIMPLE
 
 ```dax
 FORMAT([Date], "MMMM")
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[QuarterNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[QuarterNo]` — SIMPLE
 
 ```dax
 INT(([MonthNo] + 2) / 3)
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Quarter]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Quarter]` — SIMPLE
 
 ```dax
 "Qtr " & [QuarterNo]
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Day]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b[Day]` — SIMPLE
 
 ```dax
 DAY([Date])
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Year]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Year]` — SIMPLE
 
 ```dax
 YEAR([Date])
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[MonthNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[MonthNo]` — SIMPLE
 
 ```dax
 MONTH([Date])
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Month]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Month]` — SIMPLE
 
 ```dax
 FORMAT([Date], "MMMM")
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[QuarterNo]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[QuarterNo]` — SIMPLE
 
 ```dax
 INT(([MonthNo] + 2) / 3)
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Quarter]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Quarter]` — SIMPLE
 
 ```dax
 "Qtr " & [QuarterNo]
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Day]` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29[Day]` — SIMPLE
 
 ```dax
 DAY([Date])
 ```
 
-## Calculated tables (full DAX)
+## 5. Calculated Tables
 
-### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d` → `SKIP_PBI_INTERNAL`
+### `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d` — SIMPLE
 
 ```dax
 Calendar(Date(2015,1,1), Date(2015,1,1))
 ```
 
-### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782` — MODERATE
 
 ```dax
 Calendar(Date(Year(MIN('Date'[Date])), 1, 1), Date(Year(MAX('Date'[Date])), 12, 31))
 ```
 
-### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6` — MODERATE
 
 ```dax
 Calendar(Date(Year(MIN('Date'[MonthStartDate])), 1, 1), Date(Year(MAX('Date'[MonthStartDate])), 12, 31))
 ```
 
-### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac` — MODERATE
 
 ```dax
 Calendar(Date(Year(MIN('Date'[MonthEndDate])), 1, 1), Date(Year(MAX('Date'[MonthEndDate])), 12, 31))
 ```
 
-### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b` — MODERATE
 
 ```dax
 Calendar(Date(Year(MIN('Employee'[TermDate])), 1, 1), Date(Year(MAX('Employee'[TermDate])), 12, 31))
 ```
 
-### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29` → `SKIP_PBI_INTERNAL`
+### `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29` — MODERATE
 
 ```dax
 Calendar(Date(Year(MIN('Employee'[HireDate])), 1, 1), Date(Year(MAX('Employee'[HireDate])), 12, 31))
 ```
 
-## Relationships
+## 6. Relationships
 
-| From | To | Cardinality | Active | Cross-filter | Action |
-|---|---|---|---|---|---|
-| Employee.date | Date.Date | M:1 | True | Single | LOOKML_JOIN |
-| Employee.FP | FP.FP | M:1 | True | Single | LOOKML_JOIN |
-| Employee.EthnicGroup | Ethnicity.Ethnic Group | M:1 | True | Single | LOOKML_JOIN |
-| Employee.Gender | Gender.ID | M:1 | True | Single | LOOKML_JOIN |
-| Employee.PayTypeID | PayType.PayTypeID | M:1 | True | Single | LOOKML_JOIN |
-| Employee.BU | BU.BU | M:1 | True | Single | LOOKML_JOIN |
-| Employee.AgeGroupID | AgeGroup.AgeGroupID | M:1 | True | Single | LOOKML_JOIN |
-| Employee.TermReason | SeparationReason.SeparationTypeID | M:1 | True | Single | LOOKML_JOIN |
+| From | Column | To | Column | Cardinality | Cross-filter | Active |
+|---|---|---|---|---|---|---|
+| Employee | date | Date | Date | M:1 | Single | True |
+| Employee | FP | FP | FP | M:1 | Single | True |
+| Employee | EthnicGroup | Ethnicity | Ethnic Group | M:1 | Single | True |
+| Employee | Gender | Gender | ID | M:1 | Single | True |
+| Employee | PayTypeID | PayType | PayTypeID | M:1 | Single | True |
+| Employee | BU | BU | BU | M:1 | Single | True |
+| Employee | AgeGroupID | AgeGroup | AgeGroupID | M:1 | Single | True |
+| Employee | TermReason | SeparationReason | SeparationTypeID | M:1 | Single | True |
 
-## Power Query (M)
+## 7. Power Query
 
-### `BU` → `DBT_SQL` (complexity=high; tags=sql_database)
+### `BU`
 
-Raw file: `04_m_raw/BU.m`
+- **file:** `04_m_raw/BU.m`
+- **source_type:** sql_database
+- **tags:** sql_database, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
 
-Embedded SQL:
+### `FP`
 
-```sql
-select distinct market BU,
-  REGIONTITLE Region,
-  MARKETDIRECTOR VP
-from hr.bu
+- **file:** `04_m_raw/FP.m`
+- **source_type:** sql_database
+- **tags:** sql_database, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `PayType`
+
+- **file:** `04_m_raw/PayType.m`
+- **source_type:** sql_database
+- **tags:** sql_database, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `SeparationReason`
+
+- **file:** `04_m_raw/SeparationReason.m`
+- **source_type:** sql_database
+- **tags:** sql_database, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `Date`
+
+- **file:** `04_m_raw/Date.m`
+- **source_type:** sql_database
+- **tags:** sql_database, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `Employee`
+
+- **file:** `04_m_raw/Employee.m`
+- **source_type:** sql_database
+- **tags:** sql_database, append_union, query_reference, transformation_heavy
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `Ethnicity`
+
+- **file:** `04_m_raw/Ethnicity.m`
+- **source_type:** embedded_static
+- **tags:** embedded_seed, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `Gender`
+
+- **file:** `04_m_raw/Gender.m`
+- **source_type:** embedded_static
+- **tags:** embedded_seed, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+### `AgeGroup`
+
+- **file:** `04_m_raw/AgeGroup.m`
+- **source_type:** embedded_static
+- **tags:** embedded_seed, query_reference
+- **referenced_queries:** Renamed Columns, Changed Type, Renamed Columns, Changed Type
+
+## 8. TM Extras
+
+- **partitions:** 122
+- **hierarchies:** 7
+- **RLS:** 0 (explicitly captured; empty = none)
+- **perspectives:** 0
+- **annotations:** 158
+- **sort-by columns:** 0
+- **display folders:** 0
+- **format strings:** 5
+- **auto date tables:** 6
+
+### Hierarchies
+
+- `Date.YQM`: Year(Year) → QtrNumber(QtrNumber) → PeriodNumber(PeriodNumber)
+- `DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d.Date Hierarchy`: Year(Year) → Quarter(Quarter) → Month(Month) → Day(Day)
+- `LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782.Date Hierarchy`: Year(Year) → Quarter(Quarter) → Month(Month) → Day(Day)
+- `LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6.Date Hierarchy`: Year(Year) → Quarter(Quarter) → Month(Month) → Day(Day)
+- `LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac.Date Hierarchy`: Year(Year) → Quarter(Quarter) → Month(Month) → Day(Day)
+- `LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b.Date Hierarchy`: Year(Year) → Quarter(Quarter) → Month(Month) → Day(Day)
+- `LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29.Date Hierarchy`: Year(Year) → Quarter(Quarter) → Month(Month) → Day(Day)
+
+## 9. Migration Notes
+
+Direct Power BI → LookML conversion is not enough because business logic is split across layers:
+
+```text
+M (Power Query) → warehouse tables/seeds
+              → calculated columns (DAX or SQL)
+              → measures (DAX → LookML)
+relationships → LookML joins
+date tables / PeriodNumber → time intelligence (SPLY, EmpCount)
 ```
 
-<details><summary>Full M expression</summary>
+Key dependency chains in this PBIX:
 
-```powerquery
-let
-    Source = Sql.Database(".", "IP", [Query="select distinct market BU,#(lf)  REGIONTITLE Region,#(lf)  MARKETDIRECTOR VP#(lf)from hr.bu"]),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"BU", "BU"}, {"Region", "RegionSeq"}, {"VP", "VP"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"BU", type text}, {"RegionSeq", type text}, {"VP", type text}})
-in
-    #"Changed Type"
+1. **Employee.m** (SQL UNION actives+seps) must exist in warehouse before any HR KPI.
+2. Seed dims (AgeGroup, Gender, Ethnicity) are embedded M — warehouse seeds, not SQL Server.
+3. Complex DAX (`SAMEPERIODLASTYEAR`, max `PeriodNumber`, `ALL(Gender/Ethnicity)`) needs LookML PoP / filtered measures + parity tests.
+4. Internal `LocalDateTable_*` / `DateTableTemplate_*` are captured but should be `SKIP_PBI_INTERNAL` for LookML; use business `Date`.
+5. **RLS:** none in this PBIX (`rls: []`).
+
+### Blockers (inventory phase)
+
+```text
+BLOCKER
+Depends on: inventory/04_m_raw/Employee.m
+Impact: No runnable Employee fact in Looker until warehouse load
+Unlocks: Actives, Seps, New Hires, Bad Hires, TO %, all YoY/SPLY
+Resolution: warehouse SQL from M (or PBIX export load) — Phase 2
 ```
 
-</details>
-
-### `FP` → `DBT_SQL` (complexity=high; tags=sql_database)
-
-Raw file: `04_m_raw/FP.m`
-
-Embedded SQL:
-
-```sql
-SELECT [HR].[FP].*   FROM [HR].[FP]
+```text
+BLOCKER
+Depends on: SAMEPERIODLASTYEAR DAX (multiple measures)
+Impact: * SPLY and dependent YoY / ratio measures
+Unlocks: YoY Var/%, Sep%ofSMLY*, BadHire%ofActiveSPLY
+Resolution: LookML time comparison + KPI parity test — after Phase 1 PASS
 ```
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Sql.Database(".", "IP", [Query="SELECT [HR].[FP].*   FROM [HR].[FP]"]),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"FP", "FP"}, {"FPDesc", "FPDesc"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"FP", type text}, {"FPDesc", type text}})
-in
-    #"Changed Type"
-```
-
-</details>
-
-### `PayType` → `DBT_SQL` (complexity=high; tags=sql_database)
-
-Raw file: `04_m_raw/PayType.m`
-
-Embedded SQL:
-
-```sql
-select distinct PayTypeID, [Hrly-Salaried] PayType
-from [HR].[PayGroup]
-```
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Sql.Database(".", "IP", [Query="select distinct PayTypeID, [Hrly-Salaried] PayType#(lf)from [HR].[PayGroup]"]),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"PayTypeID", "PayTypeID"}, {"PayType", "PayType"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"PayTypeID", type text}, {"PayType", type text}})
-in
-    #"Changed Type"
-```
-
-</details>
-
-### `SeparationReason` → `DBT_SQL` (complexity=high; tags=sql_database)
-
-Raw file: `04_m_raw/SeparationReason.m`
-
-Embedded SQL:
-
-```sql
-SELECT distinct SeparationTypeID, [Vol-Invol] SeparationReason
-  FROM [IP].[HR].[TermReason]
-```
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Sql.Database(".", "IP", [Query="SELECT distinct SeparationTypeID, [Vol-Invol] SeparationReason#(lf)  FROM [IP].[HR].[TermReason]"]),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"SeparationTypeID", "SeparationTypeID"}, {"SeparationReason", "SeparationReason"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"SeparationTypeID", type text}, {"SeparationReason", type text}})
-in
-    #"Changed Type"
-```
-
-</details>
-
-### `Date` → `DBT_SQL` (complexity=high; tags=sql_database)
-
-Raw file: `04_m_raw/Date.m`
-
-Embedded SQL:
-
-```sql
-SELECT [HR].[Date].*   FROM [HR].[Date]
-```
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Sql.Database(".", "IP", [Query="SELECT [HR].[Date].*   FROM [HR].[Date]"]),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"Date", "Date"}, {"Month", "Month"}, {"MonthNumber", "MonthNumber"}, {"Period", "Period"}, {"PeriodNumber", "PeriodNumber"}, {"Qtr", "Qtr"}, {"QtrNumber", "QtrNumber"}, {"Year", "Year"}, {"Day", "Day"}, {"MonthStartDate", "MonthStartDate"}, {"MonthEndDate", "MonthEndDate"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type datetime}, {"Month", type text}, {"MonthNumber", Int64.Type}, {"Period", type text}, {"PeriodNumber", Int64.Type}, {"Qtr", Int64.Type}, {"QtrNumber", type text}, {"Year", Int64.Type}, {"Day", Int64.Type}, {"MonthStartDate", type datetime}, {"MonthEndDate", type datetime}})
-in
-    #"Changed Type"
-```
-
-</details>
-
-### `Employee` → `DBT_SQL` (complexity=high; tags=sql_database, union_combine, complex)
-
-Raw file: `04_m_raw/Employee.m`
-
-Embedded SQL:
-
-```sql
-SELECT dateadd(year, 1, d.date) Date
-  ,Market BU
-  ,[EmplID]
-  ,iif([Gender]='M', 'C', 'D') Gender --  ,iif([Gender]='M', 'F', 'M') Gender
-  ,[Age] - (2013 - year(d.date)) Age
-  ,[EthnicGroup]
-  ,[FP]
-  ,dateadd(year, 1, [SenDate]) HireDate
-  ,p.PayTypeID
-  ,null [TermDate]
-  ,null [TermReason]
- FROM [IP].[HR].[AllEmps] E , [HR].[Date] d , [HR].[BU] b , hr.PayGroup p --, hr.TermReason t
- where d.day = 1 and e.SenDate <= d.MonthEndDate and isnull(e.termdate, '9999-01-01') >= d.MonthEndDate and d.Date < '2014-01-01'
-  and p.PayGroup = e.PayGroup
-  and b.UNIT = e.Unit and [EmplID] % 2 = 0
-union all
---seps
-SELECT dateadd(year, 1, d.date) Date
-    ,Market BU
-      ,[EmplID]
-      ,iif([Gender]='M', 'C', 'D') Gender
-      ,[Age] - (2013 - year(d.date)) Age
-      ,[EthnicGroup]
-      ,[FP]
-      ,dateadd(year, 1,[SenDate]) HireDate
-      ,p.PayTypeID
-      ,dateadd(year, 1, [TermDate]) [TermDate]
-      ,t.[SeparationTypeID] [TermReason]
-  FROM [IP].[HR].[AllEmps] E, [HR].[Date] d , [HR].[BU] b, hr.PayGroup p , hr.TermReason t
- where d.day = 1 and e.TermDate <= d.MonthEndDate and e.TermDate >= d.MonthStartDate and d.Date < '2014-01-01'
-  and p.PayGroup = e.PayGroup 
-  and t.[Term-Discharge]= e.[Term-Discharge]
-  and b.UNIT = e.Unit and [EmplID] % 2 = 0
-```
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Sql.Database(".", "IP", [Query="SELECT dateadd(year, 1, d.date) Date#(lf)  ,Market BU#(lf)  ,[EmplID]#(lf)  ,iif([Gender]='M', 'C', 'D') Gender --  ,iif([Gender]='M', 'F', 'M') Gender#(lf)  ,[Age] - (2013 - year(d.date)) Age#(lf)  ,[EthnicGroup]#(lf)  ,[FP]#(lf)  ,dateadd(year, 1, [SenDate]) HireDate#(lf)  ,p.PayTypeID#(lf)  ,null [TermDate]#(lf)  ,null [TermReason]#(lf) FROM [IP].[HR].[AllEmps] E , [HR].[Date] d , [HR].[BU] b , hr.PayGroup p --, hr.TermReason t#(lf) where d.day = 1 and e.SenDate <= d.MonthEndDate and isnull(e.termdate, '9999-01-01') >= d.MonthEndDate and d.Date < '2014-01-01'#(lf)  and p.PayGroup = e.PayGroup#(lf)  and b.UNIT = e.Unit and [EmplID] % 2 = 0#(lf)union all#(lf)--seps#(lf)SELECT dateadd(year, 1, d.date) Date#(lf)    ,Market BU#(lf)      ,[EmplID]#(lf)      ,iif([Gender]='M', 'C', 'D') Gender#(lf)      ,[Age] - (2013 - year(d.date)) Age#(lf)      ,[EthnicGroup]#(lf)      ,[FP]#(lf)      ,dateadd(year, 1,[SenDate]) HireDate#(lf)      ,p.PayTypeID#(lf)      ,dateadd(year, 1, [TermDate]) [TermDate]#(lf)      ,t.[SeparationTypeID] [TermReason]#(lf)  FROM [IP].[HR].[AllEmps] E, [HR].[Date] d , [HR].[BU] b, hr.PayGroup p , hr.TermReason t#(lf) where d.day = 1 and e.TermDate <= d.MonthEndDate and e.TermDate >= d.MonthStartDate and d.Date < '2014-01-01'#(lf)  and p.PayGroup = e.PayGroup #(lf)  and t.[Term-Discharge]= e.[Term-Discharge]#(lf)  and b.UNIT = e.Unit and [EmplID] % 2 = 0"]),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"date", "date"}, {"EmplID", "EmplID"}, {"Gender", "Gender"}, {"Age", "Age"}, {"EthnicGroup", "EthnicGroup"}, {"FP", "FP"}, {"TermDate", "TermDate"}, {"BU", "BU"}, {"HireDate", "HireDate"}, {"PayTypeID", "PayTypeID"}, {"TermReason", "TermReason"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"date", type datetime}, {"EmplID", Int64.Type}, {"Gender", type text}, {"Age", Int64.Type}, {"EthnicGroup", type text}, {"FP", type text}, {"TermDate", type datetime}, {"BU", type text}, {"HireDate", type datetime}, {"PayTypeID", type text}, {"TermReason", type text}})
-in
-    #"Changed Type"
-```
-
-</details>
-
-### `Ethnicity` → `DBT_SEED` (complexity=low; tags=embedded_seed)
-
-Raw file: `04_m_raw/Ethnicity.m`
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXIvyi8tUHBUitWJVjKC853AfGM43xnMN4HzXcB8UzjfFcw3g/PdwHxzON9dKTYWAA==", BinaryEncoding.Base64), Compression.Deflate))),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"Column1", "Ethnic Group"}, {"Column2", "Ethnicity"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"Ethnic Group", type text}, {"Ethnicity", type text}})
- in
-    #"Changed Type"
-```
-
-</details>
-
-### `Gender` → `DBT_SEED` (complexity=low; tags=embedded_seed)
-
-Raw file: `04_m_raw/Gender.m`
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WclHSUfJNzEkFUoZKsTrRSs5AlltqLkTISCk2FgA=", BinaryEncoding.Base64), Compression.Deflate))),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"Column1", "ID"}, {"Column2", "Gender"}, {"Column3", "Sort"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"ID", type text}, {"Gender", type text}, {"Sort", Int64.Type}})
- in
-    #"Changed Type"
-```
-
-</details>
-
-### `AgeGroup` → `DBT_SEED` (complexity=low; tags=embedded_seed)
-
-Raw file: `04_m_raw/AgeGroup.m`
-
-<details><summary>Full M expression</summary>
-
-```powerquery
-let
-    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUYopNTAwTjY2UIrViVYyAgoYG+iaWIJ5xkCeqYG2UmwsAA==", BinaryEncoding.Base64), Compression.Deflate))),
-    #"Renamed Columns" = Table.RenameColumns(Source, {{"Column1", "AgeGroupID"}, {"Column2", "AgeGroup"}}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"AgeGroupID", Int64.Type}, {"AgeGroup", type text}})
- in
-    #"Changed Type"
-```
-
-</details>
-
-## TM schema extras
-
-### Non-empty
-
-- `tmschema_partitions` (122 records)
-- `tmschema_hierarchies` (7 records)
-- `tmschema_levels` (27 records)
-- `tmschema_annotations` (158 records)
-- `tmschema_cultures` (1 records)
-- `tmschema_variations` (5 records)
-- `tmschema_attribute_hierarchies` (102 records)
-- `tmschema_model` (1 records)
-- `tmschema_linguistic_metadata` (1 records)
-- `metadata` (3 records)
-
-### Empty (confirmed NONE_IN_SOURCE)
-
-- `tmschema_datasources`
-- `tmschema_kpis`
-- `tmschema_calendars`
-- `tmschema_calendar_column_groups`
-- `tmschema_calendar_column_refs`
-- `tmschema_format_string_definitions`
-- `tmschema_perspectives`
-- `tmschema_perspective_tables`
-- `tmschema_perspective_columns`
-- `tmschema_perspective_measures`
-- `tmschema_perspective_hierarchies`
-- `tmschema_translations`
-- `tmschema_calculation_groups`
-- `tmschema_calculation_items`
-- `tmschema_calculation_expressions`
-- `tmschema_functions`
-- `tmschema_sets`
-- `tmschema_extended_properties`
-- `tmschema_detail_rows_definitions`
-- `tmschema_refresh_policies`
-- `tmschema_query_groups`
-- `tmschema_binding_info`
-- `tmschema_role_memberships`
-- `tmschema_column_permissions`
-- `aggregations`
-- `perspectives`
-- `connections`
-- `rls`
-- `ols`
-
-## Artifact index
-
-| File | Description |
-|---|---|
-| `01_tables_columns.json` | Tables, columns, stats, TM columns |
-| `02_dax_objects.json` | Measures, calc columns, calc tables |
-| `03_relationships.json` | Relationships |
-| `04_power_query_m.json` | M metadata + embedded SQL |
-| `04_m_raw/*.m` | Verbatim M per table |
-| `05_tmschema_extras.json` | Partitions, hierarchies, RLS, etc. |
-| `ACTION_MATRIX.csv` | Every object → Looker/dbt/SKIP action |
-| `OBJECT_INVENTORY.md` | This document |
-
-## What to do next in Looker / dbt
-
-1. **dbt:** Implement all `DBT_SQL` / `DBT_SEED` rows (especially Employee M SQL + calc columns).
-2. **LookML views/joins:** Cover all `LOOKML_VIEW_*` and `LOOKML_JOIN` rows.
-3. **Complex measures:** Hand-implement each `LOOKML_TODO_COMPLEX` (SPLY, EmpCount period max, TO % Norm).
-4. **Skip:** `SKIP_PBI_INTERNAL` auto date tables unless product requires them.
-5. **Ignore:** `NONE_IN_SOURCE` categories (nothing to migrate).
 

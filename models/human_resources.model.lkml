@@ -1,10 +1,11 @@
 # Human Resources Sample — LookML model migrated from Power BI PBIX
 # Source: Human Resources Sample PBIX.pbix (obviEnce / Microsoft sample)
 #
-# Update `connection` to your Looker warehouse connection name.
-# sql_table_name values assume schema `hr` — adjust to match dbt/warehouse objects.
+# Update `connection` to your Looker Admin connection name (e.g. hr_bigquery).
+# sql_table_name values assume dataset/schema `hr` — adjust to match warehouse objects.
+# Warehouse table load is out of scope for LookML; see BLOCKERS_AND_DEPENDENCIES.md if tables missing.
 
-connection: "hr_warehouse"
+connection: "hr_bigquery"
 
 include: "/views/*.view.lkml"
 

@@ -88,7 +88,7 @@ view: date {
   dimension: month_increment_number {
     label: "Month Increment Number"
     description: "Sequential month index from model min year. Prefer warehouse materialization."
-    # TODO: Exact DAX uses MIN(Year) over the whole Date table — confirm with a scalar subquery or dbt column.
+    # TODO: Exact DAX uses MIN(Year) over the whole Date table — confirm with a scalar subquery or warehouse column.
     type: number
     sql: ${TABLE}.MonthIncrementNumber ;;
   }

@@ -82,7 +82,7 @@ All PBIX relationships were **M:1**, active, single-direction cross-filter. Mapp
 | BU | Region | `MID(RegionSeq,3,15)` | `dimension: region` |
 | Date | MonthIncrementNumber | `(Year-MIN(Year))*12+MonthNumber` | column passthrough + TODO |
 
-Prefer **materializing** these in dbt for performance on large Employee snapshots.
+Prefer **materializing** these in warehouse SQL for performance on large Employee snapshots.
 
 ---
 
@@ -116,10 +116,12 @@ pbix_analysis/          # extracted schema CSVs from pbixray
 
 ---
 
-## 7. Next steps
+## 7. Next steps (LookML developer)
 
-1. Load/transform HR tables into the warehouse (`hr.*`) via dbt using the Power Query SQL as specs.  
-2. Set Looker `connection: "hr_warehouse"` (or your connection name).  
-3. Implement SPLY / period-over-period for the TODO measures.  
-4. Validate Actives, New Hires, Separations, Bad Hires against the PBIX report pages.  
-5. Optionally hide auto date tables permanently (already excluded from LookML).
+Follow [LOOKML_DEVELOPER_GUIDE.md](LOOKML_DEVELOPER_GUIDE.md) — **LookML first**, not warehouse DDL:
+
+1. Set Looker `connection: "hr_bigquery"` (or your Admin connection name).  
+2. Align `sql_table_name` to existing `hr.*` tables (escalate missing tables via [BLOCKERS_AND_DEPENDENCIES.md](BLOCKERS_AND_DEPENDENCIES.md)).  
+3. Validate explore joins; ship simple measures (Actives, Seps, New Hires, Bad Hires, TO %).  
+4. Keep SPLY / EmpCount / TO % Norm as `# TODO` until patterns are implemented.  
+5. Run KPI parity vs PBIX; auto date tables stay excluded from LookML.

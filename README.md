@@ -21,13 +21,15 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 
 | Doc | Purpose |
 |-----|---------|
-| [LOOKML_DEVELOPER_GUIDE.md](LOOKML_DEVELOPER_GUIDE.md) | **Start here for LookML builders** — BQ → connection → views → measures → blockers |
-| [PBIX_to_Looker_Inventory_Showcase.pdf](PBIX_to_Looker_Inventory_Showcase.pdf) | Audience-ready PDF walkthrough |
-| [PBIX_to_Looker_Inventory_Showcase.md](PBIX_to_Looker_Inventory_Showcase.md) | Same content in Markdown |
-| [BLOCKERS_AND_DEPENDENCIES.md](BLOCKERS_AND_DEPENDENCIES.md) | Clear M → KPI blocker chains |
-| [MIGRATION_SUMMARY.md](MIGRATION_SUMMARY.md) | Early LookML migration notes |
+| [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | **Architecture diagram + full explanation (PDF)** |
+| [AGENTIC_ARCHITECTURE.png](AGENTIC_ARCHITECTURE.png) | Same diagram as PNG (shareable) |
+| [AGENTIC_ARCHITECTURE.md](AGENTIC_ARCHITECTURE.md) | Short architecture summary |
+| [LOOKML_DEVELOPER_GUIDE.md](LOOKML_DEVELOPER_GUIDE.md) | LookML builders — connection → views → joins → measures |
+| [PBIX_to_Looker_Inventory_Showcase.pdf](PBIX_to_Looker_Inventory_Showcase.pdf) | Audience-ready inventory showcase PDF |
+| [BLOCKERS_AND_DEPENDENCIES.md](BLOCKERS_AND_DEPENDENCIES.md) | M → KPI blocker chains |
+| [PROMPT.md](PROMPT.md) | Reusable 6-agent Phase 1 prompt |
 | [inventory/OBJECT_INVENTORY.md](inventory/OBJECT_INVENTORY.md) | Full object inventory |
-| [inventory/ACTION_MATRIX.csv](inventory/ACTION_MATRIX.csv) | Object → action backlog (237 rows) |
+| [inventory/ACTION_MATRIX.csv](inventory/ACTION_MATRIX.csv) | Object → action backlog |
 | [inventory/COMPLETENESS_GATE.json](inventory/COMPLETENESS_GATE.json) | Gate pass/fail evidence |
 
 ---
@@ -63,9 +65,11 @@ PBIX
                               COMPLETENESS_GATE.json
 ```
 
-In this project the roles ran inside one orchestrator  
-[`inventory/capture_pbix_inventory.py`](inventory/capture_pbix_inventory.py)  
-(same contracts, single process for consistency).
+In this project the roles run inside one orchestrator  
+[`inventory/run_phase1_six_agents.py`](inventory/run_phase1_six_agents.py)  
+(same contracts as five specialists + merger, single process for consistency).
+
+**Diagram:** [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) · [AGENTIC_ARCHITECTURE.png](AGENTIC_ARCHITECTURE.png)
 
 **Thesis:** *Capture everything. Tag everything. Block with names. Then build LookML.*
 
@@ -82,8 +86,8 @@ In this project the roles ran inside one orchestrator
 | Calculated tables (full text) | 6 |
 | Relationships | 8 |
 | Power Query queries + `.m` files | 9 |
-| Empty TM categories listed (not omitted) | 29 |
-| Action matrix rows | 237 |
+| Empty TM categories listed (not omitted) | yes (RLS/OLS/perspectives = []) |
+| Action matrix rows | 167 |
 
 **Internal auto date tables were captured** (`LocalDateTable_*`, `DateTableTemplate_*`) including columns and `Calendar(...)` DAX. They are tagged `SKIP_PBI_INTERNAL` for default Looker migration — **capture ≠ skip extraction**.
 
@@ -92,14 +96,18 @@ In this project the roles ran inside one orchestrator
 ## Repo layout
 
 ```text
-├── README.md                          ← you are here
-├── PROMPT.md                          ← reusable master prompt
+├── README.md
+├── PROMPT.md                          ← 6-agent Phase 1 prompt
+├── AGENTIC_ARCHITECTURE.pdf / .png    ← architecture diagram + explanation
+├── AGENTIC_ARCHITECTURE.md
+├── LOOKML_DEVELOPER_GUIDE.md
 ├── BLOCKERS_AND_DEPENDENCIES.md
 ├── MIGRATION_SUMMARY.md
 ├── PBIX_to_Looker_Inventory_Showcase.md / .pdf
+├── generate_architecture_assets.py
 ├── generate_showcase_pdf.py
 ├── inventory/
-│   ├── capture_pbix_inventory.py
+│   ├── run_phase1_six_agents.py       ← orchestrator (Agents 1-6)
 │   ├── 01_tables_columns.json
 │   ├── 02_dax_objects.json
 │   ├── 03_relationships.json
@@ -110,8 +118,7 @@ In this project the roles ran inside one orchestrator
 │   ├── ACTION_MATRIX.csv
 │   └── COMPLETENESS_GATE.json
 ├── views/                             ← draft LookML views
-├── models/human_resources.model.lkml
-└── pbix_analysis/                     ← earlier CSV extracts
+└── models/human_resources.model.lkml
 ```
 
 ---
@@ -154,10 +161,13 @@ See [BLOCKERS_AND_DEPENDENCIES.md](BLOCKERS_AND_DEPENDENCIES.md) for the full ma
 # Python 3.12 recommended for pbixray
 python3.12 -m venv .venv312
 source .venv312/bin/activate
-pip install pbixray fpdf2
+pip install pbixray pandas fpdf2 pillow
 
 # Point PBIX path inside the script if needed, then:
-python inventory/capture_pbix_inventory.py
+python inventory/run_phase1_six_agents.py
+
+# Regenerate architecture PDF/PNG:
+python generate_architecture_assets.py
 ```
 
 Sample PBIX (external):  

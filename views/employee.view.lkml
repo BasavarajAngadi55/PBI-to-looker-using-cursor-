@@ -100,7 +100,7 @@ view: employee {
   # DAX: IF(YEAR([date]) = YEAR([HireDate]) && MONTH([date])=MONTH([HireDate]), 1)
   dimension: is_new_hire {
     label: "Is New Hire Flag"
-    description: "1 when snapshot year/month equals hire year/month. Prefer materializing in dbt if used heavily."
+    description: "1 when snapshot year/month equals hire year/month. Prefer materializing in warehouse SQL if used heavily."
     type: number
     sql: CASE
       WHEN EXTRACT(YEAR FROM ${TABLE}.date) = EXTRACT(YEAR FROM ${TABLE}.HireDate)
@@ -159,6 +159,7 @@ view: employee {
   }
 
   measure: emp_count {
+    group_label: "Blocked — TODO"
     label: "Emp Count"
     description: "COUNT(EmplID). Power BI EmpCount also filtered to MAX PeriodNumber — see TODO."
     # TODO: DAX EmpCount = CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNumber])))
@@ -232,32 +233,36 @@ view: employee {
   # TODO: DAX SAMEPERIODLASTYEAR('Date'[Date]) has no 1:1 LookML equivalent.
   # Prefer: Looker period_over_period, date_offset filters, or a twin explore with prior-year join.
   measure: new_hires_sply {
+    group_label: "Blocked — TODO"
     label: "New Hires SPLY"
-    description: "New Hires same period last year (manual review required)."
+    description: "BLOCKED: SAMEPERIODLASTYEAR. See BLOCKERS_AND_DEPENDENCIES.md."
     # TODO: CALCULATE([New Hires], SAMEPERIODLASTYEAR('Date'[Date]))
     type: number
     sql: NULL ;;
   }
 
   measure: actives_sply {
+    group_label: "Blocked — TODO"
     label: "Actives SPLY"
-    description: "Actives same period last year (manual review required)."
+    description: "BLOCKED: SAMEPERIODLASTYEAR. See BLOCKERS_AND_DEPENDENCIES.md."
     # TODO: CALCULATE([Actives], SAMEPERIODLASTYEAR('Date'[Date]))
     type: number
     sql: NULL ;;
   }
 
   measure: seps_sply {
+    group_label: "Blocked — TODO"
     label: "Seps SPLY"
-    description: "Separations same period last year (manual review required)."
+    description: "BLOCKED: SAMEPERIODLASTYEAR. See BLOCKERS_AND_DEPENDENCIES.md."
     # TODO: CALCULATE([Seps], SAMEPERIODLASTYEAR('Date'[Date]))
     type: number
     sql: NULL ;;
   }
 
   measure: emp_count_sply {
+    group_label: "Blocked — TODO"
     label: "Emp Count SPLY"
-    description: "EmpCount for max PeriodNumber shifted to prior year (manual review required)."
+    description: "BLOCKED: EmpCount max PeriodNumber + SAMEPERIODLASTYEAR."
     # TODO: CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), ...), SAMEPERIODLASTYEAR('Date'[Date]))
     type: number
     sql: NULL ;;
@@ -315,8 +320,9 @@ view: employee {
   }
 
   measure: bad_hires_sply {
+    group_label: "Blocked — TODO"
     label: "Bad Hires SPLY"
-    description: "Bad hires same period last year (manual review required)."
+    description: "BLOCKED: SAMEPERIODLASTYEAR. See BLOCKERS_AND_DEPENDENCIES.md."
     # TODO: CALCULATE([Sum of BadHires], SAMEPERIODLASTYEAR('Date'[Date]))
     type: number
     sql: NULL ;;
@@ -350,10 +356,11 @@ view: employee {
   }
 
   measure: to_pct_norm {
+    group_label: "Blocked — TODO"
     label: "TO % Norm"
-    description: "Turnover ignoring Gender and Ethnicity filters (ALL). Requires careful Looker implementation."
+    description: "BLOCKED: ALL(Gender), ALL(Ethnicity). See BLOCKERS_AND_DEPENDENCIES.md."
     # TODO: CALCULATE([TO %], ALL(Gender[Gender]), ALL(Ethnicity[Ethnicity]))
-    # In Looker, use sql_always_where / filtered measures that ignore those dimensions, or an unfiltered PDT.
+    # In Looker, use filtered measures that ignore those dimensions, or an unfiltered PDT.
     type: number
     sql: NULL ;;
     value_format_name: percent_1
