@@ -19,9 +19,12 @@ phase3/                         # Phase 3 (this folder)
   LOOKER_DEVELOPER_GUIDE.md
   MIGRATION_SUMMARY.md
   IMPLEMENTATION_COVERAGE.md
-  warehouse_sql/
+  warehouse_sql/                # gap/reference templates only
   views/
   models/human_resources.model.lkml
+
+phase3_agents/
+  01_warehouse_gaps.md          # M/DAX gaps only (base tables assumed)
 ```
 
 If your LookML project root is `phase3/`, keep `include: "/views/*.view.lkml"`.
@@ -57,10 +60,26 @@ Power BI Table            → LookML View
 Power BI Column           → LookML Dimension / dimension_group
 Power BI Measure          → LookML Measure
 Power BI Relationship     → LookML Join (explore)
-Power Query Transformation→ Warehouse SQL / Seed (warehouse_sql/)
+Power Query / DAX gaps    → Warehouse add-on only if not on base (see § Warehouse)
 Power BI RLS              → Looker Security (none in this PBIX)
 Power BI Auto Date Table  → Internal/Skip (use business date)
 ```
+
+---
+
+## Warehouse layer (assumptions)
+
+**Base warehouse tables are assumed to exist** (e.g. `AllEmps`, `Date`, `BU`, `FP`, `PayGroup`, `TermReason`). Do not treat Phase 3 as a full source recreate.
+
+What still matters for warehouse work:
+
+| Gap class | Examples | When to apply |
+|-----------|----------|---------------|
+| Embedded seeds | AgeGroup, Gender, Ethnicity | If those dims are missing |
+| Employee.m transforms | UNION actives/seps, gender remap, +1 year dates, filters | If base is not already the Employee fact grain |
+| Calculated columns | `isNewHire`, `AgeGroupID`, tenure, `BadHires`, `BU.Region`, `Date.MonthIncrementNumber` | If not already materialized |
+
+`phase3/warehouse_sql/` is **gap / reference templates only** (including full-dim scripts). Prefer pointing LookML `sql_table_name` at existing bases; run or adapt a template only for a documented M/DAX gap. Inventory: `phase3_agents/01_warehouse_gaps.md`.
 
 ---
 
@@ -163,7 +182,7 @@ Map from mapping assessment only.
 
 1. Never silently remove a Power BI object — use TODO / SKIP / PARTIAL.
 2. Preserve business logic; document deviations (`Actives` vs EmpCount nesting).
-3. Prefer warehouse for reusable transforms; avoid unnecessary PDTs.
+3. Prefer warehouse for reusable M/DAX **gaps** only; base tables assumed; avoid unnecessary PDTs.
 4. No hard-coded real project IDs — use `YOUR_PROJECT.YOUR_DATASET`.
 5. Unresolved logic → `# TODO:` with DAX + reason + next step.
 6. Validate measures against Power BI before claiming done.
@@ -173,9 +192,9 @@ Map from mapping assessment only.
 
 ## Quick start (after warehouse exists)
 
-1. Replace placeholders in `warehouse_sql/*.sql` and run in order `01`→`09`.
+1. Confirm base tables exist; apply only M/DAX gaps from `phase3_agents/01_warehouse_gaps.md` (seeds / Employee.m / calc cols). Use `warehouse_sql/` as templates — not mandatory full DDL.
 2. Set `connection:` in `models/human_resources.model.lkml`.
-3. Align every view `sql_table_name`.
+3. Align every view `sql_table_name` to base or gap add-ons.
 4. LookML Validate → Explore **Human Resources**.
 5. Smoke: Actives, Seps, New Hires by Month × Gender.
 6. Park SPLY / EmpCount / TO % Norm until PoP work.

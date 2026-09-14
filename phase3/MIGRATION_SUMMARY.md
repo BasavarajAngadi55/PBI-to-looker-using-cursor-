@@ -14,7 +14,7 @@ Power BI Tabular
         ↓
 Power Query / M
         ↓
-Warehouse Layer   (warehouse_sql/ — BigQuery templates)
+Warehouse Layer   (base tables assumed; warehouse_sql/ = M/DAX gap templates only)
         ↓
 LookML Semantic Model  (views/ + models/)
         ↓
@@ -34,7 +34,7 @@ KPI Parity Validation   ← not started
 - Report pages, visuals, dashboards, bookmarks, themes, Q&A UI.
 
 ### Target Looker architecture
-- One BigQuery (or warehouse) dataset with dims + `employee` fact.
+- Base warehouse tables assumed present; add only M/DAX gaps (seeds, Employee.m fact transforms, calc cols).
 - LookML views (one per business table) + `human_resources` model explore with 8 joins.
 - Complex DAX kept as `# TODO` until PoP / period / ALL() patterns + parity tests exist.
 
@@ -67,7 +67,7 @@ KPI Parity Validation   ← not started
 | Direct | 9 business tables → views; simple measures → sum/count_distinct/average/SAFE_DIVIDE |
 | Partial | Actives vs EmpCount nesting; YoY formulas pending SPLY; Date YQM → drill set; partitions → warehouse refresh notes |
 | Complex | EmpCount, * SPLY, TO % Norm → TODO stubs |
-| Warehouse required | All 9 M queries + Employee calc cols + Date MonthIncrementNumber + BU Region |
+| Warehouse gaps only | Embedded seeds + Employee.m transforms + 7 biz calc cols (base tables assumed; see `phase3_agents/01_warehouse_gaps.md`) |
 | Internal | LocalDateTable_* / DateTableTemplate_* → SKIP |
 | Blocked | Measure format strings missing from extract; SOURCE_DATASET placeholders need user mapping |
 
@@ -77,9 +77,9 @@ KPI Parity Validation   ← not started
 
 | Layer | What goes here | Why |
 |-------|----------------|-----|
-| **Warehouse** | Seeds (AgeGroup, Gender, Ethnicity); SQL dims; Employee UNION fact + calc cols | M cannot run in Looker; reusable grain |
+| **Warehouse** | Base tables assumed. Only M/DAX gaps: seeds if missing; Employee.m transforms; calc cols (`isNewHire`, tenure, `BadHires`, `BU.Region`, `MonthIncrementNumber`). `warehouse_sql/` = gap/reference templates only | Looker cannot run M/DAX; do not recreate full base DDL |
 | **LookML** | Views, measures, joins, explore | Semantic layer for Explores |
-| **PDT** | Not used in Phase 3 | Prefer warehouse templates first |
+| **PDT** | Not used in Phase 3 | Prefer gap templates / existing bases first |
 | **Security** | N/A | RLS NONE_IN_SOURCE |
 | **Skipped/internal** | Auto date tables/hierarchies | Replaced by business `date` + timeframes |
 
@@ -119,5 +119,6 @@ KPI Parity Validation   ← not started
 - `LOOKML_MAPPING_ASSESSMENT.md` / `.pdf` — Phase 2 design  
 - `phase3/LOOKER_DEVELOPER_GUIDE.md` — developer standards  
 - `phase3/IMPLEMENTATION_COVERAGE.md` — object-by-object status  
-- `phase3/warehouse_sql/` — BigQuery templates  
+- `phase3_agents/01_warehouse_gaps.md` — M/DAX warehouse gaps only  
+- `phase3/warehouse_sql/` — BigQuery gap/reference templates  
 - `phase3/views/` · `phase3/models/human_resources.model.lkml`

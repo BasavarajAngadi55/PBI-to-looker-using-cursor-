@@ -1,0 +1,207 @@
+{
+  "status": "PASS",
+  "phase": 2,
+  "agent": "D \u2014 Mapping Merger",
+  "inputs": [
+    "phase2_agents/01_tables_columns_mapping.md",
+    "phase2_agents/02_dax_mapping.md",
+    "phase2_agents/03_rels_m_tm_mapping.md",
+    "inventory/COMPLETENESS_GATE.json"
+  ],
+  "outputs": [
+    "LOOKML_MAPPING_ASSESSMENT.md",
+    "LOOKML_MAPPING_ASSESSMENT.pdf",
+    "phase2_agents/PHASE2_MERGE_GATE.json"
+  ],
+  "specialist_agents": {
+    "A": "50c88854-f6dc-4dcf-91e1-a341271cf74f",
+    "B": "c0350563-a279-4e91-9675-4abd0cd0dd97",
+    "C": "2fca12df-73c6-4de1-92e6-c6ca845c3d94",
+    "D": "this run"
+  },
+  "section_row_counts": {
+    "1_tables": 15,
+    "2_columns": 87,
+    "3_measures": 30,
+    "4_calc_columns": 43,
+    "5_calc_tables": 6,
+    "6_relationships": 8,
+    "7_power_query": 9,
+    "8_hierarchies": 7,
+    "9_rls": 1,
+    "10_partitions": 10,
+    "11_sort_by": 1,
+    "12_formatting": 7,
+    "13_auto_dates": 6,
+    "14_annotations": 13,
+    "15_complex_unmapped": 9,
+    "16_summary": 9
+  },
+  "checks": [
+    {
+      "name": "section_1_present",
+      "status": "PASS",
+      "detail": "## Section 1"
+    },
+    {
+      "name": "section_2_present",
+      "status": "PASS",
+      "detail": "## Section 2"
+    },
+    {
+      "name": "section_3_present",
+      "status": "PASS",
+      "detail": "## Section 3"
+    },
+    {
+      "name": "section_4_present",
+      "status": "PASS",
+      "detail": "## Section 4"
+    },
+    {
+      "name": "section_5_present",
+      "status": "PASS",
+      "detail": "## Section 5"
+    },
+    {
+      "name": "section_6_present",
+      "status": "PASS",
+      "detail": "## Section 6"
+    },
+    {
+      "name": "section_7_present",
+      "status": "PASS",
+      "detail": "## Section 7"
+    },
+    {
+      "name": "section_8_present",
+      "status": "PASS",
+      "detail": "## Section 8"
+    },
+    {
+      "name": "section_9_present",
+      "status": "PASS",
+      "detail": "## Section 9"
+    },
+    {
+      "name": "section_10_present",
+      "status": "PASS",
+      "detail": "## Section 10"
+    },
+    {
+      "name": "section_11_present",
+      "status": "PASS",
+      "detail": "## Section 11"
+    },
+    {
+      "name": "section_12_present",
+      "status": "PASS",
+      "detail": "## Section 12"
+    },
+    {
+      "name": "section_13_present",
+      "status": "PASS",
+      "detail": "## Section 13"
+    },
+    {
+      "name": "section_14_present",
+      "status": "PASS",
+      "detail": "## Section 14"
+    },
+    {
+      "name": "section_15_present",
+      "status": "PASS",
+      "detail": "## Section 15"
+    },
+    {
+      "name": "section_16_present",
+      "status": "PASS",
+      "detail": "## Section 16"
+    },
+    {
+      "name": "next_phase_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "agent_a_header",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "agent_b_header",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "agent_c_header",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "agent_d_header",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "completeness_gate_pass",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tables_rows",
+      "status": "PASS",
+      "detail": "actual=15"
+    },
+    {
+      "name": "columns_rows",
+      "status": "PASS",
+      "detail": "actual=87"
+    },
+    {
+      "name": "measures_rows",
+      "status": "PASS",
+      "detail": "actual=30"
+    },
+    {
+      "name": "calc_columns_rows",
+      "status": "PASS",
+      "detail": "actual=43"
+    },
+    {
+      "name": "calc_tables_rows",
+      "status": "PASS",
+      "detail": "actual=6"
+    },
+    {
+      "name": "relationships_rows",
+      "status": "PASS",
+      "detail": "actual=8"
+    },
+    {
+      "name": "power_query_rows",
+      "status": "PASS",
+      "detail": "actual=9"
+    },
+    {
+      "name": "hierarchies_rows",
+      "status": "PASS",
+      "detail": "actual=7"
+    },
+    {
+      "name": "auto_date_rows",
+      "status": "PASS",
+      "detail": "actual=6"
+    },
+    {
+      "name": "section_15_nonempty",
+      "status": "PASS",
+      "detail": "rows=9"
+    },
+    {
+      "name": "no_lookml_generation_claim",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}
