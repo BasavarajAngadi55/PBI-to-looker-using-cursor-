@@ -1,18 +1,20 @@
+# MIGRATION NOTE:
+# Source: Power BI AgeGroup table
+# Decision: LookML dimension view over warehouse seed
+# Reason: Phase 2 DIRECT / WAREHOUSE_SEED
 view: age_group {
   label: "Age Group"
-  sql_table_name: `hr.age_group` ;;
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.age_group` ;;
 
   dimension: age_group_id {
     label: "Age Group ID"
-    description: "1=<30, 2=30-49, 3=50+."
+    primary_key: yes
     type: number
     sql: ${TABLE}.AgeGroupID ;;
-    primary_key: yes
   }
 
   dimension: age_group {
     label: "Age Group"
-    description: "Age band display label."
     type: string
     sql: ${TABLE}.AgeGroup ;;
   }

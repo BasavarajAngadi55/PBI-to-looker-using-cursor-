@@ -1,11 +1,12 @@
-# Calendar / period dimension from Power BI Date table.
+# MIGRATION NOTE:
+# Source: Power BI Date + MonthIncrementNumber (warehouse preferred)
+# Hierarchy YQM approximated via drill_fields
 view: date {
   label: "Date"
-  sql_table_name: `hr.date` ;;
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.date` ;;
 
   dimension_group: calendar {
     label: "Calendar"
-    description: "Primary calendar date (Date[Date])."
     type: time
     timeframes: [raw, date, week, month, quarter, year]
     sql: ${TABLE}.Date ;;
@@ -15,42 +16,37 @@ view: date {
 
   dimension: month {
     label: "Month Name"
-    description: "Short month name (e.g. Jul)."
     type: string
     sql: ${TABLE}.Month ;;
   }
 
   dimension: month_number {
     label: "Month Number"
-    description: "Calendar month number 1-12."
     type: number
     sql: ${TABLE}.MonthNumber ;;
   }
 
   dimension: period {
     label: "Period"
-    description: "Period label (e.g. Jul-10)."
     type: string
     sql: ${TABLE}.Period ;;
   }
 
   dimension: period_number {
     label: "Period Number"
-    description: "Sortable period key (e.g. 201007). Used by EmpCount latest-period logic."
+    description: "Used by EmpCount latest-period FILTER(ALL(...)=MAX(...)) pattern."
     type: number
     sql: ${TABLE}.PeriodNumber ;;
   }
 
   dimension: qtr {
     label: "Quarter Number"
-    description: "Numeric quarter."
     type: number
     sql: ${TABLE}.Qtr ;;
   }
 
   dimension: qtr_number {
     label: "Quarter Label"
-    description: "Quarter label (e.g. Q3)."
     type: string
     sql: ${TABLE}.QtrNumber ;;
   }
@@ -59,6 +55,7 @@ view: date {
     label: "Year"
     type: number
     sql: ${TABLE}.Year ;;
+    drill_fields: [qtr_number, month, calendar_date]
   }
 
   dimension: day {
@@ -83,20 +80,21 @@ view: date {
     datatype: date
   }
 
-  # DAX calculated: ([Year]-MIN([Year]))*12 + [MonthNumber]
-  # MIN([Year]) is model-wide; materialize in warehouse or use a constant/min subquery.
+  # Prefer warehouse MonthIncrementNumber; passthrough column
   dimension: month_increment_number {
     label: "Month Increment Number"
-    description: "Sequential month index from model min year. Prefer warehouse materialization."
-    # TODO: Exact DAX uses MIN(Year) over the whole Date table — confirm with a scalar subquery or warehouse column.
     type: number
     sql: ${TABLE}.MonthIncrementNumber ;;
   }
 
   measure: count_of_date {
     label: "Count of Date"
-    description: "COUNTA of Date column."
-    # DAX: COUNTA('Date'[Date])
+    description: "Power BI: COUNTA('Date'[Date])"
     type: count
+  }
+
+  # Hierarchy replacement for Date[YQM]
+  set: yqm_drill {
+    fields: [year, qtr_number, month, calendar_date]
   }
 }

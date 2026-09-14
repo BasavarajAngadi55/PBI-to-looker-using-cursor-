@@ -1,18 +1,16 @@
 view: fp {
-  label: "Full / Part Time"
-  sql_table_name: `hr.fp` ;;
+  label: "Full/Part Time"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.fp` ;;
 
   dimension: fp {
-    label: "FP Code"
-    description: "F = Full-Time, P = Part-Time."
+    label: "FP"
+    primary_key: yes
     type: string
     sql: ${TABLE}.FP ;;
-    primary_key: yes
   }
 
   dimension: fp_desc {
     label: "FP Description"
-    description: "Full-Time / Part-Time label."
     type: string
     sql: ${TABLE}.FPDesc ;;
   }

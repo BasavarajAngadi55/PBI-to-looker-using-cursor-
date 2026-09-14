@@ -1,26 +1,24 @@
-# Human Resources Sample — LookML model migrated from Power BI PBIX
-# Source: Human Resources Sample PBIX.pbix (obviEnce / Microsoft sample)
+# MIGRATION NOTE:
+# Source: Power BI Human Resources Sample — 8 M:1 relationships
+# Decision: single explore `employee` with left_outer many_to_one joins
+# Reason: Phase 2 Section 6 DIRECT mappings
 #
-# Update `connection` to your Looker Admin connection name (e.g. hr_bigquery).
-# sql_table_name values assume dataset/schema `hr` — adjust to match warehouse objects.
-# Warehouse table load is out of scope for LookML; see BLOCKERS_AND_DEPENDENCIES.md if tables missing.
-
-connection: "hr_bigquery"
+# TODO: USER INPUT REQUIRED — set connection to your Looker Admin connection name
+connection: "YOUR_LOOKER_CONNECTION"
 
 include: "/views/*.view.lkml"
 
 datagroup: human_resources_default_datagroup {
-  sql_trigger: SELECT MAX(date) FROM `hr.employee` ;;
+  # TODO: enable after employee warehouse table exists
+  # sql_trigger: SELECT MAX(date) FROM `YOUR_PROJECT.YOUR_DATASET.employee` ;;
   max_cache_age: "24 hours"
 }
 
-persist_with: human_resources_default_datagroup
+# persist_with: human_resources_default_datagroup
 
-# Primary star-schema explore: Employee fact → dimension tables.
-# Power BI cardinalities were all many_to_one (M:1) with single-direction cross-filter.
 explore: employee {
   label: "Human Resources"
-  description: "HR analytics: actives, new hires, separations, and bad hires."
+  description: "HR semantic model migrated from Power BI. KPI parity NOT YET VALIDATED."
 
   join: date {
     type: left_outer
@@ -71,7 +69,7 @@ explore: employee {
   }
 }
 
-# Optional dimension-only explores for reference / QA
+# Optional dim explores for QA (hidden)
 explore: date {
   label: "Date Dimension"
   hidden: yes

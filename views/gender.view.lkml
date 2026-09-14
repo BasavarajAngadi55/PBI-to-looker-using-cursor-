@@ -1,18 +1,18 @@
+# MIGRATION NOTE:
+# Source: Power BI Gender — sample uses C/D codes (not M/F)
 view: gender {
   label: "Gender"
-  sql_table_name: `hr.gender` ;;
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.gender` ;;
 
   dimension: id {
     label: "Gender ID"
-    description: "Gender code used on Employee (sample: D=Male, C=Female)."
+    primary_key: yes
     type: string
     sql: ${TABLE}.ID ;;
-    primary_key: yes
   }
 
   dimension: gender {
     label: "Gender"
-    description: "Gender display label."
     type: string
     sql: ${TABLE}.Gender ;;
     order_by_field: sort
@@ -20,8 +20,8 @@ view: gender {
 
   dimension: sort {
     label: "Sort"
-    description: "Display sort order."
     type: number
+    hidden: yes
     sql: ${TABLE}.Sort ;;
   }
 }

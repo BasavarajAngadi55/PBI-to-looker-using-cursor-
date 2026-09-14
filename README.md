@@ -21,6 +21,10 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 
 | Doc | Purpose |
 |-----|---------|
+| [LOOKER_DEVELOPER_GUIDE.md](LOOKER_DEVELOPER_GUIDE.md) | **Phase 3** Looker developer standards + build order |
+| [MIGRATION_SUMMARY.md](MIGRATION_SUMMARY.md) | Phase 3 migration status / gaps |
+| [IMPLEMENTATION_COVERAGE.md](IMPLEMENTATION_COVERAGE.md) | Every object → implemented / TODO / SKIP |
+| [warehouse_sql/](warehouse_sql/) | BigQuery templates (seeds + dims + employee fact) |
 | [LOOKML_MAPPING_ASSESSMENT.pdf](LOOKML_MAPPING_ASSESSMENT.pdf) | **Phase 2 mapping PDF (review)** — all sections |
 | [LOOKML_MAPPING_ASSESSMENT.md](LOOKML_MAPPING_ASSESSMENT.md) | Phase 2 mapping (full DAX, markdown source) |
 | [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | **Architecture diagram + full explanation (PDF)** |
