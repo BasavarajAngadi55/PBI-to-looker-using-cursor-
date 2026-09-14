@@ -21,6 +21,7 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 
 | Doc | Purpose |
 |-----|---------|
+| [LOOKML_DEVELOPER_GUIDE.md](LOOKML_DEVELOPER_GUIDE.md) | **Start here for LookML builders** — BQ → connection → views → measures → blockers |
 | [PBIX_to_Looker_Inventory_Showcase.pdf](PBIX_to_Looker_Inventory_Showcase.pdf) | Audience-ready PDF walkthrough |
 | [PBIX_to_Looker_Inventory_Showcase.md](PBIX_to_Looker_Inventory_Showcase.md) | Same content in Markdown |
 | [BLOCKERS_AND_DEPENDENCIES.md](BLOCKERS_AND_DEPENDENCIES.md) | Clear M → KPI blocker chains |
