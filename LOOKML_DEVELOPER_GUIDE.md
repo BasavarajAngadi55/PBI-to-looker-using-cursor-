@@ -9,6 +9,11 @@
 > **No dbt.** Load BigQuery with SQL / seeds / PDTs.  
 > **No report migration.** Semantic layer + Explores only.
 
+**Built with specialist agents (then merged):**  
+[Warehouse BQ](a32e0b09-fd29-4dea-97e8-139b6963863b) · [Views/joins](8b8c56c7-37bf-44ac-ba6b-055f46514117) · [Measures](95e9e0a1-2afb-4f79-9eb6-b75e8205f997) · [Day-by-day playbook](08687f2b-ad30-46ae-8b87-52d65f3920c2)
+
+> Draft model still says `connection: "hr_warehouse"`. **Rename to `hr_bigquery`** (or your Admin connection name) when you wire Looker.
+
 ---
 
 ## How to use this guide
@@ -461,3 +466,157 @@ You are not blocked from **starting**. You *are* blocked from **finishing every 
 
 **Start at BigQuery → connection → dim views → fact → joins → simple measures.**  
 Highlight every mid-build blocker with the M/DAX chain so data engineers know exactly what to deliver next.
+
+---
+
+## Appendix A — BigQuery type map & load options (per table)
+
+| Extract dtype | BigQuery |
+|---------------|----------|
+| `string` | `STRING` |
+| `Int64` | `INT64` |
+| `Float64` | `FLOAT64` |
+| `datetime64[ns]` | `DATE` (preferred for this sample) |
+
+| Option | When to use |
+|--------|-------------|
+| **A. Recreate SQL from `.m`** | Source `IP`/`HR.*` available; best for Employee/Date/BU |
+| **B. Full PBIX export → BQ load** | No live SQL Server; best for parity |
+| **C. `pbix_analysis/table_*_sample.csv`** | Smoke tests only (samples truncated — **not** KPI parity) |
+| **D. Seed INSERT** | Ethnicity, Gender, AgeGroup (embedded M) |
+
+### Ethnicity seed (all 7 groups from extract)
+
+```sql
+INSERT INTO `hr.ethnicity` (`Ethnic Group`, Ethnicity) VALUES
+ ('1','Group A'),('2','Group B'),('3','Group C'),('4','Group D'),
+ ('5','Group E'),('6','Group F'),('7','Group G');
+```
+
+### Temporary datagroup note
+
+Until `hr.employee` exists, the model datagroup trigger will fail:
+
+```lookml
+sql_trigger: SELECT MAX(date) FROM `hr.employee` ;;
+```
+
+**BUILD NOW:** Comment out `persist_with` / datagroup while scaffolding; re-enable after Employee loads.
+
+---
+
+## Appendix B — LookML ↔ warehouse join field cheat sheet
+
+| LookML field | Warehouse column | Join |
+|--------------|------------------|------|
+| `employee.snapshot_date` | `date` | → `date.calendar_date` (`Date`) |
+| `employee.bu` | `BU` | → `bu.bu` |
+| `employee.age_group_id` | derived CASE on `Age` **or** physical `AgeGroupID` | → `age_group.age_group_id` |
+| `employee.ethnic_group` | `EthnicGroup` | → `ethnicity.ethnic_group` (`` `Ethnic Group` ``) |
+| `employee.fp` | `FP` | → `fp.fp` |
+| `employee.gender_id` | `Gender` (C/D codes) | → `gender.id` |
+| `employee.pay_type_id` | `PayTypeID` | → `pay_type.pay_type_id` |
+| `employee.term_reason` | `TermReason` | → `separation_reason.separation_type_id` |
+
+**Missing-table blockers (Explore run fails):**
+
+| ID | Missing table | Impact |
+|----|---------------|--------|
+| B1 | `hr.employee` | Primary explore + datagroup + all fact KPIs |
+| B2 | `hr.date` | Time filters, SPLY, EmpCount |
+| B3 | `hr.bu` | Region/VP |
+| B4–B9 | seed/SQL dims | Labels for age/gender/ethnicity/fp/pay/sep |
+
+**Unblock order:** seeds (B4–B9) → date + bu → **employee**.
+
+---
+
+## Appendix C — Measure build order (exact)
+
+### Ship first (after tables)
+
+| # | DAX | LookML | Depends on |
+|--:|-----|--------|------------|
+| 1 | Seps | `seps` | TermDate |
+| 2 | Actives | `actives` | TermDate *(PBIX uses EmpCount — parity risk)* |
+| 3 | New Hires | `new_hires` | `is_new_hire` |
+| 4 | Sum of BadHires | `sum_of_bad_hires` | `bad_hires_flag` |
+| 5–7 | AVG Tenure / Age | `avg_tenure_*`, `avg_age` | tenure / Age |
+| 8–10 | TO %, Sep%ofActive, BadHire%ofActives | `to_pct`, … | seps/actives/bad |
+| 11–12 | Count of BU / Date | on dim views | dims |
+
+### Defer (stub + tracker)
+
+| Bucket | Measures | LookML names |
+|--------|----------|--------------|
+| EmpCount / period | EmpCount, EmpCount SPLY | `emp_count`, `emp_count_sply` |
+| SPLY | New/Actives/Seps/Bad Hires SPLY | `*_sply` |
+| TO % Norm | TO % Norm | `to_pct_norm` |
+| Parent-blocked YoY | all YoY Var/%, Sep%ofSMLY*, BadHire%ofActiveSPLY, TO % Var | keep formulas; hide until parents work |
+
+### Tracker columns (copy for Jira/sheet)
+
+`DATE | DAX | LookML | BLOCKERS | M files | Column deps | Parents | STATUS | OWNER | UNBLOCK`
+
+### Stub pattern
+
+```lookml
+measure: new_hires_sply {
+  group_label: "Blocked — TODO"
+  description: "BLOCKED until SAMEPERIODLASTYEAR / PoP. See BLOCKERS §5."
+  # TODO: CALCULATE([New Hires], SAMEPERIODLASTYEAR('Date'[Date]))
+  type: number
+  sql: NULL ;;
+}
+```
+
+---
+
+## Appendix D — Day-by-day calendar
+
+| Day | Focus | BUILD THIS | If BLOCKED |
+|-----|-------|------------|------------|
+| 0 | Access | Clone repo; read gate + Blockers 1–3; confirm BQ + Looker connection names | Escalate platform; do not fake Explore “done” |
+| 1 | Dim SQL + seeds | Date, BU, FP, PayType, SeparationReason + AgeGroup/Gender/Ethnicity | Export extracts if SQL Server unreachable |
+| 2–3 | Employee fact | Port `Employee.m`; materialize calc columns; keep Gender **C/D** | Escalate Blocker 1 — do not only edit LookML |
+| 4 | First Explore | Wire `hr_bigquery`; validate 8 joins; smoke Month×Region×Gender | Fix warehouse names before join cosmetics |
+| 5–6 | Simple measures | Section “Ship first” above | Leave SPLY/YoY as TODO |
+| 7+ | Complex TI | One SPLY end-to-end → clone → YoY → EmpCount → TO % Norm | Second parity pass after |
+| Later | Parity | Checklist rows 1–12 then 13–15 | Never invent PASS |
+
+### Phase A done when
+
+1. Nine BQ tables queryable from Looker  
+2. Calc columns available (SQL or LookML)  
+3. Explore + 8 joins returns rows  
+4. Simple measures non-null on Gender/Region cuts  
+5. Blockers 1–4 closed or honestly partial  
+6. SPLY/EmpCount/TO% Norm **not** falsely claimed done  
+
+### Phase B done when
+
+SPLY spot-checks match a PBIX month; YoY wired off SPLY; EmpCount max-period documented; TO % Norm ignores Gender/Ethnicity; complex matrix rows updated.
+
+---
+
+## Appendix E — Common mistakes (from playbook agent)
+
+1. Skipping `Employee.m` → 0% runnable KPIs  
+2. Normalizing Gender to M/F while seed stays C/D → broken joins  
+3. Building LookML for `LocalDateTable_*` — use business `Date` only  
+4. YoY before SPLY / before `isNewHire`  
+5. Equating LookML Actives with PBIX EmpCount/Actives without max period  
+6. Reading `DBT_*` tags as “must use dbt” — means warehouse SQL here  
+7. Inventing joins without `03_relationships.json`  
+8. Calling inventory gate “KPI ready”
+
+---
+
+## Appendix F — Agent deliverable map
+
+| Section need | Agent |
+|--------------|-------|
+| BQ tables, seeds, blockers per table | [Warehouse BQ](a32e0b09-fd29-4dea-97e8-139b6963863b) |
+| Project layout, connection, joins, build-without-data | [Views/joins](8b8c56c7-37bf-44ac-ba6b-055f46514117) |
+| Measure order, stubs, parity checklist | [Measures](95e9e0a1-2afb-4f79-9eb6-b75e8205f997) |
+| Day-by-day + Phase A/B DoD | [Day-by-day playbook](08687f2b-ad30-46ae-8b87-52d65f3920c2) |
