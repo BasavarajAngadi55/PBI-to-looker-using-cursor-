@@ -1,11 +1,13 @@
-# LOOKML_DEVELOPER_GUIDE (legacy name)
+# LookML / Looker Developer Guide
 
-Phase 3 consolidated the developer guide here:
+Phase 3 implementation lives in a dedicated folder:
 
-→ **[LOOKER_DEVELOPER_GUIDE.md](LOOKER_DEVELOPER_GUIDE.md)**
+→ **[phase3/LOOKER_DEVELOPER_GUIDE.md](phase3/LOOKER_DEVELOPER_GUIDE.md)**
 
 Also see:
 
-- [MIGRATION_SUMMARY.md](MIGRATION_SUMMARY.md)
-- [IMPLEMENTATION_COVERAGE.md](IMPLEMENTATION_COVERAGE.md)
-- [LOOKML_MAPPING_ASSESSMENT.md](LOOKML_MAPPING_ASSESSMENT.md)
+- [phase3/MIGRATION_SUMMARY.md](phase3/MIGRATION_SUMMARY.md)
+- [phase3/IMPLEMENTATION_COVERAGE.md](phase3/IMPLEMENTATION_COVERAGE.md)
+- [phase3/views/](phase3/views/)
+- [phase3/models/](phase3/models/)
+- [phase3/warehouse_sql/](phase3/warehouse_sql/)

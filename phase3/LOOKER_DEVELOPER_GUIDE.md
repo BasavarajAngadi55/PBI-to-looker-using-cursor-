@@ -10,16 +10,21 @@ Design sources: `OBJECT_INVENTORY.md`, `LOOKML_MAPPING_ASSESSMENT.md`, `MIGRATIO
 ## 1. Project Structure
 
 ```text
-inventory/                 # Phase 1 extraction (do not delete)
-LOOKML_MAPPING_ASSESSMENT.md
-warehouse_sql/             # Phase 3 BigQuery templates (seeds + dims + fact)
-views/                     # LookML views
-models/human_resources.model.lkml
-IMPLEMENTATION_COVERAGE.md
-MIGRATION_SUMMARY.md
-LOOKER_DEVELOPER_GUIDE.md  # this file
-PROMPT.md                  # Phase 1 orchestrator prompt
+# Repo root
+inventory/                      # Phase 1
+LOOKML_MAPPING_ASSESSMENT.md    # Phase 2
+PROMPT.md
+
+phase3/                         # Phase 3 (this folder)
+  LOOKER_DEVELOPER_GUIDE.md
+  MIGRATION_SUMMARY.md
+  IMPLEMENTATION_COVERAGE.md
+  warehouse_sql/
+  views/
+  models/human_resources.model.lkml
 ```
+
+If your LookML project root is `phase3/`, keep `include: "/views/*.view.lkml"`.
 
 Replace placeholders:
 

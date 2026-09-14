@@ -21,10 +21,11 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 
 | Doc | Purpose |
 |-----|---------|
-| [LOOKER_DEVELOPER_GUIDE.md](LOOKER_DEVELOPER_GUIDE.md) | **Phase 3** Looker developer standards + build order |
-| [MIGRATION_SUMMARY.md](MIGRATION_SUMMARY.md) | Phase 3 migration status / gaps |
-| [IMPLEMENTATION_COVERAGE.md](IMPLEMENTATION_COVERAGE.md) | Every object → implemented / TODO / SKIP |
-| [warehouse_sql/](warehouse_sql/) | BigQuery templates (seeds + dims + employee fact) |
+| [phase3/LOOKER_DEVELOPER_GUIDE.md](phase3/LOOKER_DEVELOPER_GUIDE.md) | **Phase 3** Looker developer standards + build order |
+| [phase3/MIGRATION_SUMMARY.md](phase3/MIGRATION_SUMMARY.md) | Phase 3 migration status / gaps |
+| [phase3/IMPLEMENTATION_COVERAGE.md](phase3/IMPLEMENTATION_COVERAGE.md) | Every object → implemented / TODO / SKIP |
+| [phase3/warehouse_sql/](phase3/warehouse_sql/) | BigQuery templates (seeds + dims + employee fact) |
+| [phase3/](phase3/) | **Phase 3 folder** — LookML, warehouse SQL, coverage |
 | [LOOKML_MAPPING_ASSESSMENT.pdf](LOOKML_MAPPING_ASSESSMENT.pdf) | **Phase 2 mapping PDF (review)** — all sections |
 | [LOOKML_MAPPING_ASSESSMENT.md](LOOKML_MAPPING_ASSESSMENT.md) | Phase 2 mapping (full DAX, markdown source) |
 | [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | **Architecture diagram + full explanation (PDF)** |
@@ -123,8 +124,13 @@ In this project the roles run inside one orchestrator
 │   ├── OBJECT_INVENTORY.md
 │   ├── ACTION_MATRIX.csv
 │   └── COMPLETENESS_GATE.json
-├── views/                             ← draft LookML views
-└── models/human_resources.model.lkml
+├── phase3/                            ← Phase 3 LookML + warehouse_sql
+│   ├── views/
+│   ├── models/
+│   ├── warehouse_sql/
+│   ├── LOOKER_DEVELOPER_GUIDE.md
+│   ├── MIGRATION_SUMMARY.md
+│   └── IMPLEMENTATION_COVERAGE.md
 ```
 
 ---

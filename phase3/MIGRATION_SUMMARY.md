@@ -117,7 +117,7 @@ KPI Parity Validation   ← not started
 ## Related files
 
 - `LOOKML_MAPPING_ASSESSMENT.md` / `.pdf` — Phase 2 design  
-- `LOOKER_DEVELOPER_GUIDE.md` — developer standards  
-- `IMPLEMENTATION_COVERAGE.md` — object-by-object status  
-- `warehouse_sql/` — BigQuery templates  
-- `views/` · `models/human_resources.model.lkml`
+- `phase3/LOOKER_DEVELOPER_GUIDE.md` — developer standards  
+- `phase3/IMPLEMENTATION_COVERAGE.md` — object-by-object status  
+- `phase3/warehouse_sql/` — BigQuery templates  
+- `phase3/views/` · `phase3/models/human_resources.model.lkml`
