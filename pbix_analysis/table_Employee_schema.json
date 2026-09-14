@@ -1,0 +1,18 @@
+{
+  "date": "datetime64[ns]",
+  "EmplID": "Int64",
+  "Gender": "string",
+  "Age": "Int64",
+  "EthnicGroup": "string",
+  "FP": "string",
+  "TermDate": "datetime64[ns]",
+  "isNewHire": "Int64",
+  "BU": "string",
+  "HireDate": "datetime64[ns]",
+  "PayTypeID": "string",
+  "TermReason": "string",
+  "AgeGroupID": "Int64",
+  "TenureDays": "Float64",
+  "TenureMonths": "Int64",
+  "BadHires": "Float64"
+}

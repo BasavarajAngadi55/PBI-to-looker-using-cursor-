@@ -1,0 +1,4 @@
+Name,Value
+__PBI_TimeIntelligenceEnabled,1
+PBIDesktopVersion,2.109.6661.0001 (Main)
+PBI_QueryOrder,"[""BU"",""FP"",""PayType"",""SeparationReason"",""Date"",""Employee"",""Ethnicity"",""Gender"",""AgeGroup""]"

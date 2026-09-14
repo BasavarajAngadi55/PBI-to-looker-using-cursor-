@@ -1,0 +1,9 @@
+{
+  "Date": "datetime64[ns]",
+  "Year": "Int64",
+  "MonthNo": "Int64",
+  "Month": "string",
+  "QuarterNo": "Int64",
+  "Quarter": "string",
+  "Day": "Int64"
+}

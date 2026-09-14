@@ -1,0 +1,17 @@
+<StringArray>
+[                                              'AgeGroup',
+                                                     'BU',
+                                                   'Date',
+ 'DateTableTemplate_92fd358c-bb4c-4d52-9f5b-e9a59dc2315d',
+                                               'Employee',
+                                              'Ethnicity',
+                                                     'FP',
+                                                 'Gender',
+    'LocalDateTable_6f19fed3-1fc0-4f7a-878d-34aca93d6782',
+    'LocalDateTable_c04ce649-6e25-466f-9bbc-faabfec0fe29',
+    'LocalDateTable_c9dde99e-7ac1-4e8e-a5f2-c5ffc41d9cac',
+    'LocalDateTable_cc28ef26-f63a-4bc3-b357-93ab34cd6d9b',
+    'LocalDateTable_d2ea5b26-668d-4c17-b228-695669b066a6',
+                                                'PayType',
+                                       'SeparationReason']
+Length: 15, dtype: str

@@ -1,0 +1,9 @@
+FromTableName,FromColumnName,ToTableName,ToColumnName,IsActive,Cardinality,CrossFilteringBehavior,FromKeyCount,ToKeyCount,RelyOnReferentialIntegrity
+Employee,date,Date,Date,1,M:1,Single,51,,0
+Employee,FP,FP,FP,1,M:1,Single,5,,0
+Employee,EthnicGroup,Ethnicity,Ethnic Group,1,M:1,Single,10,,0
+Employee,Gender,Gender,ID,1,M:1,Single,5,,0
+Employee,PayTypeID,PayType,PayTypeID,1,M:1,Single,5,,0
+Employee,BU,BU,BU,1,M:1,Single,33,,0
+Employee,AgeGroupID,AgeGroup,AgeGroupID,1,M:1,Single,6,,0
+Employee,TermReason,SeparationReason,SeparationTypeID,1,M:1,Single,5,,0

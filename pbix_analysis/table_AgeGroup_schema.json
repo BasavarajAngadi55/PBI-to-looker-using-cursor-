@@ -1,0 +1,4 @@
+{
+  "AgeGroupID": "Int64",
+  "AgeGroup": "string"
+}

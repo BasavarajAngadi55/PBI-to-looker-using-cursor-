@@ -1,0 +1,25 @@
+# Python
+.venv/
+.venv312/
+__pycache__/
+*.pyc
+.Python
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local secrets
+.env
+.env.*
+credentials.json
+**/secrets*
+
+# Large / local-only extracts (optional keep analysis CSVs)
+pbix_extract/
+*.pbix
+
+# Cursor
+.cursor/

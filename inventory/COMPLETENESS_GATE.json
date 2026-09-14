@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "failures": [],
+  "counts": {
+    "tables": 15,
+    "columns": 87,
+    "measures": 30,
+    "calculated_columns": 43,
+    "calculated_tables": 6,
+    "relationships": 8,
+    "power_query": 9,
+    "m_files": 9,
+    "action_matrix_rows": 237,
+    "empty_tm_categories": 29,
+    "non_empty_tm_categories": 10
+  }
+}

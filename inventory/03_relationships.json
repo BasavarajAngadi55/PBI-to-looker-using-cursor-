@@ -1,0 +1,109 @@
+{
+  "relationship_count": 8,
+  "relationships": [
+    {
+      "from_table": "Employee",
+      "from_column": "date",
+      "to_table": "Date",
+      "to_column": "Date",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 51,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "FP",
+      "to_table": "FP",
+      "to_column": "FP",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 5,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "EthnicGroup",
+      "to_table": "Ethnicity",
+      "to_column": "Ethnic Group",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 10,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "Gender",
+      "to_table": "Gender",
+      "to_column": "ID",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 5,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "PayTypeID",
+      "to_table": "PayType",
+      "to_column": "PayTypeID",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 5,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "BU",
+      "to_table": "BU",
+      "to_column": "BU",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 33,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "AgeGroupID",
+      "to_table": "AgeGroup",
+      "to_column": "AgeGroupID",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 6,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    },
+    {
+      "from_table": "Employee",
+      "from_column": "TermReason",
+      "to_table": "SeparationReason",
+      "to_column": "SeparationTypeID",
+      "is_active": true,
+      "cardinality": "M:1",
+      "cross_filtering_behavior": "Single",
+      "from_key_count": 5,
+      "to_key_count": null,
+      "rely_on_referential_integrity": 0,
+      "suggested_action": "LOOKML_JOIN"
+    }
+  ]
+}

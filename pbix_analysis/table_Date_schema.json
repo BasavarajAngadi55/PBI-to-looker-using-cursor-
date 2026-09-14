@@ -1,0 +1,14 @@
+{
+  "Date": "datetime64[ns]",
+  "Month": "string",
+  "MonthNumber": "Int64",
+  "Period": "string",
+  "PeriodNumber": "Int64",
+  "Qtr": "Int64",
+  "QtrNumber": "string",
+  "Year": "Int64",
+  "Day": "Int64",
+  "MonthStartDate": "datetime64[ns]",
+  "MonthEndDate": "datetime64[ns]",
+  "MonthIncrementNumber": "Int64"
+}
