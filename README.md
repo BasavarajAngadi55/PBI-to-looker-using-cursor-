@@ -29,6 +29,8 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 | [phase3/](phase3/) | **Phase 3 folder** — LookML, warehouse SQL, coverage |
 | [phase3_agents/](phase3_agents/) | **Phase 3 subagent outputs** |
 | [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | **Updated 3-phase architecture diagram** |
+| [DATA_MODEL.pdf](DATA_MODEL.pdf) | **Full data model** (tables, keys, relationships, internal) |
+| [DATA_MODEL.png](DATA_MODEL.png) | Data model diagram (PNG) |
 | [LOOKML_MAPPING_ASSESSMENT.pdf](LOOKML_MAPPING_ASSESSMENT.pdf) | **Phase 2 mapping PDF (review)** — all sections |
 | [LOOKML_MAPPING_ASSESSMENT.md](LOOKML_MAPPING_ASSESSMENT.md) | Phase 2 mapping (full DAX, markdown source) |
 | [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | **Architecture diagram + full explanation (PDF)** |
