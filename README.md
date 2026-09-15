@@ -39,7 +39,10 @@ Repo: [BasavarajAngadi55/PBI-to-looker-using-cursor-](https://github.com/Basavar
 | [LOOKML_DEVELOPER_GUIDE.md](LOOKML_DEVELOPER_GUIDE.md) | LookML builders — connection → views → joins → measures |
 | [PBIX_to_Looker_Inventory_Showcase.pdf](PBIX_to_Looker_Inventory_Showcase.pdf) | Audience-ready inventory showcase PDF |
 | [BLOCKERS_AND_DEPENDENCIES.md](BLOCKERS_AND_DEPENDENCIES.md) | M → KPI blocker chains |
-| [PROMPT.md](PROMPT.md) | Reusable 6-agent Phase 1 prompt |
+| [PROMPT.md](PROMPT.md) | **Prompt index** — links to all 3 phase prompts |
+| [PROMPT_PHASE1.md](PROMPT_PHASE1.md) | **Phase 1 full prompt** — 6-agent inventory |
+| [PROMPT_PHASE2.md](PROMPT_PHASE2.md) | **Phase 2 full prompt** — LookML mapping assessment (16 sections) |
+| [PROMPT_PHASE3.md](PROMPT_PHASE3.md) | **Phase 3 full prompt** — docs + LookML implementation |
 | [inventory/OBJECT_INVENTORY.md](inventory/OBJECT_INVENTORY.md) | Full object inventory |
 | [inventory/ACTION_MATRIX.csv](inventory/ACTION_MATRIX.csv) | Object → action backlog |
 | [inventory/COMPLETENESS_GATE.json](inventory/COMPLETENESS_GATE.json) | Gate pass/fail evidence |
@@ -109,7 +112,10 @@ In this project the roles run inside one orchestrator
 
 ```text
 ├── README.md
-├── PROMPT.md                          ← 6-agent Phase 1 prompt
+├── PROMPT.md                          ← prompt index (3 phases)
+├── PROMPT_PHASE1.md                   ← Phase 1 full 6-agent prompt
+├── PROMPT_PHASE2.md                   ← Phase 2 full mapping prompt
+├── PROMPT_PHASE3.md                   ← Phase 3 full implementation prompt
 ├── AGENTIC_ARCHITECTURE.pdf / .png    ← architecture diagram + explanation
 ├── AGENTIC_ARCHITECTURE.md
 ├── LOOKML_DEVELOPER_GUIDE.md
@@ -192,9 +198,15 @@ Sample PBIX (external):
 
 ---
 
-## Master prompt (copy into a new Cursor chat)
+## Master prompts (copy into a new Cursor chat)
 
-Use the full prompt in **[PROMPT.md](PROMPT.md)**. That file is the detailed, reusable instruction set to accomplish this workflow again on this or another PBIX.
+Use the **full** phase prompts (all details included):
+
+1. [PROMPT_PHASE1.md](PROMPT_PHASE1.md) — inventory (6 agents)
+2. [PROMPT_PHASE2.md](PROMPT_PHASE2.md) — mapping assessment
+3. [PROMPT_PHASE3.md](PROMPT_PHASE3.md) — LookML + docs implementation
+
+Index: [PROMPT.md](PROMPT.md)
 
 ---
 
