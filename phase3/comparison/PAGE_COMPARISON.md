@@ -1,13 +1,13 @@
 # Power BI page → Looker dashboard comparison
 
-**Source:** `dashboards.pbix`  
-**Looker model/explore:** `dashboards` / `facttable`  
-**Weighted completion:** **83.9%** (target ≥ 70%: YES)
+**Source:** `movie_rental_analysis.pbix`  
+**Looker model/explore:** `movie_rental_analysis` / `film`  
+**Weighted completion:** **75.1%** (target ≥ 70%: YES)
 
 ## Status summary
 
-- Total visuals: 83 (decorative skips: 8)
-- Status counts: {'partial': 22, 'skip': 8, 'mapped': 48, 'gap': 5}
+- Total visuals: 173 (decorative skips: 0)
+- Status counts: {'gap': 4, 'partial': 99, 'mapped': 70}
 
 ## Visual type equivalence
 
@@ -40,124 +40,400 @@
 | `funnel` | `looker_funnel` | mapped | Funnel → looker_funnel |
 | `scatterChart` | `looker_scatter` | mapped | Scatter → looker_scatter |
 
-## Page: Project Overview
+## Page: Overview
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| pageNavigator_0 | `pageNavigator` | `gap` | gap | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+| textbox_3 | `textbox` | `text` | partial | - |
+| textbox_4 | `textbox` | `text` | partial | - |
+| textbox_5 | `textbox` | `text` | partial | - |
+| textbox_6 | `textbox` | `text` | partial | - |
+| textbox_7 | `textbox` | `text` | partial | - |
+
+## Page: Geographic / Location Analysis
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| country | `map` | `looker_map` | partial | map may lack location dimension — verify geo fields |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Location wise Customer Ratings | `columnChart` | `looker_column` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+|  Distribution of Customers across Countries | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+| Revenue | `card` | `single_value` | mapped | - |
+| rental_rate | `card` | `single_value` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| rental_duration | `card` | `single_value` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| city | `slicer` | `dashboard filter` | mapped | - |
+| country | `slicer` | `dashboard filter` | mapped | - |
+| Rental Frequency | `card` | `single_value` | mapped | PBI aggregation on payment.payment_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+| Rental Rate & Rental Duration By Country | `tableEx` | `looker_grid` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum; PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Rental Revenue by Country | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+
+## Page: Revenue Analysis
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Rental Revenue by Country | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Revenue by Month | `lineChart` | `looker_line` | mapped | unbound field payment_date Year; unbound field payment_date Month |
+| name | `treemap` | `looker_pie (substitute)` | partial | - |
+| Revenue & Inventory Distribution by Category | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | PBI aggregation on rentat.inventory_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+| Revenue | `card` | `single_value` | mapped | - |
+| Revenue by Rating | `donutChart` | `looker_pie` | partial | - |
+| Revenue | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | - |
+| Rental Frequency | `card` | `single_value` | mapped | PBI aggregation on payment.payment_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+| rental_rate | `card` | `single_value` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| rental_duration | `card` | `single_value` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| rental_id | `card` | `single_value` | mapped | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+| slicer_12 | `slicer` | `dashboard filter` | gap | unbound field payment_date Year; slicer has no bound field |
+
+## Page: Customer Analysis
 
 | Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
 |---|---|---|---|---|
 | textbox_0 | `textbox` | `text` | partial | - |
+| Active/Inactive Customer: | `donutChart` | `looker_pie` | partial | PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+| Active/Inactive(1/0) Customer Details: | `tableEx` | `looker_grid` | mapped | PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+| name | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+| Customers by Country | `map` | `looker_map` | partial | PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum; map may lack location dimension — verify geo fields |
+| customer_id | `card` | `single_value` | mapped | PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+| Rental Rate by Customers | `columnChart` | `looker_column` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Distribution of Customers by Rating | `columnChart` | `looker_column` | mapped | PBI aggregation on payment.customer_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+| Revenue | `card` | `single_value` | mapped | - |
+| Rental Frequency | `card` | `single_value` | mapped | PBI aggregation on payment.payment_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+| rental_rate | `card` | `single_value` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| category_id | `slicer` | `dashboard filter` | mapped | - |
 
-## Page: Executive Summary
-
-| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
-|---|---|---|---|---|
-| shape_0 | `shape` | `skip` | skip | - |
-| shape_1 | `shape` | `skip` | skip | - |
-| CountPatient | `card` | `single_value` | mapped | - |
-| Insurance_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| textbox_4 | `textbox` | `text` | partial | - |
-|  Monthly Expenses Trends | `areaChart` | `looker_area` | mapped | PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum; PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Patient Growth Over Time | `areaChart` | `looker_area` | mapped | - |
-|  CPT Units Monthly Distribution | `columnChart` | `looker_column` | mapped | PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-|  Payer-wise CPT Units | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Gross Expenses | `card` | `single_value` | mapped | PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Insurance_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Patient_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Monthly Net Revenue | `kpi` | `single_value` | partial | - |
-| Monthly Insurance Revenue | `kpi` | `single_value` | partial | PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Monthly Patient Revenue  | `kpi` | `single_value` | partial | PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-|  Monthly Procedure Volume | `kpi` | `single_value` | partial | PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| actionButton_16 | `actionButton` | `button/gap` | gap | no fields bound from prototypeQuery — tile will be incomplete |
-| image_17 | `image` | `manual` | gap | - |
-| TotalPayment | `card` | `single_value` | mapped | PBI aggregation on FactTable.TotalPayment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Yearly Avg. Patient Payment Trend | `kpi` | `single_value` | partial | unbound field Date Year |
-| Monthly Payment Performance | `kpi` | `single_value` | partial | unbound field Date Month |
-| Optimized Quarterly Expenditure | `kpi` | `single_value` | partial | unbound field Date Quarter |
-| Deficit Reduction Efficiency - Monthly | `kpi` | `single_value` | partial | unbound field Date Month |
-
-## Page: Hospital Insights
+## Page: Rental Analysis
 
 | Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
 |---|---|---|---|---|
-| shape_0 | `shape` | `skip` | skip | - |
-| shape_1 | `shape` | `skip` | skip | - |
-| CptGrouping | `card` | `single_value` | mapped | PBI aggregation on CptCode_Lookup.CptGrouping mapped to field ref; confirm a measure exists on cptcode_lookup (Phase 2) or add type:sum |
-| Patient_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Insurance_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| textbox_5 | `textbox` | `text` | partial | - |
-| Monthly ARGE Ratio Trend | `lineChart` | `looker_line` | mapped | - |
-| AR | `card` | `single_value` | mapped | PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| HospitalName | `card` | `single_value` | mapped | PBI aggregation on Hospital_Lookup.HospitalName mapped to field ref; confirm a measure exists on hospital_lookup (Phase 2) or add type:sum |
-| CPTUnits | `card` | `single_value` | mapped | PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Monthly IPTP Ratio Trend | `lineChart` | `looker_line` | mapped | - |
-|  Gross Expenses by CptGrouping | `pieChart` | `looker_pie` | mapped | PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-|  CPT Units Distribution by Hospital | `treemap` | `looker_pie (substitute)` | partial | PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Critical Hospital Metrics Overview | `pivotTable` | `looker_grid` | mapped | PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Hospital  | `slicer` | `dashboard filter` | mapped | - |
-| Region | `slicer` | `dashboard filter` | mapped | - |
-| textbox_16 | `textbox` | `text` | partial | - |
-| image_17 | `image` | `manual` | gap | - |
+| textbox_0 | `textbox` | `text` | partial | - |
+| Films Distribution by Rental Duration (In Months) | `clusteredColumnChart` | `looker_column` | mapped | PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Average of rental_duration by Film-category | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Rental Rates of Films | `treemap` | `looker_pie (substitute)` | partial | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Total Rentals | `card` | `single_value` | mapped | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+| rental_duration | `card` | `single_value` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| rental_rate | `card` | `single_value` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Rental Distribution  by Year | `pieChart` | `looker_pie` | mapped | unbound field rental_date Year; unbound field rental_date Month |
+| Rentals by Customer  | `pivotTable` | `looker_grid` | mapped | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+| Rentals by Film Title | `pivotTable` | `looker_grid` | mapped | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+| Revenue | `card` | `single_value` | mapped | - |
+| slicer_11 | `slicer` | `dashboard filter` | gap | unbound field rental_date Year; slicer has no bound field |
 
-## Page: Patient Analysis
+## Page: Film Analysis
 
 | Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
 |---|---|---|---|---|
-| shape_0 | `shape` | `skip` | skip | - |
-| shape_1 | `shape` | `skip` | skip | - |
-| City | `card` | `single_value` | mapped | PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum |
-| Patient_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Insurance_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| textbox_5 | `textbox` | `text` | partial | - |
-| DistinctPatient | `card` | `single_value` | mapped | - |
-| dimPatientFK | `card` | `single_value` | mapped | PBI aggregation on FactTable.dimPatientFK mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| State | `card` | `single_value` | mapped | PBI aggregation on Patient_Lookup.State mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum |
-| Gender | `slicer` | `dashboard filter` | mapped | - |
-| Blood Group | `slicer` | `dashboard filter` | mapped | - |
-| Patient by Tobacco | `donutChart` | `looker_pie` | partial | - |
-| Patient By Exercise | `donutChart` | `looker_pie` | partial | - |
-| Patient by Alcohol | `donutChart` | `looker_pie` | partial | - |
-| Patient by Diet | `donutChart` | `looker_pie` | partial | - |
-| Distinct Patients by BloodGroup | `clusteredColumnChart` | `looker_column` | mapped | - |
-| Patient Gender Distribution by State | `pivotTable` | `looker_grid` | mapped | - |
-| Region Code | `slicer` | `dashboard filter` | mapped | - |
-| Distribution of Patient by State | `map` | `looker_map` | partial | map may lack location dimension — verify geo fields |
-| image_19 | `image` | `manual` | gap | - |
-| PatientAge | `card` | `single_value` | mapped | PBI aggregation on Patient_Lookup.PatientAge mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum |
-| Region | `slicer` | `dashboard filter` | mapped | - |
+| textbox_0 | `textbox` | `text` | partial | - |
+| Film Distribution by Language | `card` | `single_value` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Film-Category breakdown in Inventory | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum |
+| Inventory Variation by Film-Ratings | `donutChart` | `looker_pie` | partial | PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum |
+| Rentals Distribution by Films | `lineClusteredColumnComboChart` | `gap` | gap | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+| rating | `donutChart` | `looker_pie` | partial | PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Revenue and Rental Rate by Film Category | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| film_id | `tableEx` | `looker_grid` | mapped | PBI aggregation on film.length mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Average of Rental Duration | `card` | `single_value` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Film Ratings | `slicer` | `dashboard filter` | mapped | - |
+| actor_id | `card` | `single_value` | mapped | PBI aggregation on actor.actor_id mapped to field ref; confirm a measure exists on actor (Phase 2) or add type:sum |
+| film_id | `card` | `single_value` | mapped | PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| title | `slicer` | `dashboard filter` | mapped | - |
+| Description | `card` | `single_value` | mapped | PBI aggregation on film.description mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
 
-## Page: Payer-Provider Analysis
+## Page: Actor Analysis
 
 | Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
 |---|---|---|---|---|
-| shape_0 | `shape` | `skip` | skip | - |
-| shape_1 | `shape` | `skip` | skip | - |
-| City | `card` | `single_value` | mapped | PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum |
-| Patient_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Insurance_Payment | `card` | `single_value` | mapped | PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| textbox_5 | `textbox` | `text` | partial | - |
-| ProviderName | `card` | `single_value` | mapped | PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum |
-| ProviderFTE | `card` | `single_value` | mapped | PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum |
-| ProviderSpecialty | `card` | `single_value` | mapped | PBI aggregation on Speciality_Lookup.ProviderSpecialty mapped to field ref; confirm a measure exists on speciality_lookup (Phase 2) or add type:sum |
-| Gender | `slicer` | `dashboard filter` | mapped | - |
-| Blood Group | `slicer` | `dashboard filter` | mapped | - |
-| Regional Breakdown of Provider Specialties | `columnChart` | `looker_column` | mapped | PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum |
-| Regional Physician Count Analysis | `columnChart` | `looker_column` | mapped | PBI aggregation on Physcian_Lookup.dimPhysicianPK mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum |
-| Monthly Provider Activity Overview and CPT Units | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum; PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum |
-| Holistic Provider Performance Matrix | `pivotTable` | `looker_grid` | mapped | PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum; PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| image_15 | `image` | `manual` | gap | - |
-| Region Code | `slicer` | `dashboard filter` | mapped | - |
+| textbox_0 | `textbox` | `text` | partial | - |
+| DIstribution of Films by Actors | `barChart` | `looker_bar` | mapped | PBI aggregation on film_actor.film_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum |
+| Revenue Contribution by Actors | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | - |
+| Actor wise Rental Rate Variation  | `lineChart` | `looker_line` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| Actor Details | `tableEx` | `looker_grid` | mapped | - |
+| film_id | `card` | `single_value` | mapped | PBI aggregation on film_category.film_id mapped to field ref; confirm a measure exists on film_category (Phase 2) or add type:sum |
+| actor_id | `card` | `single_value` | mapped | PBI aggregation on actor.actor_id mapped to field ref; confirm a measure exists on actor (Phase 2) or add type:sum |
+| first_name | `slicer` | `dashboard filter` | mapped | - |
+| Revenue | `card` | `single_value` | mapped | - |
+| Genre Preferences of Actors | `donutChart` | `looker_pie` | partial | PBI aggregation on film_actor.actor_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum |
 
-## Page: Monthly Expenses Trends
+## Page: Q1
 
 | Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
 |---|---|---|---|---|
-| Monthly Aggregate Expenses: Gross and Adjusted | `stackedAreaChart` | `looker_area` | partial | PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum |
-| Adjustment factor (%) | `slicer` | `dashboard filter` | mapped | - |
+| Revenue by Month | `lineChart` | `looker_line` | mapped | unbound field payment_date Year; unbound field payment_date Month |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page:  Q2
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Active/Inactive Customer: | `pieChart` | `looker_pie` | mapped | PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+| Active/Inactive(1/0) Customer Details: | `tableEx` | `looker_grid` | mapped | PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+
+## Page: Q3
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| name | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum |
+
+## Page: Q4
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Distribution of Films by Rental-Duration. | `columnChart` | `looker_column` | mapped | PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q5
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Inventory Variation by Film-Ratings | `donutChart` | `looker_pie` | partial | PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum |
+
+## Page: Q6
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Film-Category breakdown in Inventory | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum |
+
+## Page: Q7
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Staff Distribution by Employment Duration | `columnChart` | `looker_column` | mapped | PBI aggregation on staff.staff_id mapped to field ref; confirm a measure exists on staff (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+| textbox_3 | `textbox` | `text` | partial | - |
+
+## Page: Q8
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Store Performance Variation by Location | `map` | `looker_map` | partial | PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum; map may lack location dimension — verify geo fields |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q9
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Average of rental_duration by staff member | `pieChart` | `looker_pie` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q10
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+|  Distribution of Customers across Cities | `columnChart` | `looker_column` | mapped | PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q11
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Rental Revenue by Country | `map` | `looker_map` | partial | PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum; map may lack location dimension — verify geo fields |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q12
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Location wise Customer Ratings | `columnChart` | `looker_column` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q13
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Distribution of Films by languages | `donutChart` | `looker_pie` | partial | PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+
+## Page: Q14
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| Rental Rates of Films | `treemap` | `looker_pie (substitute)` | partial | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| textbox_1 | `textbox` | `text` | partial | - |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q15
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Average of rental_duration by Film-category | `lineChart` | `looker_line` | mapped | PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+
+## Page: Q16
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| Rental Rate & Rental Duration By Country | `lineChart` | `looker_line` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum; PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+| textbox_2 | `textbox` | `text` | partial | - |
+
+## Page: Q17
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Location wise Customer Ratings | `columnChart` | `looker_column` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+
+## Page: Q18
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Revenue by Rating | `donutChart` | `looker_pie` | partial | - |
+
+## Page: Q19
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Revenue & Inventory Distribution by Category | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | PBI aggregation on rentat.inventory_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+
+## Page: Q20
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Rental Rate by Customers | `clusteredBarChart` | `looker_bar` | mapped | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+
+## Page: Q21
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| rental_id | `columnChart` | `looker_column` | mapped | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
+
+## Page: Q22
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| DIstribution of Films by Actors | `barChart` | `looker_bar` | mapped | PBI aggregation on film_actor.film_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum |
+
+## Page: Q23
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Actor wise Rental Rate Variation  | `lineStackedColumnComboChart` | `looker_column (partial)` | partial | PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+
+## Page: Q24
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Genre Preference of Actors | `donutChart` | `looker_pie` | partial | PBI aggregation on film_actor.actor_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum |
+
+## Page: Q25
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Revenue Contribution by Actors | `columnChart` | `looker_column` | mapped | - |
+
+## Page: Q26
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| customer distribution by countries | `map` | `looker_map` | partial | PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum; map may lack location dimension — verify geo fields |
+
+## Page: Q27
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Global Revenue Distribution | `map` | `looker_map` | partial | map may lack location dimension — verify geo fields |
+
+## Page: Q28
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Film Distribution by Content Ratings: Understanding Viewer Preferences | `pieChart` | `looker_pie` | mapped | PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum |
+
+## Page: Q29
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Revenue Distribution by Film Category: Identifying Top Contributors | `treemap` | `looker_pie (substitute)` | partial | - |
+
+## Page: Q30
+
+| Power BI visual | PBI type | Looker equivalent | Status | Deficiencies |
+|---|---|---|---|---|
+| textbox_0 | `textbox` | `text` | partial | - |
+| textbox_1 | `textbox` | `text` | partial | - |
+| Customer Segment Rental Activity Analysis | `columnChart` | `looker_column` | mapped | PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum |
 
 ## Looker dashboard files
 
-- `lookml_dashboards/dashboards/project_overview.dashboard.lookml`
-- `lookml_dashboards/dashboards/executive_summary.dashboard.lookml`
-- `lookml_dashboards/dashboards/hospital_insights.dashboard.lookml`
-- `lookml_dashboards/dashboards/patient_analysis.dashboard.lookml`
-- `lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml`
-- `lookml_dashboards/dashboards/monthly_expenses_trends.dashboard.lookml`
+- `lookml_dashboards/dashboards/overview.dashboard.lookml`
+- `lookml_dashboards/dashboards/geographic_location_analysis.dashboard.lookml`
+- `lookml_dashboards/dashboards/revenue_analysis.dashboard.lookml`
+- `lookml_dashboards/dashboards/customer_analysis.dashboard.lookml`
+- `lookml_dashboards/dashboards/rental_analysis.dashboard.lookml`
+- `lookml_dashboards/dashboards/film_analysis.dashboard.lookml`
+- `lookml_dashboards/dashboards/actor_analysis.dashboard.lookml`
+- `lookml_dashboards/dashboards/q1.dashboard.lookml`
+- `lookml_dashboards/dashboards/q2.dashboard.lookml`
+- `lookml_dashboards/dashboards/q3.dashboard.lookml`
+- `lookml_dashboards/dashboards/q4.dashboard.lookml`
+- `lookml_dashboards/dashboards/q5.dashboard.lookml`
+- `lookml_dashboards/dashboards/q6.dashboard.lookml`
+- `lookml_dashboards/dashboards/q7.dashboard.lookml`
+- `lookml_dashboards/dashboards/q8.dashboard.lookml`
+- `lookml_dashboards/dashboards/q9.dashboard.lookml`
+- `lookml_dashboards/dashboards/q10.dashboard.lookml`
+- `lookml_dashboards/dashboards/q11.dashboard.lookml`
+- `lookml_dashboards/dashboards/q12.dashboard.lookml`
+- `lookml_dashboards/dashboards/q13.dashboard.lookml`
+- `lookml_dashboards/dashboards/q14.dashboard.lookml`
+- `lookml_dashboards/dashboards/q15.dashboard.lookml`
+- `lookml_dashboards/dashboards/q16.dashboard.lookml`
+- `lookml_dashboards/dashboards/q17.dashboard.lookml`
+- `lookml_dashboards/dashboards/q18.dashboard.lookml`
+- `lookml_dashboards/dashboards/q19.dashboard.lookml`
+- `lookml_dashboards/dashboards/q20.dashboard.lookml`
+- `lookml_dashboards/dashboards/q21.dashboard.lookml`
+- `lookml_dashboards/dashboards/q22.dashboard.lookml`
+- `lookml_dashboards/dashboards/q23.dashboard.lookml`
+- `lookml_dashboards/dashboards/q24.dashboard.lookml`
+- `lookml_dashboards/dashboards/q25.dashboard.lookml`
+- `lookml_dashboards/dashboards/q26.dashboard.lookml`
+- `lookml_dashboards/dashboards/q27.dashboard.lookml`
+- `lookml_dashboards/dashboards/q28.dashboard.lookml`
+- `lookml_dashboards/dashboards/q29.dashboard.lookml`
+- `lookml_dashboards/dashboards/q30.dashboard.lookml`

@@ -36,4 +36,17 @@ cd validation
 ../.venv312/bin/python run_validation.py
 ```
 
-See [phase1/README.md](phase1/README.md), [phase2/README.md](phase2/README.md), [phase3/README.md](phase3/README.md), and [validation/README.md](validation/README.md).
+## QandA — local Gemma chat ([QandA/](QandA/))
+
+Ask questions about the **current PBIX** via Ollama + Google Gemma (ADK: 1 root + 3 specialists).
+
+```bash
+cd QandA
+./pull_model.sh          # ollama pull gemma3 (or uses gemma4 if already local)
+../.venv312/bin/pip install -r requirements.txt
+../.venv312/bin/python runner.py "What tables are in the current PBIX?"
+```
+
+Chat also appears in the Streamlit UI (`phase1/app.py`).
+
+See [phase1/README.md](phase1/README.md), [phase2/README.md](phase2/README.md), [phase3/README.md](phase3/README.md), [validation/README.md](validation/README.md), and [QandA/README.md](QandA/README.md).

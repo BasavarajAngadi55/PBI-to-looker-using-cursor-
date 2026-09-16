@@ -10,15 +10,24 @@ from __future__ import annotations
 import argparse
 import importlib
 import json
+import sys
 import zipfile
 from pathlib import Path
-
-import generate_developer_guide as guide
-import generate_lookml as lookml
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_INV = ROOT.parent / "phase1" / "inventory"
 ZIP_OUT = ROOT / "LOOKML_PROJECT.zip"
+
+
+def _activate_phase2_imports() -> None:
+    """Ensure phase2/lib wins (phase3 also has a package named lib)."""
+    for name in list(sys.modules):
+        if name == "lib" or name.startswith("lib."):
+            del sys.modules[name]
+    root = str(ROOT)
+    while root in sys.path:
+        sys.path.remove(root)
+    sys.path.insert(0, root)
 
 
 def package_zip(lookml_dir: Path, zip_path: Path) -> Path:
@@ -35,7 +44,8 @@ def run(inventory: Path) -> dict:
     if not inventory.exists():
         raise SystemExit(f"Phase 1 inventory not found: {inventory}")
 
-    # Always reload generators so Streamlit picks up guide/LookML code changes
+    _activate_phase2_imports()
+
     import generate_developer_guide as guide
     import generate_lookml as lookml
 
@@ -71,8 +81,12 @@ def run(inventory: Path) -> dict:
         "fact_table": info.get("fact"),
         "views": info.get("views"),
         "measures": info.get("measures"),
+        "measures_mapped": info.get("measures_mapped"),
+        "measures_todo": info.get("measures_todo"),
+        "dependent_measures": info.get("dependent_measures"),
         "relationships": info.get("relationships"),
         "lookml_dir": str(ROOT / "lookml"),
+        "measure_dependencies": str(ROOT / "MEASURE_DEPENDENCIES.md"),
         "zip": str(zip_path),
         "guide_pdf": guide_info["pdf"],
         "guide_md": guide_info["md"],
@@ -88,8 +102,13 @@ def run(inventory: Path) -> dict:
     print(f"Model:         {summary['model_name']}")
     print(f"Fact explore:  {summary['fact_table']}")
     print(f"Views:         {summary['views']}")
-    print(f"Measures:      {summary['measures']}")
+    print(
+        f"Measures:      {summary['measures']} "
+        f"(mapped={summary.get('measures_mapped')}, todo={summary.get('measures_todo')}, "
+        f"dependent={summary.get('dependent_measures')})"
+    )
     print(f"Relationships: {summary['relationships']}")
+    print(f"Dependencies:  {summary['measure_dependencies']}")
     print(f"M queries:     {m_info.get('query_count', '?')} -> lookml/m_migration/")
     print(f"Guide PDF:     {summary['guide_pdf']}")
     print(f"LookML ZIP:    {summary['zip']}")

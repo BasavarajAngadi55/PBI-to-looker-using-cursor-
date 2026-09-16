@@ -91,28 +91,38 @@ OBJECT_EQUIVALENCE: list[dict] = [
     {
         "power_bi": "Measure (DAX)",
         "looker": "measure",
-        "summary": "DAX measures become LookML measures using sum/average/count patterns, or TODO stubs for complex DAX.",
+        "summary": (
+            "DAX measures become LookML measures using sum/average/count_distinct patterns; "
+            "measure-of-measures use type: number + ${measure}; ratios use NULLIF; "
+            "dependent measures are listed in MEASURE_DEPENDENCIES.md."
+        ),
         "how_to_create": (
-            "Map SUM/AVERAGE/COUNT/DISTINCTCOUNT to type: sum|average|count|count_distinct. "
-            "Ratios use type: number + SAFE_DIVIDE. CALCULATE/time-intel become filters, period patterns, or warehouse + TODO."
+            "Map SUM/AVERAGE/COUNT/DISTINCTCOUNT to type: sum|average|count_distinct with sql: ${dimension}. "
+            "Ratios: type: number; sql: 1.0 * ${num} / NULLIF(${den}, 0). "
+            "CALCULATE filters → filters: on aggregate measures only (never on type: number). "
+            "If measure B references A, document DEPENDS ON: A and implement A first."
         ),
         "build_steps": [
-            "Classify each DAX expression (simple aggregate vs CALCULATE vs time intelligence).",
-            "Implement simple aggregates with type: sum / average / count / count_distinct.",
-            "Implement ratios with SAFE_DIVIDE(${num}, ${den}) and value_format_name.",
-            "For CALCULATE with simple equality filters, use filters: { field: \"value\" } on a base measure.",
+            "Classify each DAX expression (simple aggregate vs measure-math vs CALCULATE vs time intelligence).",
+            "Implement simple aggregates with type: sum / average / count_distinct and ${dimension} sql.",
+            "Implement ratios with 1.0 * ${num} / NULLIF(${den}, 0) and value_format_name (official Looker division pattern).",
+            "For CALCULATE with simple equality/ISBLANK filters, use filters: { field: \"value\" } on a base aggregate.",
             "For DATESYTD/DATEADD/SUMX/etc., leave TODO and implement with Looker period analysis or warehouse metrics.",
+            "When a measure references other measures, emit type: number, list DEPENDS ON, and order fields so bases come first.",
             "Keep original DAX in description: until KPI parity is signed off.",
         ],
         "checks": [
             "Measure returns non-null for a known filter set.",
             "Side-by-side vs Power BI for at least 3 filter combinations.",
             "No fan-out inflation after joins (compare count vs count_distinct on PK).",
+            "Dependent measures compile only after their bases exist (Looker validator).",
         ],
         "suggestions": [
-            "Prefer ${dimension} references inside measure sql (looker-skills).",
+            "Prefer ${dimension} references inside aggregate measure sql (looker-skills).",
+            "Never put filters: on type: number — filter the composing aggregates instead.",
             "Do not claim parity for COMPLEX DAX without tests.",
             "If PBIX has 0 measures, still add explicit KPIs users expect (counts, averages).",
+            "Open MEASURE_DEPENDENCIES.md for this PBIX before editing KPI fields.",
         ],
         "example": (
             "measure: total_sales {\n"
@@ -123,11 +133,25 @@ OBJECT_EQUIVALENCE: list[dict] = [
             "measure: avg_rating {\n"
             "  type: average\n"
             "  sql: ${rating} ;;\n"
+            "}\n"
+            "measure: seps_yoy_var {\n"
+            "  type: number\n"
+            "  description: \"DEPENDS ON: Seps, Seps SPLY\"\n"
+            "  sql: ${seps} - ${seps_sply} ;;\n"
+            "}\n"
+            "measure: to_percent {\n"
+            "  type: number\n"
+            "  sql: 1.0 * ${seps} / NULLIF(${actives}, 0) ;;\n"
+            "  value_format_name: percent_2\n"
             "}"
         ),
         "refs": [
             "https://cloud.google.com/looker/docs/reference/param-field-measure",
+            "https://cloud.google.com/looker/docs/reference/param-measure-types",
+            "https://cloud.google.com/looker/docs/reference/param-field-filters",
+            "https://cloud.google.com/looker/docs/best-practices/how-to-troubleshoot-fields-with-division-displaying-0",
             "https://cloud.google.com/looker/docs/reference/field-reference",
+            "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-modeling-guidelines/SKILL.md",
         ],
     },
     {

@@ -86,3 +86,14 @@ cd phase2
 7. Write `PHASE2_SUMMARY.json`
 
 Accuracy over invention: only emit objects present in inventory; mark complex DAX as TODO with original expression preserved.
+
+## LookML accuracy standards (required)
+
+Generator + QandA advice MUST follow:
+
+1. [looker-open-source/looker-skills](https://github.com/looker-open-source/looker-skills) — `lookml-view`, `lookml-explore`, `lookml-modeling-guidelines`
+2. [Measure types](https://cloud.google.com/looker/docs/reference/param-measure-types) — measure-of-measures → `type: number` + `${measure}`
+3. [Division best practice](https://cloud.google.com/looker/docs/best-practices/how-to-troubleshoot-fields-with-division-displaying-0) — `1.0 * ${a} / NULLIF(${b}, 0)`
+4. [filters:](https://cloud.google.com/looker/docs/reference/param-field-filters) — only on aggregate measures, never on `type: number`
+
+When measure B depends on A, emit **DEPENDS ON: A** in the field description and in `MEASURE_DEPENDENCIES.md`.

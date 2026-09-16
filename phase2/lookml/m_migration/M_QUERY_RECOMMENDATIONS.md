@@ -1,7 +1,7 @@
 # Power Query M → Looker / warehouse recommendations
 
-**Source:** `Human Resources Sample PBIX.pbix`  
-**Queries:** 9  
+**Source:** `movie_rental_analysis.pbix`  
+**Queries:** 16  
 **Approach:** deterministic (no LLM)
 
 ## Best-practice decision order
@@ -15,349 +15,59 @@
 
 | Pattern | Count |
 |---|---|
-| `lookml_sql_derived_table` | 5 |
-| `warehouse_seed_plus_straight_view` | 3 |
-| `warehouse_transform_model` | 1 |
+| `warehouse_table_plus_straight_view` | 16 |
 
 ## Per-query recommendations
 
-### `BU`
+### `actor`
 
-- **Recommended pattern:** `lookml_sql_derived_table`
-- **Looker object:** warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only
-- **Build in:** `either` (confidence: high)
-- **Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
-- **Signals:** sql_source, column_casts:3
-
-**Build steps:**
-
-1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
-2. Use straight LookML view with sql_table_name.
-3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
-
-**Checks:**
-
-- [ ] SQL dialect matches Looker connection
-- [ ] Results match Power BI query for a sample filter
-
-**SQL stub:** `m_migration/sql/bu.sql`
-**LookML stub:** `m_migration/lookml_stubs/bu_recommended.lkml`
-
-<details><summary>SQL preview</summary>
-
-```sql
--- Preferred: materialize as warehouse view/table
-CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.bu` AS
-select distinct market BU,#(lf)  REGIONTITLE Region,#(lf)  MARKETDIRECTOR VP#(lf)from hr.bu
-;
-
--- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).
-```
-
-</details>
-
-<details><summary>LookML preview</summary>
-
-```lookml
-# Option A (best practice): straight view on warehouse object
-view: bu {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.bu` ;;
-}
-
-# Option B (temporary SDT) — looker-skills: prefer NDT for Looker-native rollups;
-# for migrated M SQL, SDT is OK only until warehouse view exists.
-view: bu_sdt {
-  derived_table: {
-    sql:
-      select distinct market BU,#(lf)  REGIONTITLE Region,#(lf)  MARKETDIRECTOR VP#(lf)from hr.bu
-    ;;
-  }
-  # Declare dimensions for selected columns; set primary_key: yes
-}
-```
-
-</details>
-
-### `FP`
-
-- **Recommended pattern:** `lookml_sql_derived_table`
-- **Looker object:** warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only
-- **Build in:** `either` (confidence: high)
-- **Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
-- **Signals:** sql_source, column_casts:2
-
-**Build steps:**
-
-1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
-2. Use straight LookML view with sql_table_name.
-3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
-
-**Checks:**
-
-- [ ] SQL dialect matches Looker connection
-- [ ] Results match Power BI query for a sample filter
-
-**SQL stub:** `m_migration/sql/fp.sql`
-**LookML stub:** `m_migration/lookml_stubs/fp_recommended.lkml`
-
-<details><summary>SQL preview</summary>
-
-```sql
--- Preferred: materialize as warehouse view/table
-CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.fp` AS
-SELECT [HR].[FP].*   FROM [HR].[FP]
-;
-
--- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).
-```
-
-</details>
-
-<details><summary>LookML preview</summary>
-
-```lookml
-# Option A (best practice): straight view on warehouse object
-view: fp {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.fp` ;;
-}
-
-# Option B (temporary SDT) — looker-skills: prefer NDT for Looker-native rollups;
-# for migrated M SQL, SDT is OK only until warehouse view exists.
-view: fp_sdt {
-  derived_table: {
-    sql:
-      SELECT [HR].[FP].*   FROM [HR].[FP]
-    ;;
-  }
-  # Declare dimensions for selected columns; set primary_key: yes
-}
-```
-
-</details>
-
-### `PayType`
-
-- **Recommended pattern:** `lookml_sql_derived_table`
-- **Looker object:** warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only
-- **Build in:** `either` (confidence: high)
-- **Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
-- **Signals:** sql_source, column_casts:4
-
-**Build steps:**
-
-1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
-2. Use straight LookML view with sql_table_name.
-3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
-
-**Checks:**
-
-- [ ] SQL dialect matches Looker connection
-- [ ] Results match Power BI query for a sample filter
-
-**SQL stub:** `m_migration/sql/paytype.sql`
-**LookML stub:** `m_migration/lookml_stubs/paytype_recommended.lkml`
-
-<details><summary>SQL preview</summary>
-
-```sql
--- Preferred: materialize as warehouse view/table
-CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.paytype` AS
-select distinct PayTypeID, [Hrly-Salaried] PayType#(lf)from [HR].[PayGroup]
-;
-
--- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).
-```
-
-</details>
-
-<details><summary>LookML preview</summary>
-
-```lookml
-# Option A (best practice): straight view on warehouse object
-view: paytype {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;
-}
-
-# Option B (temporary SDT) — looker-skills: prefer NDT for Looker-native rollups;
-# for migrated M SQL, SDT is OK only until warehouse view exists.
-view: paytype_sdt {
-  derived_table: {
-    sql:
-      select distinct PayTypeID, [Hrly-Salaried] PayType#(lf)from [HR].[PayGroup]
-    ;;
-  }
-  # Declare dimensions for selected columns; set primary_key: yes
-}
-```
-
-</details>
-
-### `SeparationReason`
-
-- **Recommended pattern:** `lookml_sql_derived_table`
-- **Looker object:** warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only
-- **Build in:** `either` (confidence: high)
-- **Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
-- **Signals:** sql_source, column_casts:3
-
-**Build steps:**
-
-1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
-2. Use straight LookML view with sql_table_name.
-3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
-
-**Checks:**
-
-- [ ] SQL dialect matches Looker connection
-- [ ] Results match Power BI query for a sample filter
-
-**SQL stub:** `m_migration/sql/separationreason.sql`
-**LookML stub:** `m_migration/lookml_stubs/separationreason_recommended.lkml`
-
-<details><summary>SQL preview</summary>
-
-```sql
--- Preferred: materialize as warehouse view/table
-CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separationreason` AS
-SELECT distinct SeparationTypeID, [Vol-Invol] SeparationReason#(lf)  FROM [IP].[HR].[TermReason]
-;
-
--- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).
-```
-
-</details>
-
-<details><summary>LookML preview</summary>
-
-```lookml
-# Option A (best practice): straight view on warehouse object
-view: separationreason {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;
-}
-
-# Option B (temporary SDT) — looker-skills: prefer NDT for Looker-native rollups;
-# for migrated M SQL, SDT is OK only until warehouse view exists.
-view: separationreason_sdt {
-  derived_table: {
-    sql:
-      SELECT distinct SeparationTypeID, [Vol-Invol] SeparationReason#(lf)  FROM [IP].[HR].[TermReason]
-    ;;
-  }
-  # Declare dimensions for selected columns; set primary_key: yes
-}
-```
-
-</details>
-
-### `Date`
-
-- **Recommended pattern:** `lookml_sql_derived_table`
-- **Looker object:** warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only
-- **Build in:** `either` (confidence: high)
-- **Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
-- **Signals:** sql_source, column_casts:11
-
-**Build steps:**
-
-1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
-2. Use straight LookML view with sql_table_name.
-3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
-
-**Checks:**
-
-- [ ] SQL dialect matches Looker connection
-- [ ] Results match Power BI query for a sample filter
-
-**SQL stub:** `m_migration/sql/date.sql`
-**LookML stub:** `m_migration/lookml_stubs/date_recommended.lkml`
-
-<details><summary>SQL preview</summary>
-
-```sql
--- Preferred: materialize as warehouse view/table
-CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.date` AS
-SELECT [HR].[Date].*   FROM [HR].[Date]
-;
-
--- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).
-```
-
-</details>
-
-<details><summary>LookML preview</summary>
-
-```lookml
-# Option A (best practice): straight view on warehouse object
-view: date {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.date` ;;
-}
-
-# Option B (temporary SDT) — looker-skills: prefer NDT for Looker-native rollups;
-# for migrated M SQL, SDT is OK only until warehouse view exists.
-view: date_sdt {
-  derived_table: {
-    sql:
-      SELECT [HR].[Date].*   FROM [HR].[Date]
-    ;;
-  }
-  # Declare dimensions for selected columns; set primary_key: yes
-}
-```
-
-</details>
-
-### `Employee`
-
-- **Recommended pattern:** `warehouse_transform_model`
-- **Looker object:** warehouse transform + straight view (avoid SDT for heavy M)
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
 - **Build in:** `warehouse` (confidence: high)
-- **Why:** M contains merge, append/union, or heavy transforms. Looker skills: keep LookML semantic; put ETL in the warehouse.
-- **Signals:** sql_source, append_union, transformation_heavy, column_casts:12
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:4
 
 **Build steps:**
 
-1. Read phase1/inventory/04_m_raw/Employee.m end-to-end.
-2. Implement joins/unions/filters in dbt/Dataform/SQL.
-3. Expose curated table to LookML views/employee.view.lkml via sql_table_name.
-4. Mark any LookML SDT as temporary technical debt.
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.actor` with casts matching M Changed Type.
+3. Point generated LookML views/actor.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
 
 **Checks:**
 
-- [ ] Transform tests (unique key, not null) in warehouse
-- [ ] Row grain matches Power BI
-- [ ] No fan-out vs related facts
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
 
-**SQL stub:** `m_migration/sql/employee.sql`
-**LookML stub:** `m_migration/lookml_stubs/employee_recommended.lkml`
+**SQL stub:** `m_migration/sql/actor.sql`
+**LookML stub:** `m_migration/lookml_stubs/actor_recommended.lkml`
 
 <details><summary>SQL preview</summary>
 
 ```sql
--- Recommended pattern: WAREHOUSE TRANSFORM MODEL (dbt/Dataform/SQL)
--- Power Query `Employee` has merges/appends/heavy transforms.
--- Best practice: implement transforms in ETL. LookML stays a thin straight view.
--- Do NOT rebuild merge/append logic as LookML derived tables.
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `actor` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
 
-CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.employee` AS
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_actor`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.actor` AS
 SELECT
-  CAST(`PayTypeID` AS STRING) AS `PayTypeID`,
-  CAST(`date` AS TIMESTAMP) AS `date`,
-  CAST(`EmplID` AS INT64) AS `EmplID`,
-  CAST(`Gender` AS STRING) AS `Gender`,
-  CAST(`Age` AS INT64) AS `Age`,
-  CAST(`EthnicGroup` AS STRING) AS `EthnicGroup`,
-  CAST(`FP` AS STRING) AS `FP`,
-  CAST(`TermDate` AS TIMESTAMP) AS `TermDate`,
-  CAST(`BU` AS STRING) AS `BU`,
-  CAST(`HireDate` AS TIMESTAMP) AS `HireDate`,
-  CAST(`PayTypeID` AS STRING) AS `PayTypeID`,
-  CAST(`TermReason` AS STRING) AS `TermReason`
--- TODO: translate M merges/appends/filters from 04_m_raw/Employee.m
-FROM `YOUR_PROJECT.YOUR_DATASET.stg_employee_sources`  -- TODO
+  CAST(`actor_id` AS INT64) AS `actor_id`,
+  CAST(`first_name` AS STRING) AS `first_name`,
+  CAST(`last_name` AS STRING) AS `last_name`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_actor`
 ;
 
--- dbt-style sketch:
--- models/employee.sql  ->  SELECT ... FROM { ref('upstream') } ...
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Desktop/Capston project/DATA/CSV/actor.csv
 ```
 
 </details>
@@ -365,121 +75,81 @@ FROM `YOUR_PROJECT.YOUR_DATASET.stg_employee_sources`  -- TODO
 <details><summary>LookML preview</summary>
 
 ```lookml
-# After warehouse model exists — straight view only
-view: employee {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.employee` ;;
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: actor {
+  label: "actor"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.actor` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/actor.view.lkml
+  # Keep primary_key: yes on the natural key.
 }
 
-# NOT recommended: encoding M merge/append as LookML derived_table SQL.
-# If you must bridge temporarily, keep SDT minimal and ticket warehouse ownership.
-```
-
-</details>
-
-### `Ethnicity`
-
-- **Recommended pattern:** `warehouse_seed_plus_straight_view`
-- **Looker object:** warehouse seed table + straight view (tiny SDT optional)
-- **Build in:** `warehouse` (confidence: medium)
-- **Why:** Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.
-- **Signals:** embedded_static, column_casts:2
-
-**Build steps:**
-
-1. Extract static rows from M into a seed CSV or INSERT script.
-2. Load seed to warehouse.
-3. Use generated straight LookML view.
-
-**Checks:**
-
-- [ ] Seed row count matches Power BI
-- [ ] Types match Changed Type
-
-**SQL stub:** `m_migration/sql/ethnicity.sql`
-**LookML stub:** `m_migration/lookml_stubs/ethnicity_recommended.lkml`
-
-<details><summary>SQL preview</summary>
-
-```sql
--- Recommended pattern: WAREHOUSE SEED + straight LookML view
--- Power Query `Ethnicity` looks like an embedded/static table (#table / enter data).
--- Best practice: seed CSV in dbt/Dataform or INSERT seed rows; then straight view.
-
-CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.ethnicity` AS
-SELECT
-  CAST(`Ethnic Group` AS STRING) AS `Ethnic Group`,
-  CAST(`Ethnicity` AS STRING) AS `Ethnicity`
--- TODO: paste literal rows from M #table / Enter Data
-FROM UNNEST([])  -- replace with seed rows
-;
-
--- Alternative small SDT (only if seed is tiny and temporary):
--- view with derived_table sql: SELECT ... UNION ALL SELECT ...
-```
-
-</details>
-
-<details><summary>LookML preview</summary>
-
-```lookml
-view: ethnicity {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.ethnicity` ;;
-}
-
-# Tiny static alternative (temporary):
-# view: ethnicity_sdt {
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: actor_sdt {
 #   derived_table: {
 #     sql:
-#       SELECT 1 AS id, 'example' AS label
-#       -- UNION ALL more seed rows from M
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_actor`
 #     ;;
 #   }
-#   dimension: id { primary_key: yes type: number sql: ${TABLE}.id ;; }
 # }
 ```
 
 </details>
 
-### `Gender`
+### `address`
 
-- **Recommended pattern:** `warehouse_seed_plus_straight_view`
-- **Looker object:** warehouse seed table + straight view (tiny SDT optional)
-- **Build in:** `warehouse` (confidence: medium)
-- **Why:** Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.
-- **Signals:** embedded_static, column_casts:3
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:9
 
 **Build steps:**
 
-1. Extract static rows from M into a seed CSV or INSERT script.
-2. Load seed to warehouse.
-3. Use generated straight LookML view.
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.address` with casts matching M Changed Type.
+3. Point generated LookML views/address.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
 
 **Checks:**
 
-- [ ] Seed row count matches Power BI
-- [ ] Types match Changed Type
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
 
-**SQL stub:** `m_migration/sql/gender.sql`
-**LookML stub:** `m_migration/lookml_stubs/gender_recommended.lkml`
+**SQL stub:** `m_migration/sql/address.sql`
+**LookML stub:** `m_migration/lookml_stubs/address_recommended.lkml`
 
 <details><summary>SQL preview</summary>
 
 ```sql
--- Recommended pattern: WAREHOUSE SEED + straight LookML view
--- Power Query `Gender` looks like an embedded/static table (#table / enter data).
--- Best practice: seed CSV in dbt/Dataform or INSERT seed rows; then straight view.
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `address` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
 
-CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.gender` AS
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_address`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.address` AS
 SELECT
-  CAST(`ID` AS STRING) AS `ID`,
-  CAST(`Gender` AS STRING) AS `Gender`,
-  CAST(`Sort` AS INT64) AS `Sort`
--- TODO: paste literal rows from M #table / Enter Data
-FROM UNNEST([])  -- replace with seed rows
+  CAST(`address_id` AS INT64) AS `address_id`,
+  CAST(`address` AS STRING) AS `address`,
+  CAST(`address2` AS STRING) AS `address2`,
+  CAST(`district` AS STRING) AS `district`,
+  CAST(`city_id` AS INT64) AS `city_id`,
+  CAST(`postal_code` AS INT64) AS `postal_code`,
+  CAST(`phone` AS INT64) AS `phone`,
+  CAST(`location` AS STRING) AS `location`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_address`
 ;
 
--- Alternative small SDT (only if seed is tiny and temporary):
--- view with derived_table sql: SELECT ... UNION ALL SELECT ...
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/address.csv
 ```
 
 </details>
@@ -487,63 +157,76 @@ FROM UNNEST([])  -- replace with seed rows
 <details><summary>LookML preview</summary>
 
 ```lookml
-view: gender {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.gender` ;;
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: address {
+  label: "address"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.address` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/address.view.lkml
+  # Keep primary_key: yes on the natural key.
 }
 
-# Tiny static alternative (temporary):
-# view: gender_sdt {
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: address_sdt {
 #   derived_table: {
 #     sql:
-#       SELECT 1 AS id, 'example' AS label
-#       -- UNION ALL more seed rows from M
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_address`
 #     ;;
 #   }
-#   dimension: id { primary_key: yes type: number sql: ${TABLE}.id ;; }
 # }
 ```
 
 </details>
 
-### `AgeGroup`
+### `city`
 
-- **Recommended pattern:** `warehouse_seed_plus_straight_view`
-- **Looker object:** warehouse seed table + straight view (tiny SDT optional)
-- **Build in:** `warehouse` (confidence: medium)
-- **Why:** Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.
-- **Signals:** embedded_static, column_casts:2
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:4
 
 **Build steps:**
 
-1. Extract static rows from M into a seed CSV or INSERT script.
-2. Load seed to warehouse.
-3. Use generated straight LookML view.
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.city` with casts matching M Changed Type.
+3. Point generated LookML views/city.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
 
 **Checks:**
 
-- [ ] Seed row count matches Power BI
-- [ ] Types match Changed Type
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
 
-**SQL stub:** `m_migration/sql/agegroup.sql`
-**LookML stub:** `m_migration/lookml_stubs/agegroup_recommended.lkml`
+**SQL stub:** `m_migration/sql/city.sql`
+**LookML stub:** `m_migration/lookml_stubs/city_recommended.lkml`
 
 <details><summary>SQL preview</summary>
 
 ```sql
--- Recommended pattern: WAREHOUSE SEED + straight LookML view
--- Power Query `AgeGroup` looks like an embedded/static table (#table / enter data).
--- Best practice: seed CSV in dbt/Dataform or INSERT seed rows; then straight view.
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `city` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
 
-CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.agegroup` AS
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_city`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.city` AS
 SELECT
-  CAST(`AgeGroupID` AS INT64) AS `AgeGroupID`,
-  CAST(`AgeGroup` AS STRING) AS `AgeGroup`
--- TODO: paste literal rows from M #table / Enter Data
-FROM UNNEST([])  -- replace with seed rows
+  CAST(`city_id` AS INT64) AS `city_id`,
+  CAST(`city` AS STRING) AS `city`,
+  CAST(`country_id` AS INT64) AS `country_id`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_city`
 ;
 
--- Alternative small SDT (only if seed is tiny and temporary):
--- view with derived_table sql: SELECT ... UNION ALL SELECT ...
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/city.csv
 ```
 
 </details>
@@ -551,19 +234,1044 @@ FROM UNNEST([])  -- replace with seed rows
 <details><summary>LookML preview</summary>
 
 ```lookml
-view: agegroup {
-  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: city {
+  label: "city"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.city` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/city.view.lkml
+  # Keep primary_key: yes on the natural key.
 }
 
-# Tiny static alternative (temporary):
-# view: agegroup_sdt {
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: city_sdt {
 #   derived_table: {
 #     sql:
-#       SELECT 1 AS id, 'example' AS label
-#       -- UNION ALL more seed rows from M
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_city`
 #     ;;
 #   }
-#   dimension: id { primary_key: yes type: number sql: ${TABLE}.id ;; }
+# }
+```
+
+</details>
+
+### `country`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:3
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.country` with casts matching M Changed Type.
+3. Point generated LookML views/country.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/country.sql`
+**LookML stub:** `m_migration/lookml_stubs/country_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `country` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_country`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.country` AS
+SELECT
+  CAST(`country_id` AS INT64) AS `country_id`,
+  CAST(`country` AS STRING) AS `country`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_country`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/country.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: country {
+  label: "country"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.country` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/country.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: country_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_country`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `category`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:3
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.category` with casts matching M Changed Type.
+3. Point generated LookML views/category.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/category.sql`
+**LookML stub:** `m_migration/lookml_stubs/category_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `category` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_category`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.category` AS
+SELECT
+  CAST(`category_id` AS INT64) AS `category_id`,
+  CAST(`name` AS STRING) AS `name`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_category`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/category.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: category {
+  label: "category"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.category` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/category.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: category_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_category`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `film`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:13
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.film` with casts matching M Changed Type.
+3. Point generated LookML views/film.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/film.sql`
+**LookML stub:** `m_migration/lookml_stubs/film_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `film` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_film`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.film` AS
+SELECT
+  CAST(`film_id` AS INT64) AS `film_id`,
+  CAST(`title` AS STRING) AS `title`,
+  CAST(`description` AS STRING) AS `description`,
+  CAST(`release_year` AS INT64) AS `release_year`,
+  CAST(`language_id` AS INT64) AS `language_id`,
+  CAST(`original_language_id` AS INT64) AS `original_language_id`,
+  CAST(`rental_duration` AS INT64) AS `rental_duration`,
+  CAST(`rental_rate` AS FLOAT64) AS `rental_rate`,
+  CAST(`length` AS INT64) AS `length`,
+  CAST(`replacement_cost` AS FLOAT64) AS `replacement_cost`,
+  CAST(`rating` AS STRING) AS `rating`,
+  CAST(`special_features` AS STRING) AS `special_features`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_film`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/film.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: film {
+  label: "film"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.film` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/film.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: film_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_film`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `film_actor`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:3
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.film_actor` with casts matching M Changed Type.
+3. Point generated LookML views/film_actor.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/film_actor.sql`
+**LookML stub:** `m_migration/lookml_stubs/film_actor_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `film_actor` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_film_actor`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.film_actor` AS
+SELECT
+  CAST(`actor_id` AS INT64) AS `actor_id`,
+  CAST(`film_id` AS INT64) AS `film_id`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_film_actor`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/film_actor.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: film_actor {
+  label: "film_actor"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.film_actor` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/film_actor.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: film_actor_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_film_actor`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `film_category`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:3
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.film_category` with casts matching M Changed Type.
+3. Point generated LookML views/film_category.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/film_category.sql`
+**LookML stub:** `m_migration/lookml_stubs/film_category_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `film_category` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_film_category`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.film_category` AS
+SELECT
+  CAST(`film_id` AS INT64) AS `film_id`,
+  CAST(`category_id` AS INT64) AS `category_id`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_film_category`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/film_category.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: film_category {
+  label: "film_category"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.film_category` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/film_category.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: film_category_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_film_category`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `film_text`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:3
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.film_text` with casts matching M Changed Type.
+3. Point generated LookML views/film_text.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/film_text.sql`
+**LookML stub:** `m_migration/lookml_stubs/film_text_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `film_text` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_film_text`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.film_text` AS
+SELECT
+  CAST(`film_id` AS INT64) AS `film_id`,
+  CAST(`title` AS STRING) AS `title`,
+  CAST(`description` AS STRING) AS `description`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_film_text`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/film_text.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: film_text {
+  label: "film_text"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.film_text` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/film_text.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: film_text_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_film_text`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `inventory`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:4
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.inventory` with casts matching M Changed Type.
+3. Point generated LookML views/inventory.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/inventory.sql`
+**LookML stub:** `m_migration/lookml_stubs/inventory_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `inventory` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_inventory`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.inventory` AS
+SELECT
+  CAST(`inventory_id` AS INT64) AS `inventory_id`,
+  CAST(`film_id` AS INT64) AS `film_id`,
+  CAST(`store_id` AS INT64) AS `store_id`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_inventory`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/inventory.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: inventory {
+  label: "inventory"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.inventory` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/inventory.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: inventory_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_inventory`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `language`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:3
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.language` with casts matching M Changed Type.
+3. Point generated LookML views/language.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/language.sql`
+**LookML stub:** `m_migration/lookml_stubs/language_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `language` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_language`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.language` AS
+SELECT
+  CAST(`language_id` AS INT64) AS `language_id`,
+  CAST(`name` AS STRING) AS `name`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_language`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/language.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: language {
+  label: "language"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.language` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/language.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: language_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_language`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `payment`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:7
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.payment` with casts matching M Changed Type.
+3. Point generated LookML views/payment.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/payment.sql`
+**LookML stub:** `m_migration/lookml_stubs/payment_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `payment` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_payment`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.payment` AS
+SELECT
+  CAST(`payment_id` AS INT64) AS `payment_id`,
+  CAST(`customer_id` AS INT64) AS `customer_id`,
+  CAST(`staff_id` AS INT64) AS `staff_id`,
+  CAST(`rental_id` AS INT64) AS `rental_id`,
+  CAST(`amount` AS FLOAT64) AS `amount`,
+  CAST(`payment_date` AS TIMESTAMP) AS `payment_date`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_payment`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/payment.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: payment {
+  label: "payment"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.payment` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/payment.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: payment_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_payment`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `rentat`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:7
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.rentat` with casts matching M Changed Type.
+3. Point generated LookML views/rentat.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/rentat.sql`
+**LookML stub:** `m_migration/lookml_stubs/rentat_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `rentat` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_rentat`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.rentat` AS
+SELECT
+  CAST(`rental_id` AS INT64) AS `rental_id`,
+  CAST(`rental_date` AS TIMESTAMP) AS `rental_date`,
+  CAST(`inventory_id` AS INT64) AS `inventory_id`,
+  CAST(`customer_id` AS INT64) AS `customer_id`,
+  CAST(`return_date` AS TIMESTAMP) AS `return_date`,
+  CAST(`staff_id` AS INT64) AS `staff_id`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_rentat`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/rentat.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: rentat {
+  label: "rentat"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.rentat` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/rentat.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: rentat_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_rentat`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `staff`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:11
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.staff` with casts matching M Changed Type.
+3. Point generated LookML views/staff.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/staff.sql`
+**LookML stub:** `m_migration/lookml_stubs/staff_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `staff` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_staff`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.staff` AS
+SELECT
+  CAST(`staff_id` AS INT64) AS `staff_id`,
+  CAST(`first_name` AS STRING) AS `first_name`,
+  CAST(`last_name` AS STRING) AS `last_name`,
+  CAST(`address_id` AS INT64) AS `address_id`,
+  CAST(`picture` AS STRING) AS `picture`,
+  CAST(`email` AS STRING) AS `email`,
+  CAST(`store_id` AS INT64) AS `store_id`,
+  CAST(`active` AS INT64) AS `active`,
+  CAST(`username` AS STRING) AS `username`,
+  CAST(`password` AS STRING) AS `password`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_staff`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/staff.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: staff {
+  label: "staff"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.staff` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/staff.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: staff_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_staff`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `store`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:4
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.store` with casts matching M Changed Type.
+3. Point generated LookML views/store.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/store.sql`
+**LookML stub:** `m_migration/lookml_stubs/store_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `store` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_store`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.store` AS
+SELECT
+  CAST(`store_id` AS INT64) AS `store_id`,
+  CAST(`manager_staff_id` AS INT64) AS `manager_staff_id`,
+  CAST(`address_id` AS INT64) AS `address_id`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_store`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/store.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: store {
+  label: "store"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.store` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/store.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: store_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_store`
+#     ;;
+#   }
+# }
+```
+
+</details>
+
+### `customer`
+
+- **Recommended pattern:** `warehouse_table_plus_straight_view`
+- **Looker object:** straight view (sql_table_name) over warehouse table
+- **Build in:** `warehouse` (confidence: high)
+- **Why:** M is a file extract with light Promote Headers / Changed Type. Looker best practice: load to warehouse, then use a normal view — not a derived table.
+- **Signals:** file_source, column_casts:9
+
+**Build steps:**
+
+1. Land the CSV/Excel in cloud storage or ingest to a staging table.
+2. Create curated table `YOUR_PROJECT.YOUR_DATASET.customer` with casts matching M Changed Type.
+3. Point generated LookML views/customer.view.lkml sql_table_name at that table.
+4. Do not use File.Contents paths from M in Looker.
+5. Optional SDT only as a short-term bridge off an already-loaded staging table.
+
+**Checks:**
+
+- [ ] Warehouse row count ≈ Power BI query row count
+- [ ] Key column unique where M implied a grain
+- [ ] LookML Validator resolves sql_table_name
+
+**SQL stub:** `m_migration/sql/customer.sql`
+**LookML stub:** `m_migration/lookml_stubs/customer_recommended.lkml`
+
+<details><summary>SQL preview</summary>
+
+```sql
+-- Recommended pattern: WAREHOUSE TABLE + straight LookML view
+-- Power Query `customer` was a file load (CSV/Excel) + light type changes.
+-- Best practice: land data in the warehouse, then point LookML sql_table_name at it.
+-- Do NOT re-implement File.Contents in Looker.
+
+-- 1) Load / stage (example BigQuery)
+-- LOAD DATA INTO `YOUR_PROJECT.YOUR_DATASET.stg_customer`
+-- FROM FILES (format='CSV', uris=['gs://YOUR_BUCKET/...'], field_delimiter=';', skip_leading_rows=1);
+
+-- 2) Curated table matching M "Changed Type"
+CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.customer` AS
+SELECT
+  CAST(`customer_id` AS INT64) AS `customer_id`,
+  CAST(`store_id` AS INT64) AS `store_id`,
+  CAST(`first_name` AS STRING) AS `first_name`,
+  CAST(`last_name` AS STRING) AS `last_name`,
+  CAST(`email` AS STRING) AS `email`,
+  CAST(`address_id` AS INT64) AS `address_id`,
+  CAST(`active` AS INT64) AS `active`,
+  CAST(`create_date` AS TIMESTAMP) AS `create_date`,
+  CAST(`last_update` AS TIMESTAMP) AS `last_update`
+FROM `YOUR_PROJECT.YOUR_DATASET.stg_customer`
+;
+
+-- Original file hint from M (local path — replace with cloud storage URI):
+-- C:/Users/RADHA/Downloads/t/customer.csv
+```
+
+</details>
+
+<details><summary>LookML preview</summary>
+
+```lookml
+# Preferred LookML after warehouse load (straight view — NOT a derived table)
+view: customer {
+  label: "customer"
+  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.customer` ;;
+
+  # Add dimensions from Phase 1 inventory / generated views/customer.view.lkml
+  # Keep primary_key: yes on the natural key.
+}
+
+# Temporary alternative ONLY if warehouse load is blocked (not best practice for file M):
+# view: customer_sdt {
+#   derived_table: {
+#     sql:
+#       SELECT * FROM `YOUR_PROJECT.YOUR_DATASET.stg_customer`
+#     ;;
+#   }
 # }
 ```
 

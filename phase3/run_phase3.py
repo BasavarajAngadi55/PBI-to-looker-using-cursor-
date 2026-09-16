@@ -15,10 +15,19 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT))
-
 ZIP_OUT = ROOT / "LOOKML_DASHBOARDS.zip"
 SUMMARY_OUT = ROOT / "PHASE3_SUMMARY.json"
+
+
+def _activate_phase3_imports() -> None:
+    """Ensure phase3/lib wins (phase2 also has a package named lib)."""
+    for name in list(sys.modules):
+        if name == "lib" or name.startswith("lib."):
+            del sys.modules[name]
+    root = str(ROOT)
+    while root in sys.path:
+        sys.path.remove(root)
+    sys.path.insert(0, root)
 
 
 def package_zip() -> Path:
@@ -45,6 +54,8 @@ def package_zip() -> Path:
 
 
 def run(pbix: Path | None = None) -> dict:
+    _activate_phase3_imports()
+
     import extract_report_layout as extract_mod
     import generate_lookml_dashboards as dash_mod
 

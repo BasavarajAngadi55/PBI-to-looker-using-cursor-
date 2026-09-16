@@ -8,20 +8,26 @@
   {
     "severity": "HIGH",
     "area": "Power Query / ETL",
-    "gap": "9 Power Query queries need warehouse/Looker equivalents. Pattern mix: {'lookml_sql_derived_table': 5, 'warehouse_transform_model': 1, 'warehouse_seed_plus_straight_view': 3}.",
+    "gap": "16 Power Query queries need warehouse/Looker equivalents. Pattern mix: {'warehouse_table_plus_straight_view': 16}.",
     "action": "Open LOOKML_PROJECT.zip \u2192 lookml/m_migration/. For each query follow M_QUERY_RECOMMENDATIONS.md, implement sql/<query>.sql in the warehouse, then update the straight LookML view sql_table_name. Use LookML SDT only when the recommendation allows a temporary bridge."
   },
   {
     "severity": "HIGH",
     "area": "Complex DAX",
-    "gap": "21 of 30 measures are TODO stubs (CALCULATE/time-intel/iterators).",
+    "gap": "2 of 5 measures are TODO stubs (CALCULATE/time-intel/iterators).",
     "action": "Implement each TODO using LookML filters, period-over-period patterns, or warehouse logic. Keep original DAX in the field description until KPI parity passes."
   },
   {
     "severity": "HIGH",
     "area": "Calculated columns",
-    "gap": "7 business calculated columns must be materialized (prefer warehouse), not left as DAX.",
-    "action": "Create warehouse columns for: BU.Region; Date.MonthIncrementNumber; Employee.isNewHire; Employee.AgeGroupID; Employee.TenureDays; Employee.TenureMonths; Employee.BadHires"
+    "gap": "1 business calculated columns must be materialized (prefer warehouse), not left as DAX.",
+    "action": "Create warehouse columns for: customer.Employment Duration"
+  },
+  {
+    "severity": "MEDIUM",
+    "area": "Inactive relationship",
+    "gap": "Inactive in Power BI: rentat[staff_id] -> staff[staff_id] (M:1).",
+    "action": "Looker has no inactive join. Keep as a separate aliased join (from:) and only expose when a measure needs USERELATIONSHIP-style behavior. Hide fields until needed."
   },
   {
     "severity": "LOW",
@@ -32,7 +38,7 @@
   {
     "severity": "LOW",
     "area": "Auto date tables",
-    "gap": "6 LocalDateTable_/DateTableTemplate_ tables skipped (correct).",
+    "gap": "20 LocalDateTable_/DateTableTemplate_ tables skipped (correct).",
     "action": "Use business date columns with dimension_group timeframes. Do not migrate auto-date tables."
   }
 ]

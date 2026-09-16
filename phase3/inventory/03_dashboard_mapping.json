@@ -1,16 +1,170 @@
 {
   "context": {
-    "model": "dashboards",
-    "explore": "facttable",
-    "fact_table": "FactTable",
-    "measure_host_view": "facttable",
-    "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/dashboards.pbix"
+    "model": "movie_rental_analysis",
+    "explore": "film",
+    "fact_table": "film",
+    "measure_host_view": "film",
+    "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix"
   },
   "mapped_visuals": [
     {
-      "id": "pProject Overview_0_textbox",
-      "page": "Project Overview",
-      "pbi_title": "textbox_0",
+      "id": "pOverview_0_pagenavigator",
+      "page": "Overview",
+      "pbi_title": "pageNavigator_0",
+      "pbi_type": "pageNavigator",
+      "looker_type": null,
+      "looker_object": "gap",
+      "element_kind": null,
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Unknown/unsupported visual type `pageNavigator` \u2014 document as GAP",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 6,
+        "row": 1,
+        "height": 14
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_1_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 17,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_2_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 17,
+        "row": 4,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_3_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_3",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 17,
+        "row": 6,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_4_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_4",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 17,
+        "row": 8,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_5_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_5",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 17,
+        "row": 11,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_6_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_6",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 17,
+        "row": 13,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pOverview_7_textbox",
+      "page": "Overview",
+      "pbi_title": "textbox_7",
       "pbi_type": "textbox",
       "looker_type": "text",
       "looker_object": "text",
@@ -25,1636 +179,14 @@
         "col": 0,
         "width": 24,
         "row": 0,
-        "height": 16
-      },
-      "entities": []
-    },
-    {
-      "id": "pExecutive Summary_1_shape",
-      "page": "Executive Summary",
-      "pbi_title": "shape_0",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
         "height": 2
       },
       "entities": []
     },
     {
-      "id": "pExecutive Summary_2_shape",
-      "page": "Executive Summary",
-      "pbi_title": "shape_1",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 0,
-        "width": 2,
-        "row": 0,
-        "height": 16
-      },
-      "entities": []
-    },
-    {
-      "id": "pExecutive Summary_3_card",
-      "page": "Executive Summary",
-      "pbi_title": "CountPatient",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.countpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 16,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_4_card",
-      "page": "Executive Summary",
-      "pbi_title": "Insurance_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.insurance_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 8,
-        "width": 3,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_5_textbox",
-      "page": "Executive Summary",
-      "pbi_title": "textbox_4",
-      "pbi_type": "textbox",
-      "looker_type": "text",
-      "looker_object": "text",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.6,
-      "notes": "Text box \u2192 text tile (rich formatting limited)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pExecutive Summary_6_areachart",
-      "page": "Executive Summary",
-      "pbi_title": " Monthly Expenses Trends",
-      "pbi_type": "areaChart",
-      "looker_type": "looker_area",
-      "looker_object": "looker_area",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Area chart \u2192 looker_area",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.gross_expenses",
-        "facttable.insurance_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum",
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 7,
-        "row": 4,
-        "height": 6
-      },
-      "entities": [
-        "DimDate",
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_7_areachart",
-      "page": "Executive Summary",
-      "pbi_title": "Patient Growth Over Time",
-      "pbi_type": "areaChart",
-      "looker_type": "looker_area",
-      "looker_object": "looker_area",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Area chart \u2192 looker_area",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 7,
-        "row": 10,
-        "height": 6
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_8_columnchart",
-      "page": "Executive Summary",
-      "pbi_title": " CPT Units Monthly Distribution",
-      "pbi_type": "columnChart",
-      "looker_type": "looker_column",
-      "looker_object": "looker_column",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Column chart \u2192 looker_column",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.cptunits"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 10,
-        "width": 7,
-        "row": 4,
-        "height": 6
-      },
-      "entities": [
-        "DimDate",
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_9_clusteredbarchart",
-      "page": "Executive Summary",
-      "pbi_title": " Payer-wise CPT Units",
-      "pbi_type": "clusteredBarChart",
-      "looker_type": "looker_bar",
-      "looker_object": "looker_bar",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Bar chart \u2192 looker_bar",
-      "dimensions": [
-        "payer_lookup.payername"
-      ],
-      "measures": [
-        "facttable.cptunits"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 10,
-        "width": 7,
-        "row": 10,
-        "height": 6
-      },
-      "entities": [
-        "FactTable",
-        "Payer_Lookup"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_10_card",
-      "page": "Executive Summary",
-      "pbi_title": "Gross Expenses",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.gross_expenses"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_11_card",
-      "page": "Executive Summary",
-      "pbi_title": "Insurance_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.insurance_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 7,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_12_card",
-      "page": "Executive Summary",
-      "pbi_title": "Patient_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.patient_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 11,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_13_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Monthly Net Revenue",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.totalpayment",
-        "facttable.previous_monthpay"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 4,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_14_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Monthly Insurance Revenue",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.insurance_payment",
-        "facttable.previous_monthpay"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 7,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "FactTable",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_15_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Monthly Patient Revenue ",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.patient_payment",
-        "facttable.previous_monthpay"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 17,
-        "width": 3,
-        "row": 4,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "FactTable",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_16_kpi",
-      "page": "Executive Summary",
-      "pbi_title": " Monthly Procedure Volume",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.cptunits",
-        "facttable.previous_monthpay"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 17,
-        "width": 3,
-        "row": 7,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "FactTable",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_17_actionbutton",
-      "page": "Executive Summary",
-      "pbi_title": "actionButton_16",
-      "pbi_type": "actionButton",
-      "looker_type": "button",
-      "looker_object": "button/gap",
-      "element_kind": "tile",
-      "status": "gap",
-      "coverage_weight": 0.3,
-      "notes": "Action button \u2014 Looker button needs explicit URL; stub as note",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [
-        "no fields bound from prototypeQuery \u2014 tile will be incomplete"
-      ],
-      "position": {
-        "col": 0,
-        "width": 2,
-        "row": 1,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pExecutive Summary_18_image",
-      "page": "Executive Summary",
-      "pbi_title": "image_17",
-      "pbi_type": "image",
-      "looker_type": null,
-      "looker_object": "manual",
-      "element_kind": null,
-      "status": "gap",
-      "coverage_weight": 0.0,
-      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 3,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pExecutive Summary_19_card",
-      "page": "Executive Summary",
-      "pbi_title": "TotalPayment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.totalpayment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.TotalPayment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 20,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_20_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Yearly Avg. Patient Payment Trend",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [],
-      "measures": [
-        "facttable.previous_monthpay",
-        "facttable.averagepatientpay"
-      ],
-      "deficiencies": [
-        "unbound field Date Year"
-      ],
-      "position": {
-        "col": 17,
-        "width": 3,
-        "row": 11,
-        "height": 2
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_21_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Monthly Payment Performance",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [],
-      "measures": [
-        "facttable.previous_monthpay",
-        "facttable.ytdpayment"
-      ],
-      "deficiencies": [
-        "unbound field Date Month"
-      ],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 11,
-        "height": 2
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_22_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Optimized Quarterly Expenditure",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [],
-      "measures": [
-        "facttable.previous_monthpay",
-        "facttable.totalgrossexpense"
-      ],
-      "deficiencies": [
-        "unbound field Date Quarter"
-      ],
-      "position": {
-        "col": 17,
-        "width": 3,
-        "row": 13,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pExecutive Summary_23_kpi",
-      "page": "Executive Summary",
-      "pbi_title": "Deficit Reduction Efficiency - Monthly",
-      "pbi_type": "kpi",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
-      "dimensions": [],
-      "measures": [
-        "facttable.previous_monthpay",
-        "facttable.totaldeficit"
-      ],
-      "deficiencies": [
-        "unbound field Date Month"
-      ],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 13,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pHospital Insights_24_shape",
-      "page": "Hospital Insights",
-      "pbi_title": "shape_0",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pHospital Insights_25_shape",
-      "page": "Hospital Insights",
-      "pbi_title": "shape_1",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 0,
-        "width": 2,
-        "row": 0,
-        "height": 16
-      },
-      "entities": []
-    },
-    {
-      "id": "pHospital Insights_26_card",
-      "page": "Hospital Insights",
-      "pbi_title": "CptGrouping",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "cptcode_lookup.cptgrouping"
-      ],
-      "deficiencies": [
-        "PBI aggregation on CptCode_Lookup.CptGrouping mapped to field ref; confirm a measure exists on cptcode_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 17,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "CptCode_Lookup"
-      ]
-    },
-    {
-      "id": "pHospital Insights_27_card",
-      "page": "Hospital Insights",
-      "pbi_title": "Patient_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.patient_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 12,
-        "width": 3,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pHospital Insights_28_card",
-      "page": "Hospital Insights",
-      "pbi_title": "Insurance_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.insurance_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 8,
-        "width": 3,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pHospital Insights_29_textbox",
-      "page": "Hospital Insights",
-      "pbi_title": "textbox_5",
-      "pbi_type": "textbox",
-      "looker_type": "text",
-      "looker_object": "text",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.6,
-      "notes": "Text box \u2192 text tile (rich formatting limited)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pHospital Insights_30_linechart",
-      "page": "Hospital Insights",
-      "pbi_title": "Monthly ARGE Ratio Trend",
-      "pbi_type": "lineChart",
-      "looker_type": "looker_line",
-      "looker_object": "looker_line",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Line chart \u2192 looker_line",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.arge_ratio"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 9,
-        "row": 4,
-        "height": 3
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pHospital Insights_31_card",
-      "page": "Hospital Insights",
-      "pbi_title": "AR",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.ar"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pHospital Insights_32_card",
-      "page": "Hospital Insights",
-      "pbi_title": "HospitalName",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "hospital_lookup.hospitalname"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Hospital_Lookup.HospitalName mapped to field ref; confirm a measure exists on hospital_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 7,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Hospital_Lookup"
-      ]
-    },
-    {
-      "id": "pHospital Insights_33_card",
-      "page": "Hospital Insights",
-      "pbi_title": "CPTUnits",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.cptunits"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 12,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pHospital Insights_34_linechart",
-      "page": "Hospital Insights",
-      "pbi_title": "Monthly IPTP Ratio Trend",
-      "pbi_type": "lineChart",
-      "looker_type": "looker_line",
-      "looker_object": "looker_line",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Line chart \u2192 looker_line",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.iptp_ratio"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 9,
-        "row": 7,
-        "height": 2
-      },
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pHospital Insights_35_piechart",
-      "page": "Hospital Insights",
-      "pbi_title": " Gross Expenses by CptGrouping",
-      "pbi_type": "pieChart",
-      "looker_type": "looker_pie",
-      "looker_object": "looker_pie",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Pie \u2192 looker_pie",
-      "dimensions": [
-        "cptcode_lookup.cptgrouping"
-      ],
-      "measures": [
-        "facttable.gross_expenses"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 12,
-        "width": 9,
-        "row": 4,
-        "height": 5
-      },
-      "entities": [
-        "CptCode_Lookup",
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pHospital Insights_36_treemap",
-      "page": "Hospital Insights",
-      "pbi_title": " CPT Units Distribution by Hospital",
-      "pbi_type": "treemap",
-      "looker_type": "looker_pie",
-      "looker_object": "looker_pie (substitute)",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.5,
-      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
-      "dimensions": [
-        "hospital_lookup.hospitalname"
-      ],
-      "measures": [
-        "facttable.cptunits"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 12,
-        "width": 9,
-        "row": 9,
-        "height": 6
-      },
-      "entities": [
-        "FactTable",
-        "Hospital_Lookup"
-      ]
-    },
-    {
-      "id": "pHospital Insights_37_pivottable",
-      "page": "Hospital Insights",
-      "pbi_title": "Critical Hospital Metrics Overview",
-      "pbi_type": "pivotTable",
-      "looker_type": "looker_grid",
-      "looker_object": "looker_grid",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Matrix/pivot \u2192 looker_grid",
-      "dimensions": [
-        "hospital_lookup.hospitalname"
-      ],
-      "measures": [
-        "facttable.ar",
-        "facttable.iptp_ratio",
-        "facttable.arge_ratio",
-        "facttable.baddebts"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 9,
-        "row": 9,
-        "height": 6
-      },
-      "entities": [
-        "FactTable",
-        "Hospital_Lookup",
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pHospital Insights_38_slicer",
-      "page": "Hospital Insights",
-      "pbi_title": "Hospital ",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "hospital_lookup.hospitalname"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 2,
-        "height": 7
-      },
-      "entities": [
-        "Hospital_Lookup"
-      ]
-    },
-    {
-      "id": "pHospital Insights_39_slicer",
-      "page": "Hospital Insights",
-      "pbi_title": "Region",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.region"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 10,
-        "height": 6
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pHospital Insights_40_textbox",
-      "page": "Hospital Insights",
-      "pbi_title": "textbox_16",
-      "pbi_type": "textbox",
-      "looker_type": "text",
-      "looker_object": "text",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.6,
-      "notes": "Text box \u2192 text tile (rich formatting limited)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 21,
-        "width": 2,
-        "row": 13,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pHospital Insights_41_image",
-      "page": "Hospital Insights",
-      "pbi_title": "image_17",
-      "pbi_type": "image",
-      "looker_type": null,
-      "looker_object": "manual",
-      "element_kind": null,
-      "status": "gap",
-      "coverage_weight": 0.0,
-      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 3,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pPatient Analysis_42_shape",
-      "page": "Patient Analysis",
-      "pbi_title": "shape_0",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pPatient Analysis_43_shape",
-      "page": "Patient Analysis",
-      "pbi_title": "shape_1",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 0,
-        "width": 2,
-        "row": 0,
-        "height": 16
-      },
-      "entities": []
-    },
-    {
-      "id": "pPatient Analysis_44_card",
-      "page": "Patient Analysis",
-      "pbi_title": "City",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "patient_lookup.city"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 16,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_45_card",
-      "page": "Patient Analysis",
-      "pbi_title": "Patient_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.patient_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 12,
-        "width": 3,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_46_card",
-      "page": "Patient Analysis",
-      "pbi_title": "Insurance_Payment",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.insurance_payment"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 8,
-        "width": 3,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_47_textbox",
-      "page": "Patient Analysis",
-      "pbi_title": "textbox_5",
-      "pbi_type": "textbox",
-      "looker_type": "text",
-      "looker_object": "text",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.6,
-      "notes": "Text box \u2192 text tile (rich formatting limited)",
-      "dimensions": [],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
-        "height": 2
-      },
-      "entities": []
-    },
-    {
-      "id": "pPatient Analysis_48_card",
-      "page": "Patient Analysis",
-      "pbi_title": "DistinctPatient",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Measure Table"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_49_card",
-      "page": "Patient Analysis",
-      "pbi_title": "dimPatientFK",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "facttable.dimpatientfk"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.dimPatientFK mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 7,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_50_card",
-      "page": "Patient Analysis",
-      "pbi_title": "State",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "patient_lookup.state"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Patient_Lookup.State mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 11,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_51_slicer",
-      "page": "Patient Analysis",
-      "pbi_title": "Gender",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.patientgender"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 20,
-        "width": 4,
-        "row": 4,
-        "height": 2
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_52_slicer",
-      "page": "Patient Analysis",
-      "pbi_title": "Blood Group",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.bloodgroup"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 20,
-        "width": 4,
-        "row": 11,
-        "height": 5
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_53_donutchart",
-      "page": "Patient Analysis",
-      "pbi_title": "Patient by Tobacco",
-      "pbi_type": "donutChart",
-      "looker_type": "looker_pie",
-      "looker_object": "looker_pie",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.8,
-      "notes": "Donut \u2192 looker_pie (donut style limited)",
-      "dimensions": [
-        "patient_lookup.tobacco"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 4,
-        "row": 4,
-        "height": 3
-      },
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_54_donutchart",
-      "page": "Patient Analysis",
-      "pbi_title": "Patient By Exercise",
-      "pbi_type": "donutChart",
-      "looker_type": "looker_pie",
-      "looker_object": "looker_pie",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.8,
-      "notes": "Donut \u2192 looker_pie (donut style limited)",
-      "dimensions": [
-        "patient_lookup.exercise"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 7,
-        "width": 4,
-        "row": 4,
-        "height": 3
-      },
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_55_donutchart",
-      "page": "Patient Analysis",
-      "pbi_title": "Patient by Alcohol",
-      "pbi_type": "donutChart",
-      "looker_type": "looker_pie",
-      "looker_object": "looker_pie",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.8,
-      "notes": "Donut \u2192 looker_pie (donut style limited)",
-      "dimensions": [
-        "patient_lookup.alcohol"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 7,
-        "width": 4,
-        "row": 7,
-        "height": 3
-      },
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_56_donutchart",
-      "page": "Patient Analysis",
-      "pbi_title": "Patient by Diet",
-      "pbi_type": "donutChart",
-      "looker_type": "looker_pie",
-      "looker_object": "looker_pie",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.8,
-      "notes": "Donut \u2192 looker_pie (donut style limited)",
-      "dimensions": [
-        "patient_lookup.diet"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 4,
-        "row": 7,
-        "height": 3
-      },
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_57_clusteredcolumnchart",
-      "page": "Patient Analysis",
-      "pbi_title": "Distinct Patients by BloodGroup",
-      "pbi_type": "clusteredColumnChart",
-      "looker_type": "looker_column",
-      "looker_object": "looker_column",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Clustered columns \u2192 looker_column",
-      "dimensions": [
-        "patient_lookup.bloodgroup"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 9,
-        "row": 11,
-        "height": 5
-      },
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_58_pivottable",
-      "page": "Patient Analysis",
-      "pbi_title": "Patient Gender Distribution by State",
-      "pbi_type": "pivotTable",
-      "looker_type": "looker_grid",
-      "looker_object": "looker_grid",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Matrix/pivot \u2192 looker_grid",
-      "dimensions": [
-        "patient_lookup.state",
-        "patient_lookup.patientgender"
-      ],
-      "measures": [
-        "facttable.distinctpatient"
-      ],
-      "deficiencies": [],
-      "position": {
-        "col": 11,
-        "width": 9,
-        "row": 11,
-        "height": 5
-      },
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_59_slicer",
-      "page": "Patient Analysis",
-      "pbi_title": "Region Code",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.regioncode",
-        "patient_lookup.region"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 16,
-        "width": 3,
-        "row": 6,
-        "height": 4
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPatient Analysis_60_map",
-      "page": "Patient Analysis",
-      "pbi_title": "Distribution of Patient by State",
+      "id": "pGeographic / Location Analysis_8_map",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "country",
       "pbi_type": "map",
       "looker_type": "looker_map",
       "looker_object": "looker_map",
@@ -1663,51 +195,113 @@
       "coverage_weight": 0.5,
       "notes": "Map \u2192 looker_map if geo fields exist; else gap",
       "dimensions": [
-        "patient_lookup.state"
+        "country.country"
       ],
       "measures": [
-        "facttable.distinctpatient"
+        "payment.revenue"
       ],
       "deficiencies": [
         "map may lack location dimension \u2014 verify geo fields"
       ],
       "position": {
-        "col": 11,
+        "col": 0,
         "width": 9,
-        "row": 4,
+        "row": 9,
         "height": 7
       },
       "entities": [
-        "Measure Table",
-        "Patient_Lookup"
+        "country",
+        "payment"
       ]
     },
     {
-      "id": "pPatient Analysis_61_image",
-      "page": "Patient Analysis",
-      "pbi_title": "image_19",
-      "pbi_type": "image",
-      "looker_type": null,
-      "looker_object": "manual",
-      "element_kind": null,
-      "status": "gap",
-      "coverage_weight": 0.0,
-      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "id": "pGeographic / Location Analysis_9_textbox",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
       "dimensions": [],
       "measures": [],
       "deficiencies": [],
       "position": {
-        "col": 2,
-        "width": 3,
+        "col": 7,
+        "width": 17,
         "row": 0,
         "height": 2
       },
       "entities": []
     },
     {
-      "id": "pPatient Analysis_62_card",
-      "page": "Patient Analysis",
-      "pbi_title": "PatientAge",
+      "id": "pGeographic / Location Analysis_10_columnchart",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "Location wise Customer Ratings",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "city.city"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 15,
+        "width": 9,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "city",
+        "film"
+      ]
+    },
+    {
+      "id": "pGeographic / Location Analysis_11_clusteredbarchart",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": " Distribution of Customers across Countries",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "customer.customer_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 9,
+        "width": 5,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "country",
+        "customer"
+      ]
+    },
+    {
+      "id": "pGeographic / Location Analysis_12_card",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "Revenue",
       "pbi_type": "card",
       "looker_type": "single_value",
       "looker_object": "single_value",
@@ -1717,25 +311,79 @@
       "notes": "KPI card \u2192 single_value tile",
       "dimensions": [],
       "measures": [
-        "patient_lookup.patientage"
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pGeographic / Location Analysis_13_card",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "rental_rate",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_rate"
       ],
       "deficiencies": [
-        "PBI aggregation on Patient_Lookup.PatientAge mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
       ],
       "position": {
-        "col": 20,
-        "width": 4,
+        "col": 4,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pGeographic / Location Analysis_14_card",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "rental_duration",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 3,
         "row": 2,
         "height": 2
       },
       "entities": [
-        "Patient_Lookup"
+        "film"
       ]
     },
     {
-      "id": "pPatient Analysis_63_slicer",
-      "page": "Patient Analysis",
-      "pbi_title": "Region",
+      "id": "pGeographic / Location Analysis_15_slicer",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "city",
       "pbi_type": "slicer",
       "looker_type": null,
       "looker_object": "dashboard filter",
@@ -1744,96 +392,286 @@
       "coverage_weight": 1.0,
       "notes": "Slicer \u2192 dashboard filter (not a tile)",
       "dimensions": [
-        "patient_lookup.region"
+        "city.city"
       ],
       "measures": [],
       "deficiencies": [],
       "position": {
-        "col": 20,
-        "width": 4,
-        "row": 6,
-        "height": 5
+        "col": 4,
+        "width": 3,
+        "row": 3,
+        "height": 6
       },
       "entities": [
-        "Patient_Lookup"
+        "city"
       ]
     },
     {
-      "id": "pPayer-Provider Analysis_64_shape",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "shape_0",
-      "pbi_type": "shape",
+      "id": "pGeographic / Location Analysis_16_slicer",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "country",
+      "pbi_type": "slicer",
       "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
-      "dimensions": [],
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "country.country"
+      ],
       "measures": [],
       "deficiencies": [],
       "position": {
-        "col": 5,
-        "width": 19,
-        "row": 0,
-        "height": 2
+        "col": 0,
+        "width": 3,
+        "row": 3,
+        "height": 6
       },
-      "entities": []
+      "entities": [
+        "country"
+      ]
     },
     {
-      "id": "pPayer-Provider Analysis_65_shape",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "shape_1",
-      "pbi_type": "shape",
-      "looker_type": null,
-      "looker_object": "skip",
-      "element_kind": null,
-      "status": "skip",
-      "coverage_weight": 0.0,
-      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "id": "pGeographic / Location Analysis_17_card",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "Rental Frequency",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "payment.payment_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.payment_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 4,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pGeographic / Location Analysis_18_tableex",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "Rental Rate & Rental Duration By Country",
+      "pbi_type": "tableEx",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "film.rental_rate",
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum",
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 7,
+        "row": 2,
+        "height": 7
+      },
+      "entities": [
+        "country",
+        "film"
+      ]
+    },
+    {
+      "id": "pGeographic / Location Analysis_19_clusteredbarchart",
+      "page": "Geographic / Location Analysis",
+      "pbi_title": "Rental Revenue by Country",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "payment.amount"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 15,
+        "width": 9,
+        "row": 2,
+        "height": 7
+      },
+      "entities": [
+        "country",
+        "payment"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_20_clusteredbarchart",
+      "page": "Revenue Analysis",
+      "pbi_title": "Rental Revenue by Country",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "payment.amount"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 7,
+        "row": 2,
+        "height": 9
+      },
+      "entities": [
+        "country",
+        "payment"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_21_textbox",
+      "page": "Revenue Analysis",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
       "dimensions": [],
       "measures": [],
       "deficiencies": [],
       "position": {
         "col": 0,
-        "width": 2,
+        "width": 15,
         "row": 0,
-        "height": 16
+        "height": 2
       },
       "entities": []
     },
     {
-      "id": "pPayer-Provider Analysis_66_card",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "City",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
+      "id": "pRevenue Analysis_22_linechart",
+      "page": "Revenue Analysis",
+      "pbi_title": "Revenue by Month",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
       "element_kind": "tile",
       "status": "mapped",
       "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
+      "notes": "Line chart \u2192 looker_line",
       "dimensions": [],
       "measures": [
-        "patient_lookup.city"
+        "payment.revenue"
       ],
       "deficiencies": [
-        "PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
+        "unbound field payment_date Year",
+        "unbound field payment_date Month"
       ],
       "position": {
         "col": 16,
-        "width": 4,
-        "row": 2,
-        "height": 2
+        "width": 8,
+        "row": 3,
+        "height": 7
       },
       "entities": [
-        "Patient_Lookup"
+        "payment"
       ]
     },
     {
-      "id": "pPayer-Provider Analysis_67_card",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Patient_Payment",
+      "id": "pRevenue Analysis_23_treemap",
+      "page": "Revenue Analysis",
+      "pbi_title": "name",
+      "pbi_type": "treemap",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie (substitute)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 8,
+        "width": 8,
+        "row": 3,
+        "height": 7
+      },
+      "entities": [
+        "category",
+        "payment"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_24_linestackedcolumncombochart",
+      "page": "Revenue Analysis",
+      "pbi_title": "Revenue & Inventory Distribution by Category",
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column (partial)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.revenue",
+        "rentat.inventory_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.inventory_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 14,
+        "width": 10,
+        "row": 10,
+        "height": 5
+      },
+      "entities": [
+        "category",
+        "payment",
+        "rentat"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_25_card",
+      "page": "Revenue Analysis",
+      "pbi_title": "Revenue",
       "pbi_type": "card",
       "looker_type": "single_value",
       "looker_object": "single_value",
@@ -1843,25 +681,81 @@
       "notes": "KPI card \u2192 single_value tile",
       "dimensions": [],
       "measures": [
-        "facttable.patient_payment"
+        "payment.revenue"
       ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
+      "deficiencies": [],
       "position": {
-        "col": 12,
+        "col": 10,
         "width": 3,
         "row": 2,
         "height": 2
       },
       "entities": [
-        "FactTable"
+        "payment"
       ]
     },
     {
-      "id": "pPayer-Provider Analysis_68_card",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Insurance_Payment",
+      "id": "pRevenue Analysis_26_donutchart",
+      "page": "Revenue Analysis",
+      "pbi_title": "Revenue by Rating",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 8,
+        "width": 6,
+        "row": 10,
+        "height": 5
+      },
+      "entities": [
+        "film",
+        "payment"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_27_linestackedcolumncombochart",
+      "page": "Revenue Analysis",
+      "pbi_title": "Revenue",
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column (partial)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "dimensions": [
+        "film.rental_duration"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 7,
+        "row": 10,
+        "height": 5
+      },
+      "entities": [
+        "film",
+        "payment"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_28_card",
+      "page": "Revenue Analysis",
+      "pbi_title": "Rental Frequency",
       "pbi_type": "card",
       "looker_type": "single_value",
       "looker_object": "single_value",
@@ -1871,25 +765,3213 @@
       "notes": "KPI card \u2192 single_value tile",
       "dimensions": [],
       "measures": [
-        "facttable.insurance_payment"
+        "payment.payment_id"
       ],
       "deficiencies": [
-        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+        "PBI aggregation on payment.payment_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_29_card",
+      "page": "Revenue Analysis",
+      "pbi_title": "rental_rate",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 14,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_30_card",
+      "page": "Revenue Analysis",
+      "pbi_title": "rental_duration",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 16,
+        "width": 8,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_31_card",
+      "page": "Revenue Analysis",
+      "pbi_title": "rental_id",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 20,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "rentat"
+      ]
+    },
+    {
+      "id": "pRevenue Analysis_32_slicer",
+      "page": "Revenue Analysis",
+      "pbi_title": "slicer_12",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [
+        "unbound field payment_date Year",
+        "slicer has no bound field"
       ],
       "position": {
         "col": 8,
+        "width": 2,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_33_textbox",
+      "page": "Customer Analysis",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 11,
+        "width": 13,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pCustomer Analysis_34_donutchart",
+      "page": "Customer Analysis",
+      "pbi_title": "Active/Inactive Customer:",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "customer.active"
+      ],
+      "measures": [
+        "customer.active"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 3,
+        "row": 5,
+        "height": 3
+      },
+      "entities": [
+        "customer"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_35_tableex",
+      "page": "Customer Analysis",
+      "pbi_title": "Active/Inactive(1/0) Customer Details:",
+      "pbi_type": "tableEx",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "dimensions": [
+        "customer.first_name",
+        "customer.customer_id",
+        "customer.last_name"
+      ],
+      "measures": [
+        "customer.active"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 7,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "customer"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_36_clusteredbarchart",
+      "page": "Customer Analysis",
+      "pbi_title": "name",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.amount"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 6,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "category",
+        "payment"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_37_map",
+      "page": "Customer Analysis",
+      "pbi_title": "Customers by Country",
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "looker_object": "looker_map",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "customer.customer_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum",
+        "map may lack location dimension \u2014 verify geo fields"
+      ],
+      "position": {
+        "col": 0,
+        "width": 10,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "country",
+        "customer"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_38_card",
+      "page": "Customer Analysis",
+      "pbi_title": "customer_id",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "customer.customer_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
         "width": 3,
         "row": 2,
         "height": 2
       },
       "entities": [
-        "FactTable"
+        "customer"
       ]
     },
     {
-      "id": "pPayer-Provider Analysis_69_textbox",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "textbox_5",
+      "id": "pCustomer Analysis_39_columnchart",
+      "page": "Customer Analysis",
+      "pbi_title": "Rental Rate by Customers",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "customer.first_name"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 13,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "customer",
+        "film"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_40_columnchart",
+      "page": "Customer Analysis",
+      "pbi_title": "Distribution of Customers by Rating",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "payment.customer_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.customer_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 6,
+        "row": 3,
+        "height": 6
+      },
+      "entities": [
+        "film",
+        "payment"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_41_card",
+      "page": "Customer Analysis",
+      "pbi_title": "Revenue",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 4,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_42_card",
+      "page": "Customer Analysis",
+      "pbi_title": "Rental Frequency",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "payment.payment_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.payment_id mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_43_card",
+      "page": "Customer Analysis",
+      "pbi_title": "rental_rate",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 4,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pCustomer Analysis_44_slicer",
+      "page": "Customer Analysis",
+      "pbi_title": "category_id",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "film_category.category_id"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 3,
+        "row": 0,
+        "height": 5
+      },
+      "entities": [
+        "film_category"
+      ]
+    },
+    {
+      "id": "pRental Analysis_45_textbox",
+      "page": "Rental Analysis",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 9,
+        "width": 15,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pRental Analysis_46_clusteredcolumnchart",
+      "page": "Rental Analysis",
+      "pbi_title": "Films Distribution by Rental Duration (In Months)",
+      "pbi_type": "clusteredColumnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Clustered columns \u2192 looker_column",
+      "dimensions": [
+        "film.rental_duration"
+      ],
+      "measures": [
+        "film.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 7,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pRental Analysis_47_clusteredbarchart",
+      "page": "Rental Analysis",
+      "pbi_title": "Average of rental_duration by Film-category",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 9,
+        "width": 7,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "category",
+        "film"
+      ]
+    },
+    {
+      "id": "pRental Analysis_48_treemap",
+      "page": "Rental Analysis",
+      "pbi_title": "Rental Rates of Films",
+      "pbi_type": "treemap",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie (substitute)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 8,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "category",
+        "film"
+      ]
+    },
+    {
+      "id": "pRental Analysis_49_card",
+      "page": "Rental Analysis",
+      "pbi_title": "Total Rentals",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 4,
+        "width": 2,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "rentat"
+      ]
+    },
+    {
+      "id": "pRental Analysis_50_card",
+      "page": "Rental Analysis",
+      "pbi_title": "rental_duration",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 5,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pRental Analysis_51_card",
+      "page": "Rental Analysis",
+      "pbi_title": "rental_rate",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pRental Analysis_52_piechart",
+      "page": "Rental Analysis",
+      "pbi_title": "Rental Distribution  by Year",
+      "pbi_type": "pieChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Pie \u2192 looker_pie",
+      "dimensions": [],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "unbound field rental_date Year",
+        "unbound field rental_date Month",
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 8,
+        "row": 4,
+        "height": 5
+      },
+      "entities": [
+        "rentat"
+      ]
+    },
+    {
+      "id": "pRental Analysis_53_pivottable",
+      "page": "Rental Analysis",
+      "pbi_title": "Rentals by Customer ",
+      "pbi_type": "pivotTable",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Matrix/pivot \u2192 looker_grid",
+      "dimensions": [
+        "customer.first_name"
+      ],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 6,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "customer",
+        "rentat"
+      ]
+    },
+    {
+      "id": "pRental Analysis_54_pivottable",
+      "page": "Rental Analysis",
+      "pbi_title": "Rentals by Film Title",
+      "pbi_type": "pivotTable",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Matrix/pivot \u2192 looker_grid",
+      "dimensions": [
+        "film.title"
+      ],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 9,
+        "width": 8,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "film",
+        "rentat"
+      ]
+    },
+    {
+      "id": "pRental Analysis_55_card",
+      "page": "Rental Analysis",
+      "pbi_title": "Revenue",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pRental Analysis_56_slicer",
+      "page": "Rental Analysis",
+      "pbi_title": "slicer_11",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [
+        "unbound field rental_date Year",
+        "slicer has no bound field"
+      ],
+      "position": {
+        "col": 6,
+        "width": 2,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "rentat"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_57_textbox",
+      "page": "Film Analysis",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 10,
+        "width": 14,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pFilm Analysis_58_card",
+      "page": "Film Analysis",
+      "pbi_title": "Film Distribution by Language",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_59_clusteredbarchart",
+      "page": "Film Analysis",
+      "pbi_title": "Film-Category breakdown in Inventory",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "inventory.inventory_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 9,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "category",
+        "inventory"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_60_donutchart",
+      "page": "Film Analysis",
+      "pbi_title": "Inventory Variation by Film-Ratings",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "inventory.inventory_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 7,
+        "row": 1,
+        "height": 4
+      },
+      "entities": [
+        "film",
+        "inventory"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_61_lineclusteredcolumncombochart",
+      "page": "Film Analysis",
+      "pbi_title": "Rentals Distribution by Films",
+      "pbi_type": "lineClusteredColumnComboChart",
+      "looker_type": null,
+      "looker_object": "gap",
+      "element_kind": null,
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Unknown/unsupported visual type `lineClusteredColumnComboChart` \u2014 document as GAP",
+      "dimensions": [
+        "film.title"
+      ],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 14,
+        "row": 12,
+        "height": 4
+      },
+      "entities": [
+        "film",
+        "rentat"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_62_donutchart",
+      "page": "Film Analysis",
+      "pbi_title": "rating",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "film.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 7,
+        "row": 1,
+        "height": 4
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_63_linestackedcolumncombochart",
+      "page": "Film Analysis",
+      "pbi_title": "Revenue and Rental Rate by Film Category",
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column (partial)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.revenue",
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 14,
+        "row": 5,
+        "height": 6
+      },
+      "entities": [
+        "category",
+        "film",
+        "payment"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_64_tableex",
+      "page": "Film Analysis",
+      "pbi_title": "film_id",
+      "pbi_type": "tableEx",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "dimensions": [
+        "film.film_id",
+        "film.title",
+        "film.special_features"
+      ],
+      "measures": [
+        "film.length"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.length mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 9,
+        "row": 5,
+        "height": 5
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_65_card",
+      "page": "Film Analysis",
+      "pbi_title": "Average of Rental Duration",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 4,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_66_slicer",
+      "page": "Film Analysis",
+      "pbi_title": "Film Ratings",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 6,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_67_card",
+      "page": "Film Analysis",
+      "pbi_title": "actor_id",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "actor.actor_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on actor.actor_id mapped to field ref; confirm a measure exists on actor (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "actor"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_68_card",
+      "page": "Film Analysis",
+      "pbi_title": "film_id",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_69_slicer",
+      "page": "Film Analysis",
+      "pbi_title": "title",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "film.title"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 4,
+        "row": 4,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pFilm Analysis_70_card",
+      "page": "Film Analysis",
+      "pbi_title": "Description",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film.description"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.description mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 4,
+        "width": 5,
+        "row": 4,
+        "height": 2
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pActor Analysis_71_textbox",
+      "page": "Actor Analysis",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 10,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pActor Analysis_72_barchart",
+      "page": "Actor Analysis",
+      "pbi_title": "DIstribution of Films by Actors",
+      "pbi_type": "barChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "actor.first_name"
+      ],
+      "measures": [
+        "film_actor.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film_actor.film_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 15,
+        "width": 9,
+        "row": 2,
+        "height": 7
+      },
+      "entities": [
+        "actor",
+        "film_actor"
+      ]
+    },
+    {
+      "id": "pActor Analysis_73_linestackedcolumncombochart",
+      "page": "Actor Analysis",
+      "pbi_title": "Revenue Contribution by Actors",
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column (partial)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "dimensions": [
+        "actor.first_name"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 13,
+        "width": 10,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "actor",
+        "payment"
+      ]
+    },
+    {
+      "id": "pActor Analysis_74_linechart",
+      "page": "Actor Analysis",
+      "pbi_title": "Actor wise Rental Rate Variation ",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "dimensions": [
+        "actor.actor_id"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 13,
+        "row": 9,
+        "height": 7
+      },
+      "entities": [
+        "actor",
+        "film"
+      ]
+    },
+    {
+      "id": "pActor Analysis_75_tableex",
+      "page": "Actor Analysis",
+      "pbi_title": "Actor Details",
+      "pbi_type": "tableEx",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "dimensions": [
+        "actor.actor_id",
+        "actor.first_name",
+        "actor.last_name"
+      ],
+      "measures": [
+        "actor.filmpopularity"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 7,
+        "row": 2,
+        "height": 7
+      },
+      "entities": [
+        "actor"
+      ]
+    },
+    {
+      "id": "pActor Analysis_76_card",
+      "page": "Actor Analysis",
+      "pbi_title": "film_id",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "film_category.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film_category.film_id mapped to field ref; confirm a measure exists on film_category (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "film_category"
+      ]
+    },
+    {
+      "id": "pActor Analysis_77_card",
+      "page": "Actor Analysis",
+      "pbi_title": "actor_id",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "actor.actor_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on actor.actor_id mapped to field ref; confirm a measure exists on actor (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 14,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "actor"
+      ]
+    },
+    {
+      "id": "pActor Analysis_78_slicer",
+      "page": "Actor Analysis",
+      "pbi_title": "first_name",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "actor.first_name"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "actor"
+      ]
+    },
+    {
+      "id": "pActor Analysis_79_card",
+      "page": "Actor Analysis",
+      "pbi_title": "Revenue",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 17,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pActor Analysis_80_donutchart",
+      "page": "Actor Analysis",
+      "pbi_title": "Genre Preferences of Actors",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "film_actor.actor_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film_actor.actor_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 7,
+        "row": 2,
+        "height": 7
+      },
+      "entities": [
+        "film",
+        "film_actor"
+      ]
+    },
+    {
+      "id": "pQ1_81_linechart",
+      "page": "Q1",
+      "pbi_title": "Revenue by Month",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "dimensions": [],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [
+        "unbound field payment_date Year",
+        "unbound field payment_date Month"
+      ],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 2,
+        "height": 9
+      },
+      "entities": [
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ1_82_textbox",
+      "page": "Q1",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ1_83_textbox",
+      "page": "Q1",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 14
+      },
+      "entities": []
+    },
+    {
+      "id": "p Q2_84_textbox",
+      "page": " Q2",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 4,
+        "width": 17,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "p Q2_85_textbox",
+      "page": " Q2",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 11,
+        "row": 3,
+        "height": 9
+      },
+      "entities": []
+    },
+    {
+      "id": "p Q2_86_piechart",
+      "page": " Q2",
+      "pbi_title": "Active/Inactive Customer:",
+      "pbi_type": "pieChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Pie \u2192 looker_pie",
+      "dimensions": [
+        "customer.active"
+      ],
+      "measures": [
+        "customer.active"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 14,
+        "width": 7,
+        "row": 2,
+        "height": 4
+      },
+      "entities": [
+        "customer"
+      ]
+    },
+    {
+      "id": "p Q2_87_tableex",
+      "page": " Q2",
+      "pbi_title": "Active/Inactive(1/0) Customer Details:",
+      "pbi_type": "tableEx",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "dimensions": [
+        "customer.first_name",
+        "customer.customer_id",
+        "customer.last_name"
+      ],
+      "measures": [
+        "customer.active"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.active mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 14,
+        "width": 7,
+        "row": 7,
+        "height": 9
+      },
+      "entities": [
+        "customer"
+      ]
+    },
+    {
+      "id": "pQ3_88_textbox",
+      "page": "Q3",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 12,
+        "width": 12,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ3_89_textbox",
+      "page": "Q3",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 11,
+        "row": 0,
+        "height": 14
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ3_90_clusteredbarchart",
+      "page": "Q3",
+      "pbi_title": "name",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.amount"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 12,
+        "row": 2,
+        "height": 13
+      },
+      "entities": [
+        "category",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ4_91_columnchart",
+      "page": "Q4",
+      "pbi_title": "Distribution of Films by Rental-Duration.",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "film.rental_duration"
+      ],
+      "measures": [
+        "film.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 14,
+        "row": 1,
+        "height": 9
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pQ4_92_textbox",
+      "page": "Q4",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ4_93_textbox",
+      "page": "Q4",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 23,
+        "row": 11,
+        "height": 4
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ5_94_textbox",
+      "page": "Q5",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 10,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ5_95_textbox",
+      "page": "Q5",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
+        "row": 9,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ5_96_donutchart",
+      "page": "Q5",
+      "pbi_title": "Inventory Variation by Film-Ratings",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "inventory.inventory_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 11,
+        "row": 1,
+        "height": 8
+      },
+      "entities": [
+        "film",
+        "inventory"
+      ]
+    },
+    {
+      "id": "pQ6_97_textbox",
+      "page": "Q6",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ6_98_textbox",
+      "page": "Q6",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 4,
+        "height": 12
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ6_99_clusteredbarchart",
+      "page": "Q6",
+      "pbi_title": "Film-Category breakdown in Inventory",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "inventory.inventory_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on inventory.inventory_id mapped to field ref; confirm a measure exists on inventory (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 13,
+        "row": 0,
+        "height": 15
+      },
+      "entities": [
+        "category",
+        "inventory"
+      ]
+    },
+    {
+      "id": "pQ7_100_columnchart",
+      "page": "Q7",
+      "pbi_title": "Staff Distribution by Employment Duration",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "customer.employment_duration",
+        "staff.staff_id"
+      ],
+      "measures": [
+        "staff.staff_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on staff.staff_id mapped to field ref; confirm a measure exists on staff (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 11,
+        "row": 4,
+        "height": 7
+      },
+      "entities": [
+        "customer",
+        "staff"
+      ]
+    },
+    {
+      "id": "pQ7_101_textbox",
+      "page": "Q7",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 3,
+        "width": 6,
+        "row": 10,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ7_102_textbox",
+      "page": "Q7",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 11,
+        "width": 12,
+        "row": 0,
+        "height": 3
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ7_103_textbox",
+      "page": "Q7",
+      "pbi_title": "textbox_3",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 11,
+        "row": 3,
+        "height": 9
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ8_104_map",
+      "page": "Q8",
+      "pbi_title": "Store Performance Variation by Location",
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "looker_object": "looker_map",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "payment.amount"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum",
+        "map may lack location dimension \u2014 verify geo fields"
+      ],
+      "position": {
+        "col": 8,
+        "width": 16,
+        "row": 3,
+        "height": 12
+      },
+      "entities": [
+        "country",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ8_105_textbox",
+      "page": "Q8",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 8,
+        "width": 16,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ8_106_textbox",
+      "page": "Q8",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 7,
+        "row": 1,
+        "height": 14
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ9_107_piechart",
+      "page": "Q9",
+      "pbi_title": "Average of rental_duration by staff member",
+      "pbi_type": "pieChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Pie \u2192 looker_pie",
+      "dimensions": [
+        "staff.staff_id"
+      ],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 1,
+        "width": 12,
+        "row": 3,
+        "height": 7
+      },
+      "entities": [
+        "film",
+        "staff"
+      ]
+    },
+    {
+      "id": "pQ9_108_textbox",
+      "page": "Q9",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 13,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ9_109_textbox",
+      "page": "Q9",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 13,
+        "width": 10,
+        "row": 3,
+        "height": 9
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ10_110_columnchart",
+      "page": "Q10",
+      "pbi_title": " Distribution of Customers across Cities",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "city.city"
+      ],
+      "measures": [
+        "customer.customer_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 12,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "city",
+        "customer"
+      ]
+    },
+    {
+      "id": "pQ10_111_textbox",
+      "page": "Q10",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 10,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ10_112_textbox",
+      "page": "Q10",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
+        "row": 9,
+        "height": 5
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ11_113_map",
+      "page": "Q11",
+      "pbi_title": "Rental Revenue by Country",
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "looker_object": "looker_map",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "payment.amount"
+      ],
+      "deficiencies": [
+        "PBI aggregation on payment.amount mapped to field ref; confirm a measure exists on payment (Phase 2) or add type:sum",
+        "map may lack location dimension \u2014 verify geo fields"
+      ],
+      "position": {
+        "col": 11,
+        "width": 13,
+        "row": 0,
+        "height": 9
+      },
+      "entities": [
+        "country",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ11_114_textbox",
+      "page": "Q11",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 10,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ11_115_textbox",
+      "page": "Q11",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 10,
+        "height": 5
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ12_116_columnchart",
+      "page": "Q12",
+      "pbi_title": "Location wise Customer Ratings",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "city.city"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 8,
+        "row": 3,
+        "height": 12
+      },
+      "entities": [
+        "city",
+        "film"
+      ]
+    },
+    {
+      "id": "pQ12_117_textbox",
+      "page": "Q12",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 22,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ12_118_textbox",
+      "page": "Q12",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 9,
+        "width": 14,
+        "row": 3,
+        "height": 9
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ13_119_textbox",
+      "page": "Q13",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 8,
+        "row": 2,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ13_120_textbox",
+      "page": "Q13",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 8,
+        "height": 7
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ13_121_donutchart",
+      "page": "Q13",
+      "pbi_title": "Distribution of Films by languages",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "language.name"
+      ],
+      "measures": [
+        "film.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 8,
+        "row": 3,
+        "height": 4
+      },
+      "entities": [
+        "film",
+        "language"
+      ]
+    },
+    {
+      "id": "pQ14_122_treemap",
+      "page": "Q14",
+      "pbi_title": "Rental Rates of Films",
+      "pbi_type": "treemap",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie (substitute)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 0,
+        "height": 8
+      },
+      "entities": [
+        "category",
+        "film"
+      ]
+    },
+    {
+      "id": "pQ14_123_textbox",
+      "page": "Q14",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ14_124_textbox",
+      "page": "Q14",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 8,
+        "height": 7
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ15_125_textbox",
+      "page": "Q15",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ15_126_textbox",
+      "page": "Q15",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 8,
+        "height": 7
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ15_127_linechart",
+      "page": "Q15",
+      "pbi_title": "Average of rental_duration by Film-category",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 12,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "category",
+        "film"
+      ]
+    },
+    {
+      "id": "pQ16_128_textbox",
+      "page": "Q16",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 6,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ16_129_linechart",
+      "page": "Q16",
+      "pbi_title": "Rental Rate & Rental Duration By Country",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "film.rental_rate",
+        "film.rental_duration"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum",
+        "PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 8,
+        "width": 15,
+        "row": 0,
+        "height": 7
+      },
+      "entities": [
+        "country",
+        "film"
+      ]
+    },
+    {
+      "id": "pQ16_130_textbox",
+      "page": "Q16",
+      "pbi_title": "textbox_2",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 21,
+        "row": 8,
+        "height": 7
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ17_131_textbox",
+      "page": "Q17",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 1,
+        "height": 3
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ17_132_textbox",
+      "page": "Q17",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 10,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ17_133_columnchart",
+      "page": "Q17",
+      "pbi_title": "Location wise Customer Ratings",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "city.city"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 1,
+        "height": 9
+      },
+      "entities": [
+        "city",
+        "film"
+      ]
+    },
+    {
+      "id": "pQ18_134_textbox",
+      "page": "Q18",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 11,
+        "row": 0,
+        "height": 4
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ18_135_textbox",
+      "page": "Q18",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 23,
+        "row": 6,
+        "height": 9
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ18_136_donutchart",
+      "page": "Q18",
+      "pbi_title": "Revenue by Rating",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 13,
+        "width": 11,
+        "row": 0,
+        "height": 6
+      },
+      "entities": [
+        "film",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ19_137_textbox",
+      "page": "Q19",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 23,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ19_138_textbox",
+      "page": "Q19",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 12,
+        "row": 3,
+        "height": 13
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ19_139_linestackedcolumncombochart",
+      "page": "Q19",
+      "pbi_title": "Revenue & Inventory Distribution by Category",
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column (partial)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.revenue",
+        "rentat.inventory_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.inventory_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 13,
+        "width": 10,
+        "row": 3,
+        "height": 9
+      },
+      "entities": [
+        "category",
+        "payment",
+        "rentat"
+      ]
+    },
+    {
+      "id": "pQ20_140_textbox",
+      "page": "Q20",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ20_141_textbox",
+      "page": "Q20",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 8,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ20_142_clusteredbarchart",
+      "page": "Q20",
+      "pbi_title": "Rental Rate by Customers",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "customer.first_name"
+      ],
+      "measures": [
+        "film.rental_rate"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "customer",
+        "film"
+      ]
+    },
+    {
+      "id": "pQ21_143_textbox",
+      "page": "Q21",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 8,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ21_144_textbox",
+      "page": "Q21",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
+        "row": 9,
+        "height": 7
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ21_145_columnchart",
+      "page": "Q21",
+      "pbi_title": "rental_id",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "film.title"
+      ],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 14,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "film",
+        "rentat"
+      ]
+    },
+    {
+      "id": "pQ22_146_textbox",
+      "page": "Q22",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ22_147_textbox",
+      "page": "Q22",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 3,
+        "height": 12
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ22_148_barchart",
+      "page": "Q22",
+      "pbi_title": "DIstribution of Films by Actors",
+      "pbi_type": "barChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "actor.first_name"
+      ],
+      "measures": [
+        "film_actor.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film_actor.film_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 12,
+        "row": 0,
+        "height": 15
+      },
+      "entities": [
+        "actor",
+        "film_actor"
+      ]
+    },
+    {
+      "id": "pQ23_149_textbox",
+      "page": "Q23",
+      "pbi_title": "textbox_0",
       "pbi_type": "textbox",
       "looker_type": "text",
       "looker_object": "text",
@@ -1902,216 +3984,38 @@
       "deficiencies": [],
       "position": {
         "col": 5,
-        "width": 19,
-        "row": 0,
+        "width": 15,
+        "row": 1,
         "height": 2
       },
       "entities": []
     },
     {
-      "id": "pPayer-Provider Analysis_70_card",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "ProviderName",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
+      "id": "pQ23_150_textbox",
+      "page": "Q23",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
       "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
       "dimensions": [],
-      "measures": [
-        "physcian_lookup.providername"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Physcian_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_71_card",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "ProviderFTE",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "physcian_lookup.providerfte"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 7,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Physcian_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_72_card",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "ProviderSpecialty",
-      "pbi_type": "card",
-      "looker_type": "single_value",
-      "looker_object": "single_value",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "KPI card \u2192 single_value tile",
-      "dimensions": [],
-      "measures": [
-        "speciality_lookup.providerspecialty"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Speciality_Lookup.ProviderSpecialty mapped to field ref; confirm a measure exists on speciality_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 11,
-        "width": 4,
-        "row": 2,
-        "height": 2
-      },
-      "entities": [
-        "Speciality_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_73_slicer",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Gender",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.patientgender"
-      ],
       "measures": [],
       "deficiencies": [],
       "position": {
-        "col": 21,
-        "width": 3,
-        "row": 2,
-        "height": 2
+        "col": 10,
+        "width": 13,
+        "row": 3,
+        "height": 12
       },
-      "entities": [
-        "Patient_Lookup"
-      ]
+      "entities": []
     },
     {
-      "id": "pPayer-Provider Analysis_74_slicer",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Blood Group",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.bloodgroup"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 21,
-        "width": 3,
-        "row": 4,
-        "height": 6
-      },
-      "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_75_columnchart",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Regional Breakdown of Provider Specialties",
-      "pbi_type": "columnChart",
-      "looker_type": "looker_column",
-      "looker_object": "looker_column",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Column chart \u2192 looker_column",
-      "dimensions": [
-        "speciality_lookup.specialitytype",
-        "facttable.regioncode"
-      ],
-      "measures": [
-        "physcian_lookup.providername"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 8,
-        "row": 10,
-        "height": 6
-      },
-      "entities": [
-        "FactTable",
-        "Physcian_Lookup",
-        "Speciality_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_76_columnchart",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Regional Physician Count Analysis",
-      "pbi_type": "columnChart",
-      "looker_type": "looker_column",
-      "looker_object": "looker_column",
-      "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Column chart \u2192 looker_column",
-      "dimensions": [
-        "facttable.regioncode"
-      ],
-      "measures": [
-        "physcian_lookup.dimphysicianpk"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Physcian_Lookup.dimPhysicianPK mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 8,
-        "row": 4,
-        "height": 5
-      },
-      "entities": [
-        "FactTable",
-        "Physcian_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_77_linestackedcolumncombochart",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Monthly Provider Activity Overview and CPT Units",
+      "id": "pQ23_151_linestackedcolumncombochart",
+      "page": "Q23",
+      "pbi_title": "Actor wise Rental Rate Variation ",
       "pbi_type": "lineStackedColumnComboChart",
       "looker_type": "looker_column",
       "looker_object": "looker_column (partial)",
@@ -2120,171 +4024,544 @@
       "coverage_weight": 0.55,
       "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
       "dimensions": [
-        "dimdate.start_of_month"
+        "actor.first_name"
       ],
       "measures": [
-        "facttable.cptunits",
-        "physcian_lookup.providername"
+        "film.rental_rate"
       ],
       "deficiencies": [
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum",
-        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+        "PBI aggregation on film.rental_rate mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
       ],
       "position": {
-        "col": 11,
-        "width": 10,
-        "row": 4,
-        "height": 5
+        "col": 0,
+        "width": 9,
+        "row": 3,
+        "height": 12
       },
       "entities": [
-        "DimDate",
-        "FactTable",
-        "Physcian_Lookup"
+        "actor",
+        "film"
       ]
     },
     {
-      "id": "pPayer-Provider Analysis_78_pivottable",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Holistic Provider Performance Matrix",
-      "pbi_type": "pivotTable",
-      "looker_type": "looker_grid",
-      "looker_object": "looker_grid",
+      "id": "pQ24_152_textbox",
+      "page": "Q24",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
       "element_kind": "tile",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Matrix/pivot \u2192 looker_grid",
-      "dimensions": [
-        "speciality_lookup.specialitytype",
-        "speciality_lookup.providerspecialty"
-      ],
-      "measures": [
-        "physcian_lookup.providername",
-        "facttable.cptunits",
-        "physcian_lookup.providerfte"
-      ],
-      "deficiencies": [
-        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum",
-        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum",
-        "PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 11,
-        "width": 10,
-        "row": 10,
-        "height": 6
-      },
-      "entities": [
-        "FactTable",
-        "Physcian_Lookup",
-        "Speciality_Lookup"
-      ]
-    },
-    {
-      "id": "pPayer-Provider Analysis_79_image",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "image_15",
-      "pbi_type": "image",
-      "looker_type": null,
-      "looker_object": "manual",
-      "element_kind": null,
-      "status": "gap",
-      "coverage_weight": 0.0,
-      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
       "dimensions": [],
       "measures": [],
       "deficiencies": [],
       "position": {
-        "col": 2,
-        "width": 3,
+        "col": 1,
+        "width": 11,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ24_153_textbox",
+      "page": "Q24",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 22,
+        "row": 8,
+        "height": 8
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ24_154_donutchart",
+      "page": "Q24",
+      "pbi_title": "Genre Preference of Actors",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "film_actor.actor_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film_actor.actor_id mapped to field ref; confirm a measure exists on film_actor (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 13,
+        "width": 10,
+        "row": 1,
+        "height": 7
+      },
+      "entities": [
+        "film",
+        "film_actor"
+      ]
+    },
+    {
+      "id": "pQ25_155_textbox",
+      "page": "Q25",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
         "row": 0,
         "height": 2
       },
       "entities": []
     },
     {
-      "id": "pPayer-Provider Analysis_80_slicer",
-      "page": "Payer-Provider Analysis",
-      "pbi_title": "Region Code",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "patient_lookup.regioncode",
-        "patient_lookup.region"
-      ],
+      "id": "pQ25_156_textbox",
+      "page": "Q25",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
       "measures": [],
       "deficiencies": [],
       "position": {
-        "col": 21,
-        "width": 3,
+        "col": 1,
+        "width": 23,
+        "row": 9,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ25_157_columnchart",
+      "page": "Q25",
+      "pbi_title": "Revenue Contribution by Actors",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "actor.first_name"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 0,
+        "height": 8
+      },
+      "entities": [
+        "actor",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ26_158_textbox",
+      "page": "Q26",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 8,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ26_159_textbox",
+      "page": "Q26",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
         "row": 10,
+        "height": 4
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ26_160_map",
+      "page": "Q26",
+      "pbi_title": "customer distribution by countries",
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "looker_object": "looker_map",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "customer.customer_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on customer.customer_id mapped to field ref; confirm a measure exists on customer (Phase 2) or add type:sum",
+        "map may lack location dimension \u2014 verify geo fields"
+      ],
+      "position": {
+        "col": 10,
+        "width": 14,
+        "row": 0,
+        "height": 10
+      },
+      "entities": [
+        "country",
+        "customer"
+      ]
+    },
+    {
+      "id": "pQ27_161_textbox",
+      "page": "Q27",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 3
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ27_162_textbox",
+      "page": "Q27",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
+        "row": 9,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ27_163_map",
+      "page": "Q27",
+      "pbi_title": "Global Revenue Distribution",
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "looker_object": "looker_map",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "dimensions": [
+        "country.country"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [
+        "map may lack location dimension \u2014 verify geo fields"
+      ],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 0,
+        "height": 8
+      },
+      "entities": [
+        "country",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ28_164_textbox",
+      "page": "Q28",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ28_165_textbox",
+      "page": "Q28",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
+        "row": 10,
+        "height": 5
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ28_166_piechart",
+      "page": "Q28",
+      "pbi_title": "Film Distribution by Content Ratings: Understanding Viewer Preferences",
+      "pbi_type": "pieChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Pie \u2192 looker_pie",
+      "dimensions": [
+        "film.rating"
+      ],
+      "measures": [
+        "film.film_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on film.film_id mapped to field ref; confirm a measure exists on film (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 0,
+        "height": 8
+      },
+      "entities": [
+        "film"
+      ]
+    },
+    {
+      "id": "pQ29_167_textbox",
+      "page": "Q29",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 9,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ29_168_textbox",
+      "page": "Q29",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 1,
+        "width": 23,
+        "row": 9,
+        "height": 6
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ29_169_treemap",
+      "page": "Q29",
+      "pbi_title": "Revenue Distribution by Film Category: Identifying Top Contributors",
+      "pbi_type": "treemap",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie (substitute)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
+      "dimensions": [
+        "category.name"
+      ],
+      "measures": [
+        "payment.revenue"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 10,
+        "width": 13,
+        "row": 0,
+        "height": 8
+      },
+      "entities": [
+        "category",
+        "payment"
+      ]
+    },
+    {
+      "id": "pQ30_170_textbox",
+      "page": "Q30",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 4,
+        "width": 16,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ30_171_textbox",
+      "page": "Q30",
+      "pbi_title": "textbox_1",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 23,
+        "row": 8,
+        "height": 7
+      },
+      "entities": []
+    },
+    {
+      "id": "pQ30_172_columnchart",
+      "page": "Q30",
+      "pbi_title": "Customer Segment Rental Activity Analysis",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "customer.first_name"
+      ],
+      "measures": [
+        "rentat.rental_id"
+      ],
+      "deficiencies": [
+        "PBI aggregation on rentat.rental_id mapped to field ref; confirm a measure exists on rentat (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 0,
+        "width": 23,
+        "row": 2,
         "height": 6
       },
       "entities": [
-        "Patient_Lookup"
-      ]
-    },
-    {
-      "id": "pMonthly Expenses Trends_81_stackedareachart",
-      "page": "Monthly Expenses Trends",
-      "pbi_title": "Monthly Aggregate Expenses: Gross and Adjusted",
-      "pbi_type": "stackedAreaChart",
-      "looker_type": "looker_area",
-      "looker_object": "looker_area",
-      "element_kind": "tile",
-      "status": "partial",
-      "coverage_weight": 0.7,
-      "notes": "Stacked area \u2192 looker_area (stacking may differ)",
-      "dimensions": [
-        "dimdate.start_of_month"
-      ],
-      "measures": [
-        "facttable.gross_expenses",
-        "adjustment_factor_pct.adjustedgrossexpense"
-      ],
-      "deficiencies": [
-        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-      ],
-      "position": {
-        "col": 2,
-        "width": 18,
-        "row": 0,
-        "height": 9
-      },
-      "entities": [
-        "Adjustment factor (%)",
-        "DimDate",
-        "FactTable"
-      ]
-    },
-    {
-      "id": "pMonthly Expenses Trends_82_slicer",
-      "page": "Monthly Expenses Trends",
-      "pbi_title": "Adjustment factor (%)",
-      "pbi_type": "slicer",
-      "looker_type": null,
-      "looker_object": "dashboard filter",
-      "element_kind": "filter",
-      "status": "mapped",
-      "coverage_weight": 1.0,
-      "notes": "Slicer \u2192 dashboard filter (not a tile)",
-      "dimensions": [
-        "adjustment_factor_pct.adjustment_factor_pct"
-      ],
-      "measures": [],
-      "deficiencies": [],
-      "position": {
-        "col": 2,
-        "width": 18,
-        "row": 11,
-        "height": 4
-      },
-      "entities": [
-        "Adjustment factor (%)"
+        "customer",
+        "rentat"
       ]
     }
   ]

@@ -464,9 +464,19 @@ def build_markdown(ctx: dict) -> str:
         lines.append(
             f"Mapped {len(c['measure_plans'])} measures; **{len(c['todo_measures'])} TODO**."
         )
-        lines += ["", "| Power BI measure | Strategy / status |", "|---|---|"]
+        dep_file = ROOT / "MEASURE_DEPENDENCIES.md"
+        if dep_file.exists():
+            lines += [
+                "",
+                f"See **[`MEASURE_DEPENDENCIES.md`](MEASURE_DEPENDENCIES.md)** for measures that "
+                f"depend on other measures (implement bases first; Looker `type: number` + `${{measure}}`).",
+            ]
+        lines += ["", "| Power BI measure | Strategy / status | Depends on |", "|---|---|---|"]
         for m in c["measure_plans"]:
-            lines.append(f"| `{m.get('power_bi')}` | {m.get('strategy')} / {m.get('status')} |")
+            deps = ", ".join(m.get("depends_on") or []) or "—"
+            lines.append(
+                f"| `{m.get('power_bi')}` | {m.get('strategy')} / {m.get('status')} | {deps} |"
+            )
 
     lines += ["", "### Step E — Calculated columns (warehouse)", ""]
     if not c["calc_biz"]:

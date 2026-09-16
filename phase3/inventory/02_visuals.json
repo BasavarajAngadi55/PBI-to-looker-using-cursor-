@@ -1,2531 +1,2778 @@
 {
-  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/dashboards.pbix",
-  "visual_count": 83,
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix",
+  "visual_count": 173,
   "visuals": [
     {
-      "page": "Project Overview",
+      "page": "Overview",
       "ordinal": 0,
-      "visual_type": "textbox",
-      "title": "textbox_0",
-      "x": 0,
-      "y": 0,
-      "width": 1280.4587181254308,
-      "height": 720.3991729841489,
+      "visual_type": "pageNavigator",
+      "title": "pageNavigator_0",
+      "x": 12.523542792847882,
+      "y": 78.27214245529926,
+      "width": 371.0099552381185,
+      "height": 901.6950810850475,
       "z": 0,
       "fields": [],
       "entities": [],
       "projections": [],
-      "page_width": 1280,
-      "page_height": 720
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Executive Summary",
-      "ordinal": 0,
-      "visual_type": "shape",
-      "title": "shape_0",
-      "x": 343.6393958099577,
-      "y": 0,
-      "width": 1448.3143316087974,
-      "height": 129.07430964569144,
-      "z": 0,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
+      "page": "Overview",
       "ordinal": 1,
-      "visual_type": "shape",
-      "title": "shape_1",
-      "x": 0,
-      "y": 0,
-      "width": 144.60093896713616,
-      "height": 1100,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 396.05704082381425,
+      "y": 78.27214245529926,
+      "width": 962.7473522001809,
+      "height": 140.8898564195387,
       "z": 1000,
       "fields": [],
       "entities": [],
       "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Executive Summary",
+      "page": "Overview",
       "ordinal": 2,
-      "visual_type": "card",
-      "title": "CountPatient",
-      "x": 1176.755394432148,
-      "y": 152.54236594490806,
-      "width": 306.7610216254745,
-      "height": 120.69286096739978,
-      "z": 3000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "CountPatient",
-          "native": "Total Patients",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "Measure Table"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 396.05704082381425,
+      "y": 236.38187021500377,
+      "width": 962.7473522001809,
+      "height": 133.06264217400874,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Executive Summary",
+      "page": "Overview",
       "ordinal": 3,
-      "visual_type": "card",
-      "title": "Insurance_Payment",
-      "x": 564,
-      "y": 158,
-      "width": 222,
-      "height": 104,
-      "z": 4000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": " Insurance_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
+      "visual_type": "textbox",
+      "title": "textbox_3",
+      "x": 396.05704082381425,
+      "y": 385.0989408800724,
+      "width": 962.7473522001809,
+      "height": 133.06264217400874,
+      "z": 3000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Executive Summary",
+      "page": "Overview",
       "ordinal": 4,
       "visual_type": "textbox",
       "title": "textbox_4",
-      "x": 344.2879499217527,
-      "y": 25.821596244131456,
-      "width": 1402.9733959311422,
-      "height": 103.28638497652582,
-      "z": 5000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 5,
-      "visual_type": "areaChart",
-      "title": " Monthly Expenses Trends",
-      "x": 160.093896713615,
-      "y": 296.08763693270737,
-      "width": 561.1893583724569,
-      "height": 383.8810641627543,
-      "z": 6000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Gross Expenses",
-          "function": 0,
-          "native": " Gross Expenses",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": " Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": " Insurance_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "FactTable"
-      ],
-      "projections": [
-        "Y",
-        "Category"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 6,
-      "visual_type": "areaChart",
-      "title": "Patient Growth Over Time",
-      "x": 160.093896713615,
-      "y": 697.1830985915493,
-      "width": 561.1893583724569,
-      "height": 387.32394366197184,
-      "z": 7000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": "Start of Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 7,
-      "visual_type": "columnChart",
-      "title": " CPT Units Monthly Distribution",
-      "x": 725.833455540057,
-      "y": 296.7032832115245,
-      "width": 549.8230332959324,
-      "height": 383.87034946575767,
-      "z": 8000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "CPTUnits",
-          "function": 0,
-          "native": " CPTUnits",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": " Month",
-          "table": "DimDate",
-          "alias": "d"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "FactTable"
-      ],
-      "projections": [
-        "Y",
-        "Category"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 8,
-      "visual_type": "clusteredBarChart",
-      "title": " Payer-wise CPT Units",
-      "x": 725.833455540057,
-      "y": 697.3365300338654,
-      "width": 554.8519025029074,
-      "height": 387.2229289370743,
-      "z": 9000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "PayerName",
-          "native": "PayerName",
-          "table": "Payer_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "aggregation",
-          "property": "CPTUnits",
-          "function": 0,
-          "native": " CPTUnits",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable",
-        "Payer_Lookup"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 9,
-      "visual_type": "card",
-      "title": "Gross Expenses",
-      "x": 159.24752488754137,
-      "y": 152.54236594490806,
-      "width": 310.1136010967911,
-      "height": 120.69286096739978,
-      "z": 10000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Gross Expenses",
-          "function": 0,
-          "native": "Total Expenses",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 10,
-      "visual_type": "card",
-      "title": "Insurance_Payment",
-      "x": 489.47660281223244,
-      "y": 152.54236594490806,
-      "width": 335.25794713166607,
-      "height": 120.69286096739978,
-      "z": 11000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": "Insurance Revenue",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 11,
-      "visual_type": "card",
-      "title": "Patient_Payment",
-      "x": 839.8211575648235,
-      "y": 152.54236594490806,
-      "width": 320.1713395107411,
-      "height": 120.69286096739978,
-      "z": 12000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Patient_Payment",
-          "function": 0,
-          "native": "Sum of Patient_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 12,
-      "visual_type": "kpi",
-      "title": "Monthly Net Revenue",
-      "x": 1562.302033633564,
-      "y": 296.7032832115245,
-      "width": 219.5939553712413,
-      "height": 192.773319600708,
-      "z": 13000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "TotalPayment",
-          "native": "TotalPayment",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": " Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Indicator",
-        "TrendLine",
-        "Goal"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 13,
-      "visual_type": "kpi",
-      "title": "Monthly Insurance Revenue",
-      "x": 1562.302033633564,
-      "y": 504.56321043315745,
-      "width": 219.5939553712413,
-      "height": 192.773319600708,
-      "z": 14000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": " Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": "Insurance_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "FactTable",
-        "Measure Table"
-      ],
-      "projections": [
-        "TrendLine",
-        "Indicator",
-        "Goal"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 14,
-      "visual_type": "kpi",
-      "title": "Monthly Patient Revenue ",
-      "x": 1299.6870109546167,
-      "y": 296.08763693270737,
-      "width": 223.78716744913928,
-      "height": 192.80125195618152,
-      "z": 15000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": " Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "aggregation",
-          "property": "Patient_Payment",
-          "function": 0,
-          "native": "Patient_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "FactTable",
-        "Measure Table"
-      ],
-      "projections": [
-        "TrendLine",
-        "Indicator",
-        "Goal"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 15,
-      "visual_type": "kpi",
-      "title": " Monthly Procedure Volume",
-      "x": 1299.6870109546167,
-      "y": 504.38184663536776,
-      "width": 225.50860719874802,
-      "height": 192.80125195618152,
-      "z": 16000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": " Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "aggregation",
-          "property": "CPTUnits",
-          "function": 0,
-          "native": " CPTUnits",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "FactTable",
-        "Measure Table"
-      ],
-      "projections": [
-        "TrendLine",
-        "Indicator",
-        "Goal"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 16,
-      "visual_type": "actionButton",
-      "title": "actionButton_16",
-      "x": 22,
-      "y": 46,
-      "width": 100,
-      "height": 40,
-      "z": 17000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 17,
-      "visual_type": "image",
-      "title": "image_17",
-      "x": 144.16091726661642,
-      "y": 0,
-      "width": 199.4784785433413,
-      "height": 129.07430964569144,
-      "z": 18000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 18,
-      "visual_type": "card",
-      "title": "TotalPayment",
-      "x": 1501.955603149864,
-      "y": 152.54236594490806,
-      "width": 279.94038585494116,
-      "height": 120.69286096739978,
-      "z": 19000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "TotalPayment",
-          "function": 0,
-          "native": "Total Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 19,
-      "visual_type": "kpi",
-      "title": "Yearly Avg. Patient Payment Trend",
-      "x": 1299.6870109546167,
-      "y": 728.169014084507,
-      "width": 225.50860719874802,
-      "height": 163.53677621283254,
-      "z": 20000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "measure",
-          "property": "AveragePatientPay",
-          "native": "AveragePatientPay",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "other",
-          "native": "Date Year",
-          "table": "DimDate",
-          "alias": "d"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Goal",
-        "Indicator",
-        "TrendLine"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 20,
-      "visual_type": "kpi",
-      "title": "Monthly Payment Performance",
-      "x": 1563.0672926447573,
-      "y": 728.169014084507,
-      "width": 218.62284820031297,
-      "height": 163.53677621283254,
-      "z": 21000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "measure",
-          "property": "YTDPayment",
-          "native": "YTDPayment",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "other",
-          "native": "Date Month",
-          "table": "DimDate",
-          "alias": "d"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Goal",
-        "Indicator",
-        "TrendLine"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 21,
-      "visual_type": "kpi",
-      "title": "Optimized Quarterly Expenditure",
-      "x": 1300,
-      "y": 910,
-      "width": 226,
-      "height": 174,
-      "z": 22000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "other",
-          "native": "Date Quarter",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "measure",
-          "property": "TotalGrossExpense",
-          "native": "TotalGrossExpense",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Goal",
-        "TrendLine",
-        "Indicator"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Executive Summary",
-      "ordinal": 22,
-      "visual_type": "kpi",
-      "title": "Deficit Reduction Efficiency - Monthly",
-      "x": 1563,
-      "y": 910,
-      "width": 219,
-      "height": 174,
-      "z": 23000,
-      "fields": [
-        {
-          "kind": "other",
-          "native": "Date Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "measure",
-          "property": "Previous MonthPay",
-          "native": "Previous MonthPay",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "measure",
-          "property": "TotalDeficit",
-          "native": "TotalDeficit",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "TrendLine",
-        "Goal",
-        "Indicator"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 0,
-      "visual_type": "shape",
-      "title": "shape_0",
-      "x": 342.566510172144,
-      "y": 0,
-      "width": 1458.0594679186229,
-      "height": 129.10798122065728,
-      "z": 0,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 1,
-      "visual_type": "shape",
-      "title": "shape_1",
-      "x": 0,
-      "y": 0,
-      "width": 144.60093896713616,
-      "height": 1100,
-      "z": 1000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 2,
-      "visual_type": "card",
-      "title": "CptGrouping",
-      "x": 1241.1580594679185,
-      "y": 141.1580594679186,
-      "width": 308.13771517996867,
-      "height": 120.50078247261345,
-      "z": 3000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "CptGrouping",
-          "function": 2,
-          "native": "CPT Grouping",
-          "table": "CptCode_Lookup",
-          "alias": "c"
-        }
-      ],
-      "entities": [
-        "CptCode_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 3,
-      "visual_type": "card",
-      "title": "Patient_Payment",
-      "x": 890,
-      "y": 160,
-      "width": 220,
-      "height": 104,
+      "x": 396.05704082381425,
+      "y": 529.119682997823,
+      "width": 962.7473522001809,
+      "height": 142.45529926864467,
       "z": 4000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Patient_Payment",
-          "function": 0,
-          "native": " Patient_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Hospital Insights",
-      "ordinal": 4,
-      "visual_type": "card",
-      "title": "Insurance_Payment",
-      "x": 564,
-      "y": 158,
-      "width": 222,
-      "height": 104,
-      "z": 5000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": " Insurance_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
+      "page": "Overview",
       "ordinal": 5,
       "visual_type": "textbox",
       "title": "textbox_5",
-      "x": 344.2879499217527,
-      "y": 27.54303599374022,
-      "width": 1440.8450704225352,
-      "height": 101.56494522691706,
-      "z": 6000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 6,
-      "visual_type": "lineChart",
-      "title": "Monthly ARGE Ratio Trend",
-      "x": 160.093896713615,
-      "y": 285.75899843505476,
-      "width": 709.2331768388107,
-      "height": 184.19405320813772,
-      "z": 7000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "ARGE Ratio",
-          "native": "ARGE Ratio",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": "Start of Month",
-          "table": "DimDate",
-          "alias": "d"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Y",
-        "Category"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 7,
-      "visual_type": "card",
-      "title": "AR",
-      "x": 160.093896713615,
-      "y": 141.1580594679186,
-      "width": 309.85915492957747,
-      "height": 122.22222222222221,
-      "z": 11000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "AR",
-          "function": 0,
-          "native": "Account Receivable",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 8,
-      "visual_type": "card",
-      "title": "HospitalName",
-      "x": 533.6463223787167,
-      "y": 141.1580594679186,
-      "width": 282.3161189358372,
-      "height": 122.22222222222221,
-      "z": 12000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "HospitalName",
-          "function": 5,
-          "native": "Hospital Count",
-          "table": "Hospital_Lookup",
-          "alias": "h"
-        }
-      ],
-      "entities": [
-        "Hospital_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 9,
-      "visual_type": "card",
-      "title": "CPTUnits",
-      "x": 869.3270735524256,
-      "y": 141.1580594679186,
-      "width": 320.18779342723,
-      "height": 122.22222222222221,
-      "z": 13000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "CPTUnits",
-          "function": 0,
-          "native": " Procedure Count (CPT Units)",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 10,
-      "visual_type": "lineChart",
-      "title": "Monthly IPTP Ratio Trend",
-      "x": 160.093896713615,
-      "y": 476.8388106416275,
-      "width": 709.2331768388107,
-      "height": 161.8153364632238,
-      "z": 14000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Start of Month",
-          "native": "Start of Month",
-          "table": "DimDate",
-          "alias": "d"
-        },
-        {
-          "kind": "measure",
-          "property": "IPTP Ratio",
-          "native": "IPTP Ratio",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "DimDate",
-        "Measure Table"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 11,
-      "visual_type": "pieChart",
-      "title": " Gross Expenses by CptGrouping",
-      "x": 884.8200312989045,
-      "y": 285.75899843505476,
-      "width": 664.4757433489827,
-      "height": 352.8951486697965,
-      "z": 15000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "CptGrouping",
-          "native": "CptGrouping",
-          "table": "CptCode_Lookup",
-          "alias": "c"
-        },
-        {
-          "kind": "aggregation",
-          "property": "Gross Expenses",
-          "function": 0,
-          "native": "Sum of Gross Expenses",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "CptCode_Lookup",
-        "FactTable"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 12,
-      "visual_type": "treemap",
-      "title": " CPT Units Distribution by Hospital",
-      "x": 884.8200312989045,
-      "y": 645.5399061032864,
-      "width": 664.4757433489827,
-      "height": 433.80281690140845,
-      "z": 16000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "HospitalName",
-          "native": "HospitalName",
-          "table": "Hospital_Lookup",
-          "alias": "h"
-        },
-        {
-          "kind": "aggregation",
-          "property": "CPTUnits",
-          "function": 0,
-          "native": "Sum of CPTUnits",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable",
-        "Hospital_Lookup"
-      ],
-      "projections": [
-        "Group",
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 13,
-      "visual_type": "pivotTable",
-      "title": "Critical Hospital Metrics Overview",
-      "x": 160.093896713615,
-      "y": 645.5399061032864,
-      "width": 709.2331768388107,
-      "height": 433.80281690140845,
-      "z": 17000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "HospitalName",
-          "native": "HospitalName",
-          "table": "Hospital_Lookup",
-          "alias": "h"
-        },
-        {
-          "kind": "aggregation",
-          "property": "AR",
-          "function": 0,
-          "native": " AR",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "measure",
-          "property": "IPTP Ratio",
-          "native": "IPTP Ratio",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "measure",
-          "property": "ARGE Ratio",
-          "native": "ARGE Ratio",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "measure",
-          "property": "BadDebts",
-          "native": "BadDebts",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "FactTable",
-        "Hospital_Lookup",
-        "Measure Table"
-      ],
-      "projections": [
-        "Rows",
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 14,
-      "visual_type": "slicer",
-      "title": "Hospital ",
-      "x": 1566.5101721439748,
-      "y": 141.1580594679186,
-      "width": 218.62284820031297,
-      "height": 497.4960876369327,
-      "z": 18000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "HospitalName",
-          "native": "HospitalName",
-          "table": "Hospital_Lookup",
-          "alias": "h"
-        }
-      ],
-      "entities": [
-        "Hospital_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 15,
-      "visual_type": "slicer",
-      "title": "Region",
-      "x": 1566.5101721439748,
-      "y": 654.1471048513301,
-      "width": 218.62284820031297,
-      "height": 425.1956181533646,
-      "z": 19000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Region",
-          "native": "Region",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 16,
-      "visual_type": "textbox",
-      "title": "textbox_16",
-      "x": 1578.5602503912362,
-      "y": 893.4272300469484,
-      "width": 184.19405320813772,
-      "height": 166.97965571205006,
-      "z": 20000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Hospital Insights",
-      "ordinal": 17,
-      "visual_type": "image",
-      "title": "image_17",
-      "x": 143.33333333333334,
-      "y": 0,
-      "width": 213.33333333333334,
-      "height": 128.33333333333334,
-      "z": 21000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 0,
-      "visual_type": "shape",
-      "title": "shape_0",
-      "x": 344.2879499217527,
-      "y": 0,
-      "width": 1456.338028169014,
-      "height": 127.3865414710485,
-      "z": 0,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 1,
-      "visual_type": "shape",
-      "title": "shape_1",
-      "x": 0,
-      "y": 0,
-      "width": 144.60093896713616,
-      "height": 1100,
-      "z": 1000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 2,
-      "visual_type": "card",
-      "title": "City",
-      "x": 1175.7433489827856,
-      "y": 151.4866979655712,
-      "width": 308.13771517996867,
-      "height": 110.17214397496087,
-      "z": 3000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "City",
-          "function": 2,
-          "native": "Total Cities",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 3,
-      "visual_type": "card",
-      "title": "Patient_Payment",
-      "x": 890,
-      "y": 160,
-      "width": 220,
-      "height": 104,
-      "z": 4000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Patient_Payment",
-          "function": 0,
-          "native": " Patient_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 4,
-      "visual_type": "card",
-      "title": "Insurance_Payment",
-      "x": 564,
-      "y": 158,
-      "width": 222,
-      "height": 104,
+      "x": 396.05704082381425,
+      "y": 684.0985250593155,
+      "width": 962.7473522001809,
+      "height": 134.62808502311472,
       "z": 5000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": " Insurance_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Patient Analysis",
-      "ordinal": 5,
+      "page": "Overview",
+      "ordinal": 6,
       "visual_type": "textbox",
-      "title": "textbox_5",
-      "x": 344.2879499217527,
-      "y": 22.378716744913927,
-      "width": 1456.338028169014,
-      "height": 106.72926447574335,
+      "title": "textbox_6",
+      "x": 396.05704082381425,
+      "y": 834.3810385734902,
+      "width": 962.7473522001809,
+      "height": 145.58618496685662,
       "z": 6000,
       "fields": [],
       "entities": [],
       "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Patient Analysis",
-      "ordinal": 6,
-      "visual_type": "card",
-      "title": "DistinctPatient",
-      "x": 160.093896713615,
-      "y": 151.4866979655712,
-      "width": 309.85915492957747,
-      "height": 111.89358372456964,
-      "z": 10000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "Distinct Patients",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "Measure Table"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
+      "page": "Overview",
       "ordinal": 7,
-      "visual_type": "card",
-      "title": "dimPatientFK",
-      "x": 490.61032863849766,
-      "y": 151.4866979655712,
-      "width": 333.9593114241001,
-      "height": 111.89358372456964,
-      "z": 11000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "dimPatientFK",
-          "function": 5,
-          "native": "Total Patients Enrolled",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
+      "visual_type": "textbox",
+      "title": "textbox_7",
+      "x": 12.523542792847882,
+      "y": 0,
+      "width": 1346.2808502311473,
+      "height": 65.74859966245138,
+      "z": 7000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Patient Analysis",
-      "ordinal": 8,
-      "visual_type": "card",
-      "title": "State",
-      "x": 840.0625978090767,
-      "y": 151.4866979655712,
-      "width": 320.18779342723,
-      "height": 111.89358372456964,
-      "z": 12000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "State",
-          "function": 2,
-          "native": "Total States",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 9,
-      "visual_type": "slicer",
-      "title": "Gender",
-      "x": 1501.095461658842,
-      "y": 275.43035993740216,
-      "width": 277.15179968701096,
-      "height": 113.6150234741784,
-      "z": 13000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "PatientGender",
-          "native": "PatientGender",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 10,
-      "visual_type": "slicer",
-      "title": "Blood Group",
-      "x": 1501.095461658842,
-      "y": 747.1048513302034,
-      "width": 277.15179968701096,
-      "height": 340.8450704225352,
-      "z": 14000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "BloodGroup",
-          "native": "BloodGroup",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 11,
-      "visual_type": "donutChart",
-      "title": "Patient by Tobacco",
-      "x": 160.093896713615,
-      "y": 275.43035993740216,
-      "width": 316.7449139280125,
-      "height": 228.95148669796555,
-      "z": 15000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Tobacco",
-          "native": "Tobacco",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 12,
-      "visual_type": "donutChart",
-      "title": "Patient By Exercise",
-      "x": 490.61032863849766,
-      "y": 275.43035993740216,
-      "width": 333.9593114241001,
-      "height": 228.95148669796555,
-      "z": 16000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "column",
-          "property": "Exercise",
-          "native": "Exercise",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 13,
-      "visual_type": "donutChart",
-      "title": "Patient by Alcohol",
-      "x": 490.61032863849766,
-      "y": 511.2676056338028,
-      "width": 333.9593114241001,
-      "height": 228.95148669796555,
-      "z": 17000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "column",
-          "property": "Alcohol",
-          "native": "Alcohol",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Y",
-        "Category"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 14,
-      "visual_type": "donutChart",
-      "title": "Patient by Diet",
-      "x": 160.093896713615,
-      "y": 509.546165884194,
-      "width": 316.7449139280125,
-      "height": 228.95148669796555,
-      "z": 18000,
-      "fields": [
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        },
-        {
-          "kind": "column",
-          "property": "Diet",
-          "native": "Diet",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Y",
-        "Category"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 15,
-      "visual_type": "clusteredColumnChart",
-      "title": "Distinct Patients by BloodGroup",
-      "x": 160.093896713615,
-      "y": 747.1048513302034,
-      "width": 666.1971830985915,
-      "height": 340.8450704225352,
-      "z": 19000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "BloodGroup",
-          "native": "BloodGroup",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Category",
-        "Y"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 16,
-      "visual_type": "pivotTable",
-      "title": "Patient Gender Distribution by State",
-      "x": 840.0625978090767,
-      "y": 747.1048513302034,
-      "width": 643.8184663536776,
-      "height": 340.8450704225352,
-      "z": 20000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "State",
-          "native": "State",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "column",
-          "property": "PatientGender",
-          "native": "PatientGender",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
-        }
-      ],
-      "entities": [
-        "Measure Table",
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Rows",
-        "Columns",
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 17,
-      "visual_type": "slicer",
-      "title": "Region Code",
-      "x": 1175.7433489827856,
-      "y": 430.3599374021909,
-      "width": 220.34428794992175,
-      "height": 284.037558685446,
-      "z": 21000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "RegionCode",
-          "native": "RegionCode",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "column",
-          "property": "Region",
-          "native": "Region",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 18,
+      "page": "Geographic / Location Analysis",
+      "ordinal": 0,
       "visual_type": "map",
-      "title": "Distribution of Patient by State",
-      "x": 840.0625978090767,
-      "y": 277.15179968701096,
-      "width": 643.8184663536776,
-      "height": 461.34585289514865,
-      "z": 22000,
+      "title": "country",
+      "x": 7.727975270479134,
+      "y": 573.4157650695518,
+      "width": 525.5023183925812,
+      "height": 411.1282843894899,
+      "z": 0,
       "fields": [
         {
           "kind": "column",
-          "property": "State",
-          "native": "State",
-          "table": "Patient_Lookup",
-          "alias": "p"
+          "property": "country",
+          "native": "country",
+          "table": "country",
+          "alias": "c"
         },
         {
           "kind": "measure",
-          "property": "DistinctPatient",
-          "native": "DistinctPatient",
-          "table": "Measure Table",
-          "alias": "m"
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
         }
       ],
       "entities": [
-        "Measure Table",
-        "Patient_Lookup"
+        "country",
+        "payment"
       ],
       "projections": [
         "Category",
         "Size"
       ],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Patient Analysis",
-      "ordinal": 19,
-      "visual_type": "image",
-      "title": "image_19",
-      "x": 143.33333333333334,
-      "y": 0,
-      "width": 200,
-      "height": 128.33333333333334,
-      "z": 23000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 20,
-      "visual_type": "card",
-      "title": "PatientAge",
-      "x": 1501.095461658842,
-      "y": 151.4866979655712,
-      "width": 277.15179968701096,
-      "height": 111.89358372456964,
-      "z": 24000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "PatientAge",
-          "function": 1,
-          "native": "Average Patient Age",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Patient Analysis",
-      "ordinal": 21,
-      "visual_type": "slicer",
-      "title": "Region",
-      "x": 1501.095461658842,
-      "y": 404.53834115805944,
-      "width": 277.15179968701096,
-      "height": 333.9593114241001,
-      "z": 25000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "Region",
-          "native": "Region",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 0,
-      "visual_type": "shape",
-      "title": "shape_0",
-      "x": 342.566510172144,
-      "y": 0,
-      "width": 1456.338028169014,
-      "height": 127.3865414710485,
-      "z": 0,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
+      "page": "Geographic / Location Analysis",
       "ordinal": 1,
-      "visual_type": "shape",
-      "title": "shape_1",
-      "x": 0,
-      "y": 0,
-      "width": 142.87949921752738,
-      "height": 1100,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 416.40779786219207,
+      "y": 9.392657094635911,
+      "width": 942.3965951618031,
+      "height": 82.96847100261722,
       "z": 1000,
       "fields": [],
       "entities": [],
       "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Payer-Provider Analysis",
+      "page": "Geographic / Location Analysis",
       "ordinal": 2,
-      "visual_type": "card",
-      "title": "City",
-      "x": 1206.7292644757433,
-      "y": 139.43661971830986,
-      "width": 308.13771517996867,
-      "height": 122.22222222222221,
-      "z": 3000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "City",
-          "function": 2,
-          "native": "City Count",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 3,
-      "visual_type": "card",
-      "title": "Patient_Payment",
-      "x": 890,
-      "y": 160,
-      "width": 220,
-      "height": 104,
-      "z": 4000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Patient_Payment",
-          "function": 0,
-          "native": " Patient_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 4,
-      "visual_type": "card",
-      "title": "Insurance_Payment",
-      "x": 564,
-      "y": 158,
-      "width": 222,
-      "height": 104,
-      "z": 5000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "Insurance_Payment",
-          "function": 0,
-          "native": " Insurance_Payment",
-          "table": "FactTable",
-          "alias": "f"
-        }
-      ],
-      "entities": [
-        "FactTable"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 5,
-      "visual_type": "textbox",
-      "title": "textbox_5",
-      "x": 342.566510172144,
-      "y": 25.821596244131456,
-      "width": 1523.4741784037558,
-      "height": 84.35054773082942,
-      "z": 6000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 6,
-      "visual_type": "card",
-      "title": "ProviderName",
-      "x": 160.093896713615,
-      "y": 139.43661971830986,
-      "width": 309.85915492957747,
-      "height": 123.94366197183098,
-      "z": 10000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "ProviderName",
-          "function": 2,
-          "native": "Distinct Provider",
-          "table": "Physcian_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Physcian_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 7,
-      "visual_type": "card",
-      "title": "ProviderFTE",
-      "x": 490.61032863849766,
-      "y": 139.43661971830986,
-      "width": 333.9593114241001,
-      "height": 123.94366197183098,
-      "z": 11000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "ProviderFTE",
-          "function": 0,
-          "native": "Total FTE Employees",
-          "table": "Physcian_Lookup",
-          "alias": "p1"
-        }
-      ],
-      "entities": [
-        "Physcian_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 8,
-      "visual_type": "card",
-      "title": "ProviderSpecialty",
-      "x": 858.998435054773,
-      "y": 139.43661971830986,
-      "width": 320.18779342723,
-      "height": 123.94366197183098,
-      "z": 12000,
-      "fields": [
-        {
-          "kind": "aggregation",
-          "property": "ProviderSpecialty",
-          "function": 2,
-          "native": "Specialty Provider Count",
-          "table": "Speciality_Lookup",
-          "alias": "s"
-        }
-      ],
-      "entities": [
-        "Speciality_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 9,
-      "visual_type": "slicer",
-      "title": "Gender",
-      "x": 1556.1815336463224,
-      "y": 139.43661971830986,
-      "width": 242.72300469483568,
-      "height": 129.10798122065728,
-      "z": 13000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "PatientGender",
-          "native": "PatientGender",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 10,
-      "visual_type": "slicer",
-      "title": "Blood Group",
-      "x": 1578.8562263133242,
-      "y": 288.8816340435196,
-      "width": 219.84074037274135,
-      "height": 386.9923776809414,
-      "z": 14000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "BloodGroup",
-          "native": "BloodGroup",
-          "table": "Patient_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "Patient_Lookup"
-      ],
-      "projections": [
-        "Values"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 11,
       "visual_type": "columnChart",
-      "title": "Regional Breakdown of Provider Specialties",
-      "x": 160.093896713615,
-      "y": 655.8685446009389,
-      "width": 626.6040688575899,
-      "height": 428.63849765258215,
-      "z": 15000,
+      "title": "Location wise Customer Ratings",
+      "x": 853.1684698608964,
+      "y": 573.4157650695518,
+      "width": 505.40958268933537,
+      "height": 411.1282843894899,
+      "z": 2000,
       "fields": [
         {
           "kind": "column",
-          "property": "SpecialityType",
-          "native": "SpecialityType",
-          "table": "Speciality_Lookup",
-          "alias": "s"
+          "property": "city",
+          "native": "City",
+          "table": "city",
+          "alias": "c"
         },
         {
           "kind": "aggregation",
-          "property": "ProviderName",
-          "function": 5,
-          "native": "Count of ProviderName",
-          "table": "Physcian_Lookup",
-          "alias": "p"
-        },
-        {
-          "kind": "column",
-          "property": "RegionCode",
-          "native": "RegionCode",
-          "table": "FactTable",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate",
+          "table": "film",
           "alias": "f"
         }
       ],
       "entities": [
-        "FactTable",
-        "Physcian_Lookup",
-        "Speciality_Lookup"
-      ],
-      "projections": [
-        "Category",
-        "Y",
-        "Rows"
-      ],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 12,
-      "visual_type": "columnChart",
-      "title": "Regional Physician Count Analysis",
-      "x": 160,
-      "y": 282,
-      "width": 626,
-      "height": 360,
-      "z": 16000,
-      "fields": [
-        {
-          "kind": "column",
-          "property": "RegionCode",
-          "native": "RegionCode",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "aggregation",
-          "property": "dimPhysicianPK",
-          "function": 5,
-          "native": "Count of dimPhysicianPK",
-          "table": "Physcian_Lookup",
-          "alias": "p"
-        }
-      ],
-      "entities": [
-        "FactTable",
-        "Physcian_Lookup"
+        "city",
+        "film"
       ],
       "projections": [
         "Category",
         "Y"
       ],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 13,
-      "visual_type": "lineStackedColumnComboChart",
-      "title": "Monthly Provider Activity Overview and CPT Units",
-      "x": 799.4208740826958,
-      "y": 281.61417155185876,
-      "width": 757.6329647556458,
-      "height": 359.73939333721313,
-      "z": 17000,
+      "page": "Geographic / Location Analysis",
+      "ordinal": 3,
+      "visual_type": "clusteredBarChart",
+      "title": " Distribution of Customers across Countries",
+      "x": 537.8670788253478,
+      "y": 573.4157650695518,
+      "width": 302.9366306027821,
+      "height": 411.1282843894899,
+      "z": 3000,
       "fields": [
         {
           "kind": "column",
-          "property": "Start of Month",
-          "native": "Start of Month",
-          "table": "DimDate",
-          "alias": "d"
+          "property": "country",
+          "native": "country",
+          "table": "country",
+          "alias": "c"
         },
         {
           "kind": "aggregation",
-          "property": "CPTUnits",
-          "function": 0,
-          "native": "Sum of CPTUnits",
-          "table": "FactTable",
-          "alias": "f"
-        },
-        {
-          "kind": "aggregation",
-          "property": "ProviderName",
+          "property": "customer_id",
           "function": 5,
-          "native": "Count of ProviderName",
-          "table": "Physcian_Lookup",
+          "native": "customer_counts",
+          "table": "customer",
+          "alias": "c1"
+        }
+      ],
+      "entities": [
+        "country",
+        "customer"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 4,
+      "visual_type": "card",
+      "title": "Revenue",
+      "x": 8.73534338358459,
+      "y": 9.98324958123953,
+      "width": 189.68174204355108,
+      "height": 82.36180904522612,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
           "alias": "p"
         }
       ],
       "entities": [
-        "DimDate",
-        "FactTable",
-        "Physcian_Lookup"
+        "payment"
       ],
       "projections": [
-        "Category",
-        "Y",
-        "Y2"
+        "Values"
       ],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 14,
-      "visual_type": "pivotTable",
-      "title": "Holistic Provider Performance Matrix",
-      "x": 798.7480438184663,
-      "y": 655.8685446009389,
-      "width": 759.1549295774647,
-      "height": 428.63849765258215,
-      "z": 18000,
+      "page": "Geographic / Location Analysis",
+      "ordinal": 5,
+      "visual_type": "card",
+      "title": "rental_rate",
+      "x": 207.15242881072027,
+      "y": 9.98324958123953,
+      "width": 194.67336683417085,
+      "height": 82.36180904522612,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 1,
+          "native": "AVG of Rental Rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 6,
+      "visual_type": "card",
+      "title": "rental_duration",
+      "x": 8.73534338358459,
+      "y": 102.32830820770519,
+      "width": 189.68174204355108,
+      "height": 92.34505862646566,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "AVG of rental duration",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 7,
+      "visual_type": "slicer",
+      "title": "city",
+      "x": 207.1097372488408,
+      "y": 205.56414219474496,
+      "width": 194.74497681607417,
+      "height": 357.032457496136,
+      "z": 8000,
       "fields": [
         {
           "kind": "column",
-          "property": "SpecialityType",
-          "native": "SpecialityType",
-          "table": "Speciality_Lookup",
-          "alias": "s"
-        },
+          "property": "city",
+          "native": "city",
+          "table": "city",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "city"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 8,
+      "visual_type": "slicer",
+      "title": "country",
+      "x": 9.273570324574962,
+      "y": 205.56414219474496,
+      "width": 190.1081916537867,
+      "height": 357.032457496136,
+      "z": 9000,
+      "fields": [
         {
           "kind": "column",
-          "property": "ProviderSpecialty",
-          "native": "ProviderSpecialty",
-          "table": "Speciality_Lookup",
-          "alias": "s"
-        },
+          "property": "country",
+          "native": "country",
+          "table": "country",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "country"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 9,
+      "visual_type": "card",
+      "title": "Rental Frequency",
+      "x": 207.15242881072027,
+      "y": 102.32830820770519,
+      "width": 194.67336683417085,
+      "height": 92.34505862646566,
+      "z": 10000,
+      "fields": [
         {
           "kind": "aggregation",
-          "property": "ProviderName",
-          "function": 2,
-          "native": "Count of Providers",
-          "table": "Physcian_Lookup",
-          "alias": "p1"
-        },
-        {
-          "kind": "aggregation",
-          "property": "CPTUnits",
+          "property": "payment_id",
           "function": 0,
-          "native": "Sum of CPTUnits",
-          "table": "FactTable",
+          "native": "Rental Frequency",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 10,
+      "visual_type": "tableEx",
+      "title": "Rental Rate & Rental Duration By Country",
+      "x": 416.40779786219207,
+      "y": 101.75378519188904,
+      "width": 425.800454956828,
+      "height": 460.24019763715967,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "Country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate",
+          "table": "film",
           "alias": "f"
         },
         {
           "kind": "aggregation",
-          "property": "ProviderFTE",
+          "property": "rental_duration",
           "function": 0,
-          "native": "Sum of ProviderFTE",
-          "table": "Physcian_Lookup",
-          "alias": "p1"
+          "native": "Rental Duration",
+          "table": "film",
+          "alias": "f"
         }
       ],
       "entities": [
-        "FactTable",
-        "Physcian_Lookup",
-        "Speciality_Lookup"
+        "country",
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Geographic / Location Analysis",
+      "ordinal": 11,
+      "visual_type": "clusteredBarChart",
+      "title": "Rental Revenue by Country",
+      "x": 853.166352762762,
+      "y": 101.75378519188904,
+      "width": 505.63804026123324,
+      "height": 460.24019763715967,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "Country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "amount",
+          "function": 0,
+          "native": "Rental Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "country",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 0,
+      "visual_type": "clusteredBarChart",
+      "title": "Rental Revenue by Country",
+      "x": 6.182380216383307,
+      "y": 95.82689335394126,
+      "width": 418.85625965996906,
+      "height": 534.7758887171561,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "Country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "amount",
+          "function": 0,
+          "native": "Rental Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "country",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 6.261771396423941,
+      "y": 0,
+      "width": 876.6479954993517,
+      "height": 86.09935670082919,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 2,
+      "visual_type": "lineChart",
+      "title": "Revenue by Month",
+      "x": 891.8083462132921,
+      "y": 191.65378670788252,
+      "width": 462.1329211746522,
+      "height": 438.9489953632148,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "other",
+          "native": "payment_date Year",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "other",
+          "native": "payment_date Month",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 3,
+      "visual_type": "treemap",
+      "title": "name",
+      "x": 431.22102009273567,
+      "y": 191.65378670788252,
+      "width": 452.85935085007725,
+      "height": 438.9489953632148,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film Category",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "category",
+        "payment"
+      ],
+      "projections": [
+        "Group",
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 4,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Revenue & Inventory Distribution by Category",
+      "x": 808.3462132921175,
+      "y": 644.5131375579598,
+      "width": 545.5950540958269,
+      "height": 338.48531684698605,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "aggregation",
+          "property": "inventory_id",
+          "function": 5,
+          "native": "Inventory Distribution",
+          "table": "rentat",
+          "alias": "r"
+        },
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film Category",
+          "table": "category",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "category",
+        "payment",
+        "rentat"
+      ],
+      "projections": [
+        "Y",
+        "Y2",
+        "Category"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 5,
+      "visual_type": "card",
+      "title": "Revenue",
+      "x": 585.6259659969088,
+      "y": 95.98145285935085,
+      "width": 166.92426584234929,
+      "height": 86.24420401854714,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 6,
+      "visual_type": "donutChart",
+      "title": "Revenue by Rating",
+      "x": 431.22102009273567,
+      "y": 644.5131375579598,
+      "width": 369.3972179289026,
+      "height": 338.48531684698605,
+      "z": 6000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "film",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 7,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Revenue",
+      "x": 6.182380216383307,
+      "y": 644.5131375579598,
+      "width": 418.85625965996906,
+      "height": 338.48531684698605,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "column",
+          "property": "rental_duration",
+          "native": "Rental Duration (In Days)",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film",
+        "payment"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "Rental Frequency",
+      "x": 976.5069551777434,
+      "y": 95.98145285935085,
+      "width": 166.92426584234929,
+      "height": 86.24420401854714,
+      "z": 8000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "payment_id",
+          "function": 0,
+          "native": "Rental Frequency",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 9,
+      "visual_type": "card",
+      "title": "rental_rate",
+      "x": 770.6336939721792,
+      "y": 95.98145285935085,
+      "width": 191.9629057187017,
+      "height": 86.24420401854714,
+      "z": 9000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Total Rental Rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 10,
+      "visual_type": "card",
+      "title": "rental_duration",
+      "x": 892.3024239904116,
+      "y": 0,
+      "width": 461.80564048626564,
+      "height": 86.09935670082919,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "Average of Rental Duration",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 11,
+      "visual_type": "card",
+      "title": "rental_id",
+      "x": 1165.6877897990726,
+      "y": 95.98145285935085,
+      "width": 187.78979907264295,
+      "height": 86.24420401854714,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 5,
+          "native": "Total Rentals",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "rentat"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Revenue Analysis",
+      "ordinal": 12,
+      "visual_type": "slicer",
+      "title": "slicer_12",
+      "x": 431.22102009273567,
+      "y": 95.98145285935085,
+      "width": 136.32148377125193,
+      "height": 87.63523956723338,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "other",
+          "native": "payment_date Year",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 599.5646112075924,
+      "y": 7.827214245529927,
+      "width": 760.8052246655088,
+      "height": 68.87948536066335,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 1,
+      "visual_type": "donutChart",
+      "title": "Active/Inactive Customer:",
+      "x": 392.9261551256023,
+      "y": 324.04666976493894,
+      "width": 197.24579898735414,
+      "height": 214.46567032751997,
+      "z": 1000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "active",
+          "native": "active",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "active",
+          "function": 5,
+          "native": "Count of active",
+          "table": "customer",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "customer"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 2,
+      "visual_type": "tableEx",
+      "title": "Active/Inactive(1/0) Customer Details:",
+      "x": 599.5646112075924,
+      "y": 87.66479954993518,
+      "width": 380.4026123327544,
+      "height": 449.28209769341777,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "first_name",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "active",
+          "function": 0,
+          "native": " active(1) /      inactive(0)",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "customer_id",
+          "native": "customer_id",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "last_name",
+          "native": "last_name",
+          "table": "customer",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "customer"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 3,
+      "visual_type": "clusteredBarChart",
+      "title": "name",
+      "x": 992.4907663331946,
+      "y": 87.66479954993518,
+      "width": 367.87906953990654,
+      "height": 449.28209769341777,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Customer Segments",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "amount",
+          "function": 0,
+          "native": "Sales",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "category",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 4,
+      "visual_type": "map",
+      "title": "Customers by Country",
+      "x": 10.819165378670787,
+      "y": 548.6862442040185,
+      "width": 579.5981452859351,
+      "height": 438.9489953632148,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "customer_id",
+          "function": 5,
+          "native": "Count of customer_id",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "country",
+          "table": "country",
+          "alias": "c1"
+        }
+      ],
+      "entities": [
+        "country",
+        "customer"
+      ],
+      "projections": [
+        "Size",
+        "Category"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 5,
+      "visual_type": "card",
+      "title": "customer_id",
+      "x": 11.128284389489954,
+      "y": 101.54559505409583,
+      "width": 186.39876352395672,
+      "height": 79.28902627511592,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "customer_id",
+          "function": 5,
+          "native": "Count of Customers",
+          "table": "customer",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "customer"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 6,
+      "visual_type": "columnChart",
+      "title": "Rental Rate by Customers",
+      "x": 599.6908809891809,
+      "y": 548.6862442040185,
+      "width": 760.4327666151468,
+      "height": 438.9489953632148,
+      "z": 6000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "Customer",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 5,
+          "native": "Count of rentals",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "customer",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 7,
+      "visual_type": "columnChart",
+      "title": "Distribution of Customers by Rating",
+      "x": 10.958099943741898,
+      "y": 194.11491328914218,
+      "width": 369.4445123890125,
+      "height": 344.39742680331676,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "customer_id",
+          "function": 5,
+          "native": "Count of customer_id",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "film",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "Revenue",
+      "x": 208.6553323029366,
+      "y": 102.93663060278207,
+      "width": 172.48840803709427,
+      "height": 79.28902627511592,
+      "z": 8000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 9,
+      "visual_type": "card",
+      "title": "Rental Frequency",
+      "x": 11.128284389489954,
+      "y": 8.346213292117465,
+      "width": 186.39876352395672,
+      "height": 79.28902627511592,
+      "z": 9000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "payment_id",
+          "function": 0,
+          "native": "Rental Frequency",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 10,
+      "visual_type": "card",
+      "title": "rental_rate",
+      "x": 208.6553323029366,
+      "y": 8.346213292117465,
+      "width": 172.48840803709427,
+      "height": 79.28902627511592,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Customer Analysis",
+      "ordinal": 11,
+      "visual_type": "slicer",
+      "title": "category_id",
+      "x": 392.9261551256023,
+      "y": 7.827214245529927,
+      "width": 197.24579898735414,
+      "height": 305.26135557566715,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "category_id",
+          "native": "Categories",
+          "table": "film_category",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film_category"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 505.5683053508877,
+      "y": 0,
+      "width": 850.3442444739702,
+      "height": 58.75105689092885,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 1,
+      "visual_type": "clusteredColumnChart",
+      "title": "Films Distribution by Rental Duration (In Months)",
+      "x": 949.2933929218503,
+      "y": 69.57362000241575,
+      "width": 406.6191569030076,
+      "height": 446.8172484599589,
+      "z": 1000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rental_duration",
+          "native": "rental_duration",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Count of film_id",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 2,
+      "visual_type": "clusteredBarChart",
+      "title": "Average of rental_duration by Film-category",
+      "x": 507.2034831103392,
+      "y": 68.87948536066335,
+      "width": 425.800454956828,
+      "height": 447.7166548443118,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film-Categories",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "Average of rental_duration",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "category",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 3,
+      "visual_type": "treemap",
+      "title": "Rental Rates of Films",
+      "x": 7.727975270479134,
+      "y": 534.7758887171561,
+      "width": 482.22565687789796,
+      "height": 449.7681607418856,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film-Categories",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate1",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "category",
+        "film"
+      ],
+      "projections": [
+        "Group",
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 4,
+      "visual_type": "card",
+      "title": "Total Rentals",
+      "x": 207.1747795627491,
+      "y": 0,
+      "width": 142.23940089382774,
+      "height": 103.58738978137455,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 0,
+          "native": "Total Rentals",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "rentat"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 5,
+      "visual_type": "card",
+      "title": "rental_duration",
+      "x": 9.737248840803709,
+      "y": 115.45595054095827,
+      "width": 268.46986089644514,
+      "height": 94.5904173106646,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "Average of rental_duration",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 6,
+      "visual_type": "card",
+      "title": "rental_rate",
+      "x": 9.276482666988766,
+      "y": 0,
+      "width": 187.07573378427344,
+      "height": 103.58738978137455,
+      "z": 6000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 7,
+      "visual_type": "pieChart",
+      "title": "Rental Distribution  by Year",
+      "x": 7.727975270479134,
+      "y": 219.4744976816074,
+      "width": 482.22565687789796,
+      "height": 296.7542503863988,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "other",
+          "native": "rental_date Year",
+          "table": "rentat",
+          "alias": "r"
+        },
+        {
+          "kind": "other",
+          "native": "rental_date Month",
+          "table": "rentat",
+          "alias": "r"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 5,
+          "native": "Count of Rentals",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "rentat"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 8,
+      "visual_type": "pivotTable",
+      "title": "Rentals by Customer ",
+      "x": 991.0375649232999,
+      "y": 538.0359946853484,
+      "width": 364.87498490155815,
+      "height": 446.8172484599589,
+      "z": 8000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "first_name",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 1,
+          "native": "Average of rental_id",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "customer",
+        "rentat"
       ],
       "projections": [
         "Rows",
         "Values"
       ],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 15,
-      "visual_type": "image",
-      "title": "image_15",
-      "x": 143.33333333333334,
-      "y": 0,
-      "width": 200,
-      "height": 126.66666666666667,
-      "z": 19000,
-      "fields": [],
-      "entities": [],
-      "projections": [],
-      "page_width": 1800,
-      "page_height": 1100
-    },
-    {
-      "page": "Payer-Provider Analysis",
-      "ordinal": 16,
-      "visual_type": "slicer",
-      "title": "Region Code",
-      "x": 1580.281690140845,
-      "y": 698.9045383411581,
-      "width": 220.34428794992175,
-      "height": 385.60250391236303,
-      "z": 20000,
+      "page": "Rental Analysis",
+      "ordinal": 9,
+      "visual_type": "pivotTable",
+      "title": "Rentals by Film Title",
+      "x": 507.1143857953859,
+      "y": 538.0359946853484,
+      "width": 474.64669646092517,
+      "height": 446.8172484599589,
+      "z": 9000,
       "fields": [
         {
           "kind": "column",
-          "property": "RegionCode",
-          "native": "RegionCode",
-          "table": "Patient_Lookup",
-          "alias": "p"
+          "property": "title",
+          "native": "Film Title",
+          "table": "film",
+          "alias": "f"
         },
         {
-          "kind": "column",
-          "property": "Region",
-          "native": "Region",
-          "table": "Patient_Lookup",
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 1,
+          "native": "Average of rental_id",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "film",
+        "rentat"
+      ],
+      "projections": [
+        "Rows",
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Rental Analysis",
+      "ordinal": 10,
+      "visual_type": "card",
+      "title": "Revenue",
+      "x": 294.89953632148377,
+      "y": 115.45595054095827,
+      "width": 194.74497681607417,
+      "height": 94.5904173106646,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
           "alias": "p"
         }
       ],
       "entities": [
-        "Patient_Lookup"
+        "payment"
       ],
       "projections": [
         "Values"
       ],
-      "page_width": 1800,
-      "page_height": 1100
+      "page_width": 1370,
+      "page_height": 1000
     },
     {
-      "page": "Monthly Expenses Trends",
+      "page": "Rental Analysis",
+      "ordinal": 11,
+      "visual_type": "slicer",
+      "title": "slicer_11",
+      "x": 360.23674356806373,
+      "y": 0,
+      "width": 129.87075733784272,
+      "height": 103.58738978137455,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "other",
+          "native": "rental_date Year",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "rentat"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
       "ordinal": 0,
-      "visual_type": "stackedAreaChart",
-      "title": "Monthly Aggregate Expenses: Gross and Adjusted",
-      "x": 119.69014472777395,
-      "y": 15.808132322536181,
-      "width": 958.6503101309441,
-      "height": 426.8195727084769,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 542.5038639876352,
+      "y": 0,
+      "width": 815.146831530139,
+      "height": 70.94281298299845,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 1,
+      "visual_type": "card",
+      "title": "Film Distribution by Language",
+      "x": 9.392657094635911,
+      "y": 0,
+      "width": 189.41858474182422,
+      "height": 86.09935670082919,
+      "z": 1000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Total Rental Rates",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 2,
+      "visual_type": "clusteredBarChart",
+      "title": "Film-Category breakdown in Inventory",
+      "x": 9.273570324574962,
+      "y": 630.6027820710974,
+      "width": 516.2287480680062,
+      "height": 358.5780525502318,
       "z": 2000,
       "fields": [
         {
           "kind": "column",
-          "property": "Start of Month",
-          "native": "Start of Month",
-          "table": "DimDate",
-          "alias": "d"
+          "property": "name",
+          "native": "Film-Categories",
+          "table": "category",
+          "alias": "c"
         },
         {
           "kind": "aggregation",
-          "property": "Gross Expenses",
-          "function": 0,
-          "native": "Sum of Gross Expenses",
-          "table": "FactTable",
+          "property": "inventory_id",
+          "function": 5,
+          "native": "Inventory Count",
+          "table": "inventory",
+          "alias": "i"
+        }
+      ],
+      "entities": [
+        "category",
+        "inventory"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 3,
+      "visual_type": "donutChart",
+      "title": "Inventory Variation by Film-Ratings",
+      "x": 964.4513137557959,
+      "y": 80.370942812983,
+      "width": 392.58114374034,
+      "height": 242.6584234930448,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "Film-Ratings",
+          "table": "film",
           "alias": "f"
         },
         {
+          "kind": "aggregation",
+          "property": "inventory_id",
+          "function": 5,
+          "native": "Inventory",
+          "table": "inventory",
+          "alias": "i"
+        }
+      ],
+      "entities": [
+        "film",
+        "inventory"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 4,
+      "visual_type": "lineClusteredColumnComboChart",
+      "title": "Rentals Distribution by Films",
+      "x": 544.0494590417311,
+      "y": 721.7928902627511,
+      "width": 814.5285935085008,
+      "height": 267.38794435857807,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "title",
+          "native": "Film Title",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 5,
+          "native": " Rental Distribution",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "film",
+        "rentat"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 5,
+      "visual_type": "donutChart",
+      "title": "rating",
+      "x": 542.5038639876352,
+      "y": 80.370942812983,
+      "width": 408.03709428129827,
+      "height": 242.6584234930448,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "Film Rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Distribution of films",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 6,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Revenue and Rental Rate by Film Category",
+      "x": 542.5038639876352,
+      "y": 336.9397217928902,
+      "width": 814.5285935085008,
+      "height": 369.3972179289026,
+      "z": 6000,
+      "fields": [
+        {
           "kind": "measure",
-          "property": "Adjustedgrossexpense",
-          "native": "Adjustedgrossexpense",
-          "table": "Adjustment factor (%)",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 5,
+          "native": "Count of rental_rate",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film Category",
+          "table": "category",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "category",
+        "film",
+        "payment"
+      ],
+      "projections": [
+        "Y",
+        "Y2",
+        "Category"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 7,
+      "visual_type": "tableEx",
+      "title": "film_id",
+      "x": 9.276482666988766,
+      "y": 337.04553690059186,
+      "width": 516.3908684623747,
+      "height": 281.3866408986592,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "film_id",
+          "native": "Film id",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "column",
+          "property": "title",
+          "native": "Film Title",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "length",
+          "function": 0,
+          "native": "Film length",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "column",
+          "property": "special_features",
+          "native": "special_features",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "Average of Rental Duration",
+      "x": 211.33478462930802,
+      "y": 0,
+      "width": 154.97884206149254,
+      "height": 86.09935670082919,
+      "z": 8000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "Avg of rental duration",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 9,
+      "visual_type": "slicer",
+      "title": "Film Ratings",
+      "x": 9.392657094635911,
+      "y": 97.05745664457109,
+      "width": 358.4864124452706,
+      "height": 115.8427708338429,
+      "z": 9000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 10,
+      "visual_type": "card",
+      "title": "actor_id",
+      "x": 383.53349803096637,
+      "y": 97.05745664457109,
+      "width": 144.02074211775064,
+      "height": 115.8427708338429,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "actor_id",
+          "function": 5,
+          "native": "Actors",
+          "table": "actor",
           "alias": "a"
         }
       ],
       "entities": [
-        "Adjustment factor (%)",
-        "DimDate",
-        "FactTable"
+        "actor"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 11,
+      "visual_type": "card",
+      "title": "film_id",
+      "x": 381.9680551818604,
+      "y": 0,
+      "width": 145.58618496685662,
+      "height": 87.66479954993518,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Total Films",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 12,
+      "visual_type": "slicer",
+      "title": "title",
+      "x": 9.273570324574962,
+      "y": 224.11128284389488,
+      "width": 210.20092735703244,
+      "height": 98.91808346213291,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "title",
+          "native": "title",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Film Analysis",
+      "ordinal": 13,
+      "visual_type": "card",
+      "title": "Description",
+      "x": 231.6855416676858,
+      "y": 223.8583274221559,
+      "width": 294.30325563192525,
+      "height": 98.62289949367707,
+      "z": 13000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "description",
+          "function": 3,
+          "native": "Description",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 9.392657094635911,
+      "y": 6.261771396423941,
+      "width": 544.7741114888829,
+      "height": 87.66479954993518,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 1,
+      "visual_type": "barChart",
+      "title": "DIstribution of Films by Actors",
+      "x": 828.1192671770663,
+      "y": 104.884670890101,
+      "width": 530.685125846929,
+      "height": 453.9784262407357,
+      "z": 1000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "Actor Name",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Count of Films",
+          "table": "film_actor",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "actor",
+        "film_actor"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 2,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Revenue Contribution by Actors",
+      "x": 763.5239567233384,
+      "y": 571.870170015456,
+      "width": 595.0540958268933,
+      "height": 412.67387944358575,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "Actors",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "actor",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 3,
+      "visual_type": "lineChart",
+      "title": "Actor wise Rental Rate Variation ",
+      "x": 9.273570324574962,
+      "y": 571.870170015456,
+      "width": 744.9768160741885,
+      "height": 412.67387944358575,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "actor_id",
+          "native": "actor_id",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Rental Rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "actor",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 4,
+      "visual_type": "tableEx",
+      "title": "Actor Details",
+      "x": 9.392657094635911,
+      "y": 104.884670890101,
+      "width": 372.57539808722447,
+      "height": 453.9784262407357,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "actor_id",
+          "native": "Actor_id",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "first_name",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "column",
+          "property": "last_name",
+          "native": "last_name",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "measure",
+          "property": "FilmPopularity",
+          "native": "FilmPopularity",
+          "table": "actor",
+          "alias": "a"
+        }
+      ],
+      "entities": [
+        "actor"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 5,
+      "visual_type": "card",
+      "title": "film_id",
+      "x": 577.2797527047913,
+      "y": 6.9551777434312205,
+      "width": 176.661514683153,
+      "height": 86.24420401854714,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Total Films",
+          "table": "film_category",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film_category"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 6,
+      "visual_type": "card",
+      "title": "actor_id",
+      "x": 776.1978361669243,
+      "y": 6.9551777434312205,
+      "width": 166.92426584234929,
+      "height": 87.63523956723338,
+      "z": 6000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "actor_id",
+          "function": 5,
+          "native": "Actors",
+          "table": "actor",
+          "alias": "a"
+        }
+      ],
+      "entities": [
+        "actor"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 7,
+      "visual_type": "slicer",
+      "title": "first_name",
+      "x": 1174.03400309119,
+      "y": 6.9551777434312205,
+      "width": 185.00772797527048,
+      "height": 87.63523956723338,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "select actors",
+          "table": "actor",
+          "alias": "a"
+        }
+      ],
+      "entities": [
+        "actor"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "Revenue",
+      "x": 966.7697063369397,
+      "y": 6.9551777434312205,
+      "width": 197.52704791344667,
+      "height": 87.63523956723338,
+      "z": 8000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Actor Analysis",
+      "ordinal": 9,
+      "visual_type": "donutChart",
+      "title": "Genre Preferences of Actors",
+      "x": 399.18792652202626,
+      "y": 104.884670890101,
+      "width": 416.40779786219207,
+      "height": 453.9784262407357,
+      "z": 9000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "actor_id",
+          "function": 5,
+          "native": "Count of actor_id",
+          "table": "film_actor",
+          "alias": "f1"
+        }
+      ],
+      "entities": [
+        "film",
+        "film_actor"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1370,
+      "page_height": 1000
+    },
+    {
+      "page": "Q1",
+      "ordinal": 0,
+      "visual_type": "lineChart",
+      "title": "Revenue by Month",
+      "x": 537.8894472361809,
+      "y": 100.10050251256281,
+      "width": 676.5829145728643,
+      "height": 399.19597989949744,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "other",
+          "native": "payment_date Year",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "other",
+          "native": "payment_date Month",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "payment"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q1",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 538.3736213822373,
+      "y": 6.976763991994435,
+      "width": 712.7927211820981,
+      "height": 53.488523938624006,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q1",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 44.18617194929809,
+      "y": 6.976763991994435,
+      "width": 456.9780414756355,
+      "height": 624.4203772835019,
+      "z": 4000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": " Q2",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 215.11688975316176,
+      "y": 0,
+      "width": 902.3281429646137,
+      "height": 60.46528793061844,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": " Q2",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 95.34910789059062,
+      "y": 134.88410384522575,
+      "width": 588.3737633248641,
+      "height": 395.34995954635133,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": " Q2",
+      "ordinal": 2,
+      "visual_type": "pieChart",
+      "title": "Active/Inactive Customer:",
+      "x": 747.6765411420704,
+      "y": 102.32587188258505,
+      "width": 369.76849157570507,
+      "height": 193.02380377851273,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "active",
+          "function": 5,
+          "native": "Count of active",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "active",
+          "native": "active",
+          "table": "customer",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "customer"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": " Q2",
+      "ordinal": 3,
+      "visual_type": "tableEx",
+      "title": "Active/Inactive(1/0) Customer Details:",
+      "x": 747.6765411420704,
+      "y": 310.46599764375236,
+      "width": 369.76849157570507,
+      "height": 409.3034875303402,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "first_name",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "active",
+          "function": 0,
+          "native": " active(1) /      inactive(0)",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "customer_id",
+          "native": "customer_id",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "last_name",
+          "native": "last_name",
+          "table": "customer",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "customer"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q3",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 634.8855232714936,
+      "y": 0,
+      "width": 620.9319952875047,
+      "height": 65.1164639252814,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q3",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 9.302351989325913,
+      "y": 0,
+      "width": 587.2109693261983,
+      "height": 640.6994932648223,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q3",
+      "ordinal": 2,
+      "visual_type": "clusteredBarChart",
+      "title": "name",
+      "x": 634.8855232714936,
+      "y": 94.18631389192488,
+      "width": 629.071553278165,
+      "height": 573.2574413422094,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Customer Segments",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "amount",
+          "function": 0,
+          "native": "Sales",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "category",
+        "payment"
       ],
       "projections": [
         "Category",
@@ -2535,29 +2782,1926 @@
       "page_height": 720
     },
     {
-      "page": "Monthly Expenses Trends",
+      "page": "Q4",
+      "ordinal": 0,
+      "visual_type": "columnChart",
+      "title": "Distribution of Films by Rental-Duration.",
+      "x": 530.2340633915771,
+      "y": 34.88381995997218,
+      "width": 731.39742516075,
+      "height": 401.16392953968005,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rental_duration",
+          "native": "rental_duration",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Count of film_id",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q4",
       "ordinal": 1,
-      "visual_type": "slicer",
-      "title": "Adjustment factor (%)",
-      "x": 119.69014472777395,
-      "y": 475.37312198483806,
-      "width": 958.6503101309441,
-      "height": 169.37284631288767,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 40.69778995330088,
+      "y": 34.88381995997218,
+      "width": 456.9780414756355,
+      "height": 84.88396190259897,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q4",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 16.27911598132035,
+      "y": 474.41995145562163,
+      "width": 1245.3523725710068,
+      "height": 200.00056777050716,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q5",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 100.00028388525358,
+      "y": 26.744261969312003,
+      "width": 520.9317114022512,
+      "height": 62.79087592794992,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q5",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 30.23264396530922,
+      "y": 417.4430455210004,
+      "width": 1218.6081106016948,
+      "height": 288.37291166910336,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q5",
+      "ordinal": 2,
+      "visual_type": "donutChart",
+      "title": "Inventory Variation by Film-Ratings",
+      "x": 660.4669912421399,
+      "y": 26.744261969312003,
+      "width": 595.3505273168585,
+      "height": 375.5824615690338,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "Film-Ratings",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "inventory_id",
+          "function": 5,
+          "native": "Inventory",
+          "table": "inventory",
+          "alias": "i"
+        }
+      ],
+      "entities": [
+        "film",
+        "inventory"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q6",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 77.90719791060452,
+      "y": 22.093085974649046,
+      "width": 487.21068544094476,
+      "height": 89.53513789726192,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q6",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 77.90719791060452,
+      "y": 170.93071780386367,
+      "width": 487.21068544094476,
+      "height": 527.9084753942457,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q6",
+      "ordinal": 2,
+      "visual_type": "clusteredBarChart",
+      "title": "Film-Category breakdown in Inventory",
+      "x": 579.0714113355382,
+      "y": 22.093085974649046,
+      "width": 688.3740472101176,
+      "height": 676.7461072234603,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film-Categories",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "inventory_id",
+          "function": 5,
+          "native": "Inventory Count",
+          "table": "inventory",
+          "alias": "i"
+        }
+      ],
+      "entities": [
+        "category",
+        "inventory"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q7",
+      "ordinal": 0,
+      "visual_type": "columnChart",
+      "title": "Staff Distribution by Employment Duration",
+      "x": 633.7227292728279,
+      "y": 168.6051298065322,
+      "width": 583.7225873302011,
+      "height": 327.9079076237385,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Employment Duration",
+          "native": "Employment Duration ",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "column",
+          "property": "staff_id",
+          "native": "staff_id",
+          "table": "staff",
+          "alias": "s"
+        },
+        {
+          "kind": "aggregation",
+          "property": "staff_id",
+          "function": 5,
+          "native": "Count of staff_id",
+          "table": "staff",
+          "alias": "s"
+        }
+      ],
+      "entities": [
+        "customer",
+        "staff"
+      ],
+      "projections": [
+        "Category",
+        "Series",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q7",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 150,
+      "y": 454,
+      "width": 300,
+      "height": 266,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q7",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 604.6528793061844,
+      "y": 11.627939986657392,
+      "width": 641.862287263488,
+      "height": 113.95381186924244,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q7",
+      "ordinal": 3,
+      "visual_type": "textbox",
+      "title": "textbox_3",
+      "x": 11.627939986657392,
+      "y": 112.79101787057671,
+      "width": 568.6062653475465,
+      "height": 397.6755475436828,
+      "z": 4000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q8",
+      "ordinal": 0,
+      "visual_type": "map",
+      "title": "Store Performance Variation by Location",
+      "x": 418.6058395196661,
+      "y": 129.07013385189705,
+      "width": 850.0024130246554,
+      "height": 551.1643553675603,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "Country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "amount",
+          "function": 0,
+          "native": "Total Sales of store",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "country",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Size"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q8",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 418.6058395196661,
+      "y": 55.81411193595548,
+      "width": 850.0024130246554,
+      "height": 59.302493931952704,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q8",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 39.534995954635136,
+      "y": 55.81411193595548,
+      "width": 360.46613958637914,
+      "height": 624.4203772835019,
+      "z": 3000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q9",
+      "ordinal": 0,
+      "visual_type": "pieChart",
+      "title": "Average of rental_duration by staff member",
+      "x": 41.86058395196661,
+      "y": 137.20969184255722,
+      "width": 619.769201288839,
+      "height": 294.18688166243203,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "Average of rental_duration",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "column",
+          "property": "staff_id",
+          "native": "staff_id",
+          "table": "staff",
+          "alias": "s"
+        }
+      ],
+      "entities": [
+        "film",
+        "staff"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q9",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 41.86058395196661,
+      "y": 8.139557990660174,
+      "width": 670.9321372301315,
+      "height": 65.1164639252814,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q9",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 687.2112532114519,
+      "y": 137.20969184255722,
+      "width": 540.6992093795687,
+      "height": 418.6058395196661,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q10",
+      "ordinal": 0,
+      "visual_type": "columnChart",
+      "title": " Distribution of Customers across Cities",
+      "x": 597.6761153141899,
+      "y": 33.72102596130644,
+      "width": 651.164639252814,
+      "height": 326.74511362507275,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "customer_id",
+          "function": 5,
+          "native": "customer_counts",
+          "table": "customer",
+          "alias": "c1"
+        },
+        {
+          "kind": "column",
+          "property": "city",
+          "native": "city",
+          "table": "city",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "city",
+        "customer"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q10",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 53.488523938624006,
+      "y": 65.1164639252814,
+      "width": 530.2340633915771,
+      "height": 80.232785907936,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q10",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 45.34896594796383,
+      "y": 386.04760755702546,
+      "width": 1204.654582617706,
+      "height": 230.23321173581638,
+      "z": 4000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q11",
+      "ordinal": 0,
+      "visual_type": "map",
+      "title": "Rental Revenue by Country",
+      "x": 589.5365573235298,
+      "y": 17.44190997998609,
+      "width": 675.5833132247946,
+      "height": 406.9778995330087,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "Country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "amount",
+          "function": 0,
+          "native": "Rental Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "country",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Size"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q11",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 24.418673971980525,
+      "y": 17.44190997998609,
+      "width": 546.5131793728974,
+      "height": 47.67455394529531,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q11",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 55.81411193595548,
+      "y": 458.14083547430124,
+      "width": 1166.2823806617364,
+      "height": 244.18673971980525,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q12",
+      "ordinal": 0,
+      "visual_type": "columnChart",
+      "title": "Location wise Customer Ratings",
+      "x": 22.093085974649046,
+      "y": 129.07013385189705,
+      "width": 427.90819150899205,
+      "height": 524.4200933982484,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "city",
+          "native": "City",
+          "table": "city",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Rating",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "city",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q12",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 22.093085974649046,
+      "y": 12.790733985323131,
+      "width": 1189.5382606350513,
+      "height": 73.25602191594157,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q12",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 466.28039346496143,
+      "y": 129.07013385189705,
+      "width": 745.3509531447388,
+      "height": 426.7453975103263,
+      "z": 3000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q13",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 50.00014194262679,
+      "y": 108.13984187591375,
+      "width": 450.0012774836411,
+      "height": 93.02351989325913,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q13",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 52.325729939958265,
+      "y": 345.34981760372455,
+      "width": 1174.4219386523966,
+      "height": 306.97761564775516,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q13",
+      "ordinal": 2,
+      "visual_type": "donutChart",
+      "title": "Distribution of Films by languages",
+      "x": 576.7458233382067,
+      "y": 120.93057586123687,
+      "width": 451.16407148230684,
+      "height": 160.465571815872,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "name",
+          "table": "language",
+          "alias": "l"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Count of film_id",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film",
+        "language"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q14",
+      "ordinal": 0,
+      "visual_type": "treemap",
+      "title": "Rental Rates of Films",
+      "x": 553.4899433648919,
+      "y": 12.790733985323131,
+      "width": 670.9321372301315,
+      "height": 347.675405601056,
+      "z": 0,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film-Categories",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate1",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "category",
+        "film"
+      ],
+      "projections": [
+        "Group",
+        "Values"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q14",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 70.93043391861009,
+      "y": 12.790733985323131,
+      "width": 459.303629472967,
+      "height": 77.90719791060452,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q14",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 70.93043391861009,
+      "y": 373.2568735717023,
+      "width": 1153.4916466764134,
+      "height": 322.09393763040976,
+      "z": 3000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q15",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 65.1164639252814,
+      "y": 29.06984996664348,
+      "width": 479.07112745028456,
+      "height": 86.0467559012647,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q15",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 50.00014194262679,
+      "y": 376.74525556769953,
+      "width": 1167.4451746604022,
+      "height": 302.3264396530922,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q15",
+      "ordinal": 2,
+      "visual_type": "lineChart",
+      "title": "Average of rental_duration by Film-category",
+      "x": 584.8853813288669,
+      "y": 29.06984996664348,
+      "width": 632.5599352741622,
+      "height": 331.3962896197357,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film-Categories",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 1,
+          "native": "Average of rental_duration",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "category",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q16",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 86.0467559012647,
+      "y": 13.95352798398887,
+      "width": 325.582319626407,
+      "height": 101.16307788391931,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q16",
+      "ordinal": 1,
+      "visual_type": "lineChart",
+      "title": "Rental Rate & Rental Duration By Country",
+      "x": 425.5826035116606,
+      "y": 13.95352798398887,
+      "width": 783.7231551007083,
+      "height": 313.9543796397496,
       "z": 1000,
       "fields": [
         {
           "kind": "column",
-          "property": "Adjustment factor (%)",
-          "native": "Adjustment factor (%)",
-          "table": "Adjustment factor (%)",
-          "alias": "a"
+          "property": "country",
+          "native": "Country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_duration",
+          "function": 0,
+          "native": "Rental Duration",
+          "table": "film",
+          "alias": "f"
         }
       ],
       "entities": [
-        "Adjustment factor (%)"
+        "country",
+        "film"
       ],
       "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q16",
+      "ordinal": 2,
+      "visual_type": "textbox",
+      "title": "textbox_2",
+      "x": 86.0467559012647,
+      "y": 360.46613958637914,
+      "width": 1123.2590027111041,
+      "height": 325.582319626407,
+      "z": 2000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q17",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 43.02337795063235,
+      "y": 25.581467970646262,
+      "width": 479.07112745028456,
+      "height": 133.72130984656002,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q17",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 43.02337795063235,
+      "y": 429.0709855076578,
+      "width": 1194.1894366297142,
+      "height": 279.07055967977743,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q17",
+      "ordinal": 2,
+      "visual_type": "columnChart",
+      "title": "Location wise Customer Ratings",
+      "x": 546.5131793728974,
+      "y": 25.581467970646262,
+      "width": 690.6996352074491,
+      "height": 394.1871655476856,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "city",
+          "native": "City",
+          "table": "city",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Sum of rental_rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "city",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q18",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 11.627939986657392,
+      "y": 19.767497977317568,
+      "width": 598.8389093128557,
+      "height": 174.41909979986087,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q18",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 11.627939986657392,
+      "y": 288.37291166910336,
+      "width": 1252.3291365630012,
+      "height": 415.1174575236689,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q18",
+      "ordinal": 2,
+      "visual_type": "donutChart",
+      "title": "Revenue by Rating",
+      "x": 687.2112532114519,
+      "y": 19.767497977317568,
+      "width": 576.7458233382067,
+      "height": 253.48909170913115,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "film",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q19",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 20.930291975983305,
+      "y": 18.604703978651827,
+      "width": 1220.9336985990262,
+      "height": 95.34910789059062,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q19",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 20.930291975983305,
+      "y": 131.39572184922852,
+      "width": 655.815815247477,
+      "height": 575.5830293395409,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q19",
+      "ordinal": 2,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Revenue & Inventory Distribution by Category",
+      "x": 691.8624292061148,
+      "y": 131.39572184922852,
+      "width": 550.0015613688946,
+      "height": 415.1174575236689,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        },
+        {
+          "kind": "aggregation",
+          "property": "inventory_id",
+          "function": 5,
+          "native": "Inventory Distribution",
+          "table": "rentat",
+          "alias": "r"
+        },
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "Film Category",
+          "table": "category",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "category",
+        "payment",
+        "rentat"
+      ],
+      "projections": [
+        "Y",
+        "Y2",
+        "Category"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q20",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 27.90705596797774,
+      "y": 27.90705596797774,
+      "width": 479.07112745028456,
+      "height": 68.60484592127861,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q20",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 27.90705596797774,
+      "y": 372.09407957303654,
+      "width": 1175.5847326510623,
+      "height": 280.23335367844317,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q20",
+      "ordinal": 2,
+      "visual_type": "clusteredBarChart",
+      "title": "Rental Rate by Customers",
+      "x": 531.3968573902429,
+      "y": 27.90705596797774,
+      "width": 677.908901222126,
+      "height": 325.582319626407,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "Customers",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 5,
+          "native": "Count of rentals",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "customer",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q21",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 38.372201955969395,
+      "y": 27.90705596797774,
+      "width": 452.3268654809726,
+      "height": 104.65145987991653,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q21",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 38.372201955969395,
+      "y": 402.3267235383458,
+      "width": 1202.3289946203745,
+      "height": 306.97761564775516,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q21",
+      "ordinal": 2,
+      "visual_type": "columnChart",
+      "title": "rental_id",
+      "x": 518.6061234049197,
+      "y": 27.90705596797774,
+      "width": 722.095073171424,
+      "height": 332.5590836184014,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 1,
+          "native": "Average of Rentals",
+          "table": "rentat",
+          "alias": "r"
+        },
+        {
+          "kind": "column",
+          "property": "title",
+          "native": "Film title",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film",
+        "rentat"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q22",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 55.81411193595548,
+      "y": 13.95352798398887,
+      "width": 479.07112745028456,
+      "height": 89.53513789726192,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q22",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 55.81411193595548,
+      "y": 134.88410384522575,
+      "width": 479.07112745028456,
+      "height": 525.5828873969141,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q22",
+      "ordinal": 2,
+      "visual_type": "barChart",
+      "title": "DIstribution of Films by Actors",
+      "x": 567.4434713488807,
+      "y": 13.95352798398887,
+      "width": 656.9786092461427,
+      "height": 696.5136052007778,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "Actor Name",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Count of Films",
+          "table": "film_actor",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "actor",
+        "film_actor"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q23",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 255.81467970646264,
+      "y": 24.418673971980525,
+      "width": 797.6766830846972,
+      "height": 60.46528793061844,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q23",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 541.8620033782345,
+      "y": 136.0468978438915,
+      "width": 698.8391931981093,
+      "height": 559.3039133582206,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q23",
+      "ordinal": 2,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Actor wise Rental Rate Variation ",
+      "x": 22.093085974649046,
+      "y": 136.0468978438915,
+      "width": 502.32700742359935,
+      "height": 559.3039133582206,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "first_name",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_rate",
+          "function": 0,
+          "native": "Rental Rate",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "actor",
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q24",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 33.72102596130644,
+      "y": 30.23264396530922,
+      "width": 565.1178833515493,
+      "height": 111.62822387191096,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q24",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 33.72102596130644,
+      "y": 344.1870236050588,
+      "width": 1189.5382606350513,
+      "height": 353.48937559438474,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q24",
+      "ordinal": 2,
+      "visual_type": "donutChart",
+      "title": "Genre Preference of Actors",
+      "x": 711.6299271834324,
+      "y": 33.72102596130644,
+      "width": 511.6293594129253,
+      "height": 295.34967566109776,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "actor_id",
+          "function": 5,
+          "native": "Count of actor_id",
+          "table": "film_actor",
+          "alias": "f1"
+        }
+      ],
+      "entities": [
+        "film",
+        "film_actor"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q25",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 36.04661395863792,
+      "y": 19.767497977317568,
+      "width": 479.07112745028456,
+      "height": 105.81425387858228,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q25",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 36.04661395863792,
+      "y": 404.65231153567726,
+      "width": 1226.747668592355,
+      "height": 265.11703169578857,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q25",
+      "ordinal": 2,
+      "visual_type": "columnChart",
+      "title": "Revenue Contribution by Actors",
+      "x": 554.6527373635577,
+      "y": 19.767497977317568,
+      "width": 708.1415451874352,
+      "height": 350.00099359838754,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "Actors",
+          "table": "actor",
+          "alias": "a"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "actor",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q26",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 44.18617194929809,
+      "y": 17.44190997998609,
+      "width": 443.02451349164664,
+      "height": 106.97704787724801,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q26",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 44.18617194929809,
+      "y": 472.09436345829016,
+      "width": 1226.747668592355,
+      "height": 201.1633617691729,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q26",
+      "ordinal": 2,
+      "visual_type": "map",
+      "title": "customer distribution by countries",
+      "x": 517.443329406254,
+      "y": 17.44190997998609,
+      "width": 738.3741891527444,
+      "height": 427.90819150899205,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "customer_id",
+          "function": 5,
+          "native": "Count of customer_id",
+          "table": "customer",
+          "alias": "c1"
+        }
+      ],
+      "entities": [
+        "country",
+        "customer"
+      ],
+      "projections": [
+        "Category",
+        "Size"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q27",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 44.18617194929809,
+      "y": 17.44190997998609,
+      "width": 483.7223034449475,
+      "height": 132.55851584789428,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q27",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 44.18617194929809,
+      "y": 404.65231153567726,
+      "width": 1226.747668592355,
+      "height": 268.60541369178577,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q27",
+      "ordinal": 2,
+      "visual_type": "map",
+      "title": "Global Revenue Distribution",
+      "x": 548.8387673702289,
+      "y": 17.44190997998609,
+      "width": 712.7927211820981,
+      "height": 374.41966757036806,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "country",
+          "native": "country",
+          "table": "country",
+          "alias": "c"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "country",
+        "payment"
+      ],
+      "projections": [
+        "Category",
+        "Size"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q28",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 44.18617194929809,
+      "y": 17.44190997998609,
+      "width": 483.7223034449475,
+      "height": 95.34910789059062,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q28",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 44.18617194929809,
+      "y": 429.0709855076578,
+      "width": 1226.747668592355,
+      "height": 243.0239457211395,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q28",
+      "ordinal": 2,
+      "visual_type": "pieChart",
+      "title": "Film Distribution by Content Ratings: Understanding Viewer Preferences",
+      "x": 548.8387673702289,
+      "y": 17.44190997998609,
+      "width": 712.7927211820981,
+      "height": 374.41966757036806,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "rating",
+          "native": "rating",
+          "table": "film",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "film_id",
+          "function": 5,
+          "native": "Count of film_id",
+          "table": "film",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "film"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q29",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 44.18617194929809,
+      "y": 17.44190997998609,
+      "width": 483.7223034449475,
+      "height": 95.34910789059062,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q29",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 34.88381995997218,
+      "y": 415.1174575236689,
+      "width": 1226.747668592355,
+      "height": 272.093795687783,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q29",
+      "ordinal": 2,
+      "visual_type": "treemap",
+      "title": "Revenue Distribution by Film Category: Identifying Top Contributors",
+      "x": 548.8387673702289,
+      "y": 17.44190997998609,
+      "width": 712.7927211820981,
+      "height": 374.41966757036806,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "name",
+          "native": "name",
+          "table": "category",
+          "alias": "c"
+        },
+        {
+          "kind": "measure",
+          "property": "Revenue",
+          "native": "Revenue",
+          "table": "payment",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "category",
+        "payment"
+      ],
+      "projections": [
+        "Group",
         "Values"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q30",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 226.74482973981915,
+      "y": 15.11632198265461,
+      "width": 861.6303530113128,
+      "height": 46.51175994662957,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q30",
+      "ordinal": 1,
+      "visual_type": "textbox",
+      "title": "textbox_1",
+      "x": 13.95352798398887,
+      "y": 360.46613958637914,
+      "width": 1247.6779605683382,
+      "height": 326.74511362507275,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Q30",
+      "ordinal": 2,
+      "visual_type": "columnChart",
+      "title": "Customer Segment Rental Activity Analysis",
+      "x": 13.95352798398887,
+      "y": 80.232785907936,
+      "width": 1247.6779605683382,
+      "height": 265.11703169578857,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "first_name",
+          "native": "first_name",
+          "table": "customer",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "rental_id",
+          "function": 5,
+          "native": "Count of rental_id",
+          "table": "rentat",
+          "alias": "r"
+        }
+      ],
+      "entities": [
+        "customer",
+        "rentat"
+      ],
+      "projections": [
+        "Category",
+        "Y"
       ],
       "page_width": 1280,
       "page_height": 720

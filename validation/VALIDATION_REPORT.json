@@ -1,21 +1,20 @@
 {
-  "generated_at_utc": "2026-09-16 10:12:19 UTC",
+  "generated_at_utc": "2026-09-16 12:20:37 UTC",
   "approach": "deterministic_evidence",
   "accuracy_statement": "Percentages are computed from inventory JSON / OBJECT_MAPPING / COVERAGE only. They measure migration generation coverage \u2014 NOT live Looker KPI parity or warehouse deploy success. Confidence reflects evidence completeness, not business acceptance.",
   "overall": {
-    "pct_done": 73.4,
-    "pct_left": 26.6,
-    "confidence": "MEDIUM",
+    "pct_done": 81.9,
+    "pct_left": 18.1,
+    "confidence": "HIGH",
     "weights": {
       "phase1": 0.15,
       "phase2": 0.45,
       "phase3": 0.4
     },
     "formula": "0.15*P1 + 0.45*P2 + 0.40*P3 (renormalized if a phase is missing)",
-    "warning": "Phase source PBIX names differ \u2014 overall % mixes different reports. Sources seen: ['Human Resources Sample PBIX.pbix', 'dashboards.pbix']",
+    "warning": null,
     "source_pbix_set": [
-      "Human Resources Sample PBIX.pbix",
-      "dashboards.pbix"
+      "Human Resources Sample PBIX.pbix"
     ]
   },
   "phases": {
@@ -57,16 +56,16 @@
     "phase2": {
       "phase": 2,
       "name": "Semantic model / LookML",
-      "pct_done": 55.3,
-      "pct_left": 44.7,
+      "pct_done": 83.0,
+      "pct_left": 17.0,
       "confidence": "HIGH",
       "confidence_note": "Weighted from phase2/OBJECT_MAPPING.json statuses (mapped=1.0, partial=0.5, todo=0). Placeholder connection/dataset still require user input.",
       "source_pbix": "Human Resources Sample PBIX.pbix",
       "evidence": {
         "object_count": 47,
         "status_counts": {
-          "todo": 21,
-          "mapped": 26
+          "todo": 8,
+          "mapped": 39
         },
         "kind_counts": {
           "measure": 30,
@@ -81,49 +80,13 @@
       "remaining": [
         {
           "kind": "measure",
-          "lookml": "measure:empcount",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:seps",
+          "lookml": "measure:emp_count",
           "pbi": null,
           "note": "TODO in OBJECT_MAPPING"
         },
         {
           "kind": "measure",
           "lookml": "measure:actives",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:new_hires",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:avg_tenure_days",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:avg_tenure_months",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:avg_age",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:sum_of_badhires",
           "pbi": null,
           "note": "TODO in OBJECT_MAPPING"
         },
@@ -147,25 +110,7 @@
         },
         {
           "kind": "measure",
-          "lookml": "measure:empcount_sply",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:seps_yoy_var",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:actives_yoy_var",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:new_hires_yoy_var",
+          "lookml": "measure:emp_count_sply",
           "pbi": null,
           "note": "TODO in OBJECT_MAPPING"
         },
@@ -177,31 +122,7 @@
         },
         {
           "kind": "measure",
-          "lookml": "measure:bad_hires_yoy_var",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
           "lookml": "measure:to_pct_norm",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:to_pct_var",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:count_of_bu",
-          "pbi": null,
-          "note": "TODO in OBJECT_MAPPING"
-        },
-        {
-          "kind": "measure",
-          "lookml": "measure:count_of_date",
           "pbi": null,
           "note": "TODO in OBJECT_MAPPING"
         }
@@ -210,259 +131,186 @@
     "phase3": {
       "phase": 3,
       "name": "Dashboards / visuals",
-      "pct_done": 83.9,
-      "pct_left": 16.1,
+      "pct_done": 73.8,
+      "pct_left": 26.2,
       "confidence": "HIGH",
       "confidence_note": "Weighted visual coverage from phase3/inventory/COVERAGE.json (decorative skips excluded; mapped/partial/gap weights fixed).",
-      "source_pbix": "dashboards.pbix",
+      "source_pbix": "Human Resources Sample PBIX.pbix",
       "evidence": {
-        "visual_total": 83,
+        "visual_total": 36,
         "status_counts": {
-          "partial": 22,
-          "skip": 8,
-          "mapped": 48,
-          "gap": 5
+          "gap": 4,
+          "partial": 14,
+          "mapped": 18
         },
-        "dashboards": 6,
+        "dashboards": 5,
         "target_pct": 70,
         "meets_target": true
       },
       "remaining": [
         {
-          "page": "Project Overview",
-          "title": "textbox_0",
-          "pbi_type": "textbox",
-          "status": "partial",
-          "looker": "text",
-          "notes": "Text box \u2192 text tile (rich formatting limited)"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "textbox_4",
-          "pbi_type": "textbox",
-          "status": "partial",
-          "looker": "text",
-          "notes": "Text box \u2192 text tile (rich formatting limited)"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "Monthly Net Revenue",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "Monthly Insurance Revenue",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "Monthly Patient Revenue ",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-        },
-        {
-          "page": "Executive Summary",
-          "title": " Monthly Procedure Volume",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "actionButton_16",
-          "pbi_type": "actionButton",
-          "status": "gap",
-          "looker": "button/gap",
-          "notes": "no fields bound from prototypeQuery \u2014 tile will be incomplete"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "image_17",
+          "page": "Info",
+          "title": "VisualContainer",
           "pbi_type": "image",
           "status": "gap",
           "looker": "manual",
           "notes": "Image tile \u2014 not auto-ported; add manually or as text note"
         },
         {
-          "page": "Executive Summary",
-          "title": "Yearly Avg. Patient Payment Trend",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "unbound field Date Year"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "Monthly Payment Performance",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "unbound field Date Month"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "Optimized Quarterly Expenditure",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "unbound field Date Quarter"
-        },
-        {
-          "page": "Executive Summary",
-          "title": "Deficit Reduction Efficiency - Monthly",
-          "pbi_type": "kpi",
-          "status": "partial",
-          "looker": "single_value",
-          "notes": "unbound field Date Month"
-        },
-        {
-          "page": "Hospital Insights",
-          "title": "textbox_5",
+          "page": "Info",
+          "title": "VisualContainer1",
           "pbi_type": "textbox",
           "status": "partial",
           "looker": "text",
           "notes": "Text box \u2192 text tile (rich formatting limited)"
         },
         {
-          "page": "Hospital Insights",
-          "title": " CPT Units Distribution by Hospital",
-          "pbi_type": "treemap",
-          "status": "partial",
-          "looker": "looker_pie (substitute)",
-          "notes": "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
-        },
-        {
-          "page": "Hospital Insights",
-          "title": "textbox_16",
+          "page": "New Hires",
+          "title": "VisualContainer",
           "pbi_type": "textbox",
           "status": "partial",
           "looker": "text",
           "notes": "Text box \u2192 text tile (rich formatting limited)"
         },
         {
-          "page": "Hospital Insights",
-          "title": "image_17",
-          "pbi_type": "image",
+          "page": "New Hires",
+          "title": "VisualContainer2",
+          "pbi_type": "lineClusteredColumnComboChart",
           "status": "gap",
-          "looker": "manual",
-          "notes": "Image tile \u2014 not auto-ported; add manually or as text note"
+          "looker": "gap",
+          "notes": "Unknown/unsupported visual type `lineClusteredColumnComboChart` \u2014 document as GAP"
         },
         {
-          "page": "Patient Analysis",
-          "title": "textbox_5",
+          "page": "New Hires",
+          "title": "VisualContainer5",
           "pbi_type": "textbox",
           "status": "partial",
           "looker": "text",
           "notes": "Text box \u2192 text tile (rich formatting limited)"
         },
         {
-          "page": "Patient Analysis",
-          "title": "Patient by Tobacco",
-          "pbi_type": "donutChart",
-          "status": "partial",
-          "looker": "looker_pie",
-          "notes": "Donut \u2192 looker_pie (donut style limited)"
-        },
-        {
-          "page": "Patient Analysis",
-          "title": "Patient By Exercise",
-          "pbi_type": "donutChart",
-          "status": "partial",
-          "looker": "looker_pie",
-          "notes": "Donut \u2192 looker_pie (donut style limited)"
-        },
-        {
-          "page": "Patient Analysis",
-          "title": "Patient by Alcohol",
-          "pbi_type": "donutChart",
-          "status": "partial",
-          "looker": "looker_pie",
-          "notes": "Donut \u2192 looker_pie (donut style limited)"
-        },
-        {
-          "page": "Patient Analysis",
-          "title": "Patient by Diet",
-          "pbi_type": "donutChart",
-          "status": "partial",
-          "looker": "looker_pie",
-          "notes": "Donut \u2192 looker_pie (donut style limited)"
-        },
-        {
-          "page": "Patient Analysis",
-          "title": "Distribution of Patient by State",
-          "pbi_type": "map",
-          "status": "partial",
-          "looker": "looker_map",
-          "notes": "map may lack location dimension \u2014 verify geo fields"
-        },
-        {
-          "page": "Patient Analysis",
-          "title": "image_19",
-          "pbi_type": "image",
-          "status": "gap",
-          "looker": "manual",
-          "notes": "Image tile \u2014 not auto-ported; add manually or as text note"
-        },
-        {
-          "page": "Payer-Provider Analysis",
-          "title": "textbox_5",
-          "pbi_type": "textbox",
-          "status": "partial",
-          "looker": "text",
-          "notes": "Text box \u2192 text tile (rich formatting limited)"
-        },
-        {
-          "page": "Payer-Provider Analysis",
-          "title": "Monthly Provider Activity Overview and CPT Units",
+          "page": "New Hires",
+          "title": "VisualContainer6",
           "pbi_type": "lineStackedColumnComboChart",
           "status": "partial",
           "looker": "looker_column (partial)",
-          "notes": "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum; PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+          "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)"
         },
         {
-          "page": "Payer-Provider Analysis",
-          "title": "image_15",
-          "pbi_type": "image",
-          "status": "gap",
-          "looker": "manual",
-          "notes": "Image tile \u2014 not auto-ported; add manually or as text note"
-        },
-        {
-          "page": "Monthly Expenses Trends",
-          "title": "Monthly Aggregate Expenses: Gross and Adjusted",
-          "pbi_type": "stackedAreaChart",
+          "page": "New Hires",
+          "title": "VisualContainer7",
+          "pbi_type": "textbox",
           "status": "partial",
-          "looker": "looker_area",
-          "notes": "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "New Hires",
+          "title": "VisualContainer8",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "Actives and Separations",
+          "title": "VisualContainer",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "Actives and Separations",
+          "title": "VisualContainer1",
+          "pbi_type": "lineClusteredColumnComboChart",
+          "status": "gap",
+          "looker": "gap",
+          "notes": "Unknown/unsupported visual type `lineClusteredColumnComboChart` \u2014 document as GAP"
+        },
+        {
+          "page": "Actives and Separations",
+          "title": "VisualContainer5",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "Actives and Separations",
+          "title": "VisualContainer6",
+          "pbi_type": "lineClusteredColumnComboChart",
+          "status": "gap",
+          "looker": "gap",
+          "notes": "Unknown/unsupported visual type `lineClusteredColumnComboChart` \u2014 document as GAP"
+        },
+        {
+          "page": "Actives and Separations",
+          "title": "VisualContainer8",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "Bad Hires",
+          "title": "VisualContainer",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "Bad Hires",
+          "title": "VisualContainer1",
+          "pbi_type": "donutChart",
+          "status": "partial",
+          "looker": "looker_pie",
+          "notes": "PBI aggregation on Employee.BadHires mapped to field ref; confirm a measure exists on employee (Phase 2) or add type:sum"
+        },
+        {
+          "page": "Bad Hires",
+          "title": "VisualContainer4",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "Bad Hires",
+          "title": "VisualContainer7",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
+        },
+        {
+          "page": "New Hires Scorecard",
+          "title": "VisualContainer",
+          "pbi_type": "textbox",
+          "status": "partial",
+          "looker": "text",
+          "notes": "Text box \u2192 text tile (rich formatting limited)"
         }
       ]
     }
   },
   "user_input_required": {
     "summary": {
-      "total_findings": 146,
+      "total_findings": 84,
       "files_touched": 35,
       "by_severity": {
         "HIGH": 48,
-        "MEDIUM": 91,
-        "LOW": 7
+        "MEDIUM": 30,
+        "LOW": 6
       },
       "by_category": {
+        "measure_todo": 27,
         "warehouse_binding": 47,
-        "measure_todo": 43,
         "connection": 1,
         "descriptions": 2,
-        "looker_platform": 6,
-        "dashboard_gap": 47
+        "looker_platform": 5,
+        "dashboard_gap": 2
       }
     },
     "checklist": [
@@ -476,9 +324,9 @@
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/m_migration/lookml_stubs/agegroup_recommended.lkml",
+        "file": "phase2/lookml/m_migration/lookml_stubs/age_group_recommended.lkml",
         "line": 2,
-        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;",
+        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.age_group` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
@@ -532,25 +380,25 @@
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/m_migration/lookml_stubs/paytype_recommended.lkml",
+        "file": "phase2/lookml/m_migration/lookml_stubs/pay_type_recommended.lkml",
         "line": 3,
-        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;",
+        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.pay_type` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/m_migration/lookml_stubs/separationreason_recommended.lkml",
+        "file": "phase2/lookml/m_migration/lookml_stubs/separation_reason_recommended.lkml",
         "line": 3,
-        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;",
+        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separation_reason` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/m_migration/sql/agegroup.sql",
+        "file": "phase2/lookml/m_migration/sql/age_group.sql",
         "line": 5,
-        "what": "CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.agegroup` AS",
+        "what": "CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.age_group` AS",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
@@ -604,17 +452,17 @@
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/m_migration/sql/paytype.sql",
+        "file": "phase2/lookml/m_migration/sql/pay_type.sql",
         "line": 2,
-        "what": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.paytype` AS",
+        "what": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.pay_type` AS",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/m_migration/sql/separationreason.sql",
+        "file": "phase2/lookml/m_migration/sql/separation_reason.sql",
         "line": 2,
-        "what": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separationreason` AS",
+        "what": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separation_reason` AS",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
@@ -628,16 +476,16 @@
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/views/agegroup.view.lkml",
-        "line": 5,
-        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;",
+        "file": "phase2/lookml/views/age_group.view.lkml",
+        "line": 9,
+        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.age_group` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
       {
         "severity": "HIGH",
         "file": "phase2/lookml/views/bu.view.lkml",
-        "line": 5,
+        "line": 9,
         "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.bu` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
@@ -645,7 +493,7 @@
       {
         "severity": "HIGH",
         "file": "phase2/lookml/views/date.view.lkml",
-        "line": 5,
+        "line": 9,
         "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.date` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
@@ -653,7 +501,7 @@
       {
         "severity": "HIGH",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 5,
+        "line": 9,
         "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.employee` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
@@ -661,7 +509,7 @@
       {
         "severity": "HIGH",
         "file": "phase2/lookml/views/ethnicity.view.lkml",
-        "line": 5,
+        "line": 9,
         "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.ethnicity` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
@@ -669,7 +517,7 @@
       {
         "severity": "HIGH",
         "file": "phase2/lookml/views/fp.view.lkml",
-        "line": 5,
+        "line": 9,
         "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.fp` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
@@ -677,26 +525,34 @@
       {
         "severity": "HIGH",
         "file": "phase2/lookml/views/gender.view.lkml",
-        "line": 5,
+        "line": 9,
         "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.gender` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/views/paytype.view.lkml",
-        "line": 5,
-        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;",
+        "file": "phase2/lookml/views/pay_type.view.lkml",
+        "line": 9,
+        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.pay_type` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
       },
       {
         "severity": "HIGH",
-        "file": "phase2/lookml/views/separationreason.view.lkml",
-        "line": 5,
-        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;",
+        "file": "phase2/lookml/views/separation_reason.view.lkml",
+        "line": 9,
+        "what": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separation_reason` ;;",
         "user_must": "Replace BigQuery project.dataset in sql_table_name",
         "category": "warehouse_binding"
+      },
+      {
+        "severity": "MEDIUM",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 14,
+        "what": "| `new_hires_sply` | New Hires | complex_todo | TODO |",
+        "user_must": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity",
+        "category": "measure_todo"
       },
       {
         "severity": "MEDIUM",
@@ -716,105 +572,25 @@
       },
       {
         "severity": "MEDIUM",
-        "file": "phase2/lookml/views/bu.view.lkml",
-        "line": 35,
-        "what": "description: \"From Power BI. Strategy=complex_todo. DAX: COUNTA('BU'[BU])\"",
-        "user_must": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity",
-        "category": "measure_todo"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase2/lookml/views/bu.view.lkml",
-        "line": 37,
-        "what": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "user_must": "Resolve TODO \u2014 complex DAX / parity / missing logic",
-        "category": "measure_todo"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 95,
-        "what": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNu",
-        "user_must": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity",
-        "category": "measure_todo"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 97,
-        "what": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "user_must": "Resolve TODO \u2014 complex DAX / parity / missing logic",
-        "category": "measure_todo"
-      },
-      {
-        "severity": "MEDIUM",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 132,
-        "what": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE(COUNT([EmplID]), FILTER(Employee, NOT(ISBLANK(Employee[TermDate]))))\"",
+        "line": 136,
+        "what": "description: \"From Power BI measure `EmpCount`. Strategy=complex_todo. Complex / filter / time-intel DAX \u2014 implement with LookML period patterns, filtered aggre",
         "user_must": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity",
         "category": "measure_todo"
       },
       {
         "severity": "MEDIUM",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 134,
-        "what": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
+        "line": 138,
+        "what": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
         "user_must": "Resolve TODO \u2014 complex DAX / parity / missing logic",
         "category": "measure_todo"
       },
       {
         "severity": "MEDIUM",
-        "file": "phase2/lookml/views/gender.view.lkml",
-        "line": 30,
-        "what": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([TO %], all(Gender[Gender]), ALL(Ethnicity[Ethnicity]))\"",
-        "user_must": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity",
-        "category": "measure_todo"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase2/lookml/views/gender.view.lkml",
-        "line": 32,
-        "what": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "user_must": "Resolve TODO \u2014 complex DAX / parity / missing logic",
-        "category": "measure_todo"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 40,
-        "what": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "user_must": "Dashboard tile deficiency \u2014 verify field or replace gap tile",
-        "category": "dashboard_gap"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 49,
-        "what": "# deficiency: PBI aggregation on CptCode_Lookup.CptGrouping mapped to field ref; confirm a measure exists on cptcode_lookup (Phase 2)",
-        "user_must": "Dashboard tile deficiency \u2014 verify field or replace gap tile",
-        "category": "dashboard_gap"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase3/lookml_dashboards/dashboards/monthly_expenses_trends.dashboard.lookml",
-        "line": 41,
-        "what": "# deficiency: PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "user_must": "Dashboard tile deficiency \u2014 verify field or replace gap tile",
-        "category": "dashboard_gap"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 67,
-        "what": "# deficiency: PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add",
-        "user_must": "Dashboard tile deficiency \u2014 verify field or replace gap tile",
-        "category": "dashboard_gap"
-      },
-      {
-        "severity": "MEDIUM",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 58,
-        "what": "# deficiency: PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add",
+        "file": "phase3/lookml_dashboards/dashboards/bad_hires.dashboard.lookml",
+        "line": 53,
+        "what": "# deficiency: PBI aggregation on Employee.BadHires mapped to field ref; confirm a measure exists on employee (Phase 2) or add type -su",
         "user_must": "Dashboard tile deficiency \u2014 verify field or replace gap tile",
         "category": "dashboard_gap"
       },
@@ -828,7 +604,7 @@
       },
       {
         "severity": "LOW",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/actives_and_separations.dashboard.lookml",
         "line": 4,
         "what": "preferred_viewer: dashboards-next",
         "user_must": "Confirm dashboards-next is enabled in your Looker instance",
@@ -836,7 +612,7 @@
       },
       {
         "severity": "LOW",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/bad_hires.dashboard.lookml",
         "line": 4,
         "what": "preferred_viewer: dashboards-next",
         "user_must": "Confirm dashboards-next is enabled in your Looker instance",
@@ -844,7 +620,7 @@
       },
       {
         "severity": "LOW",
-        "file": "phase3/lookml_dashboards/dashboards/monthly_expenses_trends.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/info.dashboard.lookml",
         "line": 4,
         "what": "preferred_viewer: dashboards-next",
         "user_must": "Confirm dashboards-next is enabled in your Looker instance",
@@ -852,7 +628,7 @@
       },
       {
         "severity": "LOW",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/new_hires.dashboard.lookml",
         "line": 4,
         "what": "preferred_viewer: dashboards-next",
         "user_must": "Confirm dashboards-next is enabled in your Looker instance",
@@ -860,15 +636,7 @@
       },
       {
         "severity": "LOW",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 4,
-        "what": "preferred_viewer: dashboards-next",
-        "user_must": "Confirm dashboards-next is enabled in your Looker instance",
-        "category": "looker_platform"
-      },
-      {
-        "severity": "LOW",
-        "file": "phase3/lookml_dashboards/dashboards/project_overview.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/new_hires_scorecard.dashboard.lookml",
         "line": 4,
         "what": "preferred_viewer: dashboards-next",
         "user_must": "Confirm dashboards-next is enabled in your Looker instance",
@@ -876,6 +644,102 @@
       }
     ],
     "all_findings": [
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 14,
+        "snippet": "| `new_hires_sply` | New Hires | complex_todo | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 15,
+        "snippet": "| `actives_sply` | Actives | complex_todo | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 16,
+        "snippet": "| `seps_sply` | Seps | complex_todo | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 23,
+        "snippet": "| `bad_hires_sply` | Sum of BadHires | complex_todo | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 27,
+        "snippet": "| `to_pct_norm` | TO % | complex_todo | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 40,
+        "snippet": "| `employee` | EmpCount | `emp_count` | complex_todo | \u2014 | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 48,
+        "snippet": "| `employee` | New Hires SPLY | `new_hires_sply` | complex_todo | New Hires | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 49,
+        "snippet": "| `employee` | Actives SPLY | `actives_sply` | complex_todo | Actives | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 50,
+        "snippet": "| `employee` | Seps SPLY | `seps_sply` | complex_todo | Seps | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 51,
+        "snippet": "| `employee` | EmpCount SPLY | `emp_count_sply` | complex_todo | \u2014 | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 58,
+        "snippet": "| `employee` | Bad Hires SPLY | `bad_hires_sply` | complex_todo | Sum of BadHires | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/MEASURE_DEPENDENCIES.md",
+        "line": 62,
+        "snippet": "| `employee` | TO % Norm | `to_pct_norm` | complex_todo | TO % | TODO |",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
@@ -913,7 +777,7 @@
         "category": "warehouse_binding",
         "file": "phase2/lookml/m_migration/M_QUERY_RECOMMENDATIONS.md",
         "line": 164,
-        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.paytype` AS",
+        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.pay_type` AS",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -921,7 +785,7 @@
         "category": "warehouse_binding",
         "file": "phase2/lookml/m_migration/M_QUERY_RECOMMENDATIONS.md",
         "line": 178,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;",
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.pay_type` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -929,7 +793,7 @@
         "category": "warehouse_binding",
         "file": "phase2/lookml/m_migration/M_QUERY_RECOMMENDATIONS.md",
         "line": 221,
-        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separationreason` AS",
+        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separation_reason` AS",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -937,7 +801,7 @@
         "category": "warehouse_binding",
         "file": "phase2/lookml/m_migration/M_QUERY_RECOMMENDATIONS.md",
         "line": 235,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;",
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separation_reason` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -1017,7 +881,7 @@
         "category": "warehouse_binding",
         "file": "phase2/lookml/m_migration/M_QUERY_RECOMMENDATIONS.md",
         "line": 537,
-        "snippet": "CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.agegroup` AS",
+        "snippet": "CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.age_group` AS",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -1025,15 +889,15 @@
         "category": "warehouse_binding",
         "file": "phase2/lookml/m_migration/M_QUERY_RECOMMENDATIONS.md",
         "line": 555,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;",
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.age_group` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/m_migration/lookml_stubs/agegroup_recommended.lkml",
+        "file": "phase2/lookml/m_migration/lookml_stubs/age_group_recommended.lkml",
         "line": 2,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;",
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.age_group` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -1087,25 +951,25 @@
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/m_migration/lookml_stubs/paytype_recommended.lkml",
+        "file": "phase2/lookml/m_migration/lookml_stubs/pay_type_recommended.lkml",
         "line": 3,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;",
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.pay_type` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/m_migration/lookml_stubs/separationreason_recommended.lkml",
+        "file": "phase2/lookml/m_migration/lookml_stubs/separation_reason_recommended.lkml",
         "line": 3,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;",
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separation_reason` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/m_migration/sql/agegroup.sql",
+        "file": "phase2/lookml/m_migration/sql/age_group.sql",
         "line": 5,
-        "snippet": "CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.agegroup` AS",
+        "snippet": "CREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.age_group` AS",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -1167,17 +1031,17 @@
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/m_migration/sql/paytype.sql",
+        "file": "phase2/lookml/m_migration/sql/pay_type.sql",
         "line": 2,
-        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.paytype` AS",
+        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.pay_type` AS",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/m_migration/sql/separationreason.sql",
+        "file": "phase2/lookml/m_migration/sql/separation_reason.sql",
         "line": 2,
-        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separationreason` AS",
+        "snippet": "CREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separation_reason` AS",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
@@ -1215,160 +1079,32 @@
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/views/agegroup.view.lkml",
-        "line": 5,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;",
+        "file": "phase2/lookml/views/age_group.view.lkml",
+        "line": 9,
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.age_group` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
         "file": "phase2/lookml/views/bu.view.lkml",
-        "line": 5,
+        "line": 9,
         "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.bu` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/bu.view.lkml",
-        "line": 35,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: COUNTA('BU'[BU])\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/bu.view.lkml",
-        "line": 37,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
         "severity": "HIGH",
         "category": "warehouse_binding",
         "file": "phase2/lookml/views/date.view.lkml",
-        "line": 5,
+        "line": 9,
         "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.date` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 95,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNu",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 97,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 103,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([New Hires],SAMEPERIODLASTYEAR('Date'[Date]))\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 105,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 111,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([Actives],SAMEPERIODLASTYEAR('Date'[Date]))\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 113,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 119,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([Seps],SAMEPERIODLASTYEAR('Date'[Date]))\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 121,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 127,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE(COUNT([EmplID]), FILTER(ALL('Date'[PeriodNumber]), 'Date'[PeriodNumber] = MAX('Date'[PeriodNu",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 129,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 135,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([Sum of BadHires],SAMEPERIODLASTYEAR('Date'[Date]))\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 137,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 143,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: COUNTA('Date'[Date])\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/date.view.lkml",
-        "line": 145,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 5,
+        "line": 9,
         "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.employee` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
@@ -1376,152 +1112,24 @@
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 132,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE(COUNT([EmplID]), FILTER(Employee, NOT(ISBLANK(Employee[TermDate]))))\"",
+        "line": 136,
+        "snippet": "description: \"From Power BI measure `EmpCount`. Strategy=complex_todo. Complex / filter / time-intel DAX \u2014 implement with LookML period patterns, filtered aggre",
         "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
       },
       {
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 134,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
+        "line": 138,
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
         "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
       },
       {
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 140,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([EmpCount], FILTER(Employee, ISBLANK(Employee[TermDate])))\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 142,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 148,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: SUM([isNewHire])\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 150,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 156,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: AVERAGE([TenureDays])\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 158,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 164,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: ROUND([AVG Tenure Days]/30, 1)-1\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 166,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 172,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: ROUND(AVERAGE([Age]), 0)\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 174,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 180,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: SUM([BadHires])\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 182,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 188,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: [Seps]-[Seps SPLY]\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 190,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 196,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: [Actives]-[Actives SPLY]\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 198,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 204,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: [New Hires]-[New Hires SPLY]\"",
+        "line": 202,
+        "snippet": "description: \"From Power BI measure `New Hires SPLY`. Strategy=complex_todo. DEPENDS ON: New Hires. Implement dependency measures first; this field uses type:nu",
         "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
       },
       {
@@ -1529,46 +1137,94 @@
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
         "line": 206,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
         "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
       },
       {
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 236,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: [Sum of BadHires]-[Bad Hires SPLY]\"",
+        "line": 213,
+        "snippet": "description: \"From Power BI measure `Actives SPLY`. Strategy=complex_todo. DEPENDS ON: Actives. Implement dependency measures first; this field uses type:number",
         "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
       },
       {
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 238,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
+        "line": 217,
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
         "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
       },
       {
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 260,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: [TO %]-[TO % Norm]\"",
+        "line": 224,
+        "snippet": "description: \"From Power BI measure `Seps SPLY`. Strategy=complex_todo. DEPENDS ON: Seps. Implement dependency measures first; this field uses type:number + ${m",
         "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
       },
       {
         "severity": "MEDIUM",
         "category": "measure_todo",
         "file": "phase2/lookml/views/employee.view.lkml",
-        "line": 262,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
+        "line": 228,
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
+        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/views/employee.view.lkml",
+        "line": 235,
+        "snippet": "description: \"From Power BI measure `EmpCount SPLY`. Strategy=complex_todo. Complex / filter / time-intel DAX \u2014 implement with LookML period patterns, filtered ",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/views/employee.view.lkml",
+        "line": 237,
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
+        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/views/employee.view.lkml",
+        "line": 300,
+        "snippet": "description: \"From Power BI measure `Bad Hires SPLY`. Strategy=complex_todo. DEPENDS ON: Sum of BadHires. Implement dependency measures first; this field uses t",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/views/employee.view.lkml",
+        "line": 304,
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
+        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/views/employee.view.lkml",
+        "line": 340,
+        "snippet": "description: \"From Power BI measure `TO % Norm`. Strategy=complex_todo. DEPENDS ON: TO %. Implement dependency measures first; this field uses type:number + ${m",
+        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
+      },
+      {
+        "severity": "MEDIUM",
+        "category": "measure_todo",
+        "file": "phase2/lookml/views/employee.view.lkml",
+        "line": 344,
+        "snippet": "# TODO: complex DAX \u2014 keep original expression; validate KPI parity before production",
         "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
         "file": "phase2/lookml/views/ethnicity.view.lkml",
-        "line": 5,
+        "line": 9,
         "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.ethnicity` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
@@ -1576,7 +1232,7 @@
         "severity": "HIGH",
         "category": "warehouse_binding",
         "file": "phase2/lookml/views/fp.view.lkml",
-        "line": 5,
+        "line": 9,
         "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.fp` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
@@ -1584,46 +1240,38 @@
         "severity": "HIGH",
         "category": "warehouse_binding",
         "file": "phase2/lookml/views/gender.view.lkml",
-        "line": 5,
+        "line": 9,
         "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.gender` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/gender.view.lkml",
-        "line": 30,
-        "snippet": "description: \"From Power BI. Strategy=complex_todo. DAX: CALCULATE([TO %], all(Gender[Gender]), ALL(Ethnicity[Ethnicity]))\"",
-        "action": "Measure stubbed as complex_todo \u2014 implement SQL + KPI parity"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "measure_todo",
-        "file": "phase2/lookml/views/gender.view.lkml",
-        "line": 32,
-        "snippet": "# TODO: complex DAX \u2014 see description; validate KPI parity before production",
-        "action": "Resolve TODO \u2014 complex DAX / parity / missing logic"
-      },
-      {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/views/paytype.view.lkml",
-        "line": 5,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;",
+        "file": "phase2/lookml/views/pay_type.view.lkml",
+        "line": 9,
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.pay_type` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "HIGH",
         "category": "warehouse_binding",
-        "file": "phase2/lookml/views/separationreason.view.lkml",
-        "line": 5,
-        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;",
+        "file": "phase2/lookml/views/separation_reason.view.lkml",
+        "line": 9,
+        "snippet": "sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separation_reason` ;;",
         "action": "Replace BigQuery project.dataset in sql_table_name"
       },
       {
         "severity": "LOW",
         "category": "looker_platform",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/actives_and_separations.dashboard.lookml",
+        "line": 4,
+        "snippet": "preferred_viewer: dashboards-next",
+        "action": "Confirm dashboards-next is enabled in your Looker instance"
+      },
+      {
+        "severity": "LOW",
+        "category": "looker_platform",
+        "file": "phase3/lookml_dashboards/dashboards/bad_hires.dashboard.lookml",
         "line": 4,
         "snippet": "preferred_viewer: dashboards-next",
         "action": "Confirm dashboards-next is enabled in your Looker instance"
@@ -1631,415 +1279,39 @@
       {
         "severity": "MEDIUM",
         "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 40,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
+        "file": "phase3/lookml_dashboards/dashboards/bad_hires.dashboard.lookml",
+        "line": 53,
+        "snippet": "# deficiency: PBI aggregation on Employee.BadHires mapped to field ref; confirm a measure exists on employee (Phase 2) or add type -su",
         "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
       },
       {
         "severity": "MEDIUM",
         "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 66,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 67,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 93,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 107,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 120,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 133,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 146,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 173,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 187,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 201,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 215,
-        "snippet": "# deficiency: no fields bound from prototypeQuery \u2014 tile will be incomplete",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 228,
-        "snippet": "# deficiency: PBI aggregation on FactTable.TotalPayment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add ty",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 241,
-        "snippet": "# deficiency: unbound field Date Year",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 254,
-        "snippet": "# deficiency: unbound field Date Month",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 267,
-        "snippet": "# deficiency: unbound field Date Quarter",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/executive_summary.dashboard.lookml",
-        "line": 280,
-        "snippet": "# deficiency: unbound field Date Month",
+        "file": "phase3/lookml_dashboards/dashboards/bad_hires.dashboard.lookml",
+        "line": 83,
+        "snippet": "# deficiency: PBI aggregation on Employee.BadHires mapped to field ref; confirm a measure exists on employee (Phase 2) or add type -su",
         "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
       },
       {
         "severity": "LOW",
         "category": "looker_platform",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/info.dashboard.lookml",
         "line": 4,
         "snippet": "preferred_viewer: dashboards-next",
         "action": "Confirm dashboards-next is enabled in your Looker instance"
       },
       {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 49,
-        "snippet": "# deficiency: PBI aggregation on CptCode_Lookup.CptGrouping mapped to field ref; confirm a measure exists on cptcode_lookup (Phase 2)",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 65,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 81,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 124,
-        "snippet": "# deficiency: PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -sum",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 140,
-        "snippet": "# deficiency: PBI aggregation on Hospital_Lookup.HospitalName mapped to field ref; confirm a measure exists on hospital_lookup (Phase",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 156,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 188,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 205,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/hospital_insights.dashboard.lookml",
-        "line": 222,
-        "snippet": "# deficiency: PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -sum",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
         "severity": "LOW",
         "category": "looker_platform",
-        "file": "phase3/lookml_dashboards/dashboards/monthly_expenses_trends.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/new_hires.dashboard.lookml",
         "line": 4,
         "snippet": "preferred_viewer: dashboards-next",
         "action": "Confirm dashboards-next is enabled in your Looker instance"
       },
       {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/monthly_expenses_trends.dashboard.lookml",
-        "line": 41,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
         "severity": "LOW",
         "category": "looker_platform",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 4,
-        "snippet": "preferred_viewer: dashboards-next",
-        "action": "Confirm dashboards-next is enabled in your Looker instance"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 67,
-        "snippet": "# deficiency: PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 85,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 103,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 149,
-        "snippet": "# deficiency: PBI aggregation on FactTable.dimPatientFK mapped to field ref; confirm a measure exists on facttable (Phase 2) or add ty",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 167,
-        "snippet": "# deficiency: PBI aggregation on Patient_Lookup.State mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 292,
-        "snippet": "# deficiency: map may lack location dimension \u2014 verify geo fields",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/patient_analysis.dashboard.lookml",
-        "line": 310,
-        "snippet": "# deficiency: PBI aggregation on Patient_Lookup.PatientAge mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) o",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "LOW",
-        "category": "looker_platform",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 4,
-        "snippet": "preferred_viewer: dashboards-next",
-        "action": "Confirm dashboards-next is enabled in your Looker instance"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 58,
-        "snippet": "# deficiency: PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 75,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 92,
-        "snippet": "# deficiency: PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or a",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 121,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 138,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 155,
-        "snippet": "# deficiency: PBI aggregation on Speciality_Lookup.ProviderSpecialty mapped to field ref; confirm a measure exists on speciality_looku",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 173,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 191,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.dimPhysicianPK mapped to field ref; confirm a measure exists on physcian_lookup (Phas",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 209,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 210,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 228,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 229,
-        "snippet": "# deficiency: PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type -",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "MEDIUM",
-        "category": "dashboard_gap",
-        "file": "phase3/lookml_dashboards/dashboards/payer_provider_analysis.dashboard.lookml",
-        "line": 230,
-        "snippet": "# deficiency: PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2",
-        "action": "Dashboard tile deficiency \u2014 verify field or replace gap tile"
-      },
-      {
-        "severity": "LOW",
-        "category": "looker_platform",
-        "file": "phase3/lookml_dashboards/dashboards/project_overview.dashboard.lookml",
+        "file": "phase3/lookml_dashboards/dashboards/new_hires_scorecard.dashboard.lookml",
         "line": 4,
         "snippet": "preferred_viewer: dashboards-next",
         "action": "Confirm dashboards-next is enabled in your Looker instance"

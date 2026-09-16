@@ -1,13 +1,13 @@
 # Dashboard Developer Guide — Phase 3
 
-_Generated 2026-09-16 09:59 UTC_
+_Generated 2026-09-16 12:26 UTC_
 
 ## Purpose
 
 Convert Power BI report **pages** into Looker **LookML dashboards** using deterministic rules.
 This is best-effort functional parity — **not** pixel-perfect recreation.
 
-**Weighted completion:** 83.9% (target ≥ 70%).
+**Weighted completion:** 75.1% (target ≥ 70%).
 
 ## What Looker gets
 
@@ -39,19 +39,50 @@ This is best-effort functional parity — **not** pixel-perfect recreation.
 
 ## Page inventory
 
-- **Project Overview** → `dashboards/project_overview.dashboard.lookml` (1 visuals)
-- **Executive Summary** → `dashboards/executive_summary.dashboard.lookml` (23 visuals)
-- **Hospital Insights** → `dashboards/hospital_insights.dashboard.lookml` (18 visuals)
-- **Patient Analysis** → `dashboards/patient_analysis.dashboard.lookml` (22 visuals)
-- **Payer-Provider Analysis** → `dashboards/payer_provider_analysis.dashboard.lookml` (17 visuals)
-- **Monthly Expenses Trends** → `dashboards/monthly_expenses_trends.dashboard.lookml` (2 visuals)
+- **Overview** → `dashboards/overview.dashboard.lookml` (8 visuals)
+- **Geographic / Location Analysis** → `dashboards/geographic_location_analysis.dashboard.lookml` (12 visuals)
+- **Revenue Analysis** → `dashboards/revenue_analysis.dashboard.lookml` (13 visuals)
+- **Customer Analysis** → `dashboards/customer_analysis.dashboard.lookml` (12 visuals)
+- **Rental Analysis** → `dashboards/rental_analysis.dashboard.lookml` (12 visuals)
+- **Film Analysis** → `dashboards/film_analysis.dashboard.lookml` (14 visuals)
+- **Actor Analysis** → `dashboards/actor_analysis.dashboard.lookml` (10 visuals)
+- **Q1** → `dashboards/q1.dashboard.lookml` (3 visuals)
+- ** Q2** → `dashboards/q2.dashboard.lookml` (4 visuals)
+- **Q3** → `dashboards/q3.dashboard.lookml` (3 visuals)
+- **Q4** → `dashboards/q4.dashboard.lookml` (3 visuals)
+- **Q5** → `dashboards/q5.dashboard.lookml` (3 visuals)
+- **Q6** → `dashboards/q6.dashboard.lookml` (3 visuals)
+- **Q7** → `dashboards/q7.dashboard.lookml` (4 visuals)
+- **Q8** → `dashboards/q8.dashboard.lookml` (3 visuals)
+- **Q9** → `dashboards/q9.dashboard.lookml` (3 visuals)
+- **Q10** → `dashboards/q10.dashboard.lookml` (3 visuals)
+- **Q11** → `dashboards/q11.dashboard.lookml` (3 visuals)
+- **Q12** → `dashboards/q12.dashboard.lookml` (3 visuals)
+- **Q13** → `dashboards/q13.dashboard.lookml` (3 visuals)
+- **Q14** → `dashboards/q14.dashboard.lookml` (3 visuals)
+- **Q15** → `dashboards/q15.dashboard.lookml` (3 visuals)
+- **Q16** → `dashboards/q16.dashboard.lookml` (3 visuals)
+- **Q17** → `dashboards/q17.dashboard.lookml` (3 visuals)
+- **Q18** → `dashboards/q18.dashboard.lookml` (3 visuals)
+- **Q19** → `dashboards/q19.dashboard.lookml` (3 visuals)
+- **Q20** → `dashboards/q20.dashboard.lookml` (3 visuals)
+- **Q21** → `dashboards/q21.dashboard.lookml` (3 visuals)
+- **Q22** → `dashboards/q22.dashboard.lookml` (3 visuals)
+- **Q23** → `dashboards/q23.dashboard.lookml` (3 visuals)
+- **Q24** → `dashboards/q24.dashboard.lookml` (3 visuals)
+- **Q25** → `dashboards/q25.dashboard.lookml` (3 visuals)
+- **Q26** → `dashboards/q26.dashboard.lookml` (3 visuals)
+- **Q27** → `dashboards/q27.dashboard.lookml` (3 visuals)
+- **Q28** → `dashboards/q28.dashboard.lookml` (3 visuals)
+- **Q29** → `dashboards/q29.dashboard.lookml` (3 visuals)
+- **Q30** → `dashboards/q30.dashboard.lookml` (3 visuals)
 
 ## Coverage summary
 
-- Mapped / generated: 48
-- Partial: 22
-- Gaps / skipped: 5 gaps; 8 decorative skips
-- Weighted completion: **83.9%**
+- Mapped / generated: 70
+- Partial: 99
+- Gaps / skipped: 4 gaps; 0 decorative skips
+- Weighted completion: **75.1%**
 
 ## Deficiencies (expected)
 

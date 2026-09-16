@@ -17,7 +17,11 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from lib.dax_patterns import classify_dax, extract_table_column
+from lib.dax_patterns import (
+    classify_dax,
+    extract_table_column,
+    topological_measure_order,
+)
 from lib.mapping import (
     OBJECT_EQUIVALENCE,
     cardinality_to_relationship,
@@ -32,6 +36,15 @@ from lib.naming import (
     snake_case,
     sql_table_placeholder,
 )
+
+# Official Looker + looker-skills references baked into generated LookML headers
+LOOKML_STANDARD_REFS = [
+    "https://cloud.google.com/looker/docs/reference/param-measure-types",
+    "https://cloud.google.com/looker/docs/reference/param-field-filters",
+    "https://cloud.google.com/looker/docs/best-practices/how-to-troubleshoot-fields-with-division-displaying-0",
+    "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-modeling-guidelines/SKILL.md",
+    "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-view/SKILL.md",
+]
 
 ROOT = Path(__file__).resolve().parent
 PHASE1_INV = ROOT.parent / "phase1" / "inventory"
@@ -100,19 +113,240 @@ def escape_lookml_string(s: str) -> str:
     return (s or "").replace("\\", "\\\\").replace('"', '\\"')
 
 
+def _measure_description(mname: str, expr: str, plan) -> str:
+    parts = [f"From Power BI measure `{mname}`.", f"Strategy={plan.strategy}."]
+    if plan.depends_on:
+        parts.append(f"DEPENDS ON: {', '.join(plan.depends_on)}.")
+        parts.append("Implement dependency measures first; this field uses type:number + ${measure} refs.")
+    if plan.dependency_warning:
+        parts.append(plan.dependency_warning)
+    for n in (plan.notes or [])[:2]:
+        if n and n not in parts:
+            parts.append(n)
+    parts.append(f"DAX: {expr[:160]}")
+    return " ".join(parts)[:450]
+
+
+def _infer_count_col_from_dax(expression: str) -> str | None:
+    """If dependency DAX aggregates COUNT/DISTINCTCOUNT([Col]), return Col."""
+    m = re.search(
+        rf"(?:COUNT|DISTINCTCOUNT)\(\s*(?:(?:'[^']+'|[\w ]+)\[|\[)([^\]]+)\]\s*\)",
+        expression or "",
+        re.I,
+    )
+    return m.group(1).strip() if m else None
+
+
+def _suggest_filtered_twin(
+    plan,
+    *,
+    dep_expressions: dict[str, str],
+    tname: str,
+    field_name_map: dict[tuple[str, str], str],
+) -> dict | None:
+    """When CALCULATE([M], ISBLANK filter) cannot use filters on type:number, suggest aggregate twin."""
+    if not plan.filters or not plan.depends_on:
+        return None
+    dep = plan.depends_on[0]
+    dep_expr = dep_expressions.get(dep) or ""
+    col = _infer_count_col_from_dax(dep_expr)
+    if not col:
+        return None
+    # Prefer ${dimension} ref
+    if (tname, col) in field_name_map:
+        sql_ref = f"${{{field_name_map[(tname, col)]}}}"
+    else:
+        sql_ref = f"${{{lookml_field_name(col)}}}"
+    filt_parts = [f'{f}: "{escape_lookml_string(v)}"' for f, v in plan.filters]
+    return {
+        "lookml_type": "count_distinct",
+        "sql_ref": sql_ref,
+        "filters_lookml": ", ".join(filt_parts),
+        "dep": dep,
+    }
+
+
+def render_measure_block(
+    m: dict,
+    *,
+    tname: str,
+    field_name_map: dict[tuple[str, str], str],
+    used_fields: set[str],
+    known_measures: set[str],
+    measure_field_names: dict[str, str],
+    dep_expressions: dict[str, str] | None = None,
+) -> list[str]:
+    """Emit one LookML measure following official Looker / looker-skills rules."""
+    lines: list[str] = []
+    mname = m.get("measure_name") or m.get("name") or ""
+    expr = m.get("expression") or ""
+    plan = classify_dax(expr, mname, known_measures)
+    fname = lookml_field_name(mname)
+    base = fname
+    i = 2
+    while fname in used_fields:
+        fname = f"{base}_{i}"
+        i += 1
+    used_fields.add(fname)
+    measure_field_names[mname] = fname
+
+    twin = None
+    if plan.strategy == "filtered_measure":
+        twin = _suggest_filtered_twin(
+            plan,
+            dep_expressions=dep_expressions or {},
+            tname=tname,
+            field_name_map=field_name_map,
+        )
+
+    lookml_type = twin["lookml_type"] if twin else plan.lookml_type
+
+    lines.append(f"  measure: {fname} {{")
+    lines.append(f'    label: "{escape_lookml_string(mname)}"')
+    desc = _measure_description(mname, expr, plan)
+    if twin:
+        desc = (
+            f"DEPENDS ON: {', '.join(plan.depends_on)}. "
+            f"Power BI wrapped [{twin['dep']}] with a filter; Looker forbids filters: on type:number, "
+            f"so this field is a filtered {twin['lookml_type']} twin. "
+            + desc
+        )[:450]
+    lines.append(f'    description: "{escape_lookml_string(desc)}"')
+    lines.append(f"    type: {lookml_type}")
+
+    if plan.depends_on:
+        lines.append(
+            f"    # DEPENDS ON Power BI measures: {', '.join(plan.depends_on)}"
+        )
+        lines.append(
+            "    # Looker rule: measure-of-measures must be type: number "
+            "(https://cloud.google.com/looker/docs/reference/param-measure-types)"
+        )
+
+    def dim_ref(col: str) -> str:
+        if (tname, col) in field_name_map:
+            return f"${{{field_name_map[(tname, col)]}}}"
+        return f"${{TABLE}}.{quote_sql_ident(col)}"
+
+    def measure_ref(pbi_name: str) -> str:
+        lk = measure_field_names.get(pbi_name) or lookml_field_name(pbi_name)
+        return f"${{{lk}}}"
+
+    if twin:
+        lines.append(
+            "    # filters: applied on aggregate twin (not type:number) — "
+            "https://cloud.google.com/looker/docs/reference/param-field-filters"
+        )
+        lines.append(f"    sql: {twin['sql_ref']} ;;")
+        lines.append(f"    filters: [{twin['filters_lookml']}]")
+
+    elif plan.strategy in {"direct_sum", "direct_average", "count_distinct", "filtered_aggregate"} and plan.sql:
+        col = plan.sql
+        if plan.lookml_type == "count" and not plan.filters:
+            pass
+        elif plan.lookml_type in {"sum", "average", "count_distinct"}:
+            if (tname, col) in field_name_map:
+                lines.append(f"    sql: {dim_ref(col)} ;;")
+            else:
+                lines.append(f"    sql: ${{TABLE}}.{quote_sql_ident(col)} ;;")
+        if plan.filters:
+            filt_parts = [f'{f}: "{escape_lookml_string(v)}"' for f, v in plan.filters]
+            lines.append(f"    filters: [{', '.join(filt_parts)}]")
+
+    elif plan.strategy == "direct_count":
+        if plan.sql and plan.lookml_type == "count_distinct":
+            lines.append(f"    sql: {dim_ref(plan.sql)} ;;")
+        else:
+            lines.append("    # type: count — prefer count_distinct on PK under joins (symmetric aggregates)")
+        if plan.filters:
+            filt_parts = [f'{f}: "{escape_lookml_string(v)}"' for f, v in plan.filters]
+            lines.append(f"    filters: [{', '.join(filt_parts)}]")
+
+    elif plan.strategy in {"measure_ratio", "measure_math", "measure_transform", "measure_alias"}:
+        sql_expr = plan.sql_expression
+        if sql_expr:
+            for dep in plan.depends_on:
+                sql_expr = sql_expr.replace(
+                    f"${{{lookml_field_name(dep)}}}",
+                    measure_ref(dep),
+                )
+            lines.append(f"    sql: {sql_expr} ;;")
+        else:
+            lines.append("    sql: NULL ;;  # TODO: wire dependent measures")
+
+    elif plan.strategy == "sum_plus_sum" and plan.sql and "|" in plan.sql:
+        c1, c2 = plan.sql.split("|", 1)
+        lines.append(
+            f"    # Prefer helper measures sum_{lookml_field_name(c1)} + sum_{lookml_field_name(c2)}"
+        )
+        lines.append(
+            f"    sql: SUM({dim_ref(c1)}) + SUM({dim_ref(c2)}) ;;  "
+            "# prefer two type:sum + type:number"
+        )
+
+    elif plan.strategy == "sum_over_sum" and plan.sql and "|" in plan.sql:
+        c1, c2 = plan.sql.split("|", 1)
+        a = lookml_field_name(f"sum_{c1}")
+        b = lookml_field_name(f"sum_{c2}")
+        lines.append(f"    # DEPENDS ON helper measures: {a}, {b} (create type:sum on each column)")
+        lines.append(f"    sql: 1.0 * ${{{a}}} / NULLIF(${{{b}}}, 0) ;;")
+        lines.append(
+            "    # Division: float * num / NULLIF(den,0) — "
+            "https://cloud.google.com/looker/docs/best-practices/how-to-troubleshoot-fields-with-division-displaying-0"
+        )
+
+    elif plan.strategy == "filtered_measure":
+        lines.append("    # TODO: filters: cannot apply to type: number.")
+        lines.append(
+            "    # Create a filtered aggregate twin of the dependency, then reference it here."
+        )
+        for hint, val in plan.filters:
+            lines.append(f'    # intended filter: {hint} = "{escape_lookml_string(val)}"')
+        if plan.depends_on:
+            dep = plan.depends_on[0]
+            lines.append(f"    sql: {measure_ref(dep)} ;;  # PLACEHOLDER — replace with filtered twin")
+        else:
+            lines.append("    sql: NULL ;;")
+
+    elif plan.strategy == "parameter_value":
+        lines.append("    # TODO: convert SELECTEDVALUE to Looker parameter + {% parameter %}")
+        lines.append("    sql: NULL ;;")
+
+    else:
+        lines.append("    # TODO: complex DAX — keep original expression; validate KPI parity before production")
+        if plan.depends_on:
+            lines.append(
+                f"    # Still depends on: {', '.join(plan.depends_on)} — implement those first where possible"
+            )
+        lines.append("    sql: NULL ;;")
+
+    if plan.value_format and not twin:
+        lines.append(f"    value_format_name: {plan.value_format}")
+
+    lines.append("  }")
+    lines.append("")
+    return lines
+
+
 def render_view(
     table: dict,
     columns: list[dict],
     calc_cols: list[dict],
     measures_for_view: list[dict],
     field_name_map: dict[tuple[str, str], str],
-) -> str:
+    known_measures: set[str] | None = None,
+) -> tuple[str, list[dict]]:
+    """Render a view file. Returns (lookml_text, measure_dependency_rows)."""
     tname = table["table_name"]
     vname = lookml_view_name(tname)
     pk_col = guess_primary_key(columns)
     lines: list[str] = []
     lines.append("# GENERATED by phase2/generate_lookml.py — deterministic from Phase 1 inventory")
     lines.append(f"# Source Power BI table: {tname}")
+    lines.append("# Standards: looker-open-source/looker-skills + Google Looker docs")
+    lines.append("# - primary_key first; measures reference ${dimension} where possible")
+    lines.append("# - measure-of-measures → type: number; ratios use 1.0 * x / NULLIF(y, 0)")
+    lines.append("# - filters: only on aggregate measure types (not type: number)")
     if table.get("is_calculated_table") or table.get("table_type") == "calculated_table":
         lines.append("# Calculated table — prefer warehouse materialization; sql_table_name is a placeholder.")
     lines.append(f"view: {vname} {{")
@@ -121,6 +355,15 @@ def render_view(
     lines.append("")
 
     used_fields: set[str] = set()
+    dep_rows: list[dict] = []
+    known = known_measures or {
+        (m.get("measure_name") or m.get("name") or "") for m in measures_for_view
+    }
+    measure_field_names: dict[str, str] = {}
+    dep_expressions = {
+        (m.get("measure_name") or m.get("name") or ""): (m.get("expression") or "")
+        for m in measures_for_view
+    }
 
     def emit_dimension(col_name: str, data_type, pandas_dtype, *, primary: bool = False, description: str | None = None, hidden: bool = False):
         fname = lookml_field_name(col_name)
@@ -222,74 +465,39 @@ def render_view(
         lines.append("  }")
         lines.append("")
 
-    # Measures attached to this view
-    for m in measures_for_view:
-        mname = m.get("measure_name") or m.get("name")
+    # Measures: dependency order so ${measure} refs resolve logically for developers
+    ordered_measures = topological_measure_order(measures_for_view, known)
+    for m in ordered_measures:
+        mname = m.get("measure_name") or m.get("name") or ""
         expr = m.get("expression") or ""
-        plan = classify_dax(expr, mname or "")
-        fname = lookml_field_name(mname)
-        base = fname
-        i = 2
-        while fname in used_fields:
-            fname = f"{base}_{i}"
-            i += 1
-        used_fields.add(fname)
-        lines.append(f"  measure: {fname} {{")
-        lines.append(f'    label: "{escape_lookml_string(mname)}"')
-        lines.append(f'    description: "From Power BI. Strategy={plan.strategy}. DAX: {escape_lookml_string(expr[:180])}"')
-        lines.append(f"    type: {plan.lookml_type}")
-        if plan.strategy in {"direct_sum", "direct_average", "count_distinct"} and plan.sql:
-            dim = field_name_map.get((tname, plan.sql)) or lookml_field_name(plan.sql)
-            # Prefer ${dimension} per looker-skills when dimension exists on same view
-            if (tname, plan.sql) in field_name_map:
-                lines.append(f"    sql: ${{{dim}}} ;;")
-            else:
-                # column may live on another table — still reference TABLE if same view expected
-                lines.append(f"    sql: ${{TABLE}}.{quote_sql_ident(plan.sql)} ;;")
-        elif plan.strategy == "direct_count":
-            lines.append("    # COUNT — type already set to count; switch to count_distinct on PK if needed.")
-        elif plan.strategy == "sum_plus_sum":
-            cols = re.findall(r"\[([^\]]+)\]", expr)
-            if len(cols) >= 2:
-                c1, c2 = cols[0], cols[1]
-                lines.append(
-                    f"    sql: ${{TABLE}}.{quote_sql_ident(c1)} + ${{TABLE}}.{quote_sql_ident(c2)} ;;"
-                )
-            else:
-                lines.append("    sql: NULL ;;  # TODO: implement sum+sum")
-        elif plan.strategy == "sum_over_sum":
-            cols = re.findall(r"\[([^\]]+)\]", expr)
-            if len(cols) >= 2:
-                c1, c2 = cols[0], cols[1]
-                lines.append(
-                    f"    sql: SAFE_DIVIDE(SUM(${{TABLE}}.{quote_sql_ident(c1)}), SUM(${{TABLE}}.{quote_sql_ident(c2)})) ;;"
-                )
-            else:
-                lines.append("    sql: NULL ;;  # TODO")
-        elif plan.strategy == "ratio":
-            refs = re.findall(r"\[([^\]]+)\]", expr)
-            if len(refs) >= 2:
-                a, b = lookml_field_name(refs[0]), lookml_field_name(refs[1])
-                lines.append(f"    sql: SAFE_DIVIDE(${{{a}}}, ${{{b}}}) ;;")
-            else:
-                lines.append("    sql: NULL ;;  # TODO: wire child measures")
-            if plan.value_format:
-                lines.append(f"    value_format_name: {plan.value_format}")
-        elif plan.strategy == "filtered":
-            lines.append("    # TODO: implement CALCULATE filter via filters: block or filtered measure")
-            for hint, val in plan.filters:
-                lines.append(f'    # filter hint: {hint} = "{val}"')
-            lines.append("    sql: NULL ;;")
-        elif plan.strategy == "parameter_value":
-            lines.append("    # TODO: convert SELECTEDVALUE to Looker parameter")
-            lines.append("    sql: NULL ;;")
-        else:
-            lines.append("    # TODO: complex DAX — see description; validate KPI parity before production")
-            lines.append("    sql: NULL ;;")
-        if plan.value_format and plan.strategy not in {"ratio"}:
-            lines.append(f"    value_format_name: {plan.value_format}")
-        lines.append("  }")
-        lines.append("")
+        plan = classify_dax(expr, mname, known)
+        lines.extend(
+            render_measure_block(
+                m,
+                tname=tname,
+                field_name_map=field_name_map,
+                used_fields=used_fields,
+                known_measures=known,
+                measure_field_names=measure_field_names,
+                dep_expressions=dep_expressions,
+            )
+        )
+        dep_rows.append(
+            {
+                "view": vname,
+                "power_bi_measure": mname,
+                "lookml_measure": measure_field_names.get(mname, lookml_field_name(mname)),
+                "strategy": plan.strategy,
+                "lookml_type": plan.lookml_type,
+                "depends_on": plan.depends_on,
+                "dependency_warning": plan.dependency_warning,
+                "mapped": plan.mapped,
+                "sql_expression": plan.sql_expression,
+                "filters": [{"field": f, "value": v} for f, v in plan.filters],
+                "dax": expr,
+                "notes": plan.notes,
+            }
+        )
 
     # Default count
     if "count" not in used_fields:
@@ -301,7 +509,7 @@ def render_view(
 
     lines.append("}")
     lines.append("")
-    return "\n".join(lines)
+    return "\n".join(lines), dep_rows
 
 
 def pick_fact_table(tables: list[dict], rels: list[dict]) -> str | None:
@@ -464,6 +672,77 @@ def build_mapping_doc(data: dict, plans: list[dict], model_name: str) -> tuple[d
     return payload, "\n".join(lines)
 
 
+def _write_measure_dependencies(out: Path, lookml_root: Path, dep_rows: list[dict], source: str) -> dict:
+    """Write MEASURE_DEPENDENCIES.md/json so users see dependent measures clearly."""
+    dependent = [r for r in dep_rows if r.get("depends_on")]
+    mapped = sum(1 for r in dep_rows if r.get("mapped"))
+    todo = sum(1 for r in dep_rows if not r.get("mapped"))
+    payload = {
+        "source_pbix": source,
+        "total_measures": len(dep_rows),
+        "mapped": mapped,
+        "todo": todo,
+        "dependent_count": len(dependent),
+        "standards": LOOKML_STANDARD_REFS,
+        "measures": dep_rows,
+    }
+    (out / "MEASURE_DEPENDENCIES.json").write_text(json.dumps(payload, indent=2))
+    (lookml_root / "MEASURE_DEPENDENCIES.json").write_text(json.dumps(payload, indent=2))
+
+    lines = [
+        "# Measure dependencies (Power BI → LookML)",
+        "",
+        f"**Source:** `{Path(source).name}`  ",
+        f"**Total measures:** {len(dep_rows)}  ·  **Mapped:** {mapped}  ·  **TODO:** {todo}  ·  **With dependencies:** {len(dependent)}",
+        "",
+        "When a measure depends on another, Looker requires `type: number` and `${measure}` references "
+        "([measure types](https://cloud.google.com/looker/docs/reference/param-measure-types)). "
+        "Ratios use `1.0 * ${num} / NULLIF(${den}, 0)` "
+        "([division best practice](https://cloud.google.com/looker/docs/best-practices/how-to-troubleshoot-fields-with-division-displaying-0)). "
+        "`filters:` is only valid on aggregate measures — never on `type: number` "
+        "([filters](https://cloud.google.com/looker/docs/reference/param-field-filters)).",
+        "",
+        "## Dependent measures (implement bases first)",
+        "",
+        "| LookML measure | Depends on (Power BI) | Strategy | Status |",
+        "|---|---|---|---|",
+    ]
+    for r in dependent:
+        deps = ", ".join(r.get("depends_on") or []) or "—"
+        status = "mapped" if r.get("mapped") else "TODO"
+        lines.append(
+            f"| `{r.get('lookml_measure')}` | {deps} | {r.get('strategy')} | {status} |"
+        )
+    if not dependent:
+        lines.append("| — | — | — | — |")
+
+    lines += [
+        "",
+        "## All measures",
+        "",
+        "| View | Power BI | LookML | Strategy | Depends on | Mapped |",
+        "|---|---|---|---|---|---|",
+    ]
+    for r in dep_rows:
+        deps = ", ".join(r.get("depends_on") or []) or "—"
+        lines.append(
+            f"| `{r.get('view')}` | {r.get('power_bi_measure')} | `{r.get('lookml_measure')}` | "
+            f"{r.get('strategy')} | {deps} | {'yes' if r.get('mapped') else 'TODO'} |"
+        )
+    lines += [
+        "",
+        "## References",
+        "",
+    ]
+    for url in LOOKML_STANDARD_REFS:
+        lines.append(f"- {url}")
+    lines.append("")
+    md = "\n".join(lines)
+    (out / "MEASURE_DEPENDENCIES.md").write_text(md)
+    (lookml_root / "MEASURE_DEPENDENCIES.md").write_text(md)
+    return payload
+
+
 def generate(inv_dir: Path | None = None, out_root: Path | None = None) -> dict:
     data = load_inventory(inv_dir)
     out = out_root or ROOT
@@ -485,39 +764,50 @@ def generate(inv_dir: Path | None = None, out_root: Path | None = None) -> dict:
     calc_map = calc_cols_by_table(a2)
     rels = a3.get("relationships") or []
     measures = a2.get("measures") or []
+    known_measures = {
+        (m.get("measure_name") or m.get("name") or "")
+        for m in measures
+        if (m.get("measure_name") or m.get("name"))
+    }
     source = (data.get("counts") or {}).get("source_pbix") or a1.get("source_pbix") or "PBIX"
     model_name = snake_case(Path(source).stem) or "pbix_model"
 
     fact = pick_fact_table(tables, rels)
     field_name_map: dict[tuple[str, str], str] = {}
     plans: list[dict] = []
+    all_dep_rows: list[dict] = []
 
     # Assign measures to views: prefer expression's table, else fact, else Measure Table → fact
     measures_by_view: dict[str, list[dict]] = defaultdict(list)
     for m in measures:
         expr = m.get("expression") or ""
-        tbl, _ = extract_table_column(expr)
-        host = tbl if tbl and not is_internal_table(tbl) else fact
-        # Measure Table is not a real physical table in this inventory
+        mname = m.get("measure_name") or m.get("name") or ""
+        # Prefer the table the measure is defined on in Power BI
+        host = m.get("table") or None
+        if not host:
+            tbl, _ = extract_table_column(expr)
+            host = tbl if tbl and not is_internal_table(tbl) else fact
         if host and host.lower().replace(" ", "") in {"measuretable", "measures"}:
             host = fact
         if not host:
             host = fact
-        # If table not in business list, attach to fact
         biz_names = {t["table_name"] for t in tables}
         if host not in biz_names:
-            # try case-insensitive
             match = next((n for n in biz_names if n.lower() == (host or "").lower()), None)
             host = match or fact
         measures_by_view[host].append(m)
-        plan = classify_dax(expr, m.get("measure_name") or "")
+        plan = classify_dax(expr, mname, known_measures)
+        status = "mapped" if plan.mapped else "todo"
+        if plan.strategy in {"complex_todo", "filtered_measure", "parameter_value"}:
+            status = "todo"
         plans.append(
             {
                 "kind": "measure",
-                "power_bi": f"{m.get('table')}.{m.get('measure_name')}",
-                "looker": f"measure:{lookml_field_name(m.get('measure_name') or '')}",
+                "power_bi": f"{m.get('table')}.{mname}",
+                "looker": f"measure:{lookml_field_name(mname)}",
                 "strategy": plan.strategy,
-                "status": "todo" if plan.strategy in {"complex_todo", "filtered", "parameter_value"} else "mapped",
+                "depends_on": plan.depends_on,
+                "status": status,
             }
         )
 
@@ -526,14 +816,16 @@ def generate(inv_dir: Path | None = None, out_root: Path | None = None) -> dict:
         tname = t["table_name"]
         vname = lookml_view_name(tname)
         view_names.append(vname)
-        body = render_view(
+        body, dep_rows = render_view(
             t,
             cols_map.get(tname, []),
             calc_map.get(tname, []),
             measures_by_view.get(tname, []),
             field_name_map,
+            known_measures=known_measures,
         )
         (views_dir / f"{vname}.view.lkml").write_text(body)
+        all_dep_rows.extend(dep_rows)
         plans.append(
             {
                 "kind": "view",
@@ -558,6 +850,8 @@ def generate(inv_dir: Path | None = None, out_root: Path | None = None) -> dict:
     model_path = models_dir / f"{model_name}.model.lkml"
     model_path.write_text(model_body)
 
+    dep_payload = _write_measure_dependencies(out, lookml_root, all_dep_rows, source)
+
     # manifest
     (lookml_root / "manifest.lkml").write_text(
         "# LookML project manifest — generated by phase2\n"
@@ -569,18 +863,37 @@ def generate(inv_dir: Path | None = None, out_root: Path | None = None) -> dict:
         f"Generated deterministically from Phase 1 inventory for `{Path(source).name}`.\n\n"
         f"- Model: `models/{model_name}.model.lkml`\n"
         f"- Views: `views/*.view.lkml`\n"
+        f"- Measure dependencies: `MEASURE_DEPENDENCIES.md` "
+        f"({dep_payload.get('dependent_count', 0)} dependent measures)\n"
         f"- Set `connection:` and `sql_table_name` project/dataset placeholders before validating in Looker.\n"
         f"- KPI parity is **not** validated automatically.\n"
+        f"- Standards: looker-open-source/looker-skills + Google Looker docs "
+        f"(type:number for measure-of-measures, NULLIF ratios, filters on aggregates only).\n"
     )
 
     mapping_json, mapping_md = build_mapping_doc(data, plans, model_name)
+    mapping_json["measure_dependencies"] = {
+        "dependent_count": dep_payload.get("dependent_count"),
+        "mapped": dep_payload.get("mapped"),
+        "todo": dep_payload.get("todo"),
+        "file": "MEASURE_DEPENDENCIES.md",
+    }
+    mapping_json["references"] = LOOKML_STANDARD_REFS + list(mapping_json.get("references") or [])
     (out / "OBJECT_MAPPING.json").write_text(json.dumps(mapping_json, indent=2))
-    (out / "OBJECT_MAPPING.md").write_text(mapping_md)
+    (out / "OBJECT_MAPPING.md").write_text(
+        mapping_md
+        + "\n## Measure dependencies\n\n"
+        + f"See [`MEASURE_DEPENDENCIES.md`](MEASURE_DEPENDENCIES.md) "
+        + f"({dep_payload.get('dependent_count', 0)} measures depend on others).\n"
+    )
 
     return {
         "model": str(model_path),
         "views": len(view_names),
         "measures": len(measures),
+        "measures_mapped": dep_payload.get("mapped"),
+        "measures_todo": dep_payload.get("todo"),
+        "dependent_measures": dep_payload.get("dependent_count"),
         "relationships": len(rels),
         "model_name": model_name,
         "fact": fact,

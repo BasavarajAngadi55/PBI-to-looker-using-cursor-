@@ -1,0 +1,107 @@
+{
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix",
+  "total_measures": 5,
+  "mapped": 3,
+  "todo": 2,
+  "dependent_count": 1,
+  "standards": [
+    "https://cloud.google.com/looker/docs/reference/param-measure-types",
+    "https://cloud.google.com/looker/docs/reference/param-field-filters",
+    "https://cloud.google.com/looker/docs/best-practices/how-to-troubleshoot-fields-with-division-displaying-0",
+    "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-modeling-guidelines/SKILL.md",
+    "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-view/SKILL.md"
+  ],
+  "measures": [
+    {
+      "view": "actor",
+      "power_bi_measure": "FilmPopularity",
+      "lookml_measure": "film_popularity",
+      "strategy": "complex_todo",
+      "lookml_type": "number",
+      "depends_on": [],
+      "dependency_warning": null,
+      "mapped": false,
+      "sql_expression": null,
+      "filters": [],
+      "dax": "SUMX('film',COUNT(film[rental_rate])\n)",
+      "notes": [
+        "Complex / filter / time-intel DAX \u2014 implement with LookML period patterns, filtered aggregate measures, or warehouse metrics.",
+        "Do not claim KPI parity until side-by-side validation.",
+        "Original DAX: SUMX('film',COUNT(film[rental_rate]) )",
+        "Refs: https://cloud.google.com/looker/docs/reference/param-field-filters",
+        "https://cloud.google.com/looker/docs/reference/param-measure-types"
+      ]
+    },
+    {
+      "view": "inventory",
+      "power_bi_measure": "Total Films Rented",
+      "lookml_measure": "total_films_rented",
+      "strategy": "complex_todo",
+      "lookml_type": "number",
+      "depends_on": [],
+      "dependency_warning": null,
+      "mapped": false,
+      "sql_expression": null,
+      "filters": [],
+      "dax": "COUNTROWS('inventory')",
+      "notes": [
+        "Unclassified DAX \u2014 developer review required. Original: COUNTROWS('inventory')"
+      ]
+    },
+    {
+      "view": "inventory",
+      "power_bi_measure": "Average Inventory Value",
+      "lookml_measure": "average_inventory_value",
+      "strategy": "direct_average",
+      "lookml_type": "average",
+      "depends_on": [],
+      "dependency_warning": null,
+      "mapped": true,
+      "sql_expression": null,
+      "filters": [],
+      "dax": "AVERAGE('film'[rental_rate])",
+      "notes": [
+        "Direct AVERAGE \u2192 type: average"
+      ]
+    },
+    {
+      "view": "inventory",
+      "power_bi_measure": "Inventory Turnover Rate",
+      "lookml_measure": "inventory_turnover_rate",
+      "strategy": "measure_ratio",
+      "lookml_type": "number",
+      "depends_on": [
+        "Total Films Rented",
+        "Average Inventory Value"
+      ],
+      "dependency_warning": "DEPENDS ON: Total Films Rented, Average Inventory Value. Implement those LookML measures first. This measure must be type: number and reference them via ${measure} (Looker: measures based on other measures).",
+      "mapped": true,
+      "sql_expression": "100.0 * ${total_films_rented} / NULLIF(${average_inventory_value}, 0)",
+      "filters": [],
+      "dax": "[Total Films Rented] / [Average Inventory Value]\n",
+      "notes": [
+        "DIVIDE/ratio of measures [Total Films Rented] / [Average Inventory Value] \u2192 type: number with 1.0 * ${a} / NULLIF(${b}, 0).",
+        "Do NOT put filters: on type: number \u2014 filter the base aggregate measures instead.",
+        "Refs: measure types (type: number), division best practice (NULLIF + float).",
+        "DEPENDS ON: Total Films Rented, Average Inventory Value. Implement those LookML measures first. This measure must be type: number and reference them via ${measure} (Looker: measures based on other measures)."
+      ]
+    },
+    {
+      "view": "payment",
+      "power_bi_measure": "Revenue",
+      "lookml_measure": "revenue",
+      "strategy": "direct_sum",
+      "lookml_type": "sum",
+      "depends_on": [],
+      "dependency_warning": null,
+      "mapped": true,
+      "sql_expression": null,
+      "filters": [],
+      "dax": "SUM(payment[amount])",
+      "notes": [
+        "Direct SUM \u2192 type: sum; sql uses ${dimension} (looker-skills).",
+        "Ref: https://cloud.google.com/looker/docs/reference/param-measure-types"
+      ]
+    }
+  ]
+}

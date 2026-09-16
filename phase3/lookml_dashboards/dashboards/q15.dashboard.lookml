@@ -1,0 +1,65 @@
+- dashboard: q15
+  title: Q15
+  layout: newspaper
+  preferred_viewer: dashboards-next
+  description: 'Deterministic Phase 3 migration from Power BI (best-effort; see coverage report)'
+
+  elements:
+  - name: migration_notes
+    title: 'Migration notes — Q15'
+    type: text
+    body_text_as_html: true
+    body_text: 'Migrated from Power BI page <b>Q15</b>. Tiles below are best-effort LookML. Gaps/partials are listed in PHASE3 coverage. Model: <code>movie_rental_analysis</code> / Explore: <code>film</code>.'
+    row: 0
+    col: 0
+    width: 24
+    height: 2
+
+  - name: pq15_125_textbox
+    title: 'textbox_0'
+    type: text
+    model: movie_rental_analysis
+    explore: film
+    body_text: 'textbox_0'
+    row: 3
+    col: 1
+    width: 9
+    height: 3
+    # status=partial | Text box → text tile (rich formatting limited)
+
+  - name: pq15_126_textbox
+    title: 'textbox_1'
+    type: text
+    model: movie_rental_analysis
+    explore: film
+    body_text: 'textbox_1'
+    row: 10
+    col: 1
+    width: 22
+    height: 7
+    # status=partial | Text box → text tile (rich formatting limited)
+
+  - name: pq15_127_linechart
+    title: 'Average of rental_duration by Film-category'
+    type: looker_line
+    model: movie_rental_analysis
+    explore: film
+    dimensions: [category.name]
+    measures: [film.rental_duration]
+    row: 17
+    col: 11
+    width: 12
+    height: 7
+    # status=mapped | Line chart → looker_line
+    # deficiency: PBI aggregation on film.rental_duration mapped to field ref; confirm a measure exists on film (Phase 2) or add type -sum
+
+  - name: remaining_gaps
+    title: 'Gaps / partials (not fully migrated)'
+    type: text
+    body_text_as_html: true
+    body_text: '<ul><li><b>textbox_0</b> (textbox → text) — partial</li><li><b>textbox_1</b> (textbox → text) — partial</li></ul>'
+    row: 25
+    col: 0
+    width: 24
+    height: 4
+

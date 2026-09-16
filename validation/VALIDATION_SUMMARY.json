@@ -1,16 +1,16 @@
 {
   "phase": "validation",
   "approach": "deterministic_evidence",
-  "overall_pct_done": 73.4,
-  "overall_pct_left": 26.6,
-  "confidence": "MEDIUM",
+  "overall_pct_done": 81.9,
+  "overall_pct_left": 18.1,
+  "confidence": "HIGH",
   "phase1_pct": 100.0,
-  "phase2_pct": 55.3,
-  "phase3_pct": 83.9,
-  "user_input_findings": 146,
+  "phase2_pct": 83.0,
+  "phase3_pct": 73.8,
+  "user_input_findings": 84,
   "high_priority": 48,
   "report_pdf": "/Users/Basavaraj_Angadi/Desktop/data eng /validation/VALIDATION_REPORT.pdf",
   "report_md": "/Users/Basavaraj_Angadi/Desktop/data eng /validation/VALIDATION_REPORT.md",
   "report_json": "/Users/Basavaraj_Angadi/Desktop/data eng /validation/VALIDATION_REPORT.json",
-  "warning": "Phase source PBIX names differ \u2014 overall % mixes different reports. Sources seen: ['Human Resources Sample PBIX.pbix', 'dashboards.pbix']"
+  "warning": null
 }
