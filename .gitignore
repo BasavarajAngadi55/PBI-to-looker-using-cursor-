@@ -32,10 +32,19 @@ phase1/inventory/AGENT_VALIDATION_PROOF.json
 phase1_inventory_*
 uploads/
 *.pbix
+.pbix_unpack/
+phase3_layout_probe.json
 
 # Phase 2 local caches
 phase2/**/__pycache__/
 phase2/lookml/.DS_Store
+
+# Phase 3 local caches (dashboards/guides are deliverables like Phase 2)
+phase3/**/__pycache__/
+phase3/lookml_dashboards/.DS_Store
+
+# Validation caches
+validation/**/__pycache__/
 
 # Cursor
 .cursor/

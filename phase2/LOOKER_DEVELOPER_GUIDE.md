@@ -1,7 +1,7 @@
 # Looker Developer Guide — Power BI → LookML (Phase 2)
 
-**Source PBIX:** `movie_rental_analysis.pbix`  
-**LookML model:** `lookml/models/movie_rental_analysis.model.lkml`  
+**Source PBIX:** `Human Resources Sample PBIX.pbix`  
+**LookML model:** `lookml/models/human_resources_sample_pbix.model.lkml`  
 **Primary explore (fact):** `FactTable`  
 **Audience:** Looker developers implementing and validating this migration.
 
@@ -255,81 +255,220 @@ Docs: https://cloud.google.com/looker/docs/lookml-terms-and-concepts · https://
 
 | PBI table | LookML view | File | Cols | PK guess | Date cols |
 |---|---|---|---|---|---|
-| `actor` | `actor` | `views/actor.view.lkml` | 4 | `actor_id` | last_update |
-| `address` | `address` | `views/address.view.lkml` | 9 | `address_id` | last_update |
-| `category` | `category` | `views/category.view.lkml` | 3 | `category_id` | last_update |
-| `city` | `city` | `views/city.view.lkml` | 4 | `city_id` | last_update |
-| `country` | `country` | `views/country.view.lkml` | 3 | `country_id` | last_update |
-| `customer` | `customer` | `views/customer.view.lkml` | 10 | `customer_id` | create_date, last_update |
-| `film` | `film` | `views/film.view.lkml` | 13 | `film_id` | last_update |
-| `film_actor` | `film_actor` | `views/film_actor.view.lkml` | 3 | `actor_id` | last_update |
-| `film_category` | `film_category` | `views/film_category.view.lkml` | 3 | `film_id` | last_update |
-| `film_text` | `film_text` | `views/film_text.view.lkml` | 3 | `film_id` | - |
-| `inventory` | `inventory` | `views/inventory.view.lkml` | 4 | `inventory_id` | last_update |
-| `language` | `language` | `views/language.view.lkml` | 3 | `language_id` | last_update |
-| `payment` | `payment` | `views/payment.view.lkml` | 7 | `payment_id` | payment_date, last_update |
-| `rentat` | `rentat` | `views/rentat.view.lkml` | 7 | `rental_id` | rental_date, return_date, last_update |
-| `staff` | `staff` | `views/staff.view.lkml` | 11 | `staff_id` | last_update |
-| `store` | `store` | `views/store.view.lkml` | 4 | `store_id` | last_update |
+| `AgeGroup` | `agegroup` | `views/agegroup.view.lkml` | 2 | `AgeGroupID` | - |
+| `BU` | `bu` | `views/bu.view.lkml` | 4 | `BU` | - |
+| `Date` | `date` | `views/date.view.lkml` | 12 | `Date` | Date, MonthStartDate, MonthEndDate |
+| `Employee` | `employee` | `views/employee.view.lkml` | 16 | `EmplID` | date, TermDate, HireDate |
+| `Ethnicity` | `ethnicity` | `views/ethnicity.view.lkml` | 2 | `Ethnic Group` | - |
+| `FP` | `fp` | `views/fp.view.lkml` | 2 | `FP` | - |
+| `Gender` | `gender` | `views/gender.view.lkml` | 3 | `ID` | - |
+| `PayType` | `paytype` | `views/paytype.view.lkml` | 2 | `PayTypeID` | - |
+| `SeparationReason` | `separationreason` | `views/separationreason.view.lkml` | 2 | `SeparationTypeID` | - |
 
 ### Step C — Explores and joins
 Primary explore fact: **`FactTable`**.
 
 | From (FK) | To (PK) | Card | Active | Looker action |
 |---|---|---|---|---|
-| `film_actor[actor_id]` | `actor[actor_id]` | M:1 | True | join actor relationship from PBI M:1 |
-| `address[city_id]` | `city[city_id]` | M:1 | True | join city relationship from PBI M:1 |
-| `city[country_id]` | `country[country_id]` | M:1 | True | join country relationship from PBI M:1 |
-| `film[language_id]` | `language[language_id]` | M:1 | True | join language relationship from PBI M:1 |
-| `film_category[category_id]` | `category[category_id]` | M:1 | True | join category relationship from PBI M:1 |
-| `film[film_id]` | `film_category[film_id]` | M:1 | True | join film_category relationship from PBI M:1 |
-| `film[film_id]` | `film_text[film_id]` | M:1 | True | join film_text relationship from PBI M:1 |
-| `store[store_id]` | `staff[store_id]` | M:1 | True | join staff relationship from PBI M:1 |
-| `film_actor[film_id]` | `film[film_id]` | M:1 | True | join film relationship from PBI M:1 |
-| `customer[address_id]` | `address[address_id]` | M:1 | True | join address relationship from PBI M:1 |
-| `payment[customer_id]` | `customer[customer_id]` | M:1 | True | join customer relationship from PBI M:1 |
-| `customer[store_id]` | `store[store_id]` | M:1 | True | join store relationship from PBI M:1 |
-| `rentat[inventory_id]` | `inventory[inventory_id]` | M:1 | True | join inventory relationship from PBI M:1 |
-| `rentat[rental_id]` | `payment[rental_id]` | M:1 | True | join payment relationship from PBI M:1 |
-| `rentat[staff_id]` | `staff[staff_id]` | M:1 | False | join staff relationship from PBI M:1 |
-| `inventory[film_id]` | `film[film_id]` | M:1 | True | join film relationship from PBI M:1 |
+| `Employee[date]` | `Date[Date]` | M:1 | True | join date relationship from PBI M:1 |
+| `Employee[FP]` | `FP[FP]` | M:1 | True | join fp relationship from PBI M:1 |
+| `Employee[EthnicGroup]` | `Ethnicity[Ethnic Group]` | M:1 | True | join ethnicity relationship from PBI M:1 |
+| `Employee[Gender]` | `Gender[ID]` | M:1 | True | join gender relationship from PBI M:1 |
+| `Employee[PayTypeID]` | `PayType[PayTypeID]` | M:1 | True | join paytype relationship from PBI M:1 |
+| `Employee[BU]` | `BU[BU]` | M:1 | True | join bu relationship from PBI M:1 |
+| `Employee[AgeGroupID]` | `AgeGroup[AgeGroupID]` | M:1 | True | join agegroup relationship from PBI M:1 |
+| `Employee[TermReason]` | `SeparationReason[SeparationTypeID]` | M:1 | True | join separationreason relationship from PBI M:1 |
 
 ### Step D — Measures
 
-Mapped 5 measures; **2 TODO**.
+Mapped 30 measures; **21 TODO**.
 
 | Power BI measure | Strategy / status |
 |---|---|
-| `payment.Revenue` | direct_sum / mapped |
-| `inventory.Total Films Rented` | complex_todo / todo |
-| `inventory.Average Inventory Value` | direct_average / mapped |
-| `inventory.Inventory Turnover Rate` | ratio / mapped |
-| `actor.FilmPopularity` | complex_todo / todo |
+| `Employee.EmpCount` | complex_todo / todo |
+| `Employee.Seps` | complex_todo / todo |
+| `Employee.Actives` | complex_todo / todo |
+| `Employee.New Hires` | complex_todo / todo |
+| `Employee.AVG Tenure Days` | complex_todo / todo |
+| `Employee.AVG Tenure Months` | complex_todo / todo |
+| `Employee.AVG Age` | complex_todo / todo |
+| `Employee.Sum of BadHires` | complex_todo / todo |
+| `Employee.New Hires SPLY` | complex_todo / todo |
+| `Employee.Actives SPLY` | complex_todo / todo |
+| `Employee.Seps SPLY` | complex_todo / todo |
+| `Employee.EmpCount SPLY` | complex_todo / todo |
+| `Employee.Seps YoY Var` | complex_todo / todo |
+| `Employee.Actives YoY Var` | complex_todo / todo |
+| `Employee.New Hires YoY Var` | complex_todo / todo |
+| `Employee.Seps YoY % Change` | ratio / mapped |
+| `Employee.Actives YoY % Change` | ratio / mapped |
+| `Employee.New Hires YoY % Change` | ratio / mapped |
+| `Employee.Bad Hires SPLY` | complex_todo / todo |
+| `Employee.Bad Hires YoY Var` | complex_todo / todo |
+| `Employee.Bad Hires YoY % Change` | ratio / mapped |
+| `Employee.TO %` | ratio / mapped |
+| `Employee.TO % Norm` | complex_todo / todo |
+| `Employee.TO % Var` | complex_todo / todo |
+| `Employee.Sep%ofActive` | ratio / mapped |
+| `Employee.Sep%ofSMLYActives` | ratio / mapped |
+| `Employee.BadHire%ofActives` | ratio / mapped |
+| `Employee.BadHire%ofActiveSPLY` | ratio / mapped |
+| `BU.Count of BU` | complex_todo / todo |
+| `Date.Count of Date` | complex_todo / todo |
 
 ### Step E — Calculated columns (warehouse)
 
 | Table | Column | DAX (truncated) | Action |
 |---|---|---|---|
-| `customer` | `Employment Duration` | `DATEDIFF('customer'[create_date], TODAY(), YEAR)` | Materialize; expose as dimension |
+| `BU` | `Region` | `mid([RegionSeq], 3,15)` | Materialize; expose as dimension |
+| `Date` | `MonthIncrementNumber` | `([Year]-MIN([Year]))*12 +[MonthNumber]` | Materialize; expose as dimension |
+| `Employee` | `isNewHire` | `IF(YEAR([date]) = YEAR([HireDate]) && MONTH([date])=MONTH([HireDate]), 1)` | Materialize; expose as dimension |
+| `Employee` | `AgeGroupID` | `IF([Age]<30, 1, IF([Age]<50, 2, 3))` | Materialize; expose as dimension |
+| `Employee` | `TenureDays` | `IF([date]-[HireDate]<0,[HireDate]-[date],[date]-[HireDate])` | Materialize; expose as dimension |
+| `Employee` | `TenureMonths` | `CEILING([TenureDays]/30, 1) -1` | Materialize; expose as dimension |
+| `Employee` | `BadHires` | `IF(OR((([HireDate]-[TermDate])*-1)>=61,ISBLANK([TermDate])),0,1)` | Materialize; expose as dimension |
 
-### Step F — Power Query
+### Step F — Power Query M (recommended Looker / warehouse equivalent)
 
-- `actor` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `address` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `city` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `country` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `category` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `film` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `film_actor` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `film_category` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `film_text` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `inventory` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `language` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `payment` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `rentat` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `staff` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `store` — source_type=`file` → rebuild in warehouse, then point sql_table_name
-- `customer` — source_type=`file` → rebuild in warehouse, then point sql_table_name
+Decision order (best practice):
+
+1. **Warehouse table/view + straight LookML view** (`sql_table_name`) — preferred
+2. **LookML SQL derived table (SDT)** — temporary bridge for light SQL only
+3. **Native derived table (NDT)** — rarely a Power Query replacement
+4. Never encode heavy M merges/appends only in LookML
+
+Stubs are inside the ZIP: `lookml/m_migration/` (`M_QUERY_RECOMMENDATIONS.md`, `sql/*.sql`, `lookml_stubs/*.lkml`).
+
+| M query | Recommended pattern | Looker object | Build in |
+|---|---|---|---|
+| `BU` | `lookml_sql_derived_table` | warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only | `either` |
+| `FP` | `lookml_sql_derived_table` | warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only | `either` |
+| `PayType` | `lookml_sql_derived_table` | warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only | `either` |
+| `SeparationReason` | `lookml_sql_derived_table` | warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only | `either` |
+| `Date` | `lookml_sql_derived_table` | warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only | `either` |
+| `Employee` | `warehouse_transform_model` | warehouse transform + straight view (avoid SDT for heavy M) | `warehouse` |
+| `Ethnicity` | `warehouse_seed_plus_straight_view` | warehouse seed table + straight view (tiny SDT optional) | `warehouse` |
+| `Gender` | `warehouse_seed_plus_straight_view` | warehouse seed table + straight view (tiny SDT optional) | `warehouse` |
+| `AgeGroup` | `warehouse_seed_plus_straight_view` | warehouse seed table + straight view (tiny SDT optional) | `warehouse` |
+
+#### `BU`
+
+**Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
+
+**Build steps:**
+
+1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
+2. Use straight LookML view with sql_table_name.
+3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
+
+- SQL stub: `m_migration/sql/bu.sql`
+- LookML stub: `m_migration/lookml_stubs/bu_recommended.lkml`
+
+#### `FP`
+
+**Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
+
+**Build steps:**
+
+1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
+2. Use straight LookML view with sql_table_name.
+3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
+
+- SQL stub: `m_migration/sql/fp.sql`
+- LookML stub: `m_migration/lookml_stubs/fp_recommended.lkml`
+
+#### `PayType`
+
+**Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
+
+**Build steps:**
+
+1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
+2. Use straight LookML view with sql_table_name.
+3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
+
+- SQL stub: `m_migration/sql/paytype.sql`
+- LookML stub: `m_migration/lookml_stubs/paytype_recommended.lkml`
+
+#### `SeparationReason`
+
+**Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
+
+**Build steps:**
+
+1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
+2. Use straight LookML view with sql_table_name.
+3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
+
+- SQL stub: `m_migration/sql/separationreason.sql`
+- LookML stub: `m_migration/lookml_stubs/separationreason_recommended.lkml`
+
+#### `Date`
+
+**Why:** M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.
+
+**Build steps:**
+
+1. Prefer warehouse VIEW/TABLE with the M SQL (or source table).
+2. Use straight LookML view with sql_table_name.
+3. Use SDT only if warehouse object is not ready yet; migrate off SDT later.
+
+- SQL stub: `m_migration/sql/date.sql`
+- LookML stub: `m_migration/lookml_stubs/date_recommended.lkml`
+
+#### `Employee`
+
+**Why:** M contains merge, append/union, or heavy transforms. Looker skills: keep LookML semantic; put ETL in the warehouse.
+
+**Build steps:**
+
+1. Read phase1/inventory/04_m_raw/Employee.m end-to-end.
+2. Implement joins/unions/filters in dbt/Dataform/SQL.
+3. Expose curated table to LookML views/employee.view.lkml via sql_table_name.
+4. Mark any LookML SDT as temporary technical debt.
+
+- SQL stub: `m_migration/sql/employee.sql`
+- LookML stub: `m_migration/lookml_stubs/employee_recommended.lkml`
+
+#### `Ethnicity`
+
+**Why:** Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.
+
+**Build steps:**
+
+1. Extract static rows from M into a seed CSV or INSERT script.
+2. Load seed to warehouse.
+3. Use generated straight LookML view.
+
+- SQL stub: `m_migration/sql/ethnicity.sql`
+- LookML stub: `m_migration/lookml_stubs/ethnicity_recommended.lkml`
+
+#### `Gender`
+
+**Why:** Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.
+
+**Build steps:**
+
+1. Extract static rows from M into a seed CSV or INSERT script.
+2. Load seed to warehouse.
+3. Use generated straight LookML view.
+
+- SQL stub: `m_migration/sql/gender.sql`
+- LookML stub: `m_migration/lookml_stubs/gender_recommended.lkml`
+
+#### `AgeGroup`
+
+**Why:** Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.
+
+**Build steps:**
+
+1. Extract static rows from M into a seed CSV or INSERT script.
+2. Load seed to warehouse.
+3. Use generated straight LookML view.
+
+- SQL stub: `m_migration/sql/agegroup.sql`
+- LookML stub: `m_migration/lookml_stubs/agegroup_recommended.lkml`
+
 
 ## 6. Gaps (must resolve)
 
@@ -340,22 +479,20 @@ Mapped 5 measures; **2 TODO**.
 - Action: Set the real Looker connection name and point every sql_table_name at existing warehouse tables before validating.
 
 **[HIGH] Power Query / ETL**
-- Gap: 16 Power Query queries exist in PBIX. LookML does not recreate M.
-- Action: Rebuild each query's grain and transforms in the warehouse (dbt/Dataform/SQL). Confirm row counts and keys match Power BI before Looker go-live. Queries: actor, address, city, country, category, film, film_actor, film_category, film_text, inventory, language, payment, rentat, staff, store, customer
+- Gap: 9 Power Query queries need warehouse/Looker equivalents. Pattern mix: {'lookml_sql_derived_table': 5, 'warehouse_transform_model': 1, 'warehouse_seed_plus_straight_view': 3}.
+- Action: Open LOOKML_PROJECT.zip → lookml/m_migration/. For each query follow M_QUERY_RECOMMENDATIONS.md, implement sql/<query>.sql in the warehouse, then update the straight LookML view sql_table_name. Use LookML SDT only when the recommendation allows a temporary bridge.
 
 **[HIGH] Complex DAX**
-- Gap: 2 of 5 measures are TODO stubs (CALCULATE/time-intel/iterators).
+- Gap: 21 of 30 measures are TODO stubs (CALCULATE/time-intel/iterators).
 - Action: Implement each TODO using LookML filters, period-over-period patterns, or warehouse logic. Keep original DAX in the field description until KPI parity passes.
 
 **[HIGH] Calculated columns**
-- Gap: 1 business calculated columns must be materialized (prefer warehouse), not left as DAX.
-- Action: Create warehouse columns for: customer.Employment Duration
+- Gap: 7 business calculated columns must be materialized (prefer warehouse), not left as DAX.
+- Action: Create warehouse columns for: BU.Region; Date.MonthIncrementNumber; Employee.isNewHire; Employee.AgeGroupID; Employee.TenureDays; Employee.TenureMonths; Employee.BadHires
 
 ### Severity: MEDIUM
 
-**[MEDIUM] Inactive relationship**
-- Gap: Inactive in Power BI: rentat[staff_id] -> staff[staff_id] (M:1).
-- Action: Looker has no inactive join. Keep as a separate aliased join (from:) and only expose when a measure needs USERELATIONSHIP-style behavior. Hide fields until needed.
+_None_
 
 ### Severity: LOW
 
@@ -364,7 +501,7 @@ Mapped 5 measures; **2 TODO**.
 - Action: Still confirm with security owners whether Looker needs access_filter by region/org.
 
 **[LOW] Auto date tables**
-- Gap: 20 LocalDateTable_/DateTableTemplate_ tables skipped (correct).
+- Gap: 6 LocalDateTable_/DateTableTemplate_ tables skipped (correct).
 - Action: Use business date columns with dimension_group timeframes. Do not migrate auto-date tables.
 
 ## 7. What to check (validation checklist)
@@ -402,23 +539,23 @@ Mapped 5 measures; **2 TODO**.
 
 ## 9. Inventory snapshot
 
-- tables: **36**
-- business_tables: **16**
-- internal_tables: **20**
-- columns: **231**
-- measures: **5**
-- calculated_columns: **121**
-- calculated_tables: **20**
-- relationships: **16**
-- power_query: **16**
-- m_files: **16**
+- tables: **15**
+- business_tables: **9**
+- internal_tables: **6**
+- columns: **87**
+- measures: **30**
+- calculated_columns: **43**
+- calculated_tables: **6**
+- relationships: **8**
+- power_query: **9**
+- m_files: **9**
 - rls_roles: **0**
-- hierarchies: **20**
-- partitions: **322**
-- auto_date_tables: **20**
-- annotations: **433**
+- hierarchies: **7**
+- partitions: **122**
+- auto_date_tables: **6**
+- annotations: **158**
 - sort_by_columns: **0**
-- format_strings: **63**
+- format_strings: **5**
 - perspectives: **0**
 - display_folders: **0**
 
@@ -430,4 +567,4 @@ Mapped 5 measures; **2 TODO**.
 
 ---
 
-_Generated by phase2/generate_developer_guide.py for `movie_rental_analysis.pbix`._
+_Generated by phase2/generate_developer_guide.py for `Human Resources Sample PBIX.pbix`._

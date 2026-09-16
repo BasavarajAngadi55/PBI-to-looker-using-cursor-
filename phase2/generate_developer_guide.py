@@ -22,6 +22,7 @@ MD_OUT = ROOT / "LOOKER_DEVELOPER_GUIDE.md"
 PDF_OUT = ROOT / "LOOKER_DEVELOPER_GUIDE.pdf"
 MAPPING_JSON = ROOT / "OBJECT_MAPPING.json"
 SUMMARY_JSON = ROOT / "PHASE2_SUMMARY.json"
+M_REC_JSON = ROOT / "lookml" / "m_migration" / "M_QUERY_RECOMMENDATIONS.json"
 
 
 def latin1(s: str) -> str:
@@ -114,17 +115,23 @@ def analyze(inv: dict, mapping: dict, summary: dict) -> dict:
         }
     )
 
-    # Power Query -> warehouse
+    # Power Query -> warehouse / Looker pattern
     if queries:
+        m_rec = load_json(M_REC_JSON)
+        pattern_counts = m_rec.get("pattern_counts") or {}
         gaps.append(
             {
                 "severity": "HIGH",
                 "area": "Power Query / ETL",
-                "gap": f"{len(queries)} Power Query queries exist in PBIX. LookML does not recreate M.",
+                "gap": (
+                    f"{len(queries)} Power Query queries need warehouse/Looker equivalents. "
+                    f"Pattern mix: {pattern_counts or 'see m_migration stubs'}."
+                ),
                 "action": (
-                    "Rebuild each query's grain and transforms in the warehouse (dbt/Dataform/SQL). "
-                    "Confirm row counts and keys match Power BI before Looker go-live. Queries: "
-                    + ", ".join((q.get("query_name") or q.get("name") or "?") for q in queries)
+                    "Open LOOKML_PROJECT.zip → lookml/m_migration/. "
+                    "For each query follow M_QUERY_RECOMMENDATIONS.md, implement sql/<query>.sql "
+                    "in the warehouse, then update the straight LookML view sql_table_name. "
+                    "Use LookML SDT only when the recommendation allows a temporary bridge."
                 ),
             }
         )
@@ -304,6 +311,7 @@ def analyze(inv: dict, mapping: dict, summary: dict) -> dict:
         "gaps": gaps,
         "gen": gen,
         "inactive_joins": inactive_joins,
+        "m_recommendations": load_json(M_REC_JSON),
     }
 
 
@@ -471,12 +479,54 @@ def build_markdown(ctx: dict) -> str:
                 f"| `{cc.get('table')}` | `{cc.get('column_name')}` | `{expr}` | Materialize; expose as dimension |"
             )
 
-    lines += ["", "### Step F — Power Query", ""]
-    if c["queries"]:
+    lines += ["", "### Step F — Power Query M (recommended Looker / warehouse equivalent)", ""]
+    lines += [
+        "Decision order (best practice):",
+        "",
+        "1. **Warehouse table/view + straight LookML view** (`sql_table_name`) — preferred",
+        "2. **LookML SQL derived table (SDT)** — temporary bridge for light SQL only",
+        "3. **Native derived table (NDT)** — rarely a Power Query replacement",
+        "4. Never encode heavy M merges/appends only in LookML",
+        "",
+        "Stubs are inside the ZIP: `lookml/m_migration/` "
+        "(`M_QUERY_RECOMMENDATIONS.md`, `sql/*.sql`, `lookml_stubs/*.lkml`).",
+        "",
+    ]
+    mrec = c.get("m_recommendations") or {}
+    rec_rows = mrec.get("recommendations") or []
+    if rec_rows:
+        lines += [
+            "| M query | Recommended pattern | Looker object | Build in |",
+            "|---|---|---|---|",
+        ]
+        for r in rec_rows:
+            lines.append(
+                f"| `{r.get('query_name')}` | `{r.get('recommended_pattern')}` | "
+                f"{r.get('looker_object')} | `{r.get('build_in')}` |"
+            )
+        lines.append("")
+        for r in rec_rows:
+            lines += [
+                f"#### `{r.get('query_name')}`",
+                "",
+                f"**Why:** {r.get('rationale')}",
+                "",
+                "**Build steps:**",
+                "",
+            ]
+            for i, s in enumerate(r.get("steps") or [], 1):
+                lines.append(f"{i}. {s}")
+            lines += [
+                "",
+                f"- SQL stub: `m_migration/sql/{snake_case(r.get('query_name'))}.sql`",
+                f"- LookML stub: `m_migration/lookml_stubs/{snake_case(r.get('query_name'))}_recommended.lkml`",
+                "",
+            ]
+    elif c["queries"]:
         for q in c["queries"]:
             qn = q.get("query_name") or q.get("name")
             lines.append(
-                f"- `{qn}` — source_type=`{q.get('source_type')}` → rebuild in warehouse, then point sql_table_name"
+                f"- `{qn}` — source_type=`{q.get('source_type')}` → run generate_m_migration.py for stubs"
             )
     else:
         lines.append("- No queries listed.")
@@ -831,16 +881,49 @@ def make_pdf(ctx: dict) -> None:
             expr = (cc.get("expression") or "").replace("\n", " ")[:110]
             _bullet(pdf, margin, w, f"{cc.get('table')}.{cc.get('column_name')}: {expr}", 8)
 
-    _h2(pdf, margin, w, "Step F — Power Query (warehouse, not LookML)")
-    for q in ctx["queries"]:
-        qn = q.get("query_name") or q.get("name")
-        _bullet(
-            pdf,
-            margin,
-            w,
-            f"Rebuild query `{qn}` (source_type={q.get('source_type')}) in ETL; then point sql_table_name.",
-            9,
-        )
+    _h2(pdf, margin, w, "Step F — Power Query M (Looker / warehouse equivalent)")
+    _p(
+        pdf,
+        margin,
+        w,
+        "Best practice: warehouse table/view + straight LookML view. "
+        "SDT only as temporary bridge. Heavy M stays in ETL. "
+        "Full stubs are in LOOKML_PROJECT.zip under lookml/m_migration/.",
+        9,
+    )
+    mrec = ctx.get("m_recommendations") or {}
+    rec_rows = mrec.get("recommendations") or []
+    if not rec_rows:
+        for q in ctx["queries"]:
+            qn = q.get("query_name") or q.get("name")
+            _bullet(
+                pdf,
+                margin,
+                w,
+                f"Rebuild query `{qn}` (source_type={q.get('source_type')}) using m_migration stubs.",
+                9,
+            )
+    else:
+        for r in rec_rows:
+            _ensure_space(pdf, 28)
+            _label(
+                pdf,
+                margin,
+                w,
+                f"{r.get('query_name')} -> {r.get('recommended_pattern')}",
+            )
+            _p(pdf, margin, w, f"Looker object: {r.get('looker_object')}", 9)
+            _p(pdf, margin, w, f"Why: {r.get('rationale')}", 8)
+            for i, s in enumerate((r.get("steps") or [])[:4], 1):
+                _bullet(pdf, margin, w, f"{i}. {s}", 8)
+            _bullet(
+                pdf,
+                margin,
+                w,
+                f"Files: m_migration/sql/{snake_case(r.get('query_name') or '')}.sql and "
+                f"lookml_stubs/{snake_case(r.get('query_name') or '')}_recommended.lkml",
+                8,
+            )
 
     # Gaps
     pdf.add_page()

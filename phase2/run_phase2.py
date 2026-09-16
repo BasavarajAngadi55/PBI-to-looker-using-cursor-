@@ -50,6 +50,15 @@ def run(inventory: Path) -> dict:
     except Exception as e:
         print("Architecture diagram warn:", e)
 
+    try:
+        import generate_m_migration as m_mod
+
+        m_mod = importlib.reload(m_mod)
+        m_info = m_mod.generate(inv_dir=inventory, out_dir=ROOT / "lookml" / "m_migration")
+    except Exception as e:
+        m_info = {"error": str(e)}
+        print("M migration stubs warn:", e)
+
     info = lookml.generate(inv_dir=inventory, out_root=ROOT)
     guide_info = guide.generate(ROOT / "OBJECT_MAPPING.json")
     zip_path = package_zip(ROOT / "lookml", ZIP_OUT)
@@ -68,6 +77,7 @@ def run(inventory: Path) -> dict:
         "guide_pdf": guide_info["pdf"],
         "guide_md": guide_info["md"],
         "mapping_md": str(ROOT / "OBJECT_MAPPING.md"),
+        "m_migration": m_info,
     }
     (ROOT / "PHASE2_SUMMARY.json").write_text(json.dumps(summary, indent=2))
 
@@ -80,6 +90,7 @@ def run(inventory: Path) -> dict:
     print(f"Views:         {summary['views']}")
     print(f"Measures:      {summary['measures']}")
     print(f"Relationships: {summary['relationships']}")
+    print(f"M queries:     {m_info.get('query_count', '?')} -> lookml/m_migration/")
     print(f"Guide PDF:     {summary['guide_pdf']}")
     print(f"LookML ZIP:    {summary['zip']}")
     print(f"Mapping:       {summary['mapping_md']}")

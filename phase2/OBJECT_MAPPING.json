@@ -1,7 +1,7 @@
 {
   "approach": "deterministic",
-  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix",
-  "model_name": "movie_rental_analysis",
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/Human Resources Sample PBIX.pbix",
+  "model_name": "human_resources_sample_pbix",
   "object_equivalence": [
     {
       "power_bi": "Table (business)",
@@ -100,228 +100,313 @@
   "generated_objects": [
     {
       "kind": "measure",
-      "power_bi": "payment.Revenue",
-      "looker": "measure:revenue",
-      "strategy": "direct_sum",
-      "status": "mapped"
-    },
-    {
-      "kind": "measure",
-      "power_bi": "inventory.Total Films Rented",
-      "looker": "measure:total_films_rented",
+      "power_bi": "Employee.EmpCount",
+      "looker": "measure:empcount",
       "strategy": "complex_todo",
       "status": "todo"
     },
     {
       "kind": "measure",
-      "power_bi": "inventory.Average Inventory Value",
-      "looker": "measure:average_inventory_value",
-      "strategy": "direct_average",
-      "status": "mapped"
+      "power_bi": "Employee.Seps",
+      "looker": "measure:seps",
+      "strategy": "complex_todo",
+      "status": "todo"
     },
     {
       "kind": "measure",
-      "power_bi": "inventory.Inventory Turnover Rate",
-      "looker": "measure:inventory_turnover_rate",
+      "power_bi": "Employee.Actives",
+      "looker": "measure:actives",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.New Hires",
+      "looker": "measure:new_hires",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.AVG Tenure Days",
+      "looker": "measure:avg_tenure_days",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.AVG Tenure Months",
+      "looker": "measure:avg_tenure_months",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.AVG Age",
+      "looker": "measure:avg_age",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Sum of BadHires",
+      "looker": "measure:sum_of_badhires",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.New Hires SPLY",
+      "looker": "measure:new_hires_sply",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Actives SPLY",
+      "looker": "measure:actives_sply",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Seps SPLY",
+      "looker": "measure:seps_sply",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.EmpCount SPLY",
+      "looker": "measure:empcount_sply",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Seps YoY Var",
+      "looker": "measure:seps_yoy_var",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Actives YoY Var",
+      "looker": "measure:actives_yoy_var",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.New Hires YoY Var",
+      "looker": "measure:new_hires_yoy_var",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Seps YoY % Change",
+      "looker": "measure:seps_yoy_pct_change",
       "strategy": "ratio",
       "status": "mapped"
     },
     {
       "kind": "measure",
-      "power_bi": "actor.FilmPopularity",
-      "looker": "measure:filmpopularity",
+      "power_bi": "Employee.Actives YoY % Change",
+      "looker": "measure:actives_yoy_pct_change",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.New Hires YoY % Change",
+      "looker": "measure:new_hires_yoy_pct_change",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Bad Hires SPLY",
+      "looker": "measure:bad_hires_sply",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Bad Hires YoY Var",
+      "looker": "measure:bad_hires_yoy_var",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Bad Hires YoY % Change",
+      "looker": "measure:bad_hires_yoy_pct_change",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.TO %",
+      "looker": "measure:to_pct",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.TO % Norm",
+      "looker": "measure:to_pct_norm",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.TO % Var",
+      "looker": "measure:to_pct_var",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Sep%ofActive",
+      "looker": "measure:seppctofactive",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.Sep%ofSMLYActives",
+      "looker": "measure:seppctofsmlyactives",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.BadHire%ofActives",
+      "looker": "measure:badhirepctofactives",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Employee.BadHire%ofActiveSPLY",
+      "looker": "measure:badhirepctofactivesply",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "BU.Count of BU",
+      "looker": "measure:count_of_bu",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "Date.Count of Date",
+      "looker": "measure:count_of_date",
       "strategy": "complex_todo",
       "status": "todo"
     },
     {
       "kind": "view",
-      "power_bi": "actor",
-      "looker": "views/actor.view.lkml",
+      "power_bi": "AgeGroup",
+      "looker": "views/agegroup.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "address",
-      "looker": "views/address.view.lkml",
+      "power_bi": "BU",
+      "looker": "views/bu.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "category",
-      "looker": "views/category.view.lkml",
+      "power_bi": "Date",
+      "looker": "views/date.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "city",
-      "looker": "views/city.view.lkml",
+      "power_bi": "Employee",
+      "looker": "views/employee.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "country",
-      "looker": "views/country.view.lkml",
+      "power_bi": "Ethnicity",
+      "looker": "views/ethnicity.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "customer",
-      "looker": "views/customer.view.lkml",
+      "power_bi": "FP",
+      "looker": "views/fp.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "film",
-      "looker": "views/film.view.lkml",
+      "power_bi": "Gender",
+      "looker": "views/gender.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "film_actor",
-      "looker": "views/film_actor.view.lkml",
+      "power_bi": "PayType",
+      "looker": "views/paytype.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "view",
-      "power_bi": "film_category",
-      "looker": "views/film_category.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "film_text",
-      "looker": "views/film_text.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "inventory",
-      "looker": "views/inventory.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "language",
-      "looker": "views/language.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "payment",
-      "looker": "views/payment.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "rentat",
-      "looker": "views/rentat.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "staff",
-      "looker": "views/staff.view.lkml",
-      "status": "mapped"
-    },
-    {
-      "kind": "view",
-      "power_bi": "store",
-      "looker": "views/store.view.lkml",
+      "power_bi": "SeparationReason",
+      "looker": "views/separationreason.view.lkml",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "film_actor[actor_id] -> actor[actor_id]",
+      "power_bi": "Employee[date] -> Date[Date]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "address[city_id] -> city[city_id]",
+      "power_bi": "Employee[FP] -> FP[FP]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "city[country_id] -> country[country_id]",
+      "power_bi": "Employee[EthnicGroup] -> Ethnicity[Ethnic Group]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "film[language_id] -> language[language_id]",
+      "power_bi": "Employee[Gender] -> Gender[ID]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "film_category[category_id] -> category[category_id]",
+      "power_bi": "Employee[PayTypeID] -> PayType[PayTypeID]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "film[film_id] -> film_category[film_id]",
+      "power_bi": "Employee[BU] -> BU[BU]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "film[film_id] -> film_text[film_id]",
+      "power_bi": "Employee[AgeGroupID] -> AgeGroup[AgeGroupID]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     },
     {
       "kind": "join",
-      "power_bi": "store[store_id] -> staff[store_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "film_actor[film_id] -> film[film_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "customer[address_id] -> address[address_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "payment[customer_id] -> customer[customer_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "customer[store_id] -> store[store_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "rentat[inventory_id] -> inventory[inventory_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "rentat[rental_id] -> payment[rental_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "mapped"
-    },
-    {
-      "kind": "join",
-      "power_bi": "rentat[staff_id] -> staff[staff_id]",
-      "looker": "explore join relationship=many_to_one",
-      "status": "inactive_alias"
-    },
-    {
-      "kind": "join",
-      "power_bi": "inventory[film_id] -> film[film_id]",
+      "power_bi": "Employee[TermReason] -> SeparationReason[SeparationTypeID]",
       "looker": "explore join relationship=many_to_one",
       "status": "mapped"
     }

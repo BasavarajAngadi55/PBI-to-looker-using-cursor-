@@ -1,0 +1,471 @@
+{
+  "approach": "deterministic",
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/Human Resources Sample PBIX.pbix",
+  "best_practice_order": [
+    "1. Warehouse table/view (ETL/dbt) + straight LookML view (sql_table_name) \u2014 preferred",
+    "2. LookML SQL derived table (SDT) \u2014 temporary bridge for light SQL only",
+    "3. Native derived table (NDT) \u2014 rarely a Power Query replacement",
+    "4. Never put heavy M merges/appends only in LookML"
+  ],
+  "pattern_counts": {
+    "lookml_sql_derived_table": 5,
+    "warehouse_transform_model": 1,
+    "warehouse_seed_plus_straight_view": 3
+  },
+  "query_count": 9,
+  "recommendations": [
+    {
+      "query_name": "BU",
+      "recommended_pattern": "lookml_sql_derived_table",
+      "looker_object": "warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only",
+      "rationale": "M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.",
+      "confidence": "high",
+      "build_in": "either",
+      "source_type": "sql_database",
+      "tags": [
+        "sql_database",
+        "query_reference"
+      ],
+      "m_signals": [
+        "sql_source",
+        "column_casts:3"
+      ],
+      "steps": [
+        "Prefer warehouse VIEW/TABLE with the M SQL (or source table).",
+        "Use straight LookML view with sql_table_name.",
+        "Use SDT only if warehouse object is not ready yet; migrate off SDT later."
+      ],
+      "checks": [
+        "SQL dialect matches Looker connection",
+        "Results match Power BI query for a sample filter"
+      ],
+      "sql_stub": "-- Preferred: materialize as warehouse view/table\nCREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.bu` AS\nselect distinct market BU,#(lf)  REGIONTITLE Region,#(lf)  MARKETDIRECTOR VP#(lf)from hr.bu\n;\n\n-- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).\n",
+      "lookml_stub": "# Option A (best practice): straight view on warehouse object\nview: bu {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.bu` ;;\n}\n\n# Option B (temporary SDT) \u2014 looker-skills: prefer NDT for Looker-native rollups;\n# for migrated M SQL, SDT is OK only until warehouse view exists.\nview: bu_sdt {\n  derived_table: {\n    sql:\n      select distinct market BU,#(lf)  REGIONTITLE Region,#(lf)  MARKETDIRECTOR VP#(lf)from hr.bu\n    ;;\n  }\n  # Declare dimensions for selected columns; set primary_key: yes\n}\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "BU",
+          "m_type": "type text"
+        },
+        {
+          "column": "RegionSeq",
+          "m_type": "type text"
+        },
+        {
+          "column": "VP",
+          "m_type": "type text"
+        }
+      ]
+    },
+    {
+      "query_name": "FP",
+      "recommended_pattern": "lookml_sql_derived_table",
+      "looker_object": "warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only",
+      "rationale": "M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.",
+      "confidence": "high",
+      "build_in": "either",
+      "source_type": "sql_database",
+      "tags": [
+        "sql_database",
+        "query_reference"
+      ],
+      "m_signals": [
+        "sql_source",
+        "column_casts:2"
+      ],
+      "steps": [
+        "Prefer warehouse VIEW/TABLE with the M SQL (or source table).",
+        "Use straight LookML view with sql_table_name.",
+        "Use SDT only if warehouse object is not ready yet; migrate off SDT later."
+      ],
+      "checks": [
+        "SQL dialect matches Looker connection",
+        "Results match Power BI query for a sample filter"
+      ],
+      "sql_stub": "-- Preferred: materialize as warehouse view/table\nCREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.fp` AS\nSELECT [HR].[FP].*   FROM [HR].[FP]\n;\n\n-- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).\n",
+      "lookml_stub": "# Option A (best practice): straight view on warehouse object\nview: fp {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.fp` ;;\n}\n\n# Option B (temporary SDT) \u2014 looker-skills: prefer NDT for Looker-native rollups;\n# for migrated M SQL, SDT is OK only until warehouse view exists.\nview: fp_sdt {\n  derived_table: {\n    sql:\n      SELECT [HR].[FP].*   FROM [HR].[FP]\n    ;;\n  }\n  # Declare dimensions for selected columns; set primary_key: yes\n}\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "FP",
+          "m_type": "type text"
+        },
+        {
+          "column": "FPDesc",
+          "m_type": "type text"
+        }
+      ]
+    },
+    {
+      "query_name": "PayType",
+      "recommended_pattern": "lookml_sql_derived_table",
+      "looker_object": "warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only",
+      "rationale": "M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.",
+      "confidence": "high",
+      "build_in": "either",
+      "source_type": "sql_database",
+      "tags": [
+        "sql_database",
+        "query_reference"
+      ],
+      "m_signals": [
+        "sql_source",
+        "column_casts:4"
+      ],
+      "steps": [
+        "Prefer warehouse VIEW/TABLE with the M SQL (or source table).",
+        "Use straight LookML view with sql_table_name.",
+        "Use SDT only if warehouse object is not ready yet; migrate off SDT later."
+      ],
+      "checks": [
+        "SQL dialect matches Looker connection",
+        "Results match Power BI query for a sample filter"
+      ],
+      "sql_stub": "-- Preferred: materialize as warehouse view/table\nCREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.paytype` AS\nselect distinct PayTypeID, [Hrly-Salaried] PayType#(lf)from [HR].[PayGroup]\n;\n\n-- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).\n",
+      "lookml_stub": "# Option A (best practice): straight view on warehouse object\nview: paytype {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.paytype` ;;\n}\n\n# Option B (temporary SDT) \u2014 looker-skills: prefer NDT for Looker-native rollups;\n# for migrated M SQL, SDT is OK only until warehouse view exists.\nview: paytype_sdt {\n  derived_table: {\n    sql:\n      select distinct PayTypeID, [Hrly-Salaried] PayType#(lf)from [HR].[PayGroup]\n    ;;\n  }\n  # Declare dimensions for selected columns; set primary_key: yes\n}\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "PayTypeID",
+          "m_type": "\"PayTypeID\""
+        },
+        {
+          "column": "PayType",
+          "m_type": "\"PayType\""
+        },
+        {
+          "column": "PayTypeID",
+          "m_type": "type text"
+        },
+        {
+          "column": "PayType",
+          "m_type": "type text"
+        }
+      ]
+    },
+    {
+      "query_name": "SeparationReason",
+      "recommended_pattern": "lookml_sql_derived_table",
+      "looker_object": "warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only",
+      "rationale": "M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.",
+      "confidence": "high",
+      "build_in": "either",
+      "source_type": "sql_database",
+      "tags": [
+        "sql_database",
+        "query_reference"
+      ],
+      "m_signals": [
+        "sql_source",
+        "column_casts:3"
+      ],
+      "steps": [
+        "Prefer warehouse VIEW/TABLE with the M SQL (or source table).",
+        "Use straight LookML view with sql_table_name.",
+        "Use SDT only if warehouse object is not ready yet; migrate off SDT later."
+      ],
+      "checks": [
+        "SQL dialect matches Looker connection",
+        "Results match Power BI query for a sample filter"
+      ],
+      "sql_stub": "-- Preferred: materialize as warehouse view/table\nCREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.separationreason` AS\nSELECT distinct SeparationTypeID, [Vol-Invol] SeparationReason#(lf)  FROM [IP].[HR].[TermReason]\n;\n\n-- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).\n",
+      "lookml_stub": "# Option A (best practice): straight view on warehouse object\nview: separationreason {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.separationreason` ;;\n}\n\n# Option B (temporary SDT) \u2014 looker-skills: prefer NDT for Looker-native rollups;\n# for migrated M SQL, SDT is OK only until warehouse view exists.\nview: separationreason_sdt {\n  derived_table: {\n    sql:\n      SELECT distinct SeparationTypeID, [Vol-Invol] SeparationReason#(lf)  FROM [IP].[HR].[TermReason]\n    ;;\n  }\n  # Declare dimensions for selected columns; set primary_key: yes\n}\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "SeparationTypeID",
+          "m_type": "\"SeparationTypeID\""
+        },
+        {
+          "column": "SeparationTypeID",
+          "m_type": "type text"
+        },
+        {
+          "column": "SeparationReason",
+          "m_type": "type text"
+        }
+      ]
+    },
+    {
+      "query_name": "Date",
+      "recommended_pattern": "lookml_sql_derived_table",
+      "looker_object": "warehouse view/table preferred; LookML SQL derived table acceptable if SELECT-only",
+      "rationale": "M wraps a SQL statement. Prefer creating a warehouse view/table with that SQL, then a straight LookML view. A LookML sql-derived table is an acceptable temporary equivalent.",
+      "confidence": "high",
+      "build_in": "either",
+      "source_type": "sql_database",
+      "tags": [
+        "sql_database",
+        "query_reference"
+      ],
+      "m_signals": [
+        "sql_source",
+        "column_casts:11"
+      ],
+      "steps": [
+        "Prefer warehouse VIEW/TABLE with the M SQL (or source table).",
+        "Use straight LookML view with sql_table_name.",
+        "Use SDT only if warehouse object is not ready yet; migrate off SDT later."
+      ],
+      "checks": [
+        "SQL dialect matches Looker connection",
+        "Results match Power BI query for a sample filter"
+      ],
+      "sql_stub": "-- Preferred: materialize as warehouse view/table\nCREATE OR REPLACE VIEW `YOUR_PROJECT.YOUR_DATASET.date` AS\nSELECT [HR].[Date].*   FROM [HR].[Date]\n;\n\n-- Alternative (temporary): use the same SELECT inside a LookML derived_table (see lookml stub).\n",
+      "lookml_stub": "# Option A (best practice): straight view on warehouse object\nview: date {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.date` ;;\n}\n\n# Option B (temporary SDT) \u2014 looker-skills: prefer NDT for Looker-native rollups;\n# for migrated M SQL, SDT is OK only until warehouse view exists.\nview: date_sdt {\n  derived_table: {\n    sql:\n      SELECT [HR].[Date].*   FROM [HR].[Date]\n    ;;\n  }\n  # Declare dimensions for selected columns; set primary_key: yes\n}\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "Date",
+          "m_type": "type datetime"
+        },
+        {
+          "column": "Month",
+          "m_type": "type text"
+        },
+        {
+          "column": "MonthNumber",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "Period",
+          "m_type": "type text"
+        },
+        {
+          "column": "PeriodNumber",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "Qtr",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "QtrNumber",
+          "m_type": "type text"
+        },
+        {
+          "column": "Year",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "Day",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "MonthStartDate",
+          "m_type": "type datetime"
+        },
+        {
+          "column": "MonthEndDate",
+          "m_type": "type datetime"
+        }
+      ]
+    },
+    {
+      "query_name": "Employee",
+      "recommended_pattern": "warehouse_transform_model",
+      "looker_object": "warehouse transform + straight view (avoid SDT for heavy M)",
+      "rationale": "M contains merge, append/union, or heavy transforms. Looker skills: keep LookML semantic; put ETL in the warehouse.",
+      "confidence": "high",
+      "build_in": "warehouse",
+      "source_type": "sql_database",
+      "tags": [
+        "sql_database",
+        "append_union",
+        "query_reference",
+        "transformation_heavy"
+      ],
+      "m_signals": [
+        "sql_source",
+        "append_union",
+        "transformation_heavy",
+        "column_casts:12"
+      ],
+      "steps": [
+        "Read phase1/inventory/04_m_raw/Employee.m end-to-end.",
+        "Implement joins/unions/filters in dbt/Dataform/SQL.",
+        "Expose curated table to LookML views/employee.view.lkml via sql_table_name.",
+        "Mark any LookML SDT as temporary technical debt."
+      ],
+      "checks": [
+        "Transform tests (unique key, not null) in warehouse",
+        "Row grain matches Power BI",
+        "No fan-out vs related facts"
+      ],
+      "sql_stub": "-- Recommended pattern: WAREHOUSE TRANSFORM MODEL (dbt/Dataform/SQL)\n-- Power Query `Employee` has merges/appends/heavy transforms.\n-- Best practice: implement transforms in ETL. LookML stays a thin straight view.\n-- Do NOT rebuild merge/append logic as LookML derived tables.\n\nCREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.employee` AS\nSELECT\n  CAST(`PayTypeID` AS STRING) AS `PayTypeID`,\n  CAST(`date` AS TIMESTAMP) AS `date`,\n  CAST(`EmplID` AS INT64) AS `EmplID`,\n  CAST(`Gender` AS STRING) AS `Gender`,\n  CAST(`Age` AS INT64) AS `Age`,\n  CAST(`EthnicGroup` AS STRING) AS `EthnicGroup`,\n  CAST(`FP` AS STRING) AS `FP`,\n  CAST(`TermDate` AS TIMESTAMP) AS `TermDate`,\n  CAST(`BU` AS STRING) AS `BU`,\n  CAST(`HireDate` AS TIMESTAMP) AS `HireDate`,\n  CAST(`PayTypeID` AS STRING) AS `PayTypeID`,\n  CAST(`TermReason` AS STRING) AS `TermReason`\n-- TODO: translate M merges/appends/filters from 04_m_raw/Employee.m\nFROM `YOUR_PROJECT.YOUR_DATASET.stg_employee_sources`  -- TODO\n;\n\n-- dbt-style sketch:\n-- models/employee.sql  ->  SELECT ... FROM { ref('upstream') } ...\n",
+      "lookml_stub": "# After warehouse model exists \u2014 straight view only\nview: employee {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.employee` ;;\n}\n\n# NOT recommended: encoding M merge/append as LookML derived_table SQL.\n# If you must bridge temporarily, keep SDT minimal and ticket warehouse ownership.\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "PayTypeID",
+          "m_type": "\"PayTypeID\""
+        },
+        {
+          "column": "date",
+          "m_type": "type datetime"
+        },
+        {
+          "column": "EmplID",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "Gender",
+          "m_type": "type text"
+        },
+        {
+          "column": "Age",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "EthnicGroup",
+          "m_type": "type text"
+        },
+        {
+          "column": "FP",
+          "m_type": "type text"
+        },
+        {
+          "column": "TermDate",
+          "m_type": "type datetime"
+        },
+        {
+          "column": "BU",
+          "m_type": "type text"
+        },
+        {
+          "column": "HireDate",
+          "m_type": "type datetime"
+        },
+        {
+          "column": "PayTypeID",
+          "m_type": "type text"
+        },
+        {
+          "column": "TermReason",
+          "m_type": "type text"
+        }
+      ]
+    },
+    {
+      "query_name": "Ethnicity",
+      "recommended_pattern": "warehouse_seed_plus_straight_view",
+      "looker_object": "warehouse seed table + straight view (tiny SDT optional)",
+      "rationale": "Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.",
+      "confidence": "medium",
+      "build_in": "warehouse",
+      "source_type": "embedded_static",
+      "tags": [
+        "embedded_seed",
+        "query_reference"
+      ],
+      "m_signals": [
+        "embedded_static",
+        "column_casts:2"
+      ],
+      "steps": [
+        "Extract static rows from M into a seed CSV or INSERT script.",
+        "Load seed to warehouse.",
+        "Use generated straight LookML view."
+      ],
+      "checks": [
+        "Seed row count matches Power BI",
+        "Types match Changed Type"
+      ],
+      "sql_stub": "-- Recommended pattern: WAREHOUSE SEED + straight LookML view\n-- Power Query `Ethnicity` looks like an embedded/static table (#table / enter data).\n-- Best practice: seed CSV in dbt/Dataform or INSERT seed rows; then straight view.\n\nCREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.ethnicity` AS\nSELECT\n  CAST(`Ethnic Group` AS STRING) AS `Ethnic Group`,\n  CAST(`Ethnicity` AS STRING) AS `Ethnicity`\n-- TODO: paste literal rows from M #table / Enter Data\nFROM UNNEST([])  -- replace with seed rows\n;\n\n-- Alternative small SDT (only if seed is tiny and temporary):\n-- view with derived_table sql: SELECT ... UNION ALL SELECT ...\n",
+      "lookml_stub": "view: ethnicity {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.ethnicity` ;;\n}\n\n# Tiny static alternative (temporary):\n# view: ethnicity_sdt {\n#   derived_table: {\n#     sql:\n#       SELECT 1 AS id, 'example' AS label\n#       -- UNION ALL more seed rows from M\n#     ;;\n#   }\n#   dimension: id { primary_key: yes type: number sql: ${TABLE}.id ;; }\n# }\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "Ethnic Group",
+          "m_type": "type text"
+        },
+        {
+          "column": "Ethnicity",
+          "m_type": "type text"
+        }
+      ]
+    },
+    {
+      "query_name": "Gender",
+      "recommended_pattern": "warehouse_seed_plus_straight_view",
+      "looker_object": "warehouse seed table + straight view (tiny SDT optional)",
+      "rationale": "Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.",
+      "confidence": "medium",
+      "build_in": "warehouse",
+      "source_type": "embedded_static",
+      "tags": [
+        "embedded_seed",
+        "query_reference"
+      ],
+      "m_signals": [
+        "embedded_static",
+        "column_casts:3"
+      ],
+      "steps": [
+        "Extract static rows from M into a seed CSV or INSERT script.",
+        "Load seed to warehouse.",
+        "Use generated straight LookML view."
+      ],
+      "checks": [
+        "Seed row count matches Power BI",
+        "Types match Changed Type"
+      ],
+      "sql_stub": "-- Recommended pattern: WAREHOUSE SEED + straight LookML view\n-- Power Query `Gender` looks like an embedded/static table (#table / enter data).\n-- Best practice: seed CSV in dbt/Dataform or INSERT seed rows; then straight view.\n\nCREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.gender` AS\nSELECT\n  CAST(`ID` AS STRING) AS `ID`,\n  CAST(`Gender` AS STRING) AS `Gender`,\n  CAST(`Sort` AS INT64) AS `Sort`\n-- TODO: paste literal rows from M #table / Enter Data\nFROM UNNEST([])  -- replace with seed rows\n;\n\n-- Alternative small SDT (only if seed is tiny and temporary):\n-- view with derived_table sql: SELECT ... UNION ALL SELECT ...\n",
+      "lookml_stub": "view: gender {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.gender` ;;\n}\n\n# Tiny static alternative (temporary):\n# view: gender_sdt {\n#   derived_table: {\n#     sql:\n#       SELECT 1 AS id, 'example' AS label\n#       -- UNION ALL more seed rows from M\n#     ;;\n#   }\n#   dimension: id { primary_key: yes type: number sql: ${TABLE}.id ;; }\n# }\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "ID",
+          "m_type": "type text"
+        },
+        {
+          "column": "Gender",
+          "m_type": "type text"
+        },
+        {
+          "column": "Sort",
+          "m_type": "Int64.Type"
+        }
+      ]
+    },
+    {
+      "query_name": "AgeGroup",
+      "recommended_pattern": "warehouse_seed_plus_straight_view",
+      "looker_object": "warehouse seed table + straight view (tiny SDT optional)",
+      "rationale": "Embedded/static M tables should become warehouse seeds. Straight LookML view afterward; SDT only for tiny temporary seeds.",
+      "confidence": "medium",
+      "build_in": "warehouse",
+      "source_type": "embedded_static",
+      "tags": [
+        "embedded_seed",
+        "query_reference"
+      ],
+      "m_signals": [
+        "embedded_static",
+        "column_casts:2"
+      ],
+      "steps": [
+        "Extract static rows from M into a seed CSV or INSERT script.",
+        "Load seed to warehouse.",
+        "Use generated straight LookML view."
+      ],
+      "checks": [
+        "Seed row count matches Power BI",
+        "Types match Changed Type"
+      ],
+      "sql_stub": "-- Recommended pattern: WAREHOUSE SEED + straight LookML view\n-- Power Query `AgeGroup` looks like an embedded/static table (#table / enter data).\n-- Best practice: seed CSV in dbt/Dataform or INSERT seed rows; then straight view.\n\nCREATE OR REPLACE TABLE `YOUR_PROJECT.YOUR_DATASET.agegroup` AS\nSELECT\n  CAST(`AgeGroupID` AS INT64) AS `AgeGroupID`,\n  CAST(`AgeGroup` AS STRING) AS `AgeGroup`\n-- TODO: paste literal rows from M #table / Enter Data\nFROM UNNEST([])  -- replace with seed rows\n;\n\n-- Alternative small SDT (only if seed is tiny and temporary):\n-- view with derived_table sql: SELECT ... UNION ALL SELECT ...\n",
+      "lookml_stub": "view: agegroup {\n  sql_table_name: `YOUR_PROJECT.YOUR_DATASET.agegroup` ;;\n}\n\n# Tiny static alternative (temporary):\n# view: agegroup_sdt {\n#   derived_table: {\n#     sql:\n#       SELECT 1 AS id, 'example' AS label\n#       -- UNION ALL more seed rows from M\n#     ;;\n#   }\n#   dimension: id { primary_key: yes type: number sql: ${TABLE}.id ;; }\n# }\n",
+      "prefer_over_sdt": true,
+      "column_casts": [
+        {
+          "column": "AgeGroupID",
+          "m_type": "Int64.Type"
+        },
+        {
+          "column": "AgeGroup",
+          "m_type": "type text"
+        }
+      ]
+    }
+  ]
+}

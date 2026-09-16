@@ -1,15 +1,24 @@
 {
   "phase": 2,
   "approach": "deterministic",
-  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix",
-  "model_name": "movie_rental_analysis",
-  "fact_table": "film",
-  "views": 16,
-  "measures": 5,
-  "relationships": 16,
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/Human Resources Sample PBIX.pbix",
+  "model_name": "human_resources_sample_pbix",
+  "fact_table": "Employee",
+  "views": 9,
+  "measures": 30,
+  "relationships": 8,
   "lookml_dir": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/lookml",
   "zip": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/LOOKML_PROJECT.zip",
   "guide_pdf": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/LOOKER_DEVELOPER_GUIDE.pdf",
   "guide_md": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/LOOKER_DEVELOPER_GUIDE.md",
-  "mapping_md": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/OBJECT_MAPPING.md"
+  "mapping_md": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/OBJECT_MAPPING.md",
+  "m_migration": {
+    "out_dir": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/lookml/m_migration",
+    "query_count": 9,
+    "pattern_counts": {
+      "lookml_sql_derived_table": 5,
+      "warehouse_transform_model": 1,
+      "warehouse_seed_plus_straight_view": 3
+    }
+  }
 }

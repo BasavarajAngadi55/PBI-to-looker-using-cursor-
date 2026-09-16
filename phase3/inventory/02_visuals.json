@@ -1,0 +1,2566 @@
+{
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/dashboards.pbix",
+  "visual_count": 83,
+  "visuals": [
+    {
+      "page": "Project Overview",
+      "ordinal": 0,
+      "visual_type": "textbox",
+      "title": "textbox_0",
+      "x": 0,
+      "y": 0,
+      "width": 1280.4587181254308,
+      "height": 720.3991729841489,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 0,
+      "visual_type": "shape",
+      "title": "shape_0",
+      "x": 343.6393958099577,
+      "y": 0,
+      "width": 1448.3143316087974,
+      "height": 129.07430964569144,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 1,
+      "visual_type": "shape",
+      "title": "shape_1",
+      "x": 0,
+      "y": 0,
+      "width": 144.60093896713616,
+      "height": 1100,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 2,
+      "visual_type": "card",
+      "title": "CountPatient",
+      "x": 1176.755394432148,
+      "y": 152.54236594490806,
+      "width": 306.7610216254745,
+      "height": 120.69286096739978,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "CountPatient",
+          "native": "Total Patients",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "Measure Table"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 3,
+      "visual_type": "card",
+      "title": "Insurance_Payment",
+      "x": 564,
+      "y": 158,
+      "width": 222,
+      "height": 104,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": " Insurance_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 4,
+      "visual_type": "textbox",
+      "title": "textbox_4",
+      "x": 344.2879499217527,
+      "y": 25.821596244131456,
+      "width": 1402.9733959311422,
+      "height": 103.28638497652582,
+      "z": 5000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 5,
+      "visual_type": "areaChart",
+      "title": " Monthly Expenses Trends",
+      "x": 160.093896713615,
+      "y": 296.08763693270737,
+      "width": 561.1893583724569,
+      "height": 383.8810641627543,
+      "z": 6000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Gross Expenses",
+          "function": 0,
+          "native": " Gross Expenses",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": " Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": " Insurance_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "FactTable"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 6,
+      "visual_type": "areaChart",
+      "title": "Patient Growth Over Time",
+      "x": 160.093896713615,
+      "y": 697.1830985915493,
+      "width": 561.1893583724569,
+      "height": 387.32394366197184,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": "Start of Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 7,
+      "visual_type": "columnChart",
+      "title": " CPT Units Monthly Distribution",
+      "x": 725.833455540057,
+      "y": 296.7032832115245,
+      "width": 549.8230332959324,
+      "height": 383.87034946575767,
+      "z": 8000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": " CPTUnits",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": " Month",
+          "table": "DimDate",
+          "alias": "d"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "FactTable"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 8,
+      "visual_type": "clusteredBarChart",
+      "title": " Payer-wise CPT Units",
+      "x": 725.833455540057,
+      "y": 697.3365300338654,
+      "width": 554.8519025029074,
+      "height": 387.2229289370743,
+      "z": 9000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "PayerName",
+          "native": "PayerName",
+          "table": "Payer_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": " CPTUnits",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable",
+        "Payer_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 9,
+      "visual_type": "card",
+      "title": "Gross Expenses",
+      "x": 159.24752488754137,
+      "y": 152.54236594490806,
+      "width": 310.1136010967911,
+      "height": 120.69286096739978,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Gross Expenses",
+          "function": 0,
+          "native": "Total Expenses",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 10,
+      "visual_type": "card",
+      "title": "Insurance_Payment",
+      "x": 489.47660281223244,
+      "y": 152.54236594490806,
+      "width": 335.25794713166607,
+      "height": 120.69286096739978,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": "Insurance Revenue",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 11,
+      "visual_type": "card",
+      "title": "Patient_Payment",
+      "x": 839.8211575648235,
+      "y": 152.54236594490806,
+      "width": 320.1713395107411,
+      "height": 120.69286096739978,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Patient_Payment",
+          "function": 0,
+          "native": "Sum of Patient_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 12,
+      "visual_type": "kpi",
+      "title": "Monthly Net Revenue",
+      "x": 1562.302033633564,
+      "y": 296.7032832115245,
+      "width": 219.5939553712413,
+      "height": 192.773319600708,
+      "z": 13000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "TotalPayment",
+          "native": "TotalPayment",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": " Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Indicator",
+        "TrendLine",
+        "Goal"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 13,
+      "visual_type": "kpi",
+      "title": "Monthly Insurance Revenue",
+      "x": 1562.302033633564,
+      "y": 504.56321043315745,
+      "width": 219.5939553712413,
+      "height": 192.773319600708,
+      "z": 14000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": " Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": "Insurance_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Measure Table"
+      ],
+      "projections": [
+        "TrendLine",
+        "Indicator",
+        "Goal"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 14,
+      "visual_type": "kpi",
+      "title": "Monthly Patient Revenue ",
+      "x": 1299.6870109546167,
+      "y": 296.08763693270737,
+      "width": 223.78716744913928,
+      "height": 192.80125195618152,
+      "z": 15000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": " Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "aggregation",
+          "property": "Patient_Payment",
+          "function": 0,
+          "native": "Patient_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Measure Table"
+      ],
+      "projections": [
+        "TrendLine",
+        "Indicator",
+        "Goal"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 15,
+      "visual_type": "kpi",
+      "title": " Monthly Procedure Volume",
+      "x": 1299.6870109546167,
+      "y": 504.38184663536776,
+      "width": 225.50860719874802,
+      "height": 192.80125195618152,
+      "z": 16000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": " Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": " CPTUnits",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Measure Table"
+      ],
+      "projections": [
+        "TrendLine",
+        "Indicator",
+        "Goal"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 16,
+      "visual_type": "actionButton",
+      "title": "actionButton_16",
+      "x": 22,
+      "y": 46,
+      "width": 100,
+      "height": 40,
+      "z": 17000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 17,
+      "visual_type": "image",
+      "title": "image_17",
+      "x": 144.16091726661642,
+      "y": 0,
+      "width": 199.4784785433413,
+      "height": 129.07430964569144,
+      "z": 18000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 18,
+      "visual_type": "card",
+      "title": "TotalPayment",
+      "x": 1501.955603149864,
+      "y": 152.54236594490806,
+      "width": 279.94038585494116,
+      "height": 120.69286096739978,
+      "z": 19000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "TotalPayment",
+          "function": 0,
+          "native": "Total Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 19,
+      "visual_type": "kpi",
+      "title": "Yearly Avg. Patient Payment Trend",
+      "x": 1299.6870109546167,
+      "y": 728.169014084507,
+      "width": 225.50860719874802,
+      "height": 163.53677621283254,
+      "z": 20000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "measure",
+          "property": "AveragePatientPay",
+          "native": "AveragePatientPay",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "other",
+          "native": "Date Year",
+          "table": "DimDate",
+          "alias": "d"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Goal",
+        "Indicator",
+        "TrendLine"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 20,
+      "visual_type": "kpi",
+      "title": "Monthly Payment Performance",
+      "x": 1563.0672926447573,
+      "y": 728.169014084507,
+      "width": 218.62284820031297,
+      "height": 163.53677621283254,
+      "z": 21000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "measure",
+          "property": "YTDPayment",
+          "native": "YTDPayment",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "other",
+          "native": "Date Month",
+          "table": "DimDate",
+          "alias": "d"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Goal",
+        "Indicator",
+        "TrendLine"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 21,
+      "visual_type": "kpi",
+      "title": "Optimized Quarterly Expenditure",
+      "x": 1300,
+      "y": 910,
+      "width": 226,
+      "height": 174,
+      "z": 22000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "other",
+          "native": "Date Quarter",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "measure",
+          "property": "TotalGrossExpense",
+          "native": "TotalGrossExpense",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Goal",
+        "TrendLine",
+        "Indicator"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Executive Summary",
+      "ordinal": 22,
+      "visual_type": "kpi",
+      "title": "Deficit Reduction Efficiency - Monthly",
+      "x": 1563,
+      "y": 910,
+      "width": 219,
+      "height": 174,
+      "z": 23000,
+      "fields": [
+        {
+          "kind": "other",
+          "native": "Date Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "measure",
+          "property": "Previous MonthPay",
+          "native": "Previous MonthPay",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "measure",
+          "property": "TotalDeficit",
+          "native": "TotalDeficit",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "TrendLine",
+        "Goal",
+        "Indicator"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 0,
+      "visual_type": "shape",
+      "title": "shape_0",
+      "x": 342.566510172144,
+      "y": 0,
+      "width": 1458.0594679186229,
+      "height": 129.10798122065728,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 1,
+      "visual_type": "shape",
+      "title": "shape_1",
+      "x": 0,
+      "y": 0,
+      "width": 144.60093896713616,
+      "height": 1100,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 2,
+      "visual_type": "card",
+      "title": "CptGrouping",
+      "x": 1241.1580594679185,
+      "y": 141.1580594679186,
+      "width": 308.13771517996867,
+      "height": 120.50078247261345,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "CptGrouping",
+          "function": 2,
+          "native": "CPT Grouping",
+          "table": "CptCode_Lookup",
+          "alias": "c"
+        }
+      ],
+      "entities": [
+        "CptCode_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 3,
+      "visual_type": "card",
+      "title": "Patient_Payment",
+      "x": 890,
+      "y": 160,
+      "width": 220,
+      "height": 104,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Patient_Payment",
+          "function": 0,
+          "native": " Patient_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 4,
+      "visual_type": "card",
+      "title": "Insurance_Payment",
+      "x": 564,
+      "y": 158,
+      "width": 222,
+      "height": 104,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": " Insurance_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 5,
+      "visual_type": "textbox",
+      "title": "textbox_5",
+      "x": 344.2879499217527,
+      "y": 27.54303599374022,
+      "width": 1440.8450704225352,
+      "height": 101.56494522691706,
+      "z": 6000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 6,
+      "visual_type": "lineChart",
+      "title": "Monthly ARGE Ratio Trend",
+      "x": 160.093896713615,
+      "y": 285.75899843505476,
+      "width": 709.2331768388107,
+      "height": 184.19405320813772,
+      "z": 7000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "ARGE Ratio",
+          "native": "ARGE Ratio",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": "Start of Month",
+          "table": "DimDate",
+          "alias": "d"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 7,
+      "visual_type": "card",
+      "title": "AR",
+      "x": 160.093896713615,
+      "y": 141.1580594679186,
+      "width": 309.85915492957747,
+      "height": 122.22222222222221,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "AR",
+          "function": 0,
+          "native": "Account Receivable",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "HospitalName",
+      "x": 533.6463223787167,
+      "y": 141.1580594679186,
+      "width": 282.3161189358372,
+      "height": 122.22222222222221,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "HospitalName",
+          "function": 5,
+          "native": "Hospital Count",
+          "table": "Hospital_Lookup",
+          "alias": "h"
+        }
+      ],
+      "entities": [
+        "Hospital_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 9,
+      "visual_type": "card",
+      "title": "CPTUnits",
+      "x": 869.3270735524256,
+      "y": 141.1580594679186,
+      "width": 320.18779342723,
+      "height": 122.22222222222221,
+      "z": 13000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": " Procedure Count (CPT Units)",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 10,
+      "visual_type": "lineChart",
+      "title": "Monthly IPTP Ratio Trend",
+      "x": 160.093896713615,
+      "y": 476.8388106416275,
+      "width": 709.2331768388107,
+      "height": 161.8153364632238,
+      "z": 14000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": "Start of Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "measure",
+          "property": "IPTP Ratio",
+          "native": "IPTP Ratio",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 11,
+      "visual_type": "pieChart",
+      "title": " Gross Expenses by CptGrouping",
+      "x": 884.8200312989045,
+      "y": 285.75899843505476,
+      "width": 664.4757433489827,
+      "height": 352.8951486697965,
+      "z": 15000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "CptGrouping",
+          "native": "CptGrouping",
+          "table": "CptCode_Lookup",
+          "alias": "c"
+        },
+        {
+          "kind": "aggregation",
+          "property": "Gross Expenses",
+          "function": 0,
+          "native": "Sum of Gross Expenses",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "CptCode_Lookup",
+        "FactTable"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 12,
+      "visual_type": "treemap",
+      "title": " CPT Units Distribution by Hospital",
+      "x": 884.8200312989045,
+      "y": 645.5399061032864,
+      "width": 664.4757433489827,
+      "height": 433.80281690140845,
+      "z": 16000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "HospitalName",
+          "native": "HospitalName",
+          "table": "Hospital_Lookup",
+          "alias": "h"
+        },
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": "Sum of CPTUnits",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable",
+        "Hospital_Lookup"
+      ],
+      "projections": [
+        "Group",
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 13,
+      "visual_type": "pivotTable",
+      "title": "Critical Hospital Metrics Overview",
+      "x": 160.093896713615,
+      "y": 645.5399061032864,
+      "width": 709.2331768388107,
+      "height": 433.80281690140845,
+      "z": 17000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "HospitalName",
+          "native": "HospitalName",
+          "table": "Hospital_Lookup",
+          "alias": "h"
+        },
+        {
+          "kind": "aggregation",
+          "property": "AR",
+          "function": 0,
+          "native": " AR",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "IPTP Ratio",
+          "native": "IPTP Ratio",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "measure",
+          "property": "ARGE Ratio",
+          "native": "ARGE Ratio",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "measure",
+          "property": "BadDebts",
+          "native": "BadDebts",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "FactTable",
+        "Hospital_Lookup",
+        "Measure Table"
+      ],
+      "projections": [
+        "Rows",
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 14,
+      "visual_type": "slicer",
+      "title": "Hospital ",
+      "x": 1566.5101721439748,
+      "y": 141.1580594679186,
+      "width": 218.62284820031297,
+      "height": 497.4960876369327,
+      "z": 18000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "HospitalName",
+          "native": "HospitalName",
+          "table": "Hospital_Lookup",
+          "alias": "h"
+        }
+      ],
+      "entities": [
+        "Hospital_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 15,
+      "visual_type": "slicer",
+      "title": "Region",
+      "x": 1566.5101721439748,
+      "y": 654.1471048513301,
+      "width": 218.62284820031297,
+      "height": 425.1956181533646,
+      "z": 19000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Region",
+          "native": "Region",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 16,
+      "visual_type": "textbox",
+      "title": "textbox_16",
+      "x": 1578.5602503912362,
+      "y": 893.4272300469484,
+      "width": 184.19405320813772,
+      "height": 166.97965571205006,
+      "z": 20000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Hospital Insights",
+      "ordinal": 17,
+      "visual_type": "image",
+      "title": "image_17",
+      "x": 143.33333333333334,
+      "y": 0,
+      "width": 213.33333333333334,
+      "height": 128.33333333333334,
+      "z": 21000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 0,
+      "visual_type": "shape",
+      "title": "shape_0",
+      "x": 344.2879499217527,
+      "y": 0,
+      "width": 1456.338028169014,
+      "height": 127.3865414710485,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 1,
+      "visual_type": "shape",
+      "title": "shape_1",
+      "x": 0,
+      "y": 0,
+      "width": 144.60093896713616,
+      "height": 1100,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 2,
+      "visual_type": "card",
+      "title": "City",
+      "x": 1175.7433489827856,
+      "y": 151.4866979655712,
+      "width": 308.13771517996867,
+      "height": 110.17214397496087,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "City",
+          "function": 2,
+          "native": "Total Cities",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 3,
+      "visual_type": "card",
+      "title": "Patient_Payment",
+      "x": 890,
+      "y": 160,
+      "width": 220,
+      "height": 104,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Patient_Payment",
+          "function": 0,
+          "native": " Patient_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 4,
+      "visual_type": "card",
+      "title": "Insurance_Payment",
+      "x": 564,
+      "y": 158,
+      "width": 222,
+      "height": 104,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": " Insurance_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 5,
+      "visual_type": "textbox",
+      "title": "textbox_5",
+      "x": 344.2879499217527,
+      "y": 22.378716744913927,
+      "width": 1456.338028169014,
+      "height": 106.72926447574335,
+      "z": 6000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 6,
+      "visual_type": "card",
+      "title": "DistinctPatient",
+      "x": 160.093896713615,
+      "y": 151.4866979655712,
+      "width": 309.85915492957747,
+      "height": 111.89358372456964,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "Distinct Patients",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "Measure Table"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 7,
+      "visual_type": "card",
+      "title": "dimPatientFK",
+      "x": 490.61032863849766,
+      "y": 151.4866979655712,
+      "width": 333.9593114241001,
+      "height": 111.89358372456964,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "dimPatientFK",
+          "function": 5,
+          "native": "Total Patients Enrolled",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "State",
+      "x": 840.0625978090767,
+      "y": 151.4866979655712,
+      "width": 320.18779342723,
+      "height": 111.89358372456964,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "State",
+          "function": 2,
+          "native": "Total States",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 9,
+      "visual_type": "slicer",
+      "title": "Gender",
+      "x": 1501.095461658842,
+      "y": 275.43035993740216,
+      "width": 277.15179968701096,
+      "height": 113.6150234741784,
+      "z": 13000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "PatientGender",
+          "native": "PatientGender",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 10,
+      "visual_type": "slicer",
+      "title": "Blood Group",
+      "x": 1501.095461658842,
+      "y": 747.1048513302034,
+      "width": 277.15179968701096,
+      "height": 340.8450704225352,
+      "z": 14000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "BloodGroup",
+          "native": "BloodGroup",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 11,
+      "visual_type": "donutChart",
+      "title": "Patient by Tobacco",
+      "x": 160.093896713615,
+      "y": 275.43035993740216,
+      "width": 316.7449139280125,
+      "height": 228.95148669796555,
+      "z": 15000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Tobacco",
+          "native": "Tobacco",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 12,
+      "visual_type": "donutChart",
+      "title": "Patient By Exercise",
+      "x": 490.61032863849766,
+      "y": 275.43035993740216,
+      "width": 333.9593114241001,
+      "height": 228.95148669796555,
+      "z": 16000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "column",
+          "property": "Exercise",
+          "native": "Exercise",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 13,
+      "visual_type": "donutChart",
+      "title": "Patient by Alcohol",
+      "x": 490.61032863849766,
+      "y": 511.2676056338028,
+      "width": 333.9593114241001,
+      "height": 228.95148669796555,
+      "z": 17000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "column",
+          "property": "Alcohol",
+          "native": "Alcohol",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 14,
+      "visual_type": "donutChart",
+      "title": "Patient by Diet",
+      "x": 160.093896713615,
+      "y": 509.546165884194,
+      "width": 316.7449139280125,
+      "height": 228.95148669796555,
+      "z": 18000,
+      "fields": [
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        },
+        {
+          "kind": "column",
+          "property": "Diet",
+          "native": "Diet",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Y",
+        "Category"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 15,
+      "visual_type": "clusteredColumnChart",
+      "title": "Distinct Patients by BloodGroup",
+      "x": 160.093896713615,
+      "y": 747.1048513302034,
+      "width": 666.1971830985915,
+      "height": 340.8450704225352,
+      "z": 19000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "BloodGroup",
+          "native": "BloodGroup",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 16,
+      "visual_type": "pivotTable",
+      "title": "Patient Gender Distribution by State",
+      "x": 840.0625978090767,
+      "y": 747.1048513302034,
+      "width": 643.8184663536776,
+      "height": 340.8450704225352,
+      "z": 20000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "State",
+          "native": "State",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "column",
+          "property": "PatientGender",
+          "native": "PatientGender",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Rows",
+        "Columns",
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 17,
+      "visual_type": "slicer",
+      "title": "Region Code",
+      "x": 1175.7433489827856,
+      "y": 430.3599374021909,
+      "width": 220.34428794992175,
+      "height": 284.037558685446,
+      "z": 21000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "RegionCode",
+          "native": "RegionCode",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "column",
+          "property": "Region",
+          "native": "Region",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 18,
+      "visual_type": "map",
+      "title": "Distribution of Patient by State",
+      "x": 840.0625978090767,
+      "y": 277.15179968701096,
+      "width": 643.8184663536776,
+      "height": 461.34585289514865,
+      "z": 22000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "State",
+          "native": "State",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "measure",
+          "property": "DistinctPatient",
+          "native": "DistinctPatient",
+          "table": "Measure Table",
+          "alias": "m"
+        }
+      ],
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Size"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 19,
+      "visual_type": "image",
+      "title": "image_19",
+      "x": 143.33333333333334,
+      "y": 0,
+      "width": 200,
+      "height": 128.33333333333334,
+      "z": 23000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 20,
+      "visual_type": "card",
+      "title": "PatientAge",
+      "x": 1501.095461658842,
+      "y": 151.4866979655712,
+      "width": 277.15179968701096,
+      "height": 111.89358372456964,
+      "z": 24000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "PatientAge",
+          "function": 1,
+          "native": "Average Patient Age",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Patient Analysis",
+      "ordinal": 21,
+      "visual_type": "slicer",
+      "title": "Region",
+      "x": 1501.095461658842,
+      "y": 404.53834115805944,
+      "width": 277.15179968701096,
+      "height": 333.9593114241001,
+      "z": 25000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Region",
+          "native": "Region",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 0,
+      "visual_type": "shape",
+      "title": "shape_0",
+      "x": 342.566510172144,
+      "y": 0,
+      "width": 1456.338028169014,
+      "height": 127.3865414710485,
+      "z": 0,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 1,
+      "visual_type": "shape",
+      "title": "shape_1",
+      "x": 0,
+      "y": 0,
+      "width": 142.87949921752738,
+      "height": 1100,
+      "z": 1000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 2,
+      "visual_type": "card",
+      "title": "City",
+      "x": 1206.7292644757433,
+      "y": 139.43661971830986,
+      "width": 308.13771517996867,
+      "height": 122.22222222222221,
+      "z": 3000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "City",
+          "function": 2,
+          "native": "City Count",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 3,
+      "visual_type": "card",
+      "title": "Patient_Payment",
+      "x": 890,
+      "y": 160,
+      "width": 220,
+      "height": 104,
+      "z": 4000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Patient_Payment",
+          "function": 0,
+          "native": " Patient_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 4,
+      "visual_type": "card",
+      "title": "Insurance_Payment",
+      "x": 564,
+      "y": 158,
+      "width": 222,
+      "height": 104,
+      "z": 5000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "Insurance_Payment",
+          "function": 0,
+          "native": " Insurance_Payment",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 5,
+      "visual_type": "textbox",
+      "title": "textbox_5",
+      "x": 342.566510172144,
+      "y": 25.821596244131456,
+      "width": 1523.4741784037558,
+      "height": 84.35054773082942,
+      "z": 6000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 6,
+      "visual_type": "card",
+      "title": "ProviderName",
+      "x": 160.093896713615,
+      "y": 139.43661971830986,
+      "width": 309.85915492957747,
+      "height": 123.94366197183098,
+      "z": 10000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "ProviderName",
+          "function": 2,
+          "native": "Distinct Provider",
+          "table": "Physcian_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Physcian_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 7,
+      "visual_type": "card",
+      "title": "ProviderFTE",
+      "x": 490.61032863849766,
+      "y": 139.43661971830986,
+      "width": 333.9593114241001,
+      "height": 123.94366197183098,
+      "z": 11000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "ProviderFTE",
+          "function": 0,
+          "native": "Total FTE Employees",
+          "table": "Physcian_Lookup",
+          "alias": "p1"
+        }
+      ],
+      "entities": [
+        "Physcian_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 8,
+      "visual_type": "card",
+      "title": "ProviderSpecialty",
+      "x": 858.998435054773,
+      "y": 139.43661971830986,
+      "width": 320.18779342723,
+      "height": 123.94366197183098,
+      "z": 12000,
+      "fields": [
+        {
+          "kind": "aggregation",
+          "property": "ProviderSpecialty",
+          "function": 2,
+          "native": "Specialty Provider Count",
+          "table": "Speciality_Lookup",
+          "alias": "s"
+        }
+      ],
+      "entities": [
+        "Speciality_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 9,
+      "visual_type": "slicer",
+      "title": "Gender",
+      "x": 1556.1815336463224,
+      "y": 139.43661971830986,
+      "width": 242.72300469483568,
+      "height": 129.10798122065728,
+      "z": 13000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "PatientGender",
+          "native": "PatientGender",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 10,
+      "visual_type": "slicer",
+      "title": "Blood Group",
+      "x": 1578.8562263133242,
+      "y": 288.8816340435196,
+      "width": 219.84074037274135,
+      "height": 386.9923776809414,
+      "z": 14000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "BloodGroup",
+          "native": "BloodGroup",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 11,
+      "visual_type": "columnChart",
+      "title": "Regional Breakdown of Provider Specialties",
+      "x": 160.093896713615,
+      "y": 655.8685446009389,
+      "width": 626.6040688575899,
+      "height": 428.63849765258215,
+      "z": 15000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "SpecialityType",
+          "native": "SpecialityType",
+          "table": "Speciality_Lookup",
+          "alias": "s"
+        },
+        {
+          "kind": "aggregation",
+          "property": "ProviderName",
+          "function": 5,
+          "native": "Count of ProviderName",
+          "table": "Physcian_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "column",
+          "property": "RegionCode",
+          "native": "RegionCode",
+          "table": "FactTable",
+          "alias": "f"
+        }
+      ],
+      "entities": [
+        "FactTable",
+        "Physcian_Lookup",
+        "Speciality_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y",
+        "Rows"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 12,
+      "visual_type": "columnChart",
+      "title": "Regional Physician Count Analysis",
+      "x": 160,
+      "y": 282,
+      "width": 626,
+      "height": 360,
+      "z": 16000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "RegionCode",
+          "native": "RegionCode",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "dimPhysicianPK",
+          "function": 5,
+          "native": "Count of dimPhysicianPK",
+          "table": "Physcian_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "FactTable",
+        "Physcian_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 13,
+      "visual_type": "lineStackedColumnComboChart",
+      "title": "Monthly Provider Activity Overview and CPT Units",
+      "x": 799.4208740826958,
+      "y": 281.61417155185876,
+      "width": 757.6329647556458,
+      "height": 359.73939333721313,
+      "z": 17000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": "Start of Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": "Sum of CPTUnits",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "ProviderName",
+          "function": 5,
+          "native": "Count of ProviderName",
+          "table": "Physcian_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Physcian_Lookup"
+      ],
+      "projections": [
+        "Category",
+        "Y",
+        "Y2"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 14,
+      "visual_type": "pivotTable",
+      "title": "Holistic Provider Performance Matrix",
+      "x": 798.7480438184663,
+      "y": 655.8685446009389,
+      "width": 759.1549295774647,
+      "height": 428.63849765258215,
+      "z": 18000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "SpecialityType",
+          "native": "SpecialityType",
+          "table": "Speciality_Lookup",
+          "alias": "s"
+        },
+        {
+          "kind": "column",
+          "property": "ProviderSpecialty",
+          "native": "ProviderSpecialty",
+          "table": "Speciality_Lookup",
+          "alias": "s"
+        },
+        {
+          "kind": "aggregation",
+          "property": "ProviderName",
+          "function": 2,
+          "native": "Count of Providers",
+          "table": "Physcian_Lookup",
+          "alias": "p1"
+        },
+        {
+          "kind": "aggregation",
+          "property": "CPTUnits",
+          "function": 0,
+          "native": "Sum of CPTUnits",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "aggregation",
+          "property": "ProviderFTE",
+          "function": 0,
+          "native": "Sum of ProviderFTE",
+          "table": "Physcian_Lookup",
+          "alias": "p1"
+        }
+      ],
+      "entities": [
+        "FactTable",
+        "Physcian_Lookup",
+        "Speciality_Lookup"
+      ],
+      "projections": [
+        "Rows",
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 15,
+      "visual_type": "image",
+      "title": "image_15",
+      "x": 143.33333333333334,
+      "y": 0,
+      "width": 200,
+      "height": 126.66666666666667,
+      "z": 19000,
+      "fields": [],
+      "entities": [],
+      "projections": [],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Payer-Provider Analysis",
+      "ordinal": 16,
+      "visual_type": "slicer",
+      "title": "Region Code",
+      "x": 1580.281690140845,
+      "y": 698.9045383411581,
+      "width": 220.34428794992175,
+      "height": 385.60250391236303,
+      "z": 20000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "RegionCode",
+          "native": "RegionCode",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        },
+        {
+          "kind": "column",
+          "property": "Region",
+          "native": "Region",
+          "table": "Patient_Lookup",
+          "alias": "p"
+        }
+      ],
+      "entities": [
+        "Patient_Lookup"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1800,
+      "page_height": 1100
+    },
+    {
+      "page": "Monthly Expenses Trends",
+      "ordinal": 0,
+      "visual_type": "stackedAreaChart",
+      "title": "Monthly Aggregate Expenses: Gross and Adjusted",
+      "x": 119.69014472777395,
+      "y": 15.808132322536181,
+      "width": 958.6503101309441,
+      "height": 426.8195727084769,
+      "z": 2000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Start of Month",
+          "native": "Start of Month",
+          "table": "DimDate",
+          "alias": "d"
+        },
+        {
+          "kind": "aggregation",
+          "property": "Gross Expenses",
+          "function": 0,
+          "native": "Sum of Gross Expenses",
+          "table": "FactTable",
+          "alias": "f"
+        },
+        {
+          "kind": "measure",
+          "property": "Adjustedgrossexpense",
+          "native": "Adjustedgrossexpense",
+          "table": "Adjustment factor (%)",
+          "alias": "a"
+        }
+      ],
+      "entities": [
+        "Adjustment factor (%)",
+        "DimDate",
+        "FactTable"
+      ],
+      "projections": [
+        "Category",
+        "Y"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    },
+    {
+      "page": "Monthly Expenses Trends",
+      "ordinal": 1,
+      "visual_type": "slicer",
+      "title": "Adjustment factor (%)",
+      "x": 119.69014472777395,
+      "y": 475.37312198483806,
+      "width": 958.6503101309441,
+      "height": 169.37284631288767,
+      "z": 1000,
+      "fields": [
+        {
+          "kind": "column",
+          "property": "Adjustment factor (%)",
+          "native": "Adjustment factor (%)",
+          "table": "Adjustment factor (%)",
+          "alias": "a"
+        }
+      ],
+      "entities": [
+        "Adjustment factor (%)"
+      ],
+      "projections": [
+        "Values"
+      ],
+      "page_width": 1280,
+      "page_height": 720
+    }
+  ]
+}

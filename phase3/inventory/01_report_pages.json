@@ -1,0 +1,66 @@
+{
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/dashboards.pbix",
+  "page_count": 6,
+  "pages": [
+    {
+      "name": "Project Overview",
+      "display_name": "Project Overview",
+      "slug": "project_overview",
+      "ordinal": 0,
+      "width": 1280,
+      "height": 720,
+      "visual_count": 1,
+      "filter_blob_present": true
+    },
+    {
+      "name": "Executive Summary",
+      "display_name": "Executive Summary",
+      "slug": "executive_summary",
+      "ordinal": 1,
+      "width": 1800,
+      "height": 1100,
+      "visual_count": 23,
+      "filter_blob_present": true
+    },
+    {
+      "name": "Hospital Insights",
+      "display_name": "Hospital Insights",
+      "slug": "hospital_insights",
+      "ordinal": 2,
+      "width": 1800,
+      "height": 1100,
+      "visual_count": 18,
+      "filter_blob_present": true
+    },
+    {
+      "name": "Patient Analysis",
+      "display_name": "Patient Analysis",
+      "slug": "patient_analysis",
+      "ordinal": 3,
+      "width": 1800,
+      "height": 1100,
+      "visual_count": 22,
+      "filter_blob_present": true
+    },
+    {
+      "name": "Payer-Provider Analysis",
+      "display_name": "Payer-Provider Analysis",
+      "slug": "payer_provider_analysis",
+      "ordinal": 4,
+      "width": 1800,
+      "height": 1100,
+      "visual_count": 17,
+      "filter_blob_present": true
+    },
+    {
+      "name": "Monthly Expenses Trends",
+      "display_name": "Monthly Expenses Trends",
+      "slug": "monthly_expenses_trends",
+      "ordinal": 5,
+      "width": 1280,
+      "height": 720,
+      "visual_count": 2,
+      "filter_blob_present": true
+    }
+  ]
+}

@@ -1,0 +1,2291 @@
+{
+  "context": {
+    "model": "dashboards",
+    "explore": "facttable",
+    "fact_table": "FactTable",
+    "measure_host_view": "facttable",
+    "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/dashboards.pbix"
+  },
+  "mapped_visuals": [
+    {
+      "id": "pProject Overview_0_textbox",
+      "page": "Project Overview",
+      "pbi_title": "textbox_0",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 24,
+        "row": 0,
+        "height": 16
+      },
+      "entities": []
+    },
+    {
+      "id": "pExecutive Summary_1_shape",
+      "page": "Executive Summary",
+      "pbi_title": "shape_0",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pExecutive Summary_2_shape",
+      "page": "Executive Summary",
+      "pbi_title": "shape_1",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 2,
+        "row": 0,
+        "height": 16
+      },
+      "entities": []
+    },
+    {
+      "id": "pExecutive Summary_3_card",
+      "page": "Executive Summary",
+      "pbi_title": "CountPatient",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.countpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 16,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_4_card",
+      "page": "Executive Summary",
+      "pbi_title": "Insurance_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.insurance_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 8,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_5_textbox",
+      "page": "Executive Summary",
+      "pbi_title": "textbox_4",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pExecutive Summary_6_areachart",
+      "page": "Executive Summary",
+      "pbi_title": " Monthly Expenses Trends",
+      "pbi_type": "areaChart",
+      "looker_type": "looker_area",
+      "looker_object": "looker_area",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Area chart \u2192 looker_area",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.gross_expenses",
+        "facttable.insurance_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum",
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 7,
+        "row": 4,
+        "height": 6
+      },
+      "entities": [
+        "DimDate",
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_7_areachart",
+      "page": "Executive Summary",
+      "pbi_title": "Patient Growth Over Time",
+      "pbi_type": "areaChart",
+      "looker_type": "looker_area",
+      "looker_object": "looker_area",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Area chart \u2192 looker_area",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 7,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_8_columnchart",
+      "page": "Executive Summary",
+      "pbi_title": " CPT Units Monthly Distribution",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.cptunits"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 7,
+        "row": 4,
+        "height": 6
+      },
+      "entities": [
+        "DimDate",
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_9_clusteredbarchart",
+      "page": "Executive Summary",
+      "pbi_title": " Payer-wise CPT Units",
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "looker_object": "looker_bar",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "dimensions": [
+        "payer_lookup.payername"
+      ],
+      "measures": [
+        "facttable.cptunits"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 10,
+        "width": 7,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "FactTable",
+        "Payer_Lookup"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_10_card",
+      "page": "Executive Summary",
+      "pbi_title": "Gross Expenses",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.gross_expenses"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_11_card",
+      "page": "Executive Summary",
+      "pbi_title": "Insurance_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.insurance_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_12_card",
+      "page": "Executive Summary",
+      "pbi_title": "Patient_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.patient_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_13_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Monthly Net Revenue",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.totalpayment",
+        "facttable.previous_monthpay"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 4,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_14_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Monthly Insurance Revenue",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.insurance_payment",
+        "facttable.previous_monthpay"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 7,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_15_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Monthly Patient Revenue ",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.patient_payment",
+        "facttable.previous_monthpay"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 3,
+        "row": 4,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_16_kpi",
+      "page": "Executive Summary",
+      "pbi_title": " Monthly Procedure Volume",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.cptunits",
+        "facttable.previous_monthpay"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 3,
+        "row": 7,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_17_actionbutton",
+      "page": "Executive Summary",
+      "pbi_title": "actionButton_16",
+      "pbi_type": "actionButton",
+      "looker_type": "button",
+      "looker_object": "button/gap",
+      "element_kind": "tile",
+      "status": "gap",
+      "coverage_weight": 0.3,
+      "notes": "Action button \u2014 Looker button needs explicit URL; stub as note",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [
+        "no fields bound from prototypeQuery \u2014 tile will be incomplete"
+      ],
+      "position": {
+        "col": 0,
+        "width": 2,
+        "row": 1,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pExecutive Summary_18_image",
+      "page": "Executive Summary",
+      "pbi_title": "image_17",
+      "pbi_type": "image",
+      "looker_type": null,
+      "looker_object": "manual",
+      "element_kind": null,
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pExecutive Summary_19_card",
+      "page": "Executive Summary",
+      "pbi_title": "TotalPayment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.totalpayment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.TotalPayment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 20,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_20_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Yearly Avg. Patient Payment Trend",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [],
+      "measures": [
+        "facttable.previous_monthpay",
+        "facttable.averagepatientpay"
+      ],
+      "deficiencies": [
+        "unbound field Date Year"
+      ],
+      "position": {
+        "col": 17,
+        "width": 3,
+        "row": 11,
+        "height": 2
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_21_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Monthly Payment Performance",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [],
+      "measures": [
+        "facttable.previous_monthpay",
+        "facttable.ytdpayment"
+      ],
+      "deficiencies": [
+        "unbound field Date Month"
+      ],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 11,
+        "height": 2
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_22_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Optimized Quarterly Expenditure",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [],
+      "measures": [
+        "facttable.previous_monthpay",
+        "facttable.totalgrossexpense"
+      ],
+      "deficiencies": [
+        "unbound field Date Quarter"
+      ],
+      "position": {
+        "col": 17,
+        "width": 3,
+        "row": 13,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pExecutive Summary_23_kpi",
+      "page": "Executive Summary",
+      "pbi_title": "Deficit Reduction Efficiency - Monthly",
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "dimensions": [],
+      "measures": [
+        "facttable.previous_monthpay",
+        "facttable.totaldeficit"
+      ],
+      "deficiencies": [
+        "unbound field Date Month"
+      ],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 13,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pHospital Insights_24_shape",
+      "page": "Hospital Insights",
+      "pbi_title": "shape_0",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pHospital Insights_25_shape",
+      "page": "Hospital Insights",
+      "pbi_title": "shape_1",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 2,
+        "row": 0,
+        "height": 16
+      },
+      "entities": []
+    },
+    {
+      "id": "pHospital Insights_26_card",
+      "page": "Hospital Insights",
+      "pbi_title": "CptGrouping",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "cptcode_lookup.cptgrouping"
+      ],
+      "deficiencies": [
+        "PBI aggregation on CptCode_Lookup.CptGrouping mapped to field ref; confirm a measure exists on cptcode_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 17,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "CptCode_Lookup"
+      ]
+    },
+    {
+      "id": "pHospital Insights_27_card",
+      "page": "Hospital Insights",
+      "pbi_title": "Patient_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.patient_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pHospital Insights_28_card",
+      "page": "Hospital Insights",
+      "pbi_title": "Insurance_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.insurance_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 8,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pHospital Insights_29_textbox",
+      "page": "Hospital Insights",
+      "pbi_title": "textbox_5",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pHospital Insights_30_linechart",
+      "page": "Hospital Insights",
+      "pbi_title": "Monthly ARGE Ratio Trend",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.arge_ratio"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 9,
+        "row": 4,
+        "height": 3
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pHospital Insights_31_card",
+      "page": "Hospital Insights",
+      "pbi_title": "AR",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.ar"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pHospital Insights_32_card",
+      "page": "Hospital Insights",
+      "pbi_title": "HospitalName",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "hospital_lookup.hospitalname"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Hospital_Lookup.HospitalName mapped to field ref; confirm a measure exists on hospital_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Hospital_Lookup"
+      ]
+    },
+    {
+      "id": "pHospital Insights_33_card",
+      "page": "Hospital Insights",
+      "pbi_title": "CPTUnits",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.cptunits"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pHospital Insights_34_linechart",
+      "page": "Hospital Insights",
+      "pbi_title": "Monthly IPTP Ratio Trend",
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "looker_object": "looker_line",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.iptp_ratio"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 9,
+        "row": 7,
+        "height": 2
+      },
+      "entities": [
+        "DimDate",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pHospital Insights_35_piechart",
+      "page": "Hospital Insights",
+      "pbi_title": " Gross Expenses by CptGrouping",
+      "pbi_type": "pieChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Pie \u2192 looker_pie",
+      "dimensions": [
+        "cptcode_lookup.cptgrouping"
+      ],
+      "measures": [
+        "facttable.gross_expenses"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 9,
+        "row": 4,
+        "height": 5
+      },
+      "entities": [
+        "CptCode_Lookup",
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pHospital Insights_36_treemap",
+      "page": "Hospital Insights",
+      "pbi_title": " CPT Units Distribution by Hospital",
+      "pbi_type": "treemap",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie (substitute)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
+      "dimensions": [
+        "hospital_lookup.hospitalname"
+      ],
+      "measures": [
+        "facttable.cptunits"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 9,
+        "row": 9,
+        "height": 6
+      },
+      "entities": [
+        "FactTable",
+        "Hospital_Lookup"
+      ]
+    },
+    {
+      "id": "pHospital Insights_37_pivottable",
+      "page": "Hospital Insights",
+      "pbi_title": "Critical Hospital Metrics Overview",
+      "pbi_type": "pivotTable",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Matrix/pivot \u2192 looker_grid",
+      "dimensions": [
+        "hospital_lookup.hospitalname"
+      ],
+      "measures": [
+        "facttable.ar",
+        "facttable.iptp_ratio",
+        "facttable.arge_ratio",
+        "facttable.baddebts"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.AR mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 9,
+        "row": 9,
+        "height": 6
+      },
+      "entities": [
+        "FactTable",
+        "Hospital_Lookup",
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pHospital Insights_38_slicer",
+      "page": "Hospital Insights",
+      "pbi_title": "Hospital ",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "hospital_lookup.hospitalname"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 2,
+        "height": 7
+      },
+      "entities": [
+        "Hospital_Lookup"
+      ]
+    },
+    {
+      "id": "pHospital Insights_39_slicer",
+      "page": "Hospital Insights",
+      "pbi_title": "Region",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.region"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pHospital Insights_40_textbox",
+      "page": "Hospital Insights",
+      "pbi_title": "textbox_16",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 2,
+        "row": 13,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pHospital Insights_41_image",
+      "page": "Hospital Insights",
+      "pbi_title": "image_17",
+      "pbi_type": "image",
+      "looker_type": null,
+      "looker_object": "manual",
+      "element_kind": null,
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPatient Analysis_42_shape",
+      "page": "Patient Analysis",
+      "pbi_title": "shape_0",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPatient Analysis_43_shape",
+      "page": "Patient Analysis",
+      "pbi_title": "shape_1",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 2,
+        "row": 0,
+        "height": 16
+      },
+      "entities": []
+    },
+    {
+      "id": "pPatient Analysis_44_card",
+      "page": "Patient Analysis",
+      "pbi_title": "City",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "patient_lookup.city"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 16,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_45_card",
+      "page": "Patient Analysis",
+      "pbi_title": "Patient_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.patient_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_46_card",
+      "page": "Patient Analysis",
+      "pbi_title": "Insurance_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.insurance_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 8,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_47_textbox",
+      "page": "Patient Analysis",
+      "pbi_title": "textbox_5",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPatient Analysis_48_card",
+      "page": "Patient Analysis",
+      "pbi_title": "DistinctPatient",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Measure Table"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_49_card",
+      "page": "Patient Analysis",
+      "pbi_title": "dimPatientFK",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.dimpatientfk"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.dimPatientFK mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_50_card",
+      "page": "Patient Analysis",
+      "pbi_title": "State",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "patient_lookup.state"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Patient_Lookup.State mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_51_slicer",
+      "page": "Patient Analysis",
+      "pbi_title": "Gender",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.patientgender"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 20,
+        "width": 4,
+        "row": 4,
+        "height": 2
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_52_slicer",
+      "page": "Patient Analysis",
+      "pbi_title": "Blood Group",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.bloodgroup"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 20,
+        "width": 4,
+        "row": 11,
+        "height": 5
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_53_donutchart",
+      "page": "Patient Analysis",
+      "pbi_title": "Patient by Tobacco",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "patient_lookup.tobacco"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 4,
+        "row": 4,
+        "height": 3
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_54_donutchart",
+      "page": "Patient Analysis",
+      "pbi_title": "Patient By Exercise",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "patient_lookup.exercise"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 4,
+        "row": 4,
+        "height": 3
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_55_donutchart",
+      "page": "Patient Analysis",
+      "pbi_title": "Patient by Alcohol",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "patient_lookup.alcohol"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 7,
+        "width": 4,
+        "row": 7,
+        "height": 3
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_56_donutchart",
+      "page": "Patient Analysis",
+      "pbi_title": "Patient by Diet",
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "looker_object": "looker_pie",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "dimensions": [
+        "patient_lookup.diet"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 4,
+        "row": 7,
+        "height": 3
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_57_clusteredcolumnchart",
+      "page": "Patient Analysis",
+      "pbi_title": "Distinct Patients by BloodGroup",
+      "pbi_type": "clusteredColumnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Clustered columns \u2192 looker_column",
+      "dimensions": [
+        "patient_lookup.bloodgroup"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 9,
+        "row": 11,
+        "height": 5
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_58_pivottable",
+      "page": "Patient Analysis",
+      "pbi_title": "Patient Gender Distribution by State",
+      "pbi_type": "pivotTable",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Matrix/pivot \u2192 looker_grid",
+      "dimensions": [
+        "patient_lookup.state",
+        "patient_lookup.patientgender"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [],
+      "position": {
+        "col": 11,
+        "width": 9,
+        "row": 11,
+        "height": 5
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_59_slicer",
+      "page": "Patient Analysis",
+      "pbi_title": "Region Code",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.regioncode",
+        "patient_lookup.region"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 16,
+        "width": 3,
+        "row": 6,
+        "height": 4
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_60_map",
+      "page": "Patient Analysis",
+      "pbi_title": "Distribution of Patient by State",
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "looker_object": "looker_map",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "dimensions": [
+        "patient_lookup.state"
+      ],
+      "measures": [
+        "facttable.distinctpatient"
+      ],
+      "deficiencies": [
+        "map may lack location dimension \u2014 verify geo fields"
+      ],
+      "position": {
+        "col": 11,
+        "width": 9,
+        "row": 4,
+        "height": 7
+      },
+      "entities": [
+        "Measure Table",
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_61_image",
+      "page": "Patient Analysis",
+      "pbi_title": "image_19",
+      "pbi_type": "image",
+      "looker_type": null,
+      "looker_object": "manual",
+      "element_kind": null,
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPatient Analysis_62_card",
+      "page": "Patient Analysis",
+      "pbi_title": "PatientAge",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "patient_lookup.patientage"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Patient_Lookup.PatientAge mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 20,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPatient Analysis_63_slicer",
+      "page": "Patient Analysis",
+      "pbi_title": "Region",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.region"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 20,
+        "width": 4,
+        "row": 6,
+        "height": 5
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_64_shape",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "shape_0",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPayer-Provider Analysis_65_shape",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "shape_1",
+      "pbi_type": "shape",
+      "looker_type": null,
+      "looker_object": "skip",
+      "element_kind": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 0,
+        "width": 2,
+        "row": 0,
+        "height": 16
+      },
+      "entities": []
+    },
+    {
+      "id": "pPayer-Provider Analysis_66_card",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "City",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "patient_lookup.city"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Patient_Lookup.City mapped to field ref; confirm a measure exists on patient_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 16,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_67_card",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Patient_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.patient_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Patient_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 12,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_68_card",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Insurance_Payment",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "facttable.insurance_payment"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Insurance_Payment mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 8,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_69_textbox",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "textbox_5",
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "looker_object": "text",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 5,
+        "width": 19,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPayer-Provider Analysis_70_card",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "ProviderName",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "physcian_lookup.providername"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Physcian_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_71_card",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "ProviderFTE",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "physcian_lookup.providerfte"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 7,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Physcian_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_72_card",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "ProviderSpecialty",
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "looker_object": "single_value",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "dimensions": [],
+      "measures": [
+        "speciality_lookup.providerspecialty"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Speciality_Lookup.ProviderSpecialty mapped to field ref; confirm a measure exists on speciality_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 4,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Speciality_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_73_slicer",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Gender",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.patientgender"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 2,
+        "height": 2
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_74_slicer",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Blood Group",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.bloodgroup"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 4,
+        "height": 6
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_75_columnchart",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Regional Breakdown of Provider Specialties",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "speciality_lookup.specialitytype",
+        "facttable.regioncode"
+      ],
+      "measures": [
+        "physcian_lookup.providername"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 8,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "FactTable",
+        "Physcian_Lookup",
+        "Speciality_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_76_columnchart",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Regional Physician Count Analysis",
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "dimensions": [
+        "facttable.regioncode"
+      ],
+      "measures": [
+        "physcian_lookup.dimphysicianpk"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Physcian_Lookup.dimPhysicianPK mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 8,
+        "row": 4,
+        "height": 5
+      },
+      "entities": [
+        "FactTable",
+        "Physcian_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_77_linestackedcolumncombochart",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Monthly Provider Activity Overview and CPT Units",
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "looker_object": "looker_column (partial)",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.cptunits",
+        "physcian_lookup.providername"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum",
+        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 10,
+        "row": 4,
+        "height": 5
+      },
+      "entities": [
+        "DimDate",
+        "FactTable",
+        "Physcian_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_78_pivottable",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Holistic Provider Performance Matrix",
+      "pbi_type": "pivotTable",
+      "looker_type": "looker_grid",
+      "looker_object": "looker_grid",
+      "element_kind": "tile",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Matrix/pivot \u2192 looker_grid",
+      "dimensions": [
+        "speciality_lookup.specialitytype",
+        "speciality_lookup.providerspecialty"
+      ],
+      "measures": [
+        "physcian_lookup.providername",
+        "facttable.cptunits",
+        "physcian_lookup.providerfte"
+      ],
+      "deficiencies": [
+        "PBI aggregation on Physcian_Lookup.ProviderName mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum",
+        "PBI aggregation on FactTable.CPTUnits mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum",
+        "PBI aggregation on Physcian_Lookup.ProviderFTE mapped to field ref; confirm a measure exists on physcian_lookup (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 11,
+        "width": 10,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "FactTable",
+        "Physcian_Lookup",
+        "Speciality_Lookup"
+      ]
+    },
+    {
+      "id": "pPayer-Provider Analysis_79_image",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "image_15",
+      "pbi_type": "image",
+      "looker_type": null,
+      "looker_object": "manual",
+      "element_kind": null,
+      "status": "gap",
+      "coverage_weight": 0.0,
+      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "dimensions": [],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 3,
+        "row": 0,
+        "height": 2
+      },
+      "entities": []
+    },
+    {
+      "id": "pPayer-Provider Analysis_80_slicer",
+      "page": "Payer-Provider Analysis",
+      "pbi_title": "Region Code",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "patient_lookup.regioncode",
+        "patient_lookup.region"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 21,
+        "width": 3,
+        "row": 10,
+        "height": 6
+      },
+      "entities": [
+        "Patient_Lookup"
+      ]
+    },
+    {
+      "id": "pMonthly Expenses Trends_81_stackedareachart",
+      "page": "Monthly Expenses Trends",
+      "pbi_title": "Monthly Aggregate Expenses: Gross and Adjusted",
+      "pbi_type": "stackedAreaChart",
+      "looker_type": "looker_area",
+      "looker_object": "looker_area",
+      "element_kind": "tile",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "Stacked area \u2192 looker_area (stacking may differ)",
+      "dimensions": [
+        "dimdate.start_of_month"
+      ],
+      "measures": [
+        "facttable.gross_expenses",
+        "adjustment_factor_pct.adjustedgrossexpense"
+      ],
+      "deficiencies": [
+        "PBI aggregation on FactTable.Gross Expenses mapped to field ref; confirm a measure exists on facttable (Phase 2) or add type:sum"
+      ],
+      "position": {
+        "col": 2,
+        "width": 18,
+        "row": 0,
+        "height": 9
+      },
+      "entities": [
+        "Adjustment factor (%)",
+        "DimDate",
+        "FactTable"
+      ]
+    },
+    {
+      "id": "pMonthly Expenses Trends_82_slicer",
+      "page": "Monthly Expenses Trends",
+      "pbi_title": "Adjustment factor (%)",
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "looker_object": "dashboard filter",
+      "element_kind": "filter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "dimensions": [
+        "adjustment_factor_pct.adjustment_factor_pct"
+      ],
+      "measures": [],
+      "deficiencies": [],
+      "position": {
+        "col": 2,
+        "width": 18,
+        "row": 11,
+        "height": 4
+      },
+      "entities": [
+        "Adjustment factor (%)"
+      ]
+    }
+  ]
+}

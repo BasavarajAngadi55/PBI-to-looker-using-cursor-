@@ -241,33 +241,48 @@ OBJECT_EQUIVALENCE: list[dict] = [
     },
     {
         "power_bi": "Power Query M",
-        "looker": "Warehouse / ETL (not LookML)",
-        "summary": "M queries are ETL. Rebuild them in the warehouse; LookML only points at finished tables.",
+        "looker": "Warehouse table/view + straight LookML view (preferred); SDT only as temporary bridge",
+        "summary": (
+            "Each M query gets a deterministic recommendation: warehouse straight view, "
+            "warehouse transform, warehouse seed, or temporary LookML SQL derived table."
+        ),
         "how_to_create": (
-            "Rebuild M transforms in the warehouse (dbt/Dataform/SQL). "
-            "LookML only points sql_table_name at the finished table."
+            "Prefer warehouse ETL + sql_table_name. Use LookML derived_table only as a temporary bridge "
+            "for light SQL. Heavy merge/append stays in warehouse. See lookml/m_migration/ stubs in the ZIP."
         ),
         "build_steps": [
-            "Open each inventory/04_m_raw/<Query>.m file.",
-            "Identify source system, filters, merges, type changes, and output grain.",
-            "Implement equivalent SQL/dbt model producing the same grain and keys.",
-            "Validate row counts and key uniqueness vs Power BI.",
-            "Point the LookML view sql_table_name at that model.",
+            "Open lookml/m_migration/M_QUERY_RECOMMENDATIONS.md for this PBIX.",
+            "For each query, follow the recommended pattern (usually warehouse table + straight view).",
+            "Implement the matching sql/<query>.sql stub in your warehouse/dbt project.",
+            "Apply lookml_stubs/<query>_recommended.lkml guidance; update views/<query>.view.lkml sql_table_name.",
+            "Use SDT only when the recommendation explicitly allows a temporary bridge.",
+            "Do not re-implement File.Contents / Excel paths inside Looker.",
         ],
         "checks": [
-            "Every Power Query query has a warehouse owner and job.",
-            "LookML does not attempt to re-implement M with Liquid/SQL gymnastics.",
+            "Every M query has a recommendation row and SQL stub in the ZIP",
+            "Warehouse row counts match Power BI for sample queries",
+            "Generated views resolve after sql_table_name is updated",
+            "No heavy merge/append logic left only in LookML",
         ],
         "suggestions": [
-            "Treat M as the highest-priority migration gap after connection placeholders.",
-            "Keep M files as the specification; do not delete Phase 1 inventory.",
+            "Best practice order: warehouse table/view > temporary SDT > avoid NDT as M replacement.",
+            "File CSV M queries → load to warehouse, then straight view.",
+            "SQL-in-M → warehouse view with that SELECT, or temporary SDT.",
+            "Merge/append/heavy M → dbt/Dataform model, never LookML-only.",
+            "Embedded #table → warehouse seed (+ tiny SDT only if temporary).",
         ],
         "example": (
-            "# Not LookML — warehouse example\n"
-            "# SELECT ... FROM source WHERE ...  -- mirrors Sheet1.m\n"
-            "# Then: sql_table_name: `proj.dataset.sheet1` ;;"
+            "-- warehouse\n"
+            "CREATE OR REPLACE TABLE `proj.dataset.actor` AS SELECT ...;\n\n"
+            "# LookML straight view\n"
+            "view: actor {\n"
+            "  sql_table_name: `proj.dataset.actor` ;;\n"
+            "}"
         ),
-        "refs": ["https://cloud.google.com/looker/docs/lookml-terms-and-concepts"],
+        "refs": [
+            "https://cloud.google.com/looker/docs/lookml-terms-and-concepts",
+            "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-view/SKILL.md",
+        ],
     },
     {
         "power_bi": "Hierarchy",

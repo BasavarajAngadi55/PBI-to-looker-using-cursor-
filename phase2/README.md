@@ -29,7 +29,8 @@ cd ../phase2
 | [AGENTIC_ARCHITECTURE.png](AGENTIC_ARCHITECTURE.png) | Architecture diagram (PNG) |
 | [LOOKER_DEVELOPER_GUIDE.pdf](LOOKER_DEVELOPER_GUIDE.pdf) | Developer how-to + mapping |
 | [OBJECT_MAPPING.md](OBJECT_MAPPING.md) | Per-object ledger |
-| [LOOKML_PROJECT.zip](LOOKML_PROJECT.zip) | All LookML for import |
+| [LOOKML_PROJECT.zip](LOOKML_PROJECT.zip) | All LookML + `m_migration/` SQL & LookML stubs |
+| `lookml/m_migration/` | Per-M-query recommendation, SQL, LookML stubs |
 | `lookml/models/*.model.lkml` | Explores + joins |
 | `lookml/views/*.view.lkml` | Dimensions + measures |
 

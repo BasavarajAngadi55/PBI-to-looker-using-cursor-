@@ -1,0 +1,252 @@
+{
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/dashboards.pbix",
+  "model": "dashboards",
+  "explore": "facttable",
+  "visual_total": 83,
+  "content_visuals": 75,
+  "skipped_decorative": 8,
+  "mapped_visuals": 48,
+  "partial_visuals": 22,
+  "gap_visuals": 5,
+  "status_counts": {
+    "partial": 22,
+    "skip": 8,
+    "mapped": 48,
+    "gap": 5
+  },
+  "pbi_type_counts": {
+    "textbox": 6,
+    "shape": 8,
+    "card": 25,
+    "areaChart": 2,
+    "columnChart": 3,
+    "clusteredBarChart": 1,
+    "kpi": 8,
+    "actionButton": 1,
+    "image": 4,
+    "lineChart": 2,
+    "pieChart": 1,
+    "treemap": 1,
+    "pivotTable": 3,
+    "slicer": 10,
+    "donutChart": 4,
+    "clusteredColumnChart": 1,
+    "map": 1,
+    "lineStackedColumnComboChart": 1,
+    "stackedAreaChart": 1
+  },
+  "weighted_completion_pct": 83.9,
+  "target_pct": 70,
+  "meets_target": true,
+  "method": "weighted: mapped=1.0, partial\u22480.5\u20130.8, gap=0, skip excluded from denominator",
+  "equivalence": [
+    {
+      "pbi_type": "card",
+      "looker_type": "single_value",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "KPI card \u2192 single_value tile",
+      "looker_object": "single_value"
+    },
+    {
+      "pbi_type": "kpi",
+      "looker_type": "single_value",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "KPI with goal/trend \u2192 single_value (goal/trend not fully mirrored)",
+      "looker_object": "single_value"
+    },
+    {
+      "pbi_type": "columnChart",
+      "looker_type": "looker_column",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Column chart \u2192 looker_column",
+      "looker_object": "looker_column"
+    },
+    {
+      "pbi_type": "clusteredColumnChart",
+      "looker_type": "looker_column",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Clustered columns \u2192 looker_column",
+      "looker_object": "looker_column"
+    },
+    {
+      "pbi_type": "clusteredBarChart",
+      "looker_type": "looker_bar",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "looker_object": "looker_bar"
+    },
+    {
+      "pbi_type": "barChart",
+      "looker_type": "looker_bar",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Bar chart \u2192 looker_bar",
+      "looker_object": "looker_bar"
+    },
+    {
+      "pbi_type": "lineChart",
+      "looker_type": "looker_line",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Line chart \u2192 looker_line",
+      "looker_object": "looker_line"
+    },
+    {
+      "pbi_type": "areaChart",
+      "looker_type": "looker_area",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Area chart \u2192 looker_area",
+      "looker_object": "looker_area"
+    },
+    {
+      "pbi_type": "stackedAreaChart",
+      "looker_type": "looker_area",
+      "status": "partial",
+      "coverage_weight": 0.7,
+      "notes": "Stacked area \u2192 looker_area (stacking may differ)",
+      "looker_object": "looker_area"
+    },
+    {
+      "pbi_type": "pieChart",
+      "looker_type": "looker_pie",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Pie \u2192 looker_pie",
+      "looker_object": "looker_pie"
+    },
+    {
+      "pbi_type": "donutChart",
+      "looker_type": "looker_pie",
+      "status": "partial",
+      "coverage_weight": 0.8,
+      "notes": "Donut \u2192 looker_pie (donut style limited)",
+      "looker_object": "looker_pie"
+    },
+    {
+      "pbi_type": "pivotTable",
+      "looker_type": "looker_grid",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Matrix/pivot \u2192 looker_grid",
+      "looker_object": "looker_grid"
+    },
+    {
+      "pbi_type": "tableEx",
+      "looker_type": "looker_grid",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "looker_object": "looker_grid"
+    },
+    {
+      "pbi_type": "table",
+      "looker_type": "looker_grid",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Table \u2192 looker_grid",
+      "looker_object": "looker_grid"
+    },
+    {
+      "pbi_type": "slicer",
+      "looker_type": null,
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Slicer \u2192 dashboard filter (not a tile)",
+      "looker_object": "dashboard filter"
+    },
+    {
+      "pbi_type": "textbox",
+      "looker_type": "text",
+      "status": "partial",
+      "coverage_weight": 0.6,
+      "notes": "Text box \u2192 text tile (rich formatting limited)",
+      "looker_object": "text"
+    },
+    {
+      "pbi_type": "shape",
+      "looker_type": null,
+      "status": "skip",
+      "coverage_weight": 0.0,
+      "notes": "Decorative shape \u2014 no Looker equivalent (skip)",
+      "looker_object": "skip"
+    },
+    {
+      "pbi_type": "image",
+      "looker_type": null,
+      "status": "gap",
+      "coverage_weight": 0.2,
+      "notes": "Image tile \u2014 not auto-ported; add manually or as text note",
+      "looker_object": "manual"
+    },
+    {
+      "pbi_type": "actionButton",
+      "looker_type": "button",
+      "status": "gap",
+      "coverage_weight": 0.3,
+      "notes": "Action button \u2014 Looker button needs explicit URL; stub as note",
+      "looker_object": "button/gap"
+    },
+    {
+      "pbi_type": "map",
+      "looker_type": "looker_map",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Map \u2192 looker_map if geo fields exist; else gap",
+      "looker_object": "looker_map"
+    },
+    {
+      "pbi_type": "filledMap",
+      "looker_type": "looker_google_map",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Filled map \u2192 google map / choropleth if supported",
+      "looker_object": "looker_google_map"
+    },
+    {
+      "pbi_type": "treemap",
+      "looker_type": "looker_pie",
+      "status": "partial",
+      "coverage_weight": 0.5,
+      "notes": "Treemap has no direct Looker twin \u2192 pie/column substitute",
+      "looker_object": "looker_pie (substitute)"
+    },
+    {
+      "pbi_type": "lineStackedColumnComboChart",
+      "looker_type": "looker_column",
+      "status": "partial",
+      "coverage_weight": 0.55,
+      "notes": "Combo chart \u2192 looker_column or looker_line (combo not 1:1)",
+      "looker_object": "looker_column (partial)"
+    },
+    {
+      "pbi_type": "waterfallChart",
+      "looker_type": "looker_waterfall",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Waterfall \u2192 looker_waterfall",
+      "looker_object": "looker_waterfall"
+    },
+    {
+      "pbi_type": "funnel",
+      "looker_type": "looker_funnel",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Funnel \u2192 looker_funnel",
+      "looker_object": "looker_funnel"
+    },
+    {
+      "pbi_type": "scatterChart",
+      "looker_type": "looker_scatter",
+      "status": "mapped",
+      "coverage_weight": 1.0,
+      "notes": "Scatter \u2192 looker_scatter",
+      "looker_object": "looker_scatter"
+    }
+  ]
+}

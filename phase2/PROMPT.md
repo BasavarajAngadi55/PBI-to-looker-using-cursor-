@@ -65,7 +65,7 @@ phase2/
 | Relationship | `explore` `join` + `relationship:` |
 | Calculated column | `dimension` (warehouse preferred) |
 | Calculated table | `view` (placeholder `sql_table_name`) |
-| Power Query M | Warehouse / ETL (not LookML) |
+| Power Query M | Warehouse table/view + straight view (preferred); SDT temporary only |
 | Hierarchy | `drill_fields` / timeframes |
 | RLS | `access_grant` / `access_filter` (if present) |
 | Auto-date tables | Skip |
@@ -79,9 +79,10 @@ cd phase2
 
 1. Load Phase 1 inventory  
 2. Generate architecture diagram (`generate_architecture_assets.py`)  
-3. Generate LookML (`generate_lookml.py`)  
-4. Generate developer guide MD+PDF (`generate_developer_guide.py`)  
-5. Zip `lookml/` → `LOOKML_PROJECT.zip`  
-6. Write `PHASE2_SUMMARY.json`
+3. Generate M→Looker recommendations + SQL/LookML stubs (`generate_m_migration.py`)  
+4. Generate LookML (`generate_lookml.py`)  
+5. Generate developer guide MD+PDF (`generate_developer_guide.py`)  
+6. Zip `lookml/` (includes `m_migration/`) → `LOOKML_PROJECT.zip`  
+7. Write `PHASE2_SUMMARY.json`
 
 Accuracy over invention: only emit objects present in inventory; mark complex DAX as TODO with original expression preserved.
