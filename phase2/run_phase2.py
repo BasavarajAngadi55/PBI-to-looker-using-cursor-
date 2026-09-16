@@ -42,6 +42,14 @@ def run(inventory: Path) -> dict:
     lookml = importlib.reload(lookml)
     guide = importlib.reload(guide)
 
+    try:
+        import generate_architecture_assets as arch_mod
+
+        arch_mod = importlib.reload(arch_mod)
+        arch_mod.main()
+    except Exception as e:
+        print("Architecture diagram warn:", e)
+
     info = lookml.generate(inv_dir=inventory, out_root=ROOT)
     guide_info = guide.generate(ROOT / "OBJECT_MAPPING.json")
     zip_path = package_zip(ROOT / "lookml", ZIP_OUT)
@@ -75,6 +83,7 @@ def run(inventory: Path) -> dict:
     print(f"Guide PDF:     {summary['guide_pdf']}")
     print(f"LookML ZIP:    {summary['zip']}")
     print(f"Mapping:       {summary['mapping_md']}")
+    print(f"Architecture:  {ROOT / 'AGENTIC_ARCHITECTURE.pdf'}")
     return summary
 
 

@@ -42,6 +42,7 @@ Phase 1 inventory directory (default `../phase1/inventory`):
 
 ```text
 phase2/
+  AGENTIC_ARCHITECTURE.md / .pdf / .png
   LOOKER_DEVELOPER_GUIDE.md
   LOOKER_DEVELOPER_GUIDE.pdf
   OBJECT_MAPPING.md
@@ -77,9 +78,10 @@ cd phase2
 ```
 
 1. Load Phase 1 inventory  
-2. Generate LookML (`generate_lookml.py`)  
-3. Generate developer guide MD+PDF (`generate_developer_guide.py`)  
-4. Zip `lookml/` → `LOOKML_PROJECT.zip`  
-5. Write `PHASE2_SUMMARY.json`
+2. Generate architecture diagram (`generate_architecture_assets.py`)  
+3. Generate LookML (`generate_lookml.py`)  
+4. Generate developer guide MD+PDF (`generate_developer_guide.py`)  
+5. Zip `lookml/` → `LOOKML_PROJECT.zip`  
+6. Write `PHASE2_SUMMARY.json`
 
 Accuracy over invention: only emit objects present in inventory; mark complex DAX as TODO with original expression preserved.

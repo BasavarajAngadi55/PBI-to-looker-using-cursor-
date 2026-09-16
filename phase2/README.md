@@ -17,12 +17,16 @@ cd ../phase1
 # 2) Generate Phase 2
 cd ../phase2
 ../.venv312/bin/python run_phase2.py
+# or architecture diagram only:
+../.venv312/bin/python generate_architecture_assets.py
 ```
 
 ## Deliverables
 
 | File | Purpose |
 |------|---------|
+| [AGENTIC_ARCHITECTURE.pdf](AGENTIC_ARCHITECTURE.pdf) | Deterministic mapping architecture (diagram) |
+| [AGENTIC_ARCHITECTURE.png](AGENTIC_ARCHITECTURE.png) | Architecture diagram (PNG) |
 | [LOOKER_DEVELOPER_GUIDE.pdf](LOOKER_DEVELOPER_GUIDE.pdf) | Developer how-to + mapping |
 | [OBJECT_MAPPING.md](OBJECT_MAPPING.md) | Per-object ledger |
 | [LOOKML_PROJECT.zip](LOOKML_PROJECT.zip) | All LookML for import |
@@ -40,8 +44,10 @@ cd ../phase2
 
 ```text
 phase2/
+  AGENTIC_ARCHITECTURE.*   # deterministic architecture (filename legacy like Phase 1)
   PROMPT.md
   run_phase2.py
+  generate_architecture_assets.py
   generate_lookml.py
   generate_developer_guide.py
   lib/                 # naming, mapping rules, DAX patterns
