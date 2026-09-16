@@ -1,0 +1,4 @@
+[server]
+# Streamlit default upload cap is 200MB. Raise for large PBIX files.
+maxUploadSize = 2048
+maxMessageSize = 2048

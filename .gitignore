@@ -17,8 +17,20 @@ __pycache__/
 credentials.json
 **/secrets*
 
-# Large / local-only extracts (optional keep analysis CSVs)
-pbix_extract/
+# Phase 1 local / dynamic outputs (regenerated per PBIX; never commit uploads)
+phase1/uploads/
+phase1/OBJECT_SUMMARY.pdf
+phase1/.dm_pdf_slices/
+phase1/CURRENT_PBIX.json
+phase1/inventory/CURRENT_PBIX.json
+phase1/inventory/04_m_raw/
+phase1/inventory/0*.json
+phase1/inventory/OBJECT_*.md
+phase1/inventory/OBJECT_*.txt
+phase1/inventory/OBJECT_*.json
+phase1/inventory/AGENT_VALIDATION_PROOF.json
+phase1_inventory_*
+uploads/
 *.pbix
 
 # Cursor
