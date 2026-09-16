@@ -1,13 +1,13 @@
-# Power BI Data Model — dashboards.pbix
+# Power BI Data Model — movie_rental_analysis.pbix
 
 Content matches the PBIX model (verified against pbixray relationships).
 
 ## Summary
 
-- Source PBIX: `dashboards.pbix`
-- Business tables: **12**
-- Internal auto-date tables: **6**
-- Relationships: **10**
+- Source PBIX: `movie_rental_analysis.pbix`
+- Business tables: **16**
+- Internal auto-date tables: **20**
+- Relationships: **16**
 
 ## ER diagram
 
@@ -15,16 +15,22 @@ Visual ER diagram is embedded in **`DATA_MODEL.pdf`** (download and zoom). Merma
 
 ```mermaid
 erDiagram
-    FactTable }o--|| CptCode_Lookup : "dimCPTCodeFK to dimCPTCodePK"
-    FactTable }o--|| DiagnosisCode_Lookup : "dimDiagnosisCodeFK to dimDiagnosisCodePK"
-    FactTable }o--|| DimDate : "dimDateServicePK to Date"
-    FactTable }o--|| Hospital_Lookup : "dimHospitalFK to dimHospitalPK"
-    FactTable }o--|| Patient_Lookup : "dimPatientFK to dimPatientPK"
-    FactTable }o--|| Payer_Lookup : "dimPayerFK to dimPayerPK"
-    FactTable }o--|| Physcian_Lookup : "dimPhysicianFK to dimPhysicianPK"
-    FactTable }o--|| Trancstion_Lookup : "dimTransactionFK to dimTransactionPK"
-    Physcian_Lookup }o--|| Speciality_Lookup : "SpecialityCodeFK to SpecialityCodePK"
-    FactTable }o--|| DimDate : "dimDatePostPK to Date inactive"
+    address }o--|| city : "city_id"
+    city }o--|| country : "country_id"
+    customer }o--|| address : "address_id"
+    customer }o--|| store : "store_id"
+    film }o--|| film_category : "film_id"
+    film }o--|| film_text : "film_id"
+    film }o--|| language : "language_id"
+    film_actor }o--|| actor : "actor_id"
+    film_actor }o--|| film : "film_id"
+    film_category }o--|| category : "category_id"
+    inventory }o--|| film : "film_id"
+    payment }o--|| customer : "customer_id"
+    rentat }o--|| inventory : "inventory_id"
+    rentat }o--|| payment : "rental_id"
+    store }o--|| staff : "store_id"
+    rentat }o--|| staff : "staff_id inactive"
 ```
 
 ## How to read
@@ -39,37 +45,52 @@ erDiagram
 
 | # | Many side | FK | → | One side | PK | Card | Filter | Active |
 |---|-----------|----|---|----------|----|------|--------|--------|
-| 1 | `FactTable` | `dimCPTCodeFK` | → | `CptCode_Lookup` | `dimCPTCodePK` | M:1 | Single | True |
-| 2 | `FactTable` | `dimDiagnosisCodeFK` | → | `DiagnosisCode_Lookup` | `dimDiagnosisCodePK` | M:1 | Single | True |
-| 3 | `FactTable` | `dimDateServicePK` | → | `DimDate` | `Date` | M:1 | Single | True |
-| 4 | `FactTable` | `dimHospitalFK` | → | `Hospital_Lookup` | `dimHospitalPK` | M:1 | Single | True |
-| 5 | `FactTable` | `dimPatientFK` | → | `Patient_Lookup` | `dimPatientPK` | M:1 | Single | True |
-| 6 | `FactTable` | `dimPayerFK` | → | `Payer_Lookup` | `dimPayerPK` | M:1 | Single | True |
-| 7 | `FactTable` | `dimPhysicianFK` | → | `Physcian_Lookup` | `dimPhysicianPK` | M:1 | Both | True |
-| 8 | `FactTable` | `dimTransactionFK` | → | `Trancstion_Lookup` | `dimTransactionPK` | M:1 | Single | True |
-| 9 | `Physcian_Lookup` | `SpecialityCodeFK` | → | `Speciality_Lookup` | `SpecialityCodePK` | M:1 | Single | True |
-| 10 | `FactTable` | `dimDatePostPK` | → | `DimDate` | `Date` | M:1 | Single | False |
+| 1 | `address` | `city_id` | → | `city` | `city_id` | M:1 | Both | True |
+| 2 | `city` | `country_id` | → | `country` | `country_id` | M:1 | Single | True |
+| 3 | `customer` | `address_id` | → | `address` | `address_id` | M:1 | Both | True |
+| 4 | `customer` | `store_id` | → | `store` | `store_id` | M:1 | Single | True |
+| 5 | `film` | `film_id` | → | `film_category` | `film_id` | M:1 | Single | True |
+| 6 | `film` | `film_id` | → | `film_text` | `film_id` | M:1 | Single | True |
+| 7 | `film` | `language_id` | → | `language` | `language_id` | M:1 | Single | True |
+| 8 | `film_actor` | `actor_id` | → | `actor` | `actor_id` | M:1 | Single | True |
+| 9 | `film_actor` | `film_id` | → | `film` | `film_id` | M:1 | Both | True |
+| 10 | `film_category` | `category_id` | → | `category` | `category_id` | M:1 | Single | True |
+| 11 | `inventory` | `film_id` | → | `film` | `film_id` | M:1 | Both | True |
+| 12 | `payment` | `customer_id` | → | `customer` | `customer_id` | M:1 | Both | True |
+| 13 | `rentat` | `inventory_id` | → | `inventory` | `inventory_id` | M:1 | Both | True |
+| 14 | `rentat` | `rental_id` | → | `payment` | `rental_id` | M:1 | Both | True |
+| 15 | `store` | `store_id` | → | `staff` | `store_id` | M:1 | Single | True |
+| 16 | `rentat` | `staff_id` | → | `staff` | `staff_id` | M:1 | Single | False |
 
 ### Flow (plain text)
 
 ```
- 1. FactTable.dimCPTCodeFK  -->  CptCode_Lookup.dimCPTCodePK   (M:1, Single, ACTIVE)
- 2. FactTable.dimDiagnosisCodeFK  -->  DiagnosisCode_Lookup.dimDiagnosisCodePK   (M:1, Single, ACTIVE)
- 3. FactTable.dimDateServicePK  -->  DimDate.Date   (M:1, Single, ACTIVE)
- 4. FactTable.dimHospitalFK  -->  Hospital_Lookup.dimHospitalPK   (M:1, Single, ACTIVE)
- 5. FactTable.dimPatientFK  -->  Patient_Lookup.dimPatientPK   (M:1, Single, ACTIVE)
- 6. FactTable.dimPayerFK  -->  Payer_Lookup.dimPayerPK   (M:1, Single, ACTIVE)
- 7. FactTable.dimPhysicianFK  -->  Physcian_Lookup.dimPhysicianPK   (M:1, Both, ACTIVE)
- 8. FactTable.dimTransactionFK  -->  Trancstion_Lookup.dimTransactionPK   (M:1, Single, ACTIVE)
- 9. Physcian_Lookup.SpecialityCodeFK  -->  Speciality_Lookup.SpecialityCodePK   (M:1, Single, ACTIVE)
-10. FactTable.dimDatePostPK  -->  DimDate.Date   (M:1, Single, INACTIVE)
+ 1. address.city_id  -->  city.city_id   (M:1, Both, ACTIVE)
+ 2. city.country_id  -->  country.country_id   (M:1, Single, ACTIVE)
+ 3. customer.address_id  -->  address.address_id   (M:1, Both, ACTIVE)
+ 4. customer.store_id  -->  store.store_id   (M:1, Single, ACTIVE)
+ 5. film.film_id  -->  film_category.film_id   (M:1, Single, ACTIVE)
+ 6. film.film_id  -->  film_text.film_id   (M:1, Single, ACTIVE)
+ 7. film.language_id  -->  language.language_id   (M:1, Single, ACTIVE)
+ 8. film_actor.actor_id  -->  actor.actor_id   (M:1, Single, ACTIVE)
+ 9. film_actor.film_id  -->  film.film_id   (M:1, Both, ACTIVE)
+10. film_category.category_id  -->  category.category_id   (M:1, Single, ACTIVE)
+11. inventory.film_id  -->  film.film_id   (M:1, Both, ACTIVE)
+12. payment.customer_id  -->  customer.customer_id   (M:1, Both, ACTIVE)
+13. rentat.inventory_id  -->  inventory.inventory_id   (M:1, Both, ACTIVE)
+14. rentat.rental_id  -->  payment.rental_id   (M:1, Both, ACTIVE)
+15. store.store_id  -->  staff.store_id   (M:1, Single, ACTIVE)
+16. rentat.staff_id  -->  staff.staff_id   (M:1, Single, INACTIVE)
 ```
 
 ## 2) Schema layers (left → right)
 
-- **Layer 0:** `Adjustment factor (%)` (other), `BadDebtTable` (other), `CptCode_Lookup` (dim), `DiagnosisCode_Lookup` (dim), `DimDate` (dim), `Hospital_Lookup` (dim), `Patient_Lookup` (dim), `Payer_Lookup` (dim), `Speciality_Lookup` (dim), `Trancstion_Lookup` (dim)
-- **Layer 1:** `Physcian_Lookup` (fact)
-- **Layer 2:** `FactTable` (fact)
+- **Layer 0:** `actor` (dim), `category` (dim), `country` (dim), `film_text` (dim), `language` (dim), `staff` (dim)
+- **Layer 1:** `city` (fact), `film_category` (fact), `store` (fact)
+- **Layer 2:** `address` (fact), `film` (bridge)
+- **Layer 3:** `customer` (bridge), `film_actor` (fact), `inventory` (fact)
+- **Layer 4:** `payment` (fact)
+- **Layer 5:** `rentat` (fact)
 
 ## NOTE — Internal tables
 
@@ -77,177 +98,188 @@ erDiagram
 
 | Internal table | Used for |
 |----------------|----------|
-| `DateTableTemplate_be97c3f8-f201-4a00-a952-d6592f333bdd` | `PBI auto-date TEMPLATE (not tied to a business column)` |
-| `LocalDateTable_2c2a61ff-39c4-4f0c-97ac-a6a7efb97db4` | `DimDate[Start of Month]` |
-| `LocalDateTable_39bba987-77ed-4008-8322-dd29e2cc2f25` | `DimDate[End of Month]` |
-| `LocalDateTable_a249ec34-7878-4151-b4c2-6a7b636bf3c0` | `DimDate[Date]` |
-| `LocalDateTable_d31a6fc7-dba3-4410-a53a-de9bb2d5b1c2` | `Patient_Lookup[DateOfBirth]` |
-| `LocalDateTable_ef34a3ff-4085-4eda-a1df-b58a8db8be46` | `DimDate[MonthYear]` |
+| `DateTableTemplate_a2d2931e-28fc-49d4-8f86-8eba292beccb` | `PBI auto-date TEMPLATE (not tied to a business column)` |
+| `LocalDateTable_2da133f1-f68d-4b4b-8ac9-f0599639b604` | `actor[last_update]` |
+| `LocalDateTable_4239b3b1-3dd6-4664-9851-e18de09a0567` | `payment[last_update]` |
+| `LocalDateTable_50a2d13e-fe1d-4c9d-a15d-eb4645f9255d` | `country[last_update]` |
+| `LocalDateTable_5bb36e84-426a-46fa-a13a-582ef5d6dc26` | `payment[payment_date]` |
+| `LocalDateTable_6086d83f-4701-4a3c-bc1d-3559af3b0892` | `staff[last_update]` |
+| `LocalDateTable_6a8a1b8a-08db-41d5-8644-a433e0a4df0b` | `customer[create_date]` |
+| `LocalDateTable_6f8b0d1f-465a-4e1d-aeb7-5159a1a4f632` | `film_category[last_update]` |
+| `LocalDateTable_70e91751-9ad0-4624-a9f6-239b895d4c07` | `rentat[rental_date]` |
+| `LocalDateTable_87276294-e462-4311-ae3b-ed5eff935d96` | `address[last_update]` |
+| `LocalDateTable_874aff1d-fcfb-4b81-ac6e-ffb89b0ffde4` | `language[last_update]` |
+| `LocalDateTable_8765a386-0fbd-4b49-b6b6-3081c9e155ce` | `film[last_update]` |
+| `LocalDateTable_9aade881-448f-4a31-ad80-a5a3f46b3dae` | `store[last_update]` |
+| `LocalDateTable_9f8673ee-bb2e-4fbb-bb1c-ec9378110b48` | `customer[last_update]` |
+| `LocalDateTable_a8f0fb53-b463-4fac-b8e7-a889be094bc7` | `rentat[return_date]` |
+| `LocalDateTable_c928e018-84d6-4ce3-ae3b-63bafef00319` | `film_actor[last_update]` |
+| `LocalDateTable_d0d09aee-878f-400a-9b99-c55fb13a7bb3` | `rentat[last_update]` |
+| `LocalDateTable_e54b6b64-66e9-4425-bfb5-60e11fa998ee` | `city[last_update]` |
+| `LocalDateTable_ee80cc38-2934-4181-972c-f0b7d5752b22` | `category[last_update]` |
+| `LocalDateTable_fc9173f0-2a64-4402-a7d0-c24da1027bc5` | `inventory[last_update]` |
 
 ## 3) Business tables — columns
 
-### `Adjustment factor (%)` (other)
-- Columns: 1
-
-- `Adjustment factor (%)` — Float64
-
-### `BadDebtTable` (other)
+### `actor` (dim)
 - Columns: 4
 
-- `dimTransactionPK` — Int64
-- `TransactionType` — string
-- `Transaction` — string
-- `AdjustmentReason` — string
+- `actor_id` _PK_ — Int64
+- `first_name` — string
+- `last_name` — string
+- `last_update` — datetime64[ns]
 
-### `CptCode_Lookup` (dim)
-- Columns: 4
+### `address` (fact)
+- Columns: 9
 
-- `dimCPTCodePK` _PK_ — Int64
-- `CptCode` — string
-- `CptDesc` — string
-- `CptGrouping` — string
+- `address_id` _PK_ — Int64
+- `address` — string
+- `address2` — string
+- `district` — string
+- `city_id` _FK_ — Int64
+- `postal_code` — Int64
+- `phone` — Int64
+- `location` — string
+- `last_update` — datetime64[ns]
 
-### `DiagnosisCode_Lookup` (dim)
-- Columns: 4
-
-- `dimDiagnosisCodePK` _PK_ — Int64
-- `DiagnosisCode` — string
-- `DiagnosisCodeDescription` — string
-- `DiagnosisCodeGroup` — string
-
-### `DimDate` (dim)
-- Columns: 20
-
-- `Date` _PK_ — datetime64[ns]
-- `Year` — Int64
-- `Month` — string
-- `MonthPeriod` — Int64
-- `MonthYear` — datetime64[ns]
-- `Day` — Int64
-- `DayName` — string
-- `Start of Month` — datetime64[ns]
-- `Day of Week` — Int64
-- `Day Name` — string
-- `Year.1` — Int64
-- `Month.1` — Int64
-- `End of Month` — datetime64[ns]
-- `ShortDayName` _CALC_ — string
-- `ShortDayName2` _CALC_ — string
-- `DayOfWeek` _CALC_ — Int64
-- `Weekend` _CALC_ — string
-- `WeekNum` _CALC_ — Int64
-- `Years` _CALC_ — Int64
-- `Months` _CALC_ — Int64
-
-### `FactTable` (fact)
-- Columns: 25
-
-- `FactTablePK` _PK_ — Int64
-- `Check Dimension` — Int64
-- `dimPatientFK` _FK_ — Int64
-- `dimPhysicianFK` _FK_ — Int64
-- `dimDateServicePK` _FK_ — datetime64[ns]
-- `dimDatePostPK` _FK_ — datetime64[ns]
-- `dimCPTCodeFK` _FK_ — Int64
-- `dimPayerFK` _FK_ — Int64
-- `dimTransactionFK` _FK_ — Int64
-- `dimHospitalFK` _FK_ — Int64
-- `PatientNumber` — Int64
-- `dimDiagnosisCodeFK` _FK_ — Int64
-- `CPTUnits` — Int64
-- `Gross Expenses` — Float64
-- `Adjustment` — Int64
-- `Insurance_Payment` — Int64
-- `Patient_Payment` — Float64
-- `AR` — Float64
-- `Dayoftheweek` _CALC_ — Int64
-- `CPTUnitType` _CALC_ — string
-- `TotalPayment` _CALC_ — Float64
-- `PatientGender` _CALC_ — string
-- `PatientEthinicity` _CALC_ — string
-- `PatientCity` _CALC_ — string
-- `RegionCode` _CALC_ — string
-
-### `Hospital_Lookup` (dim)
+### `category` (dim)
 - Columns: 3
 
-- `dimHospitalPK` _PK_ — Int64
-- `HospitalName` — string
-- `IsHospitalNameLong` _CALC_ — string
+- `category_id` _PK_ — Int64
+- `name` — string
+- `last_update` — datetime64[ns]
 
-### `Patient_Lookup` (dim)
-- Columns: 34
-
-- `dimPatientPK` _PK_ — Int64
-- `PatientNumber` — Int64
-- `FirstName` — string
-- `LastName` — string
-- `Email` — string
-- `PatientGender` — string
-- `PatientAge` — Int64
-- `PatientHeight(in cms)` — Int64
-- `Year of Birth` — Int64
-- `Month` — Int64
-- `Day` — Int64
-- `BloodGroup` — string
-- `Tobacco` — string
-- `Alcohol` — string
-- `Exercise` — string
-- `Diet` — string
-- `Ethinicity` — string
-- `Zip Codes` — Int64
-- `State Code` — string
-- `City` — string
-- `State` — string
-- `Region` — string
-- `DateOfBirth` _CALC_ — datetime64[ns]
-- `MonthName` _CALC_ — string
-- `ageofPatient` _CALC_ — Int64
-- `PatientFullName` _CALC_ — string
-- `Age>50` _CALC_ — string
-- `Patient_AT` _CALC_ — bool
-- `Patient_ATD` _CALC_ — bool
-- `RegionCode` _CALC_ — string
-- `Patient_!AT` _CALC_ — bool
-- `fn` _CALC_ — string
-- `PatientFullName_UPPER` _CALC_ — string
-- `Rounded Age` _CALC_ — Int64
-
-### `Payer_Lookup` (dim)
-- Columns: 2
-
-- `dimPayerPK` _PK_ — Int64
-- `PayerName` — string
-
-### `Physcian_Lookup` (fact)
-- Columns: 5
-
-- `dimPhysicianPK` _PK_ — Int64
-- `ProviderNpi` — Int64
-- `ProviderName` — string
-- `SpecialityCodeFK` _FK_ — Int64
-- `ProviderFTE` — Float64
-
-### `Speciality_Lookup` (dim)
+### `city` (fact)
 - Columns: 4
 
-- `SpecialityCodePK` _PK_ — string
-- `ProviderSpecialty` — string
-- `SpecialityType` — string
-- `SpecialityDesc` — string
+- `city_id` _PK_ — Int64
+- `city` — string
+- `country_id` _FK_ — Int64
+- `last_update` — datetime64[ns]
 
-### `Trancstion_Lookup` (dim)
+### `country` (dim)
+- Columns: 3
+
+- `country_id` _PK_ — Int64
+- `country` — string
+- `last_update` — datetime64[ns]
+
+### `customer` (bridge)
+- Columns: 10
+
+- `customer_id` _PK_ — Int64
+- `store_id` _FK_ — Int64
+- `first_name` — string
+- `last_name` — string
+- `email` — string
+- `address_id` _FK_ — Int64
+- `active` — Int64
+- `create_date` — datetime64[ns]
+- `last_update` — datetime64[ns]
+- `Employment Duration` _CALC_ — Int64
+
+### `film` (bridge)
+- Columns: 13
+
+- `film_id` _PK,FK_ — Int64
+- `title` — string
+- `description` — string
+- `release_year` — Int64
+- `language_id` _FK_ — Int64
+- `original_language_id` — Int64
+- `rental_duration` — Int64
+- `rental_rate` — Float64
+- `length` — Int64
+- `replacement_cost` — Float64
+- `rating` — string
+- `special_features` — string
+- `last_update` — datetime64[ns]
+
+### `film_actor` (fact)
+- Columns: 3
+
+- `actor_id` _FK_ — Int64
+- `film_id` _FK_ — Int64
+- `last_update` — datetime64[ns]
+
+### `film_category` (fact)
+- Columns: 3
+
+- `film_id` _PK_ — Int64
+- `category_id` _FK_ — Int64
+- `last_update` — datetime64[ns]
+
+### `film_text` (dim)
+- Columns: 3
+
+- `film_id` _PK_ — Int64
+- `title` — string
+- `description` — string
+
+### `inventory` (fact)
 - Columns: 4
 
-- `dimTransactionPK` _PK_ — Int64
-- `TransactionType` — string
-- `Transaction` — string
-- `AdjustmentReason` — string
+- `inventory_id` _PK_ — Int64
+- `film_id` _FK_ — Int64
+- `store_id` — Int64
+- `last_update` — datetime64[ns]
+
+### `language` (dim)
+- Columns: 3
+
+- `language_id` _PK_ — Int64
+- `name` — string
+- `last_update` — datetime64[ns]
+
+### `payment` (fact)
+- Columns: 7
+
+- `payment_id` — Int64
+- `customer_id` _FK_ — Int64
+- `staff_id` — Int64
+- `rental_id` _PK_ — Int64
+- `amount` — Float64
+- `payment_date` — datetime64[ns]
+- `last_update` — datetime64[ns]
+
+### `rentat` (fact)
+- Columns: 7
+
+- `rental_id` _FK_ — Int64
+- `rental_date` — datetime64[ns]
+- `inventory_id` _FK_ — Int64
+- `customer_id` — Int64
+- `return_date` — datetime64[ns]
+- `staff_id` _FK_ — Int64
+- `last_update` — datetime64[ns]
+
+### `staff` (dim)
+- Columns: 11
+
+- `staff_id` _PK_ — Int64
+- `first_name` — string
+- `last_name` — string
+- `address_id` — Int64
+- `picture` — string
+- `email` — string
+- `store_id` _PK_ — Int64
+- `active` — Int64
+- `username` — string
+- `password` — string
+- `last_update` — datetime64[ns]
+
+### `store` (fact)
+- Columns: 4
+
+- `store_id` _PK,FK_ — Int64
+- `manager_staff_id` — Int64
+- `address_id` — Int64
+- `last_update` — datetime64[ns]
 
 
 ## 4) Internal tables — columns
 
-### `DateTableTemplate_be97c3f8-f201-4a00-a952-d6592f333bdd`
+### `DateTableTemplate_a2d2931e-28fc-49d4-8f86-8eba292beccb`
 - **Used for:** `PBI auto-date TEMPLATE (not tied to a business column)`
 
 - `Date`
@@ -258,8 +290,8 @@ erDiagram
 - `Quarter` _CALC_
 - `Day` _CALC_
 
-### `LocalDateTable_2c2a61ff-39c4-4f0c-97ac-a6a7efb97db4`
-- **Used for:** `DimDate[Start of Month]`
+### `LocalDateTable_2da133f1-f68d-4b4b-8ac9-f0599639b604`
+- **Used for:** `actor[last_update]`
 
 - `Date`
 - `Year` _CALC_
@@ -269,8 +301,8 @@ erDiagram
 - `Quarter` _CALC_
 - `Day` _CALC_
 
-### `LocalDateTable_39bba987-77ed-4008-8322-dd29e2cc2f25`
-- **Used for:** `DimDate[End of Month]`
+### `LocalDateTable_4239b3b1-3dd6-4664-9851-e18de09a0567`
+- **Used for:** `payment[last_update]`
 
 - `Date`
 - `Year` _CALC_
@@ -280,8 +312,8 @@ erDiagram
 - `Quarter` _CALC_
 - `Day` _CALC_
 
-### `LocalDateTable_a249ec34-7878-4151-b4c2-6a7b636bf3c0`
-- **Used for:** `DimDate[Date]`
+### `LocalDateTable_50a2d13e-fe1d-4c9d-a15d-eb4645f9255d`
+- **Used for:** `country[last_update]`
 
 - `Date`
 - `Year` _CALC_
@@ -291,8 +323,8 @@ erDiagram
 - `Quarter` _CALC_
 - `Day` _CALC_
 
-### `LocalDateTable_d31a6fc7-dba3-4410-a53a-de9bb2d5b1c2`
-- **Used for:** `Patient_Lookup[DateOfBirth]`
+### `LocalDateTable_5bb36e84-426a-46fa-a13a-582ef5d6dc26`
+- **Used for:** `payment[payment_date]`
 
 - `Date`
 - `Year` _CALC_
@@ -302,8 +334,162 @@ erDiagram
 - `Quarter` _CALC_
 - `Day` _CALC_
 
-### `LocalDateTable_ef34a3ff-4085-4eda-a1df-b58a8db8be46`
-- **Used for:** `DimDate[MonthYear]`
+### `LocalDateTable_6086d83f-4701-4a3c-bc1d-3559af3b0892`
+- **Used for:** `staff[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_6a8a1b8a-08db-41d5-8644-a433e0a4df0b`
+- **Used for:** `customer[create_date]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_6f8b0d1f-465a-4e1d-aeb7-5159a1a4f632`
+- **Used for:** `film_category[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_70e91751-9ad0-4624-a9f6-239b895d4c07`
+- **Used for:** `rentat[rental_date]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_87276294-e462-4311-ae3b-ed5eff935d96`
+- **Used for:** `address[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_874aff1d-fcfb-4b81-ac6e-ffb89b0ffde4`
+- **Used for:** `language[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_8765a386-0fbd-4b49-b6b6-3081c9e155ce`
+- **Used for:** `film[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_9aade881-448f-4a31-ad80-a5a3f46b3dae`
+- **Used for:** `store[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_9f8673ee-bb2e-4fbb-bb1c-ec9378110b48`
+- **Used for:** `customer[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_a8f0fb53-b463-4fac-b8e7-a889be094bc7`
+- **Used for:** `rentat[return_date]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_c928e018-84d6-4ce3-ae3b-63bafef00319`
+- **Used for:** `film_actor[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_d0d09aee-878f-400a-9b99-c55fb13a7bb3`
+- **Used for:** `rentat[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_e54b6b64-66e9-4425-bfb5-60e11fa998ee`
+- **Used for:** `city[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_ee80cc38-2934-4181-972c-f0b7d5752b22`
+- **Used for:** `category[last_update]`
+
+- `Date`
+- `Year` _CALC_
+- `MonthNo` _CALC_
+- `Month` _CALC_
+- `QuarterNo` _CALC_
+- `Quarter` _CALC_
+- `Day` _CALC_
+
+### `LocalDateTable_fc9173f0-2a64-4402-a7d0-c24da1027bc5`
+- **Used for:** `inventory[last_update]`
 
 - `Date`
 - `Year` _CALC_

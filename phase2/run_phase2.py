@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+"""Phase 2 orchestrator — deterministic Power BI inventory → LookML + guide + ZIP.
+
+Usage:
+  ../.venv312/bin/python run_phase2.py
+  ../.venv312/bin/python run_phase2.py --inventory ../phase1/inventory
+"""
+from __future__ import annotations
+
+import argparse
+import importlib
+import json
+import zipfile
+from pathlib import Path
+
+import generate_developer_guide as guide
+import generate_lookml as lookml
+
+ROOT = Path(__file__).resolve().parent
+DEFAULT_INV = ROOT.parent / "phase1" / "inventory"
+ZIP_OUT = ROOT / "LOOKML_PROJECT.zip"
+
+
+def package_zip(lookml_dir: Path, zip_path: Path) -> Path:
+    if zip_path.exists():
+        zip_path.unlink()
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for path in sorted(lookml_dir.rglob("*")):
+            if path.is_file():
+                zf.write(path, arcname=str(path.relative_to(lookml_dir.parent)))
+    return zip_path
+
+
+def run(inventory: Path) -> dict:
+    if not inventory.exists():
+        raise SystemExit(f"Phase 1 inventory not found: {inventory}")
+
+    # Always reload generators so Streamlit picks up guide/LookML code changes
+    import generate_developer_guide as guide
+    import generate_lookml as lookml
+
+    lookml = importlib.reload(lookml)
+    guide = importlib.reload(guide)
+
+    info = lookml.generate(inv_dir=inventory, out_root=ROOT)
+    guide_info = guide.generate(ROOT / "OBJECT_MAPPING.json")
+    zip_path = package_zip(ROOT / "lookml", ZIP_OUT)
+
+    summary = {
+        "phase": 2,
+        "approach": "deterministic",
+        "source_pbix": info.get("source_pbix"),
+        "model_name": info.get("model_name"),
+        "fact_table": info.get("fact"),
+        "views": info.get("views"),
+        "measures": info.get("measures"),
+        "relationships": info.get("relationships"),
+        "lookml_dir": str(ROOT / "lookml"),
+        "zip": str(zip_path),
+        "guide_pdf": guide_info["pdf"],
+        "guide_md": guide_info["md"],
+        "mapping_md": str(ROOT / "OBJECT_MAPPING.md"),
+    }
+    (ROOT / "PHASE2_SUMMARY.json").write_text(json.dumps(summary, indent=2))
+
+    print("=" * 60)
+    print("PHASE 2 COMPLETE — LOOKER MAPPING + LOOKML")
+    print("=" * 60)
+    print(f"Source:        {summary['source_pbix']}")
+    print(f"Model:         {summary['model_name']}")
+    print(f"Fact explore:  {summary['fact_table']}")
+    print(f"Views:         {summary['views']}")
+    print(f"Measures:      {summary['measures']}")
+    print(f"Relationships: {summary['relationships']}")
+    print(f"Guide PDF:     {summary['guide_pdf']}")
+    print(f"LookML ZIP:    {summary['zip']}")
+    print(f"Mapping:       {summary['mapping_md']}")
+    return summary
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description="Phase 2: inventory → LookML + developer guide")
+    ap.add_argument(
+        "--inventory",
+        type=Path,
+        default=DEFAULT_INV,
+        help="Path to Phase 1 inventory directory",
+    )
+    args = ap.parse_args()
+    run(args.inventory.resolve())
+
+
+if __name__ == "__main__":
+    main()

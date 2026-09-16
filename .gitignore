@@ -33,5 +33,9 @@ phase1_inventory_*
 uploads/
 *.pbix
 
+# Phase 2 local caches
+phase2/**/__pycache__/
+phase2/lookml/.DS_Store
+
 # Cursor
 .cursor/

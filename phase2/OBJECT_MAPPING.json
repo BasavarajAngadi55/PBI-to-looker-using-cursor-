@@ -1,0 +1,335 @@
+{
+  "approach": "deterministic",
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix",
+  "model_name": "movie_rental_analysis",
+  "object_equivalence": [
+    {
+      "power_bi": "Table (business)",
+      "looker": "view (.view.lkml)",
+      "how_to_create": "Create views/<name>.view.lkml with `view: <name> { sql_table_name: ... }`. Every view needs a primary_key dimension (Looker skills / symmetric aggregates).",
+      "refs": [
+        "https://cloud.google.com/looker/docs/reference/param-view-view",
+        "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-view/SKILL.md"
+      ]
+    },
+    {
+      "power_bi": "Column",
+      "looker": "dimension (or dimension_group for dates)",
+      "how_to_create": "Add `dimension: field { type: ... sql: ${TABLE}.col ;; }`. Date/time columns \u2192 `dimension_group: ... { type: time timeframes: [raw, date, week, month, quarter, year] }`.",
+      "refs": [
+        "https://cloud.google.com/looker/docs/reference/param-field-dimension",
+        "https://cloud.google.com/looker/docs/reference/param-field-dimension-group"
+      ]
+    },
+    {
+      "power_bi": "Measure (DAX)",
+      "looker": "measure",
+      "how_to_create": "Map SUM/AVERAGE/COUNT/DISTINCTCOUNT to type: sum|average|count|count_distinct. Ratios \u2192 type: number + SAFE_DIVIDE. CALCULATE/time-intel \u2192 filters, period patterns, or warehouse + TODO.",
+      "refs": [
+        "https://cloud.google.com/looker/docs/reference/param-field-measure",
+        "https://cloud.google.com/looker/docs/reference/field-reference"
+      ]
+    },
+    {
+      "power_bi": "Relationship (M:1 From\u2192To)",
+      "looker": "explore join (relationship: many_to_one)",
+      "how_to_create": "In the model file, `explore: fact { join: dim { type: left_outer relationship: many_to_one sql_on: ${fact.fk} = ${dim.pk} ;; } }`. Always set relationship explicitly (looker-skills).",
+      "refs": [
+        "https://cloud.google.com/looker/docs/reference/param-explore-join",
+        "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-explore/SKILL.md"
+      ]
+    },
+    {
+      "power_bi": "Calculated column (DAX)",
+      "looker": "dimension (prefer warehouse column)",
+      "how_to_create": "Prefer materializing in warehouse SQL, then expose as dimension. Simple row expressions may use LookML sql:; complex DAX stays as migration TODO.",
+      "refs": [
+        "https://cloud.google.com/looker/docs/lookml-terms-and-concepts"
+      ]
+    },
+    {
+      "power_bi": "Calculated table",
+      "looker": "view (sql_table_name or derived_table)",
+      "how_to_create": "If the table is seeded/small, warehouse seed + standard view. Otherwise SQL derived table / NDT per lookml-view derived_table guidance.",
+      "refs": [
+        "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-view/SKILL.md"
+      ]
+    },
+    {
+      "power_bi": "Power Query M",
+      "looker": "Warehouse / ETL (not LookML)",
+      "how_to_create": "Rebuild M transforms in the warehouse (dbt/Dataform/SQL). LookML only points sql_table_name at the finished table.",
+      "refs": [
+        "https://cloud.google.com/looker/docs/lookml-terms-and-concepts"
+      ]
+    },
+    {
+      "power_bi": "Hierarchy",
+      "looker": "drill_fields / sets / dimension_group timeframes",
+      "how_to_create": "Date hierarchies \u2192 dimension_group timeframes. Attribute hierarchies \u2192 drill_fields: [year, quarter, month, day] or sets.",
+      "refs": [
+        "https://cloud.google.com/looker/docs/reference/param-field-drill-fields"
+      ]
+    },
+    {
+      "power_bi": "RLS / OLS",
+      "looker": "access_grant / access_filter / required_access_grants",
+      "how_to_create": "Map roles to Looker user attributes + access_filter on explores, or access_grant on fields.",
+      "refs": [
+        "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-access-grants/SKILL.md"
+      ]
+    },
+    {
+      "power_bi": "LocalDateTable_* / DateTableTemplate_*",
+      "looker": "Skip (use business date + dimension_group)",
+      "how_to_create": "Do not migrate auto-date tables. Use the business date column with Looker timeframes.",
+      "refs": [
+        "https://cloud.google.com/looker/docs/reference/param-field-dimension-group"
+      ]
+    },
+    {
+      "power_bi": "Model / Dataset",
+      "looker": "model (.model.lkml) + connection",
+      "how_to_create": "One model file: connection, includes, datagroup, explore(s). Prefer granular includes over wildcards (lookml-modeling-guidelines).",
+      "refs": [
+        "https://cloud.google.com/looker/docs/lookml-terms-and-concepts",
+        "https://github.com/looker-open-source/looker-skills/blob/main/skills/lookml-modeling-guidelines/SKILL.md"
+      ]
+    }
+  ],
+  "generated_objects": [
+    {
+      "kind": "measure",
+      "power_bi": "payment.Revenue",
+      "looker": "measure:revenue",
+      "strategy": "direct_sum",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "inventory.Total Films Rented",
+      "looker": "measure:total_films_rented",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "inventory.Average Inventory Value",
+      "looker": "measure:average_inventory_value",
+      "strategy": "direct_average",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "inventory.Inventory Turnover Rate",
+      "looker": "measure:inventory_turnover_rate",
+      "strategy": "ratio",
+      "status": "mapped"
+    },
+    {
+      "kind": "measure",
+      "power_bi": "actor.FilmPopularity",
+      "looker": "measure:filmpopularity",
+      "strategy": "complex_todo",
+      "status": "todo"
+    },
+    {
+      "kind": "view",
+      "power_bi": "actor",
+      "looker": "views/actor.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "address",
+      "looker": "views/address.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "category",
+      "looker": "views/category.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "city",
+      "looker": "views/city.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "country",
+      "looker": "views/country.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "customer",
+      "looker": "views/customer.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "film",
+      "looker": "views/film.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "film_actor",
+      "looker": "views/film_actor.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "film_category",
+      "looker": "views/film_category.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "film_text",
+      "looker": "views/film_text.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "inventory",
+      "looker": "views/inventory.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "language",
+      "looker": "views/language.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "payment",
+      "looker": "views/payment.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "rentat",
+      "looker": "views/rentat.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "staff",
+      "looker": "views/staff.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "view",
+      "power_bi": "store",
+      "looker": "views/store.view.lkml",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "film_actor[actor_id] -> actor[actor_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "address[city_id] -> city[city_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "city[country_id] -> country[country_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "film[language_id] -> language[language_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "film_category[category_id] -> category[category_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "film[film_id] -> film_category[film_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "film[film_id] -> film_text[film_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "store[store_id] -> staff[store_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "film_actor[film_id] -> film[film_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "customer[address_id] -> address[address_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "payment[customer_id] -> customer[customer_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "customer[store_id] -> store[store_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "rentat[inventory_id] -> inventory[inventory_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "rentat[rental_id] -> payment[rental_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    },
+    {
+      "kind": "join",
+      "power_bi": "rentat[staff_id] -> staff[staff_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "inactive_alias"
+    },
+    {
+      "kind": "join",
+      "power_bi": "inventory[film_id] -> film[film_id]",
+      "looker": "explore join relationship=many_to_one",
+      "status": "mapped"
+    }
+  ],
+  "references": [
+    "https://github.com/looker-open-source/looker-skills",
+    "https://cloud.google.com/looker/docs/lookml-terms-and-concepts",
+    "https://cloud.google.com/looker/docs/reference/param-view-view",
+    "https://cloud.google.com/looker/docs/reference/param-explore-join"
+  ]
+}

@@ -6,7 +6,7 @@ Extract **every** object from a PBIX into an inventory and a **data model** diag
 Six specialist **stages** write inventory files; the Streamlit UI only runs that pipeline.
 
 **In scope:** tables, columns, measures, calc columns/tables, relationships, Power Query M, TM extras, data model, simple UI.  
-**Out of scope today:** data loading, sample row data, warehouse SQL, LookML, Phase 2/3, LLM Q&A.
+**Out of scope here:** data loading, warehouse SQL, LookML (see **[../phase2/](../phase2/)**), LLM Q&A.
 
 **Optional later:** enable **natural-language conversation on top** of the inventory to make the system **agentic** — users can ask any question about the **current** uploaded PBIX (inventory is replaced each extract). Extract itself stays deterministic.
 

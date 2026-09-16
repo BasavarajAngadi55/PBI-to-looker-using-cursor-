@@ -1,0 +1,15 @@
+{
+  "phase": 2,
+  "approach": "deterministic",
+  "source_pbix": "/Users/Basavaraj_Angadi/Desktop/data eng /phase1/uploads/movie_rental_analysis.pbix",
+  "model_name": "movie_rental_analysis",
+  "fact_table": "film",
+  "views": 16,
+  "measures": 5,
+  "relationships": 16,
+  "lookml_dir": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/lookml",
+  "zip": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/LOOKML_PROJECT.zip",
+  "guide_pdf": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/LOOKER_DEVELOPER_GUIDE.pdf",
+  "guide_md": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/LOOKER_DEVELOPER_GUIDE.md",
+  "mapping_md": "/Users/Basavaraj_Angadi/Desktop/data eng /phase2/OBJECT_MAPPING.md"
+}

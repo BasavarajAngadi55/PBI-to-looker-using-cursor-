@@ -1,0 +1,44 @@
+[
+  {
+    "severity": "HIGH",
+    "area": "Connection & warehouse",
+    "gap": "LookML still uses placeholders YOUR_LOOKER_CONNECTION and YOUR_PROJECT.YOUR_DATASET.",
+    "action": "Set the real Looker connection name and point every sql_table_name at existing warehouse tables before validating."
+  },
+  {
+    "severity": "HIGH",
+    "area": "Power Query / ETL",
+    "gap": "16 Power Query queries exist in PBIX. LookML does not recreate M.",
+    "action": "Rebuild each query's grain and transforms in the warehouse (dbt/Dataform/SQL). Confirm row counts and keys match Power BI before Looker go-live. Queries: actor, address, city, country, category, film, film_actor, film_category, film_text, inventory, language, payment, rentat, staff, store, customer"
+  },
+  {
+    "severity": "HIGH",
+    "area": "Complex DAX",
+    "gap": "2 of 5 measures are TODO stubs (CALCULATE/time-intel/iterators).",
+    "action": "Implement each TODO using LookML filters, period-over-period patterns, or warehouse logic. Keep original DAX in the field description until KPI parity passes."
+  },
+  {
+    "severity": "HIGH",
+    "area": "Calculated columns",
+    "gap": "1 business calculated columns must be materialized (prefer warehouse), not left as DAX.",
+    "action": "Create warehouse columns for: customer.Employment Duration"
+  },
+  {
+    "severity": "MEDIUM",
+    "area": "Inactive relationship",
+    "gap": "Inactive in Power BI: rentat[staff_id] -> staff[staff_id] (M:1).",
+    "action": "Looker has no inactive join. Keep as a separate aliased join (from:) and only expose when a measure needs USERELATIONSHIP-style behavior. Hide fields until needed."
+  },
+  {
+    "severity": "LOW",
+    "area": "Row-level security",
+    "gap": "No RLS roles in this PBIX inventory.",
+    "action": "Still confirm with security owners whether Looker needs access_filter by region/org."
+  },
+  {
+    "severity": "LOW",
+    "area": "Auto date tables",
+    "gap": "20 LocalDateTable_/DateTableTemplate_ tables skipped (correct).",
+    "action": "Use business date columns with dimension_group timeframes. Do not migrate auto-date tables."
+  }
+]

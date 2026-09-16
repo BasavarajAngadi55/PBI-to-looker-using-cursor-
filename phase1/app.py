@@ -10,8 +10,10 @@ from pathlib import Path
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
+PHASE2 = ROOT.parent / "phase2"
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "inventory"))
+sys.path.insert(0, str(PHASE2))
 
 import generate_agent_validation_proof as val_mod
 import generate_data_model_diagram as dmd_mod
@@ -22,6 +24,8 @@ import workspace as workspace_mod
 SUMMARY_PDF = ROOT / "OBJECT_SUMMARY.pdf"
 DATA_MODEL_PDF = ROOT / "DATA_MODEL.pdf"
 CURRENT_META = ROOT / "CURRENT_PBIX.json"
+LOOKML_ZIP = PHASE2 / "LOOKML_PROJECT.zip"
+LOOKER_GUIDE_PDF = PHASE2 / "LOOKER_DEVELOPER_GUIDE.pdf"
 
 
 st.set_page_config(page_title="PBIX Extract", layout="centered")
@@ -29,7 +33,7 @@ st.title("PBIX semantic extract")
 st.caption(
     "Deterministic Phase 1 extract (Python + pbixray — no LLM). "
     "Each upload replaces all inventory for that PBIX only in phase1/. "
-    "Later: enable NL conversation on top to make it agentic (Q&A about the current PBIX)."
+    "Phase 2 builds LookML ZIP + Looker developer guide PDF from that inventory."
 )
 
 if CURRENT_META.exists():
@@ -102,11 +106,23 @@ if run:
                 Path(result["pbix_path"]).name,
                 SUMMARY_PDF,
             )
+
+            phase2_summary = None
+            try:
+                import run_phase2 as phase2_mod
+
+                phase2_mod = importlib.reload(phase2_mod)
+                phase2_summary = phase2_mod.run(ROOT / "inventory")
+            except Exception as e:
+                st.warning(f"Phase 2 LookML / developer guide skipped: {e}")
+
             st.session_state["result"] = result
+            st.session_state["phase2"] = phase2_summary
             st.session_state["ok"] = True
         except Exception as e:
             st.session_state["ok"] = False
             st.session_state["result"] = None
+            st.session_state["phase2"] = None
             st.error(str(e))
 
 if st.session_state.get("ok") and st.session_state.get("result"):
@@ -161,5 +177,62 @@ if st.session_state.get("ok") and st.session_state.get("result"):
             file_name="OBJECT_INVENTORY.md",
             mime="text/markdown",
         )
+
+    st.subheader("Phase 2 — Looker")
+    p2 = st.session_state.get("phase2") or {}
+    if p2:
+        st.caption(
+            f"LookML: **{p2.get('views', '?')}** views · **{p2.get('measures', '?')}** measures · "
+            f"model `{p2.get('model_name', '?')}`"
+        )
+    else:
+        st.caption("Generated from the Phase 1 inventory for this PBIX.")
+
+    c_zip, c_guide = st.columns(2)
+    with c_zip:
+        if LOOKML_ZIP.exists():
+            st.download_button(
+                "Download all LookML (.zip)",
+                data=LOOKML_ZIP.read_bytes(),
+                file_name="LOOKML_PROJECT.zip",
+                mime="application/zip",
+                type="primary",
+                key="dl_lookml_zip",
+            )
+        else:
+            st.warning("LookML ZIP not found — re-run extract.")
+    with c_guide:
+        if LOOKER_GUIDE_PDF.exists():
+            st.download_button(
+                "Download Looker developer guide (.pdf)",
+                data=LOOKER_GUIDE_PDF.read_bytes(),
+                file_name="LOOKER_DEVELOPER_GUIDE.pdf",
+                mime="application/pdf",
+                type="primary",
+                key="dl_looker_guide",
+            )
+        else:
+            st.warning("Developer guide PDF not found — re-run extract.")
 else:
     st.write("Upload a PBIX and click **Extract summary**. Previous extract files are replaced in place.")
+    if LOOKML_ZIP.exists() or LOOKER_GUIDE_PDF.exists():
+        st.subheader("Phase 2 — Looker (last run on disk)")
+        c_zip, c_guide = st.columns(2)
+        with c_zip:
+            if LOOKML_ZIP.exists():
+                st.download_button(
+                    "Download all LookML (.zip)",
+                    data=LOOKML_ZIP.read_bytes(),
+                    file_name="LOOKML_PROJECT.zip",
+                    mime="application/zip",
+                    key="dl_lookml_zip_disk",
+                )
+        with c_guide:
+            if LOOKER_GUIDE_PDF.exists():
+                st.download_button(
+                    "Download Looker developer guide (.pdf)",
+                    data=LOOKER_GUIDE_PDF.read_bytes(),
+                    file_name="LOOKER_DEVELOPER_GUIDE.pdf",
+                    mime="application/pdf",
+                    key="dl_looker_guide_disk",
+                )

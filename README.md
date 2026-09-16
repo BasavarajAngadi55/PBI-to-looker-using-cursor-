@@ -1,13 +1,21 @@
 # PBI → Looker (Cursor)
 
-Phase 1 work lives in **[phase1/](phase1/)**.
+## Phase 1 — Extract ([phase1/](phase1/))
 
-**Phase 1 approach:** deterministic PBIX extract (Python + `pbixray`) — not an LLM agent pipeline.  
-Each upload keeps only that PBIX’s inventory. Optional later: enable NL conversation on top to make it **agentic** (Q&A about the current PBIX).
+Deterministic PBIX extract (Python + `pbixray`) → inventory + data model PDF.
 
 ```bash
 cd phase1
 ../.venv312/bin/streamlit run app.py
 ```
 
-See [phase1/README.md](phase1/README.md) for inventory, data model, architecture, and validation proof.
+## Phase 2 — Looker mapping ([phase2/](phase2/))
+
+Deterministic inventory → LookML + Looker developer guide PDF + `LOOKML_PROJECT.zip`.
+
+```bash
+cd phase2
+../.venv312/bin/python run_phase2.py
+```
+
+See [phase1/README.md](phase1/README.md) and [phase2/README.md](phase2/README.md).
